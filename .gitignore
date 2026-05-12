@@ -37,6 +37,31 @@ dev-server*.log
 # vercel
 .vercel
 
+# persistent data (submissions, etc.)
+/data/*.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+
+website-main/
+
+# reference design dump
+zfc/
+
+# root-level design screenshots
+about us space.png
+hero sec with navbar.png
+new sec.png
+our services.png
+
+# planning / temp files
+findings.md
+progress.md
+task_plan.md
+prd.md
+
+# test files
+public/test_images.html
