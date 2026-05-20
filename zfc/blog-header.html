@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZFC Canada – Blog</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    /* ── Top Info Bar ── */
+    .top-bar {
+      background-color: #0f1e4b;
+      color: #ffffff;
+      padding: 9px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13.5px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .top-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+    }
+
+    .top-bar-item svg {
+      flex-shrink: 0;
+      opacity: 0.95;
+    }
+
+    /* ── Main Navbar ── */
+    .navbar {
+      background: #ffffff;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 90px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    /* Logo */
+    .navbar-logo img {
+      height: 72px;
+      width: auto;
+      display: block;
+    }
+
+    /* Nav Links */
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+
+    .navbar-links li a {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      color: #1a1a2e;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 4px;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .navbar-links li a:hover {
+      color: #cc2229;
+    }
+
+    .navbar-links li.active a {
+      color: #cc2229;
+      font-weight: 600;
+    }
+
+    /* Dropdown chevron */
+    .chevron {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg) translateY(-2px);
+    }
+
+    /* Right side: RCIC badge + CTA */
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .rcic-badge img {
+      height: 46px;
+      width: auto;
+      display: block;
+    }
+
+    .btn-consultation {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #cc2229;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 11px 20px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: background 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-consultation:hover {
+      background-color: #a81820;
+    }
+
+    .btn-consultation .arrow {
+      font-size: 16px;
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Top Info Bar ── -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <div class="top-bar-item">
+        <!-- Location pin icon -->
+        <svg width="14" height="17" viewBox="0 0 14 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 0C4.243 0 2 2.243 2 5c0 3.75 5 10.5 5 10.5S12 8.75 12 5c0-2.757-2.243-5-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" fill="white"/>
+        </svg>
+        214-808 Britannia Rd W, Mississauga, ON L5V 0A7, Canada
+      </div>
+    </div>
+
+    <div class="top-bar-right">
+      <div class="top-bar-item">
+        <!-- Envelope icon -->
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14.4 0H1.6C0.72 0 0.008 0.72 0.008 1.6L0 10.4C0 11.28 0.72 12 1.6 12H14.4C15.28 12 16 11.28 16 10.4V1.6C16 0.72 15.28 0 14.4 0ZM14.4 3.2L8 7.2L1.6 3.2V1.6L8 5.6L14.4 1.6V3.2Z" fill="white"/>
+        </svg>
+        info@zfcanada.com
+      </div>
+      <div class="top-bar-item">
+        <!-- Phone icon -->
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.734 6.027a11.892 11.892 0 0 0 5.24 5.24l1.748-1.748a.781.781 0 0 1 .8-.189c.879.292 1.828.45 2.803.45a.782.782 0 0 1 .781.781V13.22a.782.782 0 0 1-.781.781C5.913 14 0 8.087 0 .781A.782.782 0 0 1 .781 0h2.657a.782.782 0 0 1 .781.781c0 .978.158 1.924.45 2.803a.782.782 0 0 1-.196.8L2.734 6.027z" fill="white"/>
+        </svg>
+        +1 (905) 858-5589
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main Navbar ── -->
+  <nav class="navbar">
+
+    <!-- Logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        <img src="zfc-logo-final-01-1-1_1.png" alt="ZFC Canada – Since 1992" />
+      </a>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="navbar-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About Us</a></li>
+      <li>
+        <a href="#">
+          Services
+          <span class="chevron"></span>
+        </a>
+      </li>
+      <li class="active"><a href="#">Blog</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+
+    <!-- Right: RCIC Badge + CTA -->
+    <div class="navbar-right">
+      <div class="rcic-badge">
+        <img src="RCIC-IRB_EN_HORZ_CLR_POS-1-2048x783_1.png" alt="RCIC-IRB Regulated Canadian Immigration Consultant" />
+      </div>
+      <a href="#" class="btn-consultation">
+        Get Consultation
+        <span class="arrow">»</span>
+      </a>
+    </div>
+
+  </nav>
+
+</body>
+</html>
