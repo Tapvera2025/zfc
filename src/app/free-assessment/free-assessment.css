@@ -1,0 +1,319 @@
+/* ════════════════════════════════════════════════════════════
+   ZF Canada – Free Assessment Page
+   ════════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: "PointPanther";
+  src: url("/fonts/point-panther-point-panther-bold-700.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PointPanther";
+  src: url("/fonts/point-panther-point-panther-regular-400.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --fa-red:        #cc1f1f;
+  --fa-red-dark:   #a81515;
+  --fa-navy:       #0b1535;
+  --fa-font-h:     "PointPanther", "Inter", system-ui, sans-serif;
+  --fa-font-b:     "Inter", system-ui, -apple-system, sans-serif;
+  --fa-trans:      220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Page wrapper ── */
+.zfc-assessment-page {
+  background: #f9f9f9;
+  min-height: 100vh;
+  font-family: var(--fa-font-b);
+}
+
+/* ════════════════════════════════════════════════════════════
+   FORM SECTION — outer + decorative dots + card
+   ════════════════════════════════════════════════════════════ */
+.zfc-assessment-section {
+  position: relative;
+  padding: clamp(48px, 6vw, 90px) clamp(20px, 4vw, 60px);
+  background: #f9f9f9;
+  overflow: hidden;
+}
+
+/* ── Dot pattern — left side ── */
+.zfc-assessment-section::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 420px;
+  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* ── Dot pattern — right side ── */
+.zfc-assessment-section::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 420px;
+  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.zfc-assessment-section__inner {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Card with red border ── */
+.zfc-assessment-card {
+  background: #ffffff;
+  border: 2px solid var(--fa-red);
+  border-radius: 18px;
+  padding: clamp(32px, 4vw, 52px) clamp(28px, 4vw, 52px);
+}
+
+/* ── Section title above card ── */
+.zfc-assessment-title {
+  font-family: var(--fa-font-h);
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 700;
+  color: var(--fa-navy);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.zfc-assessment-subtitle {
+  font-size: 15px;
+  color: #777;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   FORM ELEMENTS
+   ════════════════════════════════════════════════════════════ */
+.zfc-assessment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Row: 2-col grid */
+.zfc-af-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* Single full-width field */
+.zfc-af-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Input / Select base */
+.zfc-af-input,
+.zfc-af-select,
+.zfc-af-textarea {
+  width: 100%;
+  background: #f4f4f4;
+  border: 1.5px solid transparent;
+  border-radius: 6px;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-family: var(--fa-font-b);
+  color: #333;
+  outline: none;
+  transition: border-color var(--fa-trans), background var(--fa-trans);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.zfc-af-input::placeholder,
+.zfc-af-textarea::placeholder {
+  color: #aaa;
+}
+
+.zfc-af-input:focus,
+.zfc-af-select:focus,
+.zfc-af-textarea:focus {
+  border-color: var(--fa-red);
+  background: #fff;
+}
+
+/* Select wrapper (for custom chevron) */
+.zfc-af-select-wrap {
+  position: relative;
+}
+
+.zfc-af-select-wrap::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #888;
+  pointer-events: none;
+}
+
+.zfc-af-select {
+  cursor: pointer;
+  color: #aaa;
+}
+
+.zfc-af-select.has-value { color: #333; }
+
+/* Textarea */
+.zfc-af-textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* ── Area of interest ── */
+.zfc-af-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+.zfc-af-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.zfc-af-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #444;
+  user-select: none;
+}
+
+/* Custom square checkbox */
+.zfc-af-checkbox-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #ccc;
+  border-radius: 3px;
+  background: #f4f4f4;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color var(--fa-trans), background var(--fa-trans);
+  position: relative;
+}
+
+.zfc-af-checkbox-item input[type="checkbox"]:checked {
+  background: var(--fa-red);
+  border-color: var(--fa-red);
+}
+
+.zfc-af-checkbox-item input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 6px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+/* ── Divider ── */
+.zfc-af-divider {
+  height: 1px;
+  background: #ebebeb;
+  margin: 6px 0;
+}
+
+/* ── Submit button ── */
+.zfc-af-submit {
+  width: 100%;
+  background: var(--fa-red);
+  color: #fff;
+  font-family: var(--fa-font-h);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 6px;
+  padding: 17px 24px;
+  cursor: pointer;
+  transition: background var(--fa-trans), transform var(--fa-trans), box-shadow var(--fa-trans);
+  margin-top: 8px;
+}
+
+.zfc-af-submit:hover {
+  background: var(--fa-red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(204,31,31,0.35);
+}
+
+.zfc-af-submit:active {
+  transform: translateY(0);
+}
+
+/* ── Success / error message ── */
+.zfc-af-message {
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.zfc-af-message--success {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.zfc-af-message--error {
+  background: #fdecea;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .zfc-af-row {
+    grid-template-columns: 1fr;
+  }
+
+  .zfc-assessment-section::before,
+  .zfc-assessment-section::after {
+    display: none;
+  }
+}

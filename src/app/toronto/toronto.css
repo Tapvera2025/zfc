@@ -1,0 +1,330 @@
+/* ════════════════════════════════════════════════════════════
+   ZF Canada – Immigration Consultants Serving Toronto
+   ════════════════════════════════════════════════════════════ */
+
+:root {
+  --tor-red:    #cc1f1f;
+  --tor-navy:   #0b1535;
+  --tor-font-h: "PointPanther", "Inter", system-ui, sans-serif;
+  --tor-font-b: "Inter", system-ui, -apple-system, sans-serif;
+  --tor-trans:  220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.zfc-toronto-page {
+  background: #fff;
+  min-height: 100vh;
+  font-family: var(--tor-font-b);
+}
+
+/* ════════════════════════════════════════════════════════════
+   HERO SECTION
+   ════════════════════════════════════════════════════════════ */
+
+/* ════════════════════════════════════════════════════════════
+   CONTENT SECTION — maple leaf + title + body
+   ════════════════════════════════════════════════════════════ */
+.zfc-tor-content {
+  position: relative;
+  padding: clamp(56px, 7vw, 100px) clamp(20px, 5vw, 80px);
+  overflow: hidden;
+  background: #fff;
+}
+
+/* dot pattern – left */
+.zfc-tor-content::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  opacity: 0.13;
+  pointer-events: none;
+}
+
+/* dot pattern – right */
+.zfc-tor-content::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  opacity: 0.13;
+  pointer-events: none;
+}
+
+.zfc-tor-content__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.zfc-tor-maple {
+  width: clamp(56px, 7vw, 80px);
+  height: auto;
+  color: var(--tor-red);
+  margin-bottom: 24px;
+  filter: drop-shadow(0 2px 8px rgba(204,31,31,0.18));
+}
+
+.zfc-tor-title {
+  font-family: var(--tor-font-h);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--tor-red);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  margin-bottom: 36px;
+  text-transform: uppercase;
+}
+
+.zfc-tor-body {
+  font-size: clamp(14px, 1.1vw, 15.5px);
+  color: #444;
+  line-height: 1.9;
+  text-align: justify;
+  width: 100%;
+}
+
+.zfc-tor-body p + p {
+  margin-top: 18px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   CHARTS SECTION
+   ════════════════════════════════════════════════════════════ */
+.zfc-tor-charts {
+  background: #f6f8fb;
+  padding: clamp(48px, 6vw, 88px) clamp(20px, 5vw, 80px);
+  position: relative;
+  overflow: hidden;
+}
+
+.zfc-tor-charts::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 0;
+  width: 180px;
+  height: 100%;
+  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  opacity: 0.09;
+  pointer-events: none;
+}
+.zfc-tor-charts::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 0;
+  width: 180px;
+  height: 100%;
+  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  opacity: 0.09;
+  pointer-events: none;
+}
+
+.zfc-tor-charts__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 4vw, 56px);
+  position: relative;
+  z-index: 1;
+}
+
+.zfc-tor-chart-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  padding: clamp(24px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.zfc-tor-chart-card__title {
+  font-family: var(--tor-font-h);
+  font-size: clamp(13px, 1.2vw, 15px);
+  font-weight: 700;
+  color: var(--tor-navy);
+  text-align: center;
+  line-height: 1.35;
+}
+
+.zfc-tor-chart-card svg {
+  width: 100%;
+  height: auto;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MAP SECTION
+   ════════════════════════════════════════════════════════════ */
+.zfc-tor-map {
+  padding: clamp(48px, 6vw, 88px) clamp(20px, 5vw, 80px);
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.zfc-tor-map::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 0;
+  width: 180px;
+  height: 100%;
+  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  opacity: 0.11;
+  pointer-events: none;
+}
+.zfc-tor-map::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 0;
+  width: 180px;
+  height: 100%;
+  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  opacity: 0.11;
+  pointer-events: none;
+}
+
+.zfc-tor-map__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.zfc-tor-map__title {
+  font-family: var(--tor-font-h);
+  font-size: clamp(22px, 2.8vw, 36px);
+  font-weight: 700;
+  color: var(--tor-navy);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.zfc-tor-map__frame {
+  border: 3px solid var(--tor-red);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  width: 100%;
+  aspect-ratio: 16/6;
+  min-height: 320px;
+}
+
+.zfc-tor-map__frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ════════════════════════════════════════════════════════════
+   CONTACT INFO ROW
+   ════════════════════════════════════════════════════════════ */
+.zfc-tor-contact {
+  background: var(--tor-navy);
+  padding: clamp(40px, 5vw, 72px) clamp(20px, 5vw, 80px);
+}
+
+.zfc-tor-contact__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 48px);
+}
+
+.zfc-tor-contact__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.zfc-tor-contact__icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.10);
+  border: 2px solid rgba(255,255,255,0.20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+  transition: background var(--tor-trans);
+}
+
+.zfc-tor-contact__item:hover .zfc-tor-contact__icon-wrap {
+  background: var(--tor-red);
+  border-color: var(--tor-red);
+}
+
+.zfc-tor-contact__label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+.zfc-tor-contact__value {
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.5;
+}
+
+.zfc-tor-contact__value a {
+  color: #fff;
+  text-decoration: none;
+  transition: color var(--tor-trans);
+}
+
+.zfc-tor-contact__value a:hover {
+  color: #f28b8b;
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .zfc-tor-charts__inner {
+    grid-template-columns: 1fr;
+  }
+  .zfc-tor-contact__inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .zfc-tor-content::before,
+  .zfc-tor-content::after,
+  .zfc-tor-charts::before,
+  .zfc-tor-charts::after,
+  .zfc-tor-map::before,
+  .zfc-tor-map::after {
+    display: none;
+  }
+  .zfc-tor-map__frame {
+    aspect-ratio: 4/3;
+  }
+}

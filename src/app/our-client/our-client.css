@@ -1,0 +1,250 @@
+/* ════════════════════════════════════════════════════════════
+   ZF Canada – Our Client Page
+   ════════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: "PointPanther";
+  src: url("/fonts/point-panther-point-panther-bold-700.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --oc-red:    #cc1f1f;
+  --oc-navy:   #0b1535;
+  --oc-font-h: "PointPanther", "Inter", system-ui, sans-serif;
+  --oc-font-b: "Inter", system-ui, -apple-system, sans-serif;
+  --oc-trans:  220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.zfc-ourclient-page {
+  background: #fff;
+  min-height: 100vh;
+  font-family: var(--oc-font-b);
+}
+
+/* ════════════════════════════════════════════════════════════
+   INTRO SECTION  (text left, image right)
+   ════════════════════════════════════════════════════════════ */
+.zfc-oc-intro {
+  position: relative;
+  padding: clamp(56px, 7vw, 100px) clamp(20px, 5vw, 80px);
+  overflow: hidden;
+}
+
+/* dot pattern – left */
+.zfc-oc-intro::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 180px;
+  height: 480px;
+  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+/* dot pattern – right */
+.zfc-oc-intro::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 180px;
+  height: 480px;
+  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.zfc-oc-intro__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.zfc-oc-intro__text-col {}
+
+.zfc-oc-intro__heading {
+  font-family: var(--oc-font-h);
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 700;
+  color: var(--oc-navy);
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+
+.zfc-oc-intro__body {
+  font-size: clamp(14px, 1.1vw, 15.5px);
+  color: #444;
+  line-height: 1.85;
+  text-align: justify;
+}
+
+.zfc-oc-intro__body p + p {
+  margin-top: 20px;
+}
+
+.zfc-oc-intro__img-col {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.13);
+}
+
+/* ════════════════════════════════════════════════════════════
+   LINKS ACCORDION
+   ════════════════════════════════════════════════════════════ */
+.zfc-oc-links {
+  padding: 0 clamp(20px, 5vw, 80px) clamp(56px, 7vw, 100px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* continued dot patterns */
+.zfc-oc-links::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 0;
+  width: 180px;
+  height: 100%;
+  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+.zfc-oc-links::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 0;
+  width: 180px;
+  height: 100%;
+  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.zfc-oc-links__inner {
+  max-width: 1050px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Single accordion item */
+.zfc-oc-accordion {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.zfc-oc-accordion__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  background: linear-gradient(90deg, #c8c8c8 0%, #d8d8d8 50%, #c4c4c4 100%);
+  cursor: pointer;
+  user-select: none;
+  border-radius: 14px;
+  transition: background var(--oc-trans);
+}
+
+.zfc-oc-accordion__header:hover {
+  background: linear-gradient(90deg, #bebebe 0%, #cecece 50%, #bababa 100%);
+}
+
+.zfc-oc-accordion__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 0.01em;
+}
+
+.zfc-oc-accordion__chevron {
+  width: 20px;
+  height: 20px;
+  color: #555;
+  transition: transform var(--oc-trans);
+  flex-shrink: 0;
+}
+
+.zfc-oc-accordion__chevron--open {
+  transform: rotate(180deg);
+}
+
+.zfc-oc-accordion__body {
+  background: #fff;
+  padding: 0 28px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding var(--oc-trans);
+}
+
+.zfc-oc-accordion__body--open {
+  max-height: 600px;
+  padding: 18px 28px 22px;
+}
+
+.zfc-oc-accordion__links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.zfc-oc-accordion__link {
+  font-size: 15px;
+  color: #222;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--oc-trans);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.zfc-oc-accordion__link::before {
+  content: "›";
+  color: var(--oc-red);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.zfc-oc-accordion__link:hover { color: var(--oc-red); }
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .zfc-oc-intro__inner {
+    grid-template-columns: 1fr;
+  }
+  .zfc-oc-intro__img-col {
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .zfc-oc-intro::before,
+  .zfc-oc-intro::after,
+  .zfc-oc-links::before,
+  .zfc-oc-links::after {
+    display: none;
+  }
+}

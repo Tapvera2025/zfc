@@ -37,6 +37,13 @@ dev-server*.log
 # vercel
 .vercel
 
+# persistent data (submissions, etc.)
+/data/*.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+
+website-main/
