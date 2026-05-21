@@ -2,27 +2,12 @@
    ZF Canada – About Page Styles
    ════════════════════════════════════════════════════════════ */
 
-@font-face {
-  font-family: "PointPanther";
-  src: url("/fonts/point-panther-point-panther-bold-700.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "PointPanther";
-  src: url("/fonts/point-panther-point-panther-regular-400.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --zfc-red:        #cc1f1f;
   --zfc-red-dark:   #a81515;
   --zfc-navy:       #0b1535;
-  --zfc-font-heading: "PointPanther", "Inter", system-ui, sans-serif;
-  --zfc-font-body:    "Inter", system-ui, -apple-system, sans-serif;
+  --zfc-font-heading: var(--font-advent-pro), system-ui, sans-serif;
+  --zfc-font-body: var(--font-itim), system-ui, sans-serif;
   --zfc-transition:   220ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -90,7 +75,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 50px;
   padding: 6px 18px;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 500;
   color: #ffffff;
   white-space: nowrap;
@@ -114,7 +99,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 50px;
   padding: 6px 16px;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 500;
   color: #ffffff;
   text-decoration: none;
@@ -174,7 +159,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   align-items: center;
   gap: 4px;
   padding: 10px 16px;          /* taller padding = fatter pill feel */
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 600;
   color: #1a1a2e;
   border-radius: 8px;
@@ -209,7 +194,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .zfc-about-nav__dropdown-link {
   display: block;
   padding: 10px 16px;
-  font-size: 13.5px;
+  font-size: 17.5px;
   font-weight: 500;
   color: #333333;
   border-radius: 8px;
@@ -240,7 +225,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   gap: 6px;
   background: var(--zfc-red);
   color: #ffffff;
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 700;
   padding: 13px 26px;
   border-radius: 50px;
@@ -276,7 +261,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 .zfc-about-nav__mobile-link {
   padding: 13px 8px;
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 600;
   color: #1a1a2e;
   border-bottom: 1px solid #f5f5f5;
@@ -339,7 +324,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   gap: 6px;
 }
 .zfc-about-hero__breadcrumb-link {
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.78);
   transition: color 0.2s;
@@ -349,7 +334,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .zfc-about-hero__breadcrumb svg { color: rgba(255, 255, 255, 0.55); flex-shrink: 0; }
 
 .zfc-about-hero__breadcrumb-current {
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 600;
   color: #ffffff;
 }
@@ -357,25 +342,69 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 /* ══════════════════════════════════════════════════════════
    ABOUT INTRO SECTION — badge · two-col text · full photo
    ══════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════
+   ABOUT INTRO — two-column: stacked images LEFT · content RIGHT
+   ══════════════════════════════════════════════════════════ */
 .zfc-about-intro {
   width: 100%;
   background: #ffffff;
-  padding: clamp(48px, 6vw, 96px) 0 clamp(40px, 5vw, 80px);
-  display: flex;
-  flex-direction: column;
-  gap: clamp(32px, 4vw, 56px);
-}
-
-/* ── Two-column top: left (badge + heading) / right (body) ── */
-.zfc-about-intro__top {
+  padding: clamp(60px, 7vw, 100px) clamp(24px, 5vw, 80px);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 5vw, 80px);
-  align-items: start;
+  gap: clamp(40px, 6vw, 100px);
+  align-items: center;
 }
 
-/* Left column */
-.zfc-about-intro__left {
+/* ── Left: image stack ── */
+.zfc-about-intro__img-col {
+  position: relative;
+  height: clamp(500px, 58vw, 650px);
+  overflow: visible;
+}
+
+/* ____6 SVG — top-right corner, behind both photos */
+.zfc-about-intro__deco-svg {
+  position: absolute;
+  top: -4%;
+  right: -6%;
+  width: 52%;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Back photo — Rectangle_19 (office scene), top-left, minimal rotation */
+.zfc-about-intro__img-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 76%;
+  aspect-ratio: 398 / 452;
+  border-radius: 18px;
+  overflow: hidden;
+  transform: rotate(-1.5deg);
+  transform-origin: top left;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.18);
+  z-index: 1;
+}
+
+/* Front photo — Rectangle_13_2 (woman with passport), bottom-right, slight CW tilt */
+.zfc-about-intro__img-front {
+  position: absolute;
+  bottom: 0;
+  left: 24%;
+  width: 68%;
+  aspect-ratio: 398 / 494;
+  border-radius: 18px;
+  overflow: hidden;
+  transform: rotate(3deg);
+  transform-origin: bottom right;
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.24);
+  z-index: 2;
+}
+
+/* ── Right: content column ── */
+.zfc-about-intro__content-col {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -393,7 +422,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 8px 18px;
-  border-radius: 50px;
+  border-radius: 6px;
   width: fit-content;
 }
 .zfc-about-intro__badge svg { flex-shrink: 0; }
@@ -401,63 +430,67 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 /* Heading */
 .zfc-about-intro__heading {
   font-family: var(--zfc-font-heading);
-  font-size: clamp(28px, 3.6vw, 52px);
+  font-size: clamp(30px, 3.6vw, 52px);
   font-weight: 700;
   color: #0d0d0d;
   line-height: 1.1;
   margin: 0;
 }
 
-/* Right column */
-.zfc-about-intro__right {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding-top: 4px;
-}
-
-/* Body paragraphs — justified to match design */
+/* Body paragraphs */
 .zfc-about-intro__body {
-  font-size: clamp(14px, 1.1vw, 16px);
+  font-size: clamp(18px, 1.1vw, 18px);
   line-height: 1.75;
   color: #3a3a3a;
   text-align: justify;
   margin: 0;
 }
 
-/* ── Full-width photo below ── */
-.zfc-about-intro__photo-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 7;        /* wide cinematic proportion */
-  border-radius: 20px;
-  overflow: hidden;
+/* LEARN MORE CTA */
+.zfc-about-intro__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--zfc-red);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 13px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  width: fit-content;
+  transition: background 0.2s;
+  margin-top: 4px;
 }
-
-.zfc-about-intro__photo-img {
-  object-fit: cover;
-  object-position: center top;
-}
+.zfc-about-intro__cta:hover { background: var(--zfc-red-dark); }
+.zfc-about-intro__cta svg  { flex-shrink: 0; }
 
 /* ── Responsive ── */
-@media (max-width: 800px) {
-  .zfc-about-intro__top {
+@media (max-width: 900px) {
+  .zfc-about-intro {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 52px;
+  }
+  .zfc-about-intro__img-col {
+    height: clamp(360px, 72vw, 520px);
   }
   .zfc-about-intro__body {
     text-align: left;
   }
-  .zfc-about-intro__photo-wrap {
-    aspect-ratio: 4 / 3;
-    border-radius: 14px;
+  .zfc-about-intro__deco-svg {
+    right: -6%;
+    width: 36%;
   }
 }
 
 @media (max-width: 480px) {
-  .zfc-about-intro__photo-wrap {
-    aspect-ratio: 3 / 2;
-    border-radius: 10px;
+  .zfc-about-intro__img-col {
+    height: 320px;
+  }
+  .zfc-about-intro__deco-svg {
+    display: none;
   }
 }
 
@@ -567,7 +600,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 
 /* Body paragraphs */
 .zfc-about-services__body {
-  font-size: clamp(14px, 1.1vw, 16px);
+  font-size: clamp(18px, 1.1vw, 18px);
   line-height: 1.75;
   color: #3a3a3a;
   text-align: justify;
@@ -581,7 +614,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   gap: 8px;
   background: var(--zfc-red);
   color: #ffffff;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -768,7 +801,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   gap: 8px;
   background: var(--zfc-red);
   color: #ffffff;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 600;
   letter-spacing: 0.06em;
   padding: 10px 20px;
@@ -784,7 +817,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   margin: 0 0 20px;
 }
 .zfc-countries__body {
-  font-size: clamp(14px, 1.1vw, 16px);
+  font-size: clamp(18px, 1.1vw, 18px);
   color: #444444;
   line-height: 1.7;
   margin: 0;
@@ -797,7 +830,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   flex-direction: column;
 }
 .zfc-countries__list-label {
-  font-size: clamp(16px, 1.3vw, 20px);
+  font-size: clamp(18px, 1.3vw, 20px);
   font-weight: 600;
   color: #111111;
   margin: 0 0 12px;
@@ -834,7 +867,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   border-radius: 4px;
 }
 .zfc-countries__name {
-  font-size: 13px;
+  font-size: 17px;
   color: #333333;
   font-weight: 500;
   text-align: center;
@@ -853,7 +886,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   gap: 10px;
   background: var(--zfc-red);
   color: #ffffff;
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 600;
   padding: 14px 28px;
   border-radius: 8px;
@@ -895,7 +928,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   letter-spacing: 0.01em;
 }
 .zfc-testimonials__sub {
-  font-size: clamp(14px, 1.1vw, 16px);
+  font-size: clamp(18px, 1.1vw, 18px);
   color: #666666;
   max-width: 520px;
   margin: 0 auto;
@@ -956,7 +989,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   overflow: hidden;
 }
 .zfc-testimonial-card__text {
-  font-size: clamp(13px, 1vw, 15px);
+  font-size: clamp(17px, 1vw, 19px);
   color: #444444;
   line-height: 1.8;
   margin: 0;
@@ -981,14 +1014,14 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 .zfc-testimonial-card__info { display: flex; flex-direction: column; gap: 1px; }
 .zfc-testimonial-card__name {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   font-style: italic;
   color: #111111;
   margin: 0;
 }
 .zfc-testimonial-card__role {
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 600;
   color: #555555;
   margin: 0;
@@ -1058,7 +1091,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   gap: 6px;
   border: 1.5px solid #cccccc;
   color: #111111;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 600;
   letter-spacing: 0.05em;
   padding: 9px 18px;
@@ -1172,7 +1205,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 .zfc-blogs__post-title {
   font-family: var(--zfc-font-heading);
-  font-size: clamp(15px, 1.3vw, 18px);
+  font-size: clamp(19px, 1.3vw, 20px);
   font-weight: 700;
   color: #0d1b4b;
   margin: 0;
@@ -1275,7 +1308,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   border: none;
   outline: none;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 18px;
   min-width: 0;
 }
 .zfc-footer__newsletter-input::placeholder { color: rgba(255,255,255,0.55); }
@@ -1284,7 +1317,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   color: var(--zfc-red);
   border: none;
   border-radius: 50px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
   padding: 13px 28px;
   cursor: pointer;
@@ -1294,7 +1327,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 .zfc-footer__newsletter-btn:hover { background: #f0f0f0; }
 .zfc-footer__newsletter-sub {
-  font-size: 13px;
+  font-size: 17px;
   color: rgba(255,255,255,0.70);
   line-height: 1.5;
   max-width: 480px;
@@ -1309,7 +1342,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 .zfc-footer__logo-wrap { width: 140px; margin-bottom: 20px; }
 .zfc-footer__tagline {
-  font-size: clamp(13px, 1vw, 15px);
+  font-size: clamp(17px, 1vw, 19px);
   font-weight: 600;
   color: #ffffff;
   line-height: 1.5;
@@ -1317,7 +1350,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   max-width: 260px;
 }
 .zfc-footer__description {
-  font-size: 13px;
+  font-size: 17px;
   color: rgba(255,255,255,0.55);
   line-height: 1.7;
   margin: 0 0 24px 0;
@@ -1342,7 +1375,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   border-color: var(--zfc-red);
 }
 .zfc-footer__col-heading {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: #ffffff;
   margin: 0 0 24px 0;
@@ -1356,7 +1389,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   gap: 14px;
 }
 .zfc-footer__nav a {
-  font-size: 13px;
+  font-size: 17px;
   color: rgba(255,255,255,0.55);
   text-decoration: none;
   transition: color 0.2s;
@@ -1382,7 +1415,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   justify-content: center;
   color: #ffffff;
 }
-.zfc-footer__contact-text { font-size: 13px; font-weight: 600; color: #ffffff; }
+.zfc-footer__contact-text { font-size: 17px; font-weight: 600; color: #ffffff; }
 .zfc-footer__bottom {
   position: relative;
   z-index: 1;

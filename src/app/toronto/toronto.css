@@ -5,8 +5,8 @@
 :root {
   --tor-red:    #cc1f1f;
   --tor-navy:   #0b1535;
-  --tor-font-h: "PointPanther", "Inter", system-ui, sans-serif;
-  --tor-font-b: "Inter", system-ui, -apple-system, sans-serif;
+  --tor-font-h: var(--font-advent-pro), system-ui, sans-serif;
+  --tor-font-b: var(--font-itim), system-ui, sans-serif;
   --tor-trans:  220ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -89,7 +89,7 @@
 }
 
 .zfc-tor-body {
-  font-size: clamp(14px, 1.1vw, 15.5px);
+  font-size: clamp(18px, 1.1vw, 19.5px);
   color: #444;
   line-height: 1.9;
   text-align: justify;
@@ -157,7 +157,7 @@
 
 .zfc-tor-chart-card__title {
   font-family: var(--tor-font-h);
-  font-size: clamp(13px, 1.2vw, 15px);
+  font-size: clamp(17px, 1.2vw, 19px);
   font-weight: 700;
   color: var(--tor-navy);
   text-align: center;
@@ -289,7 +289,7 @@
 }
 
 .zfc-tor-contact__value {
-  font-size: clamp(14px, 1.2vw, 16px);
+  font-size: clamp(18px, 1.2vw, 18px);
   font-weight: 600;
   color: #fff;
   line-height: 1.5;

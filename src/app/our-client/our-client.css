@@ -2,19 +2,11 @@
    ZF Canada – Our Client Page
    ════════════════════════════════════════════════════════════ */
 
-@font-face {
-  font-family: "PointPanther";
-  src: url("/fonts/point-panther-point-panther-bold-700.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --oc-red:    #cc1f1f;
   --oc-navy:   #0b1535;
-  --oc-font-h: "PointPanther", "Inter", system-ui, sans-serif;
-  --oc-font-b: "Inter", system-ui, -apple-system, sans-serif;
+  --oc-font-h: var(--font-advent-pro), system-ui, sans-serif;
+  --oc-font-b: var(--font-itim), system-ui, sans-serif;
   --oc-trans:  220ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -86,7 +78,7 @@
 }
 
 .zfc-oc-intro__body {
-  font-size: clamp(14px, 1.1vw, 15.5px);
+  font-size: clamp(18px, 1.1vw, 19.5px);
   color: #444;
   line-height: 1.85;
   text-align: justify;
@@ -172,7 +164,7 @@
 }
 
 .zfc-oc-accordion__title {
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 700;
   color: #111;
   letter-spacing: 0.01em;
@@ -210,7 +202,7 @@
 }
 
 .zfc-oc-accordion__link {
-  font-size: 15px;
+  font-size: 19px;
   color: #222;
   font-weight: 500;
   text-decoration: none;

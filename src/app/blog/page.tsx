@@ -395,3 +395,14 @@ export default function BlogPage() {
   );
 }
 
+              </div>
+            </div>
+          )}
+        </aside>
+      </div>
+
+      <FAQSection />
+      <Footer />
+    </div>
+  );
+}

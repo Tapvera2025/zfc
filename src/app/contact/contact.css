@@ -2,27 +2,12 @@
    ZF Canada – Contact Page Styles
    ════════════════════════════════════════════════════════════ */
 
-@font-face {
-  font-family: "PointPanther";
-  src: url("/fonts/point-panther-point-panther-bold-700.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "PointPanther";
-  src: url("/fonts/point-panther-point-panther-regular-400.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --zfc-red:          #cc1f1f;
   --zfc-red-dark:     #a81515;
   --zfc-navy:         #0b1535;
-  --zfc-font-heading: "PointPanther", "Inter", system-ui, sans-serif;
-  --zfc-font-body:    "Inter", system-ui, -apple-system, sans-serif;
+  --zfc-font-heading: var(--font-advent-pro), system-ui, sans-serif;
+  --zfc-font-body: var(--font-itim), system-ui, sans-serif;
   --zfc-transition:   220ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -77,7 +62,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   border: 1px solid rgba(255,255,255,0.22);
   border-radius: 50px;
   padding: 6px 18px;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 500;
   color: #ffffff;
   white-space: nowrap;
@@ -99,7 +84,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   border: 1px solid rgba(255,255,255,0.18);
   border-radius: 50px;
   padding: 6px 16px;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 500;
   color: #ffffff;
   text-decoration: none;
@@ -153,7 +138,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   align-items: center;
   gap: 4px;
   padding: 10px 16px;
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 600;
   color: #1a1a2e;
   border-radius: 8px;
@@ -187,7 +172,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .zfc-about-nav__dropdown-link {
   display: block;
   padding: 10px 16px;
-  font-size: 13.5px;
+  font-size: 17.5px;
   font-weight: 500;
   color: #333333;
   border-radius: 8px;
@@ -215,7 +200,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   gap: 6px;
   background: var(--zfc-red);
   color: #ffffff;
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 700;
   padding: 13px 26px;
   border-radius: 50px;
@@ -249,7 +234,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 .zfc-about-nav__mobile-link {
   padding: 13px 8px;
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 600;
   color: #1a1a2e;
   border-bottom: 1px solid #f5f5f5;
@@ -319,7 +304,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   gap: 6px;
 }
 .zfc-about-hero__breadcrumb-link {
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 500;
   color: rgba(255,255,255,0.78);
   transition: color 0.2s;
@@ -327,7 +312,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .zfc-about-hero__breadcrumb-link:hover { color: #ffffff; }
 .zfc-about-hero__breadcrumb svg        { color: rgba(255,255,255,0.55); flex-shrink: 0; }
 .zfc-about-hero__breadcrumb-current {
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 600;
   color: #ffffff;
 }
@@ -369,7 +354,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 
 .zfc-office__sub {
-  font-size: clamp(14px, 1.2vw, 17px);
+  font-size: clamp(18px, 1.2vw, 19px);
   color: #555555;
   font-weight: 500;
   margin: 0;
@@ -410,14 +395,14 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 }
 
 .zfc-office__info-label {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: #0d0d0d;
   line-height: 1.2;
 }
 
 .zfc-office__info-value {
-  font-size: 14px;
+  font-size: 18px;
   color: #555555;
   line-height: 1.7;
   text-decoration: none;
@@ -469,7 +454,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
 }
 
 .zfc-contact-page__form-sub {
-  font-size: clamp(14px, 1.2vw, 17px);
+  font-size: clamp(18px, 1.2vw, 19px);
   color: #333333;
   font-weight: 600;
   margin: 0;
@@ -497,7 +482,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
 .zfc-cf-card__heading-red { color: var(--zfc-red); }
 
 .zfc-cf-card__sub {
-  font-size: 13.5px;
+  font-size: 17.5px;
   color: #666666;
   line-height: 1.7;
   margin: 0 0 28px 0;
@@ -513,7 +498,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
   border: none;
   outline: none;
   background: transparent;
-  font-size: 14px;
+  font-size: 18px;
   color: #333333;
   padding: 14px 4px;
   font-family: var(--zfc-font-body);
@@ -525,7 +510,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
   border: none;
   outline: none;
   background: transparent;
-  font-size: 14px;
+  font-size: 18px;
   color: #333333;
   padding: 14px 4px;
   resize: none;
@@ -560,7 +545,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
   transition: border-color 0.2s;
 }
 .zfc-cf-card__upload:hover { border-color: var(--zfc-red); }
-.zfc-cf-card__upload span { font-size: 14px; color: #888888; }
+.zfc-cf-card__upload span { font-size: 18px; color: #888888; }
 
 .zfc-cf-card__file-input { display: none; }
 
@@ -580,7 +565,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
   cursor: pointer;
   flex-shrink: 0;
 }
-.zfc-cf-card__nda span { font-size: 13px; color: #333333; }
+.zfc-cf-card__nda span { font-size: 17px; color: #333333; }
 
 .zfc-cf-card__submit {
   width: 100%;
@@ -588,7 +573,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
   color: #ffffff;
   border: none;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.08em;
   padding: 18px;
@@ -655,7 +640,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
 }
 
 .zfc-contact-cta__text {
-  font-size: clamp(14px, 1.2vw, 17px);
+  font-size: clamp(18px, 1.2vw, 19px);
   color: rgba(255,255,255,0.88);
   line-height: 1.7;
   margin: 0;
@@ -670,7 +655,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
   gap: 8px;
   background: #ffffff;
   color: #1a1a2e;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
   padding: 13px 32px;
   border-radius: 50px;
@@ -772,7 +757,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
   border: none;
   outline: none;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 18px;
   min-width: 0;
 }
 .zfc-footer__newsletter-input::placeholder { color: rgba(255,255,255,0.55); }
@@ -781,7 +766,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
   color: var(--zfc-red);
   border: none;
   border-radius: 50px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
   padding: 13px 28px;
   cursor: pointer;
@@ -791,7 +776,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
 }
 .zfc-footer__newsletter-btn:hover { background: #f0f0f0; }
 .zfc-footer__newsletter-sub {
-  font-size: 13px;
+  font-size: 17px;
   color: rgba(255,255,255,0.70);
   line-height: 1.5;
   max-width: 480px;
@@ -806,7 +791,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
 }
 .zfc-footer__logo-wrap { width: 140px; margin-bottom: 20px; }
 .zfc-footer__tagline {
-  font-size: clamp(13px, 1vw, 15px);
+  font-size: clamp(17px, 1vw, 19px);
   font-weight: 600;
   color: #ffffff;
   line-height: 1.5;
@@ -814,7 +799,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
   max-width: 260px;
 }
 .zfc-footer__description {
-  font-size: 13px;
+  font-size: 17px;
   color: rgba(255,255,255,0.55);
   line-height: 1.7;
   margin: 0 0 24px 0;
@@ -834,9 +819,9 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
   color: #ffffff;
 }
 .zfc-footer__social-btn:hover { background: var(--zfc-red); border-color: var(--zfc-red); }
-.zfc-footer__col-heading { font-size: 16px; font-weight: 700; color: #ffffff; margin: 0 0 24px 0; }
+.zfc-footer__col-heading { font-size: 18px; font-weight: 700; color: #ffffff; margin: 0 0 24px 0; }
 .zfc-footer__nav { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
-.zfc-footer__nav a { font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+.zfc-footer__nav a { font-size: 17px; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
 .zfc-footer__nav a:hover { color: #ffffff; }
 .zfc-footer__contact { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
 .zfc-footer__contact-item { display: flex; align-items: center; gap: 12px; }
@@ -847,7 +832,7 @@ a.zfc-office__info-value:hover { color: var(--zfc-red); }
   display: flex; align-items: center; justify-content: center;
   color: #ffffff;
 }
-.zfc-footer__contact-text { font-size: 13px; font-weight: 600; color: #ffffff; }
+.zfc-footer__contact-text { font-size: 17px; font-weight: 600; color: #ffffff; }
 .zfc-footer__bottom {
   position: relative;
   z-index: 1;

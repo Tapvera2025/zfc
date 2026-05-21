@@ -2,27 +2,12 @@
    ZF Canada – Free Assessment Page
    ════════════════════════════════════════════════════════════ */
 
-@font-face {
-  font-family: "PointPanther";
-  src: url("/fonts/point-panther-point-panther-bold-700.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "PointPanther";
-  src: url("/fonts/point-panther-point-panther-regular-400.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --fa-red:        #cc1f1f;
   --fa-red-dark:   #a81515;
   --fa-navy:       #0b1535;
-  --fa-font-h:     "PointPanther", "Inter", system-ui, sans-serif;
-  --fa-font-b:     "Inter", system-ui, -apple-system, sans-serif;
+  --fa-font-h: var(--font-advent-pro), system-ui, sans-serif;
+  --fa-font-b: var(--font-itim), system-ui, sans-serif;
   --fa-trans:      220ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -99,7 +84,7 @@
 }
 
 .zfc-assessment-subtitle {
-  font-size: 15px;
+  font-size: 19px;
   color: #777;
   text-align: center;
   margin-bottom: 40px;
@@ -137,7 +122,7 @@
   border: 1.5px solid transparent;
   border-radius: 6px;
   padding: 14px 16px;
-  font-size: 14px;
+  font-size: 18px;
   font-family: var(--fa-font-b);
   color: #333;
   outline: none;
@@ -193,7 +178,7 @@
 
 /* ── Area of interest ── */
 .zfc-af-label {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 700;
   color: #222;
   margin-bottom: 12px;
@@ -210,7 +195,7 @@
   align-items: center;
   gap: 12px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
   color: #444;
   user-select: none;
 }
@@ -261,7 +246,7 @@
   background: var(--fa-red);
   color: #fff;
   font-family: var(--fa-font-h);
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -287,7 +272,7 @@
 .zfc-af-message {
   padding: 14px 18px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   text-align: center;
 }

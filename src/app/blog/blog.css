@@ -2,28 +2,13 @@
    ZF Canada – Blog Listing Page  (redesigned)
    ════════════════════════════════════════════════════════════ */
 
-@font-face {
-  font-family: "PointPanther";
-  src: url("/fonts/point-panther-point-panther-bold-700.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "PointPanther";
-  src: url("/fonts/point-panther-point-panther-regular-400.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --zfc-red:          #cc1f1f;
   --zfc-red-dark:     #a81515;
   --zfc-navy:         #0b1535;
   --zfc-navy-light:   #132045;
-  --zfc-font-heading: "PointPanther", "Inter", system-ui, sans-serif;
-  --zfc-font-body:    "Inter", system-ui, -apple-system, sans-serif;
+  --zfc-font-heading: var(--font-advent-pro), system-ui, sans-serif;
+  --zfc-font-body: var(--font-itim), system-ui, sans-serif;
   --zfc-transition:   220ms cubic-bezier(0.4, 0, 0.2, 1);
   --zfc-radius:       14px;
   --zfc-shadow-sm:    0 2px 12px rgba(0,0,0,0.07);
@@ -118,7 +103,7 @@ ul   { list-style: none; }
 .blog-layout .blog-main__search input {
   border: none;
   outline: none;
-  font-size: 14px;
+  font-size: 18px;
   color: #333;
   width: 100%;
   background: transparent;
@@ -253,7 +238,7 @@ ul   { list-style: none; }
 
 .blog-card__title {
   font-family: var(--zfc-font-heading);
-  font-size: clamp(15px, 1.3vw, 18px);
+  font-size: clamp(19px, 1.3vw, 20px);
   font-weight: 700;
   color: var(--zfc-navy);
   line-height: 1.35;
@@ -278,7 +263,7 @@ ul   { list-style: none; }
 .blog-card__meta svg { flex-shrink: 0; color: var(--zfc-red); opacity: 0.75; }
 
 .blog-card__excerpt {
-  font-size: 13.5px;
+  font-size: 17.5px;
   color: #666;
   line-height: 1.65;
   display: -webkit-box;
@@ -301,7 +286,7 @@ ul   { list-style: none; }
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--zfc-red);
   transition: gap var(--zfc-transition);
@@ -360,7 +345,7 @@ ul   { list-style: none; }
   align-items: center;
   justify-content: center;
   border-radius: 50px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   color: #555;
   border: 1.5px solid #e0e0e0;
@@ -429,7 +414,7 @@ ul   { list-style: none; }
   justify-content: space-between;
   padding: 11px 0;
   border-bottom: 1px solid #ebebeb;
-  font-size: 14.5px;
+  font-size: 18.5px;
   font-weight: 500;
   color: #333;
   cursor: pointer;
@@ -458,7 +443,7 @@ ul   { list-style: none; }
 .blog-sidebar__cat-item__dot { display: none; }
 
 .blog-sidebar__cat-count {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   color: #555;
   background: transparent;
@@ -509,7 +494,7 @@ ul   { list-style: none; }
 }
 
 .blog-sidebar__recent-title {
-  font-size: 13.5px;
+  font-size: 17.5px;
   font-weight: 600;
   color: #222;
   line-height: 1.45;

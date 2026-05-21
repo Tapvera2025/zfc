@@ -10,15 +10,17 @@ import {
   SEOIcon,
   SettingsIcon,
   MailIcon,
+  PagesIcon,
 } from "@/components/admin/icons";
 
 const navItems = [
-  { label: "Dashboard",        href: "/admin",                  icon: DashboardIcon,   exact: true  },
-  { label: "Blog",             href: "/admin/blog",             icon: BlogIcon,        exact: false },
-  { label: "Form Submissions", href: "/admin/submissions",      icon: SubmissionsIcon, exact: false },
-  { label: "FAQ Inquiries",    href: "/admin/faq-inquiry",      icon: MailIcon,        exact: false },
-  { label: "SEO",              href: "/admin/seo",              icon: SEOIcon,         exact: false },
-  { label: "Settings",         href: "/admin/settings",         icon: SettingsIcon,    exact: false },
+  { label: "Dashboard",        href: "/admin",             icon: DashboardIcon,   exact: true  },
+  { label: "Pages",            href: "/admin/pages",       icon: PagesIcon,       exact: false },
+  { label: "Blog",             href: "/admin/blog",        icon: BlogIcon,        exact: false },
+  { label: "Form Submissions", href: "/admin/submissions", icon: SubmissionsIcon, exact: false },
+  { label: "FAQ Inquiries",    href: "/admin/faq-inquiry", icon: MailIcon,        exact: false },
+  { label: "SEO",              href: "/admin/seo",         icon: SEOIcon,         exact: false },
+  { label: "Settings",         href: "/admin/settings",    icon: SettingsIcon,    exact: false },
 ];
 
 export function AdminSidebar() {
@@ -40,7 +42,7 @@ export function AdminSidebar() {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto py-4 admin-scrollbar" aria-label="Admin navigation">
+      <nav className="flex-1 overflow-y-auto py-4" aria-label="Admin navigation">
         <ul className="space-y-0.5 px-3">
           {navItems.map((item) => {
             const active = isActive(item.href, item.exact);
@@ -65,7 +67,6 @@ export function AdminSidebar() {
                     )}
                   />
                   {item.label}
-                  {/* Active indicator */}
                   {active && (
                     <span className="ml-auto h-1.5 w-1.5 rounded-full bg-red-600" />
                   )}

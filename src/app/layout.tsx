@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
+import { Advent_Pro, Itim } from "next/font/google";
 
 import { siteConfig } from "@/config/site";
 
 import "./globals.css";
+
+const adventPro = Advent_Pro({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-advent-pro",
+  display: "swap",
+});
+
+const itim = Itim({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-itim",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -18,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${adventPro.variable} ${itim.variable}`}>
       <body>
         {children}
       </body>
