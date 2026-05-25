@@ -240,3 +240,12 @@
     display: none;
   }
 }
+
+@media (max-width: 540px) {
+  .zfc-oc-intro__img-col {
+    max-width: 100%;
+  }
+  .zfc-oc-accordion__item {
+    padding: 16px 20px;
+  }
+}

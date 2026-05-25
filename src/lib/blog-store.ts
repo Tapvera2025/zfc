@@ -1,22 +1,43 @@
+import fs from "fs";
+import path from "path";
 import type { BlogPost, BlogStatus } from "@/types/admin";
 
-let posts: BlogPost[] = [];
+const DATA_FILE = path.join(process.cwd(), "data", "blogs.json");
+
+function ensureFile() {
+  const dir = path.dirname(DATA_FILE);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  if (!fs.existsSync(DATA_FILE)) fs.writeFileSync(DATA_FILE, "[]", "utf8");
+}
+
+function readPosts(): BlogPost[] {
+  ensureFile();
+  try {
+    return JSON.parse(fs.readFileSync(DATA_FILE, "utf8")) as BlogPost[];
+  } catch {
+    return [];
+  }
+}
+
+function writePosts(posts: BlogPost[]) {
+  ensureFile();
+  fs.writeFileSync(DATA_FILE, JSON.stringify(posts, null, 2), "utf8");
+}
 
 function generateId(): string {
   return "post-" + Math.random().toString(36).slice(2, 10);
 }
 
-function generateSlug(title: string): string {
+function generateSlug(title: string, existingSlugs: string[]): string {
   const base = title
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
-  const existing = posts.map((p) => p.slug);
-  if (!existing.includes(base)) return base;
+  if (!existingSlugs.includes(base)) return base;
 
   let i = 2;
-  while (existing.includes(`${base}-${i}`)) i++;
+  while (existingSlugs.includes(`${base}-${i}`)) i++;
   return `${base}-${i}`;
 }
 
@@ -27,9 +48,9 @@ function calcSeoScore(post: Partial<BlogPost>): number {
   if (!post.seo?.ogImage)         score -= 15;
   if (!post.seo?.canonicalUrl)    score -= 10;
   if (!post.featuredImage)        score -= 10;
-  if (post.seo?.metaTitle && post.seo.metaTitle.length > 60)       score -= 5;
+  if (post.seo?.metaTitle && post.seo.metaTitle.length > 60)             score -= 5;
   if (post.seo?.metaDescription && post.seo.metaDescription.length > 160) score -= 5;
-  if (post.seo?.noindex && post.status === "published")             score -= 15;
+  if (post.seo?.noindex && post.status === "published")                   score -= 15;
   return Math.max(0, score);
 }
 
@@ -45,7 +66,7 @@ export type ListParams = {
 export function listPosts(params: ListParams = {}) {
   const { status = "all", search = "", category = "", page = 1, limit = 20, sort = "newest" } = params;
 
-  let filtered = [...posts];
+  let filtered = readPosts();
 
   if (status && status !== "all") {
     filtered = filtered.filter((p) => p.status === status);
@@ -70,7 +91,6 @@ export function listPosts(params: ListParams = {}) {
     if (sort === "oldest")  return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
     if (sort === "updated") return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
     if (sort === "views")   return b.views - a.views;
-    // newest
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
 
@@ -83,18 +103,19 @@ export function listPosts(params: ListParams = {}) {
 }
 
 export function getPostById(id: string): BlogPost | undefined {
-  return posts.find((p) => p.id === id);
+  return readPosts().find((p) => p.id === id);
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
-  return posts.find((p) => p.slug === slug);
+  return readPosts().find((p) => p.slug === slug);
 }
 
 export type CreateInput = Omit<BlogPost, "id" | "slug" | "views" | "seoScore" | "createdAt" | "updatedAt" | "publishedAt">;
 
 export function createPost(input: CreateInput): BlogPost {
+  const posts = readPosts();
   const now = new Date().toISOString();
-  const slug = generateSlug(input.title);
+  const slug = generateSlug(input.title, posts.map((p) => p.slug));
   const post: BlogPost = {
     ...input,
     id: generateId(),
@@ -105,26 +126,25 @@ export function createPost(input: CreateInput): BlogPost {
     updatedAt: now,
     publishedAt: input.status === "published" ? now : null,
   };
-  posts = [post, ...posts];
+  writePosts([post, ...posts]);
   return post;
 }
 
 export type UpdateInput = Partial<Omit<BlogPost, "id" | "slug" | "views" | "createdAt">>;
 
 export function updatePost(id: string, input: UpdateInput): BlogPost | null {
+  const posts = readPosts();
   const idx = posts.findIndex((p) => p.id === id);
   if (idx === -1) return null;
 
   const existing = posts[idx];
   const now = new Date().toISOString();
 
-  // Re-generate slug only if title changed
   const slug =
     input.title && input.title !== existing.title
-      ? generateSlug(input.title)
+      ? generateSlug(input.title, posts.filter((p) => p.id !== id).map((p) => p.slug))
       : existing.slug;
 
-  // Set publishedAt when first publishing
   const publishedAt =
     input.status === "published" && !existing.publishedAt ? now : existing.publishedAt;
 
@@ -137,17 +157,21 @@ export function updatePost(id: string, input: UpdateInput): BlogPost | null {
     seoScore: calcSeoScore({ ...existing, ...input }),
   };
 
-  posts = posts.map((p, i) => (i === idx ? updated : p));
+  const newPosts = posts.map((p, i) => (i === idx ? updated : p));
+  writePosts(newPosts);
   return updated;
 }
 
 export function deletePost(id: string): boolean {
-  const before = posts.length;
-  posts = posts.filter((p) => p.id !== id);
-  return posts.length < before;
+  const posts = readPosts();
+  const filtered = posts.filter((p) => p.id !== id);
+  if (filtered.length === posts.length) return false;
+  writePosts(filtered);
+  return true;
 }
 
 export function getStats() {
+  const posts    = readPosts();
   const total     = posts.length;
   const published = posts.filter((p) => p.status === "published").length;
   const draft     = posts.filter((p) => p.status === "draft").length;

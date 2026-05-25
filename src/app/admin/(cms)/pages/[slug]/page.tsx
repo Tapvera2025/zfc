@@ -13,6 +13,16 @@ const PAGE_META: Record<string, { label: string; href: string }> = {
   "our-client":     { label: "Our Client",                   href: "/our-client" },
   toronto:          { label: "Toronto Immigration Page",     href: "/toronto" },
   "free-assessment":{ label: "Free Assessment",              href: "/free-assessment" },
+  "svc-permanent-residency":        { label: "Service: Permanent Residency",         href: "/services/permanent-residency" },
+  "svc-sponsorship":                { label: "Service: Sponsorship",                 href: "/services/sponsorship" },
+  "svc-temporary-residence":        { label: "Service: Temporary Residence",         href: "/services/temporary-residence" },
+  "svc-refugee-claim":              { label: "Service: Refugee Claim",               href: "/services/refugee-claim" },
+  "svc-irb-hearings":               { label: "Service: IRB Hearings & Appeals",      href: "/services/irb-hearings" },
+  "svc-refused-applications":       { label: "Service: Refused Applications",        href: "/services/refused-applications" },
+  "svc-humanitarian-compassionate": { label: "Service: Humanitarian & Compassionate",href: "/services/humanitarian-compassionate" },
+  "svc-inadmissibility":            { label: "Service: Inadmissibility",             href: "/services/inadmissibility" },
+  "svc-misrepresentation":          { label: "Service: Misrepresentation",           href: "/services/misrepresentation" },
+  "svc-pr-card-citizenship":        { label: "Service: PR Card / Citizenship",       href: "/services/pr-card-citizenship" },
 };
 
 /* ── Field schemas per page ────────────────────────────────── */
@@ -88,6 +98,29 @@ const PAGE_FIELDS: Record<string, FieldDef[]> = {
     { type: "text",     path: "submitButtonText",  label: "Submit Button Text" },
   ],
 };
+
+const SVC_FIELDS: FieldDef[] = [
+  { type: "section", label: "Hero" },
+  { type: "text",    path: "hero.title",          label: "Hero Title" },
+  { type: "section", label: "Main Content" },
+  { type: "text",    path: "detail.heading",      label: "Section Heading" },
+  { type: "array",   path: "detail.paragraphs",   label: "Body Paragraphs", hint: "First paragraph appears above the image; remaining paragraphs appear below.", fieldLabel: "Paragraph" },
+  { type: "section", label: "Extra Section (right column)" },
+  { type: "array",   path: "extra.paragraphs",    label: "Extra Paragraphs", fieldLabel: "Paragraph" },
+];
+
+[
+  "svc-permanent-residency",
+  "svc-sponsorship",
+  "svc-temporary-residence",
+  "svc-refugee-claim",
+  "svc-irb-hearings",
+  "svc-refused-applications",
+  "svc-humanitarian-compassionate",
+  "svc-inadmissibility",
+  "svc-misrepresentation",
+  "svc-pr-card-citizenship",
+].forEach((slug) => { PAGE_FIELDS[slug] = SVC_FIELDS; });
 
 /* ── Deep get / set by dot-path ──────────────────────────────── */
 function deepGet(obj: Record<string, unknown>, path: string): unknown {

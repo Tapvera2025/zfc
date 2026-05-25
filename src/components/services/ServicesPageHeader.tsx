@@ -93,9 +93,9 @@ export default function ServicesPageHeader({ activePage = "Services" }: { active
                     onMouseEnter={() => setDropdownOpen(true)}
                     onMouseLeave={() => setDropdownOpen(false)}
                   >
-                    <button
+                    <Link
+                      href={link.href}
                       className={`zfc-about-nav__link${activePage === link.label ? " zfc-about-nav__link--active" : ""}`}
-                      aria-expanded={dropdownOpen}
                     >
                       {link.label}
                       <svg
@@ -106,14 +106,23 @@ export default function ServicesPageHeader({ activePage = "Services" }: { active
                       >
                         <polyline points="6 9 12 15 18 9"/>
                       </svg>
-                    </button>
+                    </Link>
                     {dropdownOpen && (
                       <div className="zfc-about-nav__dropdown">
-                        {link.dropdown?.map((item) => (
-                          <Link key={item.label} href={item.href} className="zfc-about-nav__dropdown-link">
-                            {item.label}
-                          </Link>
-                        ))}
+                        <div className="zfc-about-nav__dropdown-header">Our Services</div>
+                        <div className="zfc-about-nav__dropdown-grid">
+                          {link.dropdown?.map((item) => (
+                            <Link key={item.label} href={item.href} className="zfc-about-nav__dropdown-link">
+                              <span>{item.label}</span>
+                              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                                <polyline points="9 18 15 12 9 6"/>
+                              </svg>
+                            </Link>
+                          ))}
+                        </div>
+                        <div className="zfc-about-nav__dropdown-footer">
+                          <Link href="/services">View All Services <span>→</span></Link>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -175,7 +184,7 @@ export default function ServicesPageHeader({ activePage = "Services" }: { active
               <Link
                 key={link.label}
                 href={link.href}
-                className={`zfc-about-nav__mobile-link${link.active ? " zfc-about-nav__mobile-link--active" : ""}`}
+                className={`zfc-about-nav__mobile-link${activePage === link.label ? " zfc-about-nav__mobile-link--active" : ""}`}
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}

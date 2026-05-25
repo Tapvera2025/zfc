@@ -222,6 +222,12 @@ export function BlogEditor({ postId }: { postId?: string }) {
   const [lastSaved, setLastSaved]   = useState<Date | null>(null);
   const [error, setError]           = useState("");
   const [slugManual, setSlugManual] = useState(false);
+  const [toast, setToast]           = useState<{ message: string; type: "success" | "error" } | null>(null);
+
+  function showToast(message: string, type: "success" | "error" = "success") {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 4000);
+  }
 
   const hasUnsaved      = useRef(false);
   const autoSaveRef     = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -310,7 +316,10 @@ export function BlogEditor({ postId }: { postId?: string }) {
         if (statusOverride) {
           setForm((f) => ({ ...f, status: statusOverride }));
         }
-        if (notify && !isEdit) {
+        if (statusOverride === "published") {
+          showToast("Blog post published successfully!");
+          setTimeout(() => router.push("/admin/blog"), 1500);
+        } else if (notify && !isEdit) {
           router.push(`/admin/blog/${json.data.post.id}/edit`);
         }
       } else {
@@ -407,6 +416,22 @@ export function BlogEditor({ postId }: { postId?: string }) {
 
   return (
     <div className="px-8 py-8">
+      {/* Toast */}
+      {toast && (
+        <div className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-xl px-5 py-3.5 text-sm font-medium text-white shadow-lg transition-all ${toast.type === "success" ? "bg-green-600" : "bg-red-600"}`}>
+          {toast.type === "success" ? (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          ) : (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          )}
+          {toast.message}
+        </div>
+      )}
+
       {/* Header */}
       <div className="mb-6 flex items-start justify-between gap-4">
         <div>
@@ -730,31 +755,6 @@ export function BlogEditor({ postId }: { postId?: string }) {
             </div>
           </div>
 
-          {/* SEO snapshot */}
-          <div className="rounded-lg border border-zinc-200 bg-white p-4">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-zinc-500">SEO snapshot</p>
-            <div className="space-y-1.5 text-xs">
-              {[
-                { label: "Meta title",        ok: !!form.seo.metaTitle },
-                { label: "Meta description",  ok: !!form.seo.metaDescription },
-                { label: "Canonical URL",     ok: !!form.seo.canonicalUrl },
-                { label: "OG image",          ok: !!form.seo.ogImage },
-                { label: "Featured image",    ok: !!form.featuredImage },
-              ].map(({ label, ok }) => (
-                <div key={label} className="flex items-center gap-2">
-                  <span className={ok ? "text-green-500" : "text-red-400"}>{ok ? "✓" : "✗"}</span>
-                  <span className={ok ? "text-zinc-600" : "text-zinc-400"}>{label}</span>
-                </div>
-              ))}
-            </div>
-            <button
-              type="button"
-              onClick={() => setTab("seo")}
-              className="mt-3 text-xs font-medium text-red-600 hover:text-red-700"
-            >
-              Open SEO tab →
-            </button>
-          </div>
         </div>
       </div>
     </div>

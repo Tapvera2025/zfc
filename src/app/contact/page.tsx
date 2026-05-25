@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import ContactPageHeader from "@/components/contact/ContactPageHeader";
+import ServicesPageHeader from "@/components/services/ServicesPageHeader";
 import ServiceDetailHero from "@/components/services/ServiceDetailHero";
 import ContactFormCard from "@/components/contact/ContactFormCard";
 import Footer from "@/components/home/Footer";
+import ScrollToHash from "@/components/ScrollToHash";
 
 export const metadata: Metadata = {
   title: "Contact Us – ZF Canada Immigration Consultants",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="zfc-contact-page">
-      <ContactPageHeader />
+      <ServicesPageHeader activePage="Contact" />
 
       <div className="zfc-about-hero-wrap">
         <ServiceDetailHero
@@ -96,7 +97,8 @@ export default function ContactPage() {
       </section>
 
       {/* ── Let's Contact heading + reused form ── */}
-      <div className="zfc-contact-page__form-wrap">
+      <ScrollToHash />
+      <div id="contact-form" className="zfc-contact-page__form-wrap" style={{ scrollMarginTop: "100px" }}>
         <div className="zfc-contact-page__form-header">
           <h2 className="zfc-contact-page__form-heading">LET&apos;S CONTACT</h2>
           <p className="zfc-contact-page__form-sub">Don&apos;t Hesitate to Contact Us</p>

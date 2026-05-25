@@ -1,4 +1,4 @@
-import Navbar from "@/components/home/Navbar";
+import ServicesPageHeader from "@/components/services/ServicesPageHeader";
 import HeroSection from "@/components/home/HeroSection";
 import AboutSection from "@/components/home/AboutSection";
 import ServicesSection from "@/components/home/ServicesSection";
@@ -13,6 +13,8 @@ import Footer from "@/components/home/Footer";
 export default function HomePage() {
   return (
     <main className="bg-white min-h-screen overflow-x-hidden">
+      <ServicesPageHeader activePage="Home" />
+
       {/* ── Hero card: constrained + rounded on all sides ── */}
       <div
         className="flex justify-center items-start box-border"
@@ -22,7 +24,6 @@ export default function HomePage() {
           className="relative w-full max-w-[1520px] rounded-[40px] overflow-hidden flex flex-col shadow-2xl mx-auto"
           style={{ minHeight: "calc(100vh - clamp(32px, 5vw, 80px))" }}
         >
-          <Navbar />
           <HeroSection />
         </div>
       </div>

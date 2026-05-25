@@ -1,0 +1,40 @@
+{
+  "hero": {
+    "title": "We Speak for You.\nWe Make the Law Work for You.",
+    "subtitle": "Regulated Canadian Immigration Consultants helping families, students, workers and businesses navigate Canada's immigration system.",
+    "ctaText": "Get Free Consultation",
+    "ctaHref": "/free-assessment"
+  },
+  "about": {
+    "heading": "About ZF Canada",
+    "body": "ZF Canada Immigration Consultants is a full-service immigration firm based in Mississauga, Ontario. Our team of Regulated Canadian Immigration Consultants (RCICs) has helped thousands of clients achieve their Canadian immigration goals.",
+    "highlight": "Trusted by thousands of immigrants across Canada."
+  },
+  "stats": [
+    {
+      "label": "Years of Experience",
+      "value": "15+"
+    },
+    {
+      "label": "Successful Cases",
+      "value": "5,000+"
+    },
+    {
+      "label": "Countries Served",
+      "value": "80+"
+    },
+    {
+      "label": "Success Rate",
+      "value": "97%"
+    }
+  ],
+  "whyUs": {
+    "heading": "Why Choose ZF Canada?",
+    "points": [
+      "Regulated Canadian Immigration Consultants (RCIC) — licensed and accountable.",
+      "Personalized service with transparent, honest advice on every case.",
+      "Comprehensive expertise covering all immigration pathways.",
+      "Proven track record with thousands of successful applications."
+    ]
+  }
+}

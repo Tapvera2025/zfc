@@ -308,6 +308,13 @@
 /* ════════════════════════════════════════════════════════════
    RESPONSIVE
    ════════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .zfc-tor-contact__inner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
 @media (max-width: 900px) {
   .zfc-tor-charts__inner {
     grid-template-columns: 1fr;

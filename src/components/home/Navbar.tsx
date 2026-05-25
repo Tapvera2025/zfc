@@ -12,12 +12,16 @@ const navLinks = [
     href: "/services",
     hasDropdown: true,
     dropdown: [
-      { label: "Express Entry", href: "/services/express-entry" },
-      { label: "Family Sponsorship", href: "/services/family-sponsorship" },
-      { label: "Study Permit", href: "/services/study-permit" },
-      { label: "Work Permit", href: "/services/work-permit" },
-      { label: "Visitor Visa", href: "/services/visitor-visa" },
-      { label: "PNP Programs", href: "/services/pnp" },
+      { label: "Permanent Residency", href: "/services/permanent-residency" },
+      { label: "Sponsorship", href: "/services/sponsorship" },
+      { label: "Temporary Residence", href: "/services/temporary-residence" },
+      { label: "Refugee Claim", href: "/services/refugee-claim" },
+      { label: "IRB Hearings & Appeals", href: "/services/irb-hearings" },
+      { label: "Refused Applications", href: "/services/refused-applications" },
+      { label: "Humanitarian & Compassionate", href: "/services/humanitarian-compassionate" },
+      { label: "Inadmissibility", href: "/services/inadmissibility" },
+      { label: "Misrepresentation", href: "/services/misrepresentation" },
+      { label: "PR Card / Citizenship", href: "/services/pr-card-citizenship" },
     ],
   },
   { label: "Blog", href: "/blog" },
@@ -99,25 +103,40 @@ export default function Navbar() {
                   >
                     <div className="flex items-center gap-1 font-bold text-[#111] hover:text-[#d71920] transition-colors py-2 whitespace-nowrap"
                          style={{ fontSize: 'clamp(14px, 1.2vw, 16px)' }}>
-                      {link.label}
+                      <Link href={link.href}>{link.label}</Link>
                       <svg xmlns="http://www.w3.org/2000/svg" className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                       </svg>
                     </div>
                     {/* DROPDOWN MENU */}
                     {servicesOpen && (
-                      <div className="absolute top-[100%] left-0 pt-2 w-[240px]">
-                        <div className="bg-white rounded-xl shadow-[0_15px_40px_rgba(0,0,0,0.1)] py-4 flex flex-col border border-gray-100">
-                          {link.dropdown?.map((item) => (
-                            <Link
-                              key={item.label}
-                              href={item.href}
-                              className="px-6 py-3 font-semibold text-[#333] hover:bg-gray-50 hover:text-[#d71920] transition-colors"
-                              style={{ fontSize: '15px' }}
-                            >
-                              {item.label}
+                      <div className="absolute top-full left-0 w-[460px] z-50 pt-[6px]">
+                        <div className="bg-white/90 backdrop-blur-xl border border-black/[0.07] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.13)]">
+                          {/* Label */}
+                          <div className="px-4 pt-3 pb-2 border-b border-black/[0.06]">
+                            <p className="text-[10px] font-extrabold tracking-[0.15em] text-[#d71920] uppercase">Our Services</p>
+                          </div>
+                          {/* 2-column grid */}
+                          <div className="grid p-2" style={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '2px' }}>
+                            {link.dropdown?.map((item) => (
+                              <Link
+                                key={item.label}
+                                href={item.href}
+                                className="group flex items-center justify-between pl-4 pr-3 py-2 rounded-lg text-[13px] font-semibold text-[#222] hover:bg-[#d71920]/[0.07] hover:text-[#d71920] transition-all"
+                              >
+                                <span className="truncate">{item.label}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 shrink-0 ml-1 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-[#d71920]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                              </Link>
+                            ))}
+                          </div>
+                          {/* Footer */}
+                          <div className="px-4 py-2 border-t border-black/[0.06]">
+                            <Link href={link.href} className="text-[12px] font-bold text-[#d71920] flex items-center gap-1 hover:gap-2 transition-all w-fit">
+                              View All Services <span>→</span>
                             </Link>
-                          ))}
+                          </div>
                         </div>
                       </div>
                     )}
@@ -149,7 +168,7 @@ export default function Navbar() {
 
             {/* CTA BUTTON */}
             <Link
-              href="/contact"
+              href="/contact#contact-form"
               className="bg-[#cc1f1f] hover:bg-[#a81515] text-white font-bold rounded-full flex items-center gap-2 transition-all whitespace-nowrap shrink-0"
               style={{ padding: '10px 24px', fontSize: 'clamp(14px, 1.2vw, 16px)' }}
             >
@@ -192,6 +211,9 @@ export default function Navbar() {
                     </button>
                     {servicesOpen && (
                       <div className="mt-4 flex flex-col gap-4 pl-5 border-l-2 border-gray-100">
+                        <Link href={link.href} className="text-[17px] font-semibold text-[#d71920] hover:underline">
+                          All Services
+                        </Link>
                         {link.dropdown?.map((item) => (
                           <Link key={item.label} href={item.href} className="text-[17px] font-semibold text-[#555] hover:text-[#d71920]">
                             {item.label}
@@ -211,7 +233,7 @@ export default function Navbar() {
                 <div className="relative w-[150px] h-[45px] mx-auto">
                   <Image src="/assets/RCIC-IRB_EN_HORZ_CLR_POS-1-2048x783_1.png" alt="RCIC-IRB" fill className="object-contain" />
                 </div>
-                <Link href="/contact" className="bg-[#cc1f1f] text-white text-[18px] font-bold px-8 py-4 rounded-xl flex items-center justify-center gap-2 text-center w-full">
+                <Link href="/contact#contact-form" className="bg-[#cc1f1f] text-white text-[18px] font-bold px-8 py-4 rounded-xl flex items-center justify-center gap-2 text-center w-full">
                   Get Consultation <span>↘</span>
                 </Link>
               </div>

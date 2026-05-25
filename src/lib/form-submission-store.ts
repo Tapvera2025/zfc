@@ -112,6 +112,19 @@ export function getFormTypes(): string[] {
   return [...new Set(getAll().map((s) => s.formType))];
 }
 
+export function checkExistingAssessment(email: string, phone: string): boolean {
+  const normalEmail = email.toLowerCase().trim();
+  const normalPhone = phone.replace(/\D/g, "");
+  return getAll()
+    .filter((s) => s.formType === "free-assessment")
+    .some((s) => {
+      const d = s.data as Record<string, unknown>;
+      const e = String(d.email ?? "").toLowerCase().trim();
+      const p = String(d.phone ?? "").replace(/\D/g, "");
+      return (normalEmail && e === normalEmail) || (normalPhone && p === normalPhone);
+    });
+}
+
 export function countByStatus(formType?: string) {
   const list = formType ? getAll().filter((s) => s.formType === formType) : getAll();
   return {

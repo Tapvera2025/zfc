@@ -26,6 +26,7 @@ const faqs = [
 interface ServiceDetailExtraProps {
   photo: string;
   photoAlt?: string;
+  redBanner?: string;
   images: [string, string];
   paragraphs: string[];
 }
@@ -33,6 +34,7 @@ interface ServiceDetailExtraProps {
 export default function ServiceDetailExtra({
   photo,
   photoAlt = "Immigration consultant",
+  redBanner,
   images,
   paragraphs,
 }: ServiceDetailExtraProps) {
@@ -46,26 +48,55 @@ export default function ServiceDetailExtra({
         <div className="zfc-svc-extra__left">
 
           {/* Portrait photo */}
-          <div className="zfc-svc-extra__portrait">
-            <Image
-              src={photo}
-              alt={photoAlt}
-              fill
-              sizes="(max-width: 900px) 100vw, 35vw"
-              className="zfc-svc-extra__portrait-img"
-            />
-            {/* Contact card overlaid at the bottom */}
-            <div className="zfc-svc-extra__contact-card">
-              <div className="zfc-svc-extra__contact-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
+          <div className={`zfc-svc-extra__portrait${redBanner ? " zfc-svc-extra__portrait--svg" : ""}`}>
+            {redBanner ? (
+              /* SVG portrait — rendered at natural aspect ratio, no cropping */
+              <img
+                src={photo}
+                alt={photoAlt}
+                className="zfc-svc-extra__portrait-img--svg"
+              />
+            ) : (
+              <Image
+                src={photo}
+                alt={photoAlt}
+                fill
+                sizes="(max-width: 900px) 100vw, 35vw"
+                className="zfc-svc-extra__portrait-img"
+              />
+            )}
+            {redBanner ? (
+              <>
+                {/* Red swoosh overlay — sits at the photo/navy transition */}
+                <Image
+                  src={redBanner}
+                  alt=""
+                  width={368}
+                  height={108}
+                  className="zfc-svc-extra__portrait-red"
+                  aria-hidden="true"
+                />
+                {/* Invisible phone link covering the SVG's baked-in contact card */}
+                <a
+                  href="tel:+19058585589"
+                  className="zfc-svc-extra__portrait-phone-link"
+                  aria-label="Call +1 (905) 858-5589"
+                />
+              </>
+            ) : (
+              /* CSS contact card — used for pages without the new SVG portrait */
+              <div className="zfc-svc-extra__contact-card">
+                <div className="zfc-svc-extra__contact-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </div>
+                <div className="zfc-svc-extra__contact-text">
+                  <span className="zfc-svc-extra__contact-label">Need Help? Book a call</span>
+                  <a href="tel:+19058585589" className="zfc-svc-extra__contact-number">+1 (905) 858-5589</a>
+                </div>
               </div>
-              <div className="zfc-svc-extra__contact-text">
-                <span className="zfc-svc-extra__contact-label">Need Help? Book a call</span>
-                <a href="tel:+19058585589" className="zfc-svc-extra__contact-number">+1 (905) 858-5589</a>
-              </div>
-            </div>
+            )}
           </div>
 
           {/* FAQ accordion */}

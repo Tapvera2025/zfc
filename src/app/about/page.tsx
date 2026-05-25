@@ -1,4 +1,4 @@
-import AboutPageHeader from "@/components/about/AboutPageHeader";
+import ServicesPageHeader from "@/components/services/ServicesPageHeader";
 import AboutHero from "@/components/about/AboutHero";
 import AboutIntroSection from "@/components/about/AboutIntroSection";
 import StatsSection from "@/components/home/StatsSection";
@@ -10,7 +10,7 @@ import Footer from "@/components/home/Footer";
 export default function AboutPage() {
   return (
     <div className="zfc-about-page">
-      <AboutPageHeader />
+      <ServicesPageHeader activePage="About Us" />
       <div className="zfc-about-hero-wrap">
         <AboutHero />
         <AboutIntroSection />
