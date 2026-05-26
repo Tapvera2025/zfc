@@ -84,45 +84,16 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        {/* Right — portrait photo with badge OUTSIDE the clipped image */}
+        {/* Right — provided composite image */}
         <div className="zfc-services__photo-outer">
-          {/* Badge sits here, outside overflow:hidden */}
-          <div className="zfc-services__no1" aria-label="No. 1 Immigration Service">
-            <svg
-              viewBox="0 0 80 36"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-              className="zfc-services__laurel"
-            >
-              {/* Star */}
-              <path
-                d="M40 4l2.5 7.5H50l-6 4.5 2.5 7.5-6-4.5-6 4.5 2.5-7.5-6-4.5h7.5z"
-                fill="white"
-              />
-              {/* Left laurel leaves */}
-              <path d="M25 18 C22 14 19 10 21 6 C23 10 25 14 27 18Z" fill="white" opacity="0.9"/>
-              <path d="M20 22 C17 18 15 13 17 9 C19 13 21 17 23 22Z" fill="white" opacity="0.9"/>
-              <path d="M16 27 C13 23 12 18 14 14 C16 18 17 22 19 27Z" fill="white" opacity="0.9"/>
-              {/* Right laurel leaves */}
-              <path d="M55 18 C58 14 61 10 59 6 C57 10 55 14 53 18Z" fill="white" opacity="0.9"/>
-              <path d="M60 22 C63 18 65 13 63 9 C61 13 59 17 57 22Z" fill="white" opacity="0.9"/>
-              <path d="M64 27 C67 23 68 18 66 14 C64 18 63 22 61 27Z" fill="white" opacity="0.9"/>
-            </svg>
-            <span className="zfc-services__no1-label">No. 1</span>
-            <span className="zfc-services__no1-sub">Immigration<br />Service</span>
-          </div>
-
-          {/* Image clipped independently */}
-          <div className="zfc-services__photo-wrap">
-            <Image
-              src="/assets/about-photo.png"
-              alt="ZF Canada immigration clients celebrating"
-              fill
-              sizes="(max-width: 1024px) 100vw, 38vw"
-              className="object-cover object-center"
-            />
-          </div>
+          <Image
+            src="/assets/home-services-composite.png"
+            alt="No. 1 Immigration Service"
+            width={518}
+            height={729}
+            sizes="(max-width: 1024px) 100vw, 38vw"
+            className="zfc-services__photo-composite"
+          />
         </div>
 
       </div>

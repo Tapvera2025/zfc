@@ -134,6 +134,15 @@ export default function BlogPage() {
       });
   }, []);
 
+  // Debounce: fire search 400ms after the user stops typing
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearch(searchInput);
+      setPage(1);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, [searchInput]);
+
   useEffect(() => { fetchPosts(); }, [fetchPosts]);
 
   function handleSearch(e: React.FormEvent) {

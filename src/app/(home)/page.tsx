@@ -1,5 +1,5 @@
-import ServicesPageHeader from "@/components/services/ServicesPageHeader";
 import HeroSection from "@/components/home/HeroSection";
+import ServicesPageHeader from "@/components/services/ServicesPageHeader";
 import AboutSection from "@/components/home/AboutSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import StatsSection from "@/components/home/StatsSection";
@@ -12,18 +12,17 @@ import Footer from "@/components/home/Footer";
 
 export default function HomePage() {
   return (
-    <main className="bg-white min-h-screen overflow-x-hidden">
-      <ServicesPageHeader activePage="Home" />
-
+    <main className="zfc-home-page bg-white min-h-screen overflow-x-hidden">
       {/* ── Hero card: constrained + rounded on all sides ── */}
       <div
         className="flex justify-center items-start box-border"
-        style={{ padding: "clamp(16px, 2.5vw, 40px)" }}
+        style={{ padding: "clamp(14px, 2.3vw, 30px)" }}
       >
         <div
-          className="relative w-full max-w-[1520px] rounded-[40px] overflow-hidden flex flex-col shadow-2xl mx-auto"
-          style={{ minHeight: "calc(100vh - clamp(32px, 5vw, 80px))" }}
+          className="zfc-home-hero-frame relative w-full rounded-[28px] overflow-hidden flex flex-col mx-auto"
+          style={{ minHeight: "calc(100svh - clamp(28px, 4.6vw, 60px))" }}
         >
+          <ServicesPageHeader activePage="Home" />
           <HeroSection />
         </div>
       </div>

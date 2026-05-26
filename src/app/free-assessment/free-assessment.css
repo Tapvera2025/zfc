@@ -431,3 +431,70 @@
     padding-right: 16px;
   }
 }
+
+/* ════════════════════════════════════════════════════════════
+   DESKTOP SCALE PASS — align assessment form with enlarged pages
+   ════════════════════════════════════════════════════════════ */
+@media (min-width: 901px) {
+  .zfc-assessment-section {
+    padding: clamp(90px, 8vw, 150px) clamp(24px, 6.25vw, 8rem);
+  }
+
+  .zfc-assessment-section__inner {
+    max-width: 1120px;
+  }
+
+  .zfc-assessment-card {
+    border-radius: 26px;
+    padding: clamp(48px, 4.5vw, 84px);
+  }
+
+  .zfc-assessment-title {
+    font-size: clamp(3rem, 4vw, 5rem);
+  }
+
+  .zfc-assessment-subtitle,
+  .zfc-af-input,
+  .zfc-af-select,
+  .zfc-af-textarea,
+  .zfc-af-radio-card,
+  .zfc-af-identify-card,
+  .zfc-af-returning-card__sub {
+    font-size: clamp(1.1rem, 1.15vw, 1.45rem);
+  }
+
+  .zfc-assessment-form {
+    gap: clamp(20px, 1.5vw, 28px);
+  }
+
+  .zfc-af-row,
+  .zfc-af-identify-grid {
+    gap: clamp(20px, 1.6vw, 30px);
+  }
+
+  .zfc-af-input,
+  .zfc-af-select,
+  .zfc-af-textarea {
+    border-radius: 10px;
+    padding: clamp(16px, 1.2vw, 22px) 18px;
+  }
+
+  .zfc-af-textarea {
+    min-height: 150px;
+  }
+
+  .zfc-af-button,
+  .zfc-af-submit,
+  .zfc-af-returning-card__badge {
+    font-size: clamp(1rem, 1vw, 1.25rem);
+  }
+
+  .zfc-af-returning-card {
+    border-radius: 22px;
+    padding: clamp(44px, 4vw, 76px);
+  }
+
+  .zfc-af-returning-card__title {
+    font-size: clamp(2rem, 2.8vw, 3.25rem);
+  }
+}

@@ -165,7 +165,7 @@ export default function Footer() {
           Copyright 2026 ZF Canada. All Right Reserved By Tapvera Technologies Pvt. Ltd.
         </p>
         <div className="zfc-footer__bottom-links">
-          <Link href="#">Privacy Policy</Link>
+          <Link href="/privacy-policy">Privacy Policy</Link>
           <Link href="#">Terms of Use</Link>
           <Link href="#">Legal</Link>
           <Link href="#">Site Map</Link>

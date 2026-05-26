@@ -408,56 +408,56 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   background: #ffffff;
   padding: clamp(60px, 7vw, 100px) clamp(24px, 5vw, 80px);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(40px, 6vw, 100px);
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+  gap: clamp(48px, 5.5vw, 96px);
   align-items: center;
 }
 
 /* ── Left: image stack ── */
 .zfc-about-intro__img-col {
   position: relative;
-  height: clamp(500px, 58vw, 650px);
+  height: clamp(540px, 55vw, 690px);
   overflow: visible;
 }
 
-/* ____6 SVG — top-right corner, behind both photos */
+/* Decorative SVG — top-right corner, behind both photos */
 .zfc-about-intro__deco-svg {
   position: absolute;
-  top: -4%;
-  right: -6%;
-  width: 52%;
+  top: -8%;
+  right: -10%;
+  width: 65%;
   height: auto;
   z-index: 0;
   pointer-events: none;
 }
 
-/* Back photo — Rectangle_19 (office scene), top-left, minimal rotation */
+/* Back photo — office scene, top-left */
 .zfc-about-intro__img-back {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 76%;
-  aspect-ratio: 398 / 452;
-  border-radius: 18px;
-  overflow: hidden;
-  transform: rotate(-1.5deg);
-  transform-origin: top left;
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.18);
-  z-index: 1;
-}
-
-/* Front photo — Rectangle_13_2 (woman with passport), bottom-right, slight CW tilt */
-.zfc-about-intro__img-front {
-  position: absolute;
-  bottom: 0;
-  left: 24%;
-  width: 68%;
+  top: 6%;
+  left: 8%;
+  width: 70%;
   aspect-ratio: 398 / 494;
   border-radius: 18px;
   overflow: hidden;
-  transform: rotate(3deg);
+  transform: rotate(0deg);
+  transform-origin: top left;
+  box-shadow: none;
+  z-index: 1;
+}
+
+/* Front photo — woman with passport, bottom-right */
+.zfc-about-intro__img-front {
+  position: absolute;
+  bottom: 0;
+  left: 35%;
+  width: 66%;
+  aspect-ratio: 398 / 452;
+  border-radius: 18px;
+  overflow: hidden;
+  transform: rotate(7deg);
   transform-origin: bottom right;
-  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.24);
+  box-shadow: none;
   z-index: 2;
 }
 
@@ -1282,9 +1282,11 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
    (newsletter margin-top overridden: no FAQ section above)
    ══════════════════════════════════════════════════════════ */
 .zfc-footer {
+  --zfc-footer-card-pop: clamp(96px, 10vw, 150px);
   position: relative;
   background: #0b1535;
   color: #ffffff;
+  margin-top: var(--zfc-footer-card-pop);
   overflow: visible;
 }
 .zfc-footer__map-bg {
@@ -1298,8 +1300,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   position: relative;
   z-index: 10;
   padding: 0 clamp(24px, 5vw, 72px);
-  margin-top: 0;           /* no FAQ above — no negative pull-up */
-  padding-top: clamp(48px, 5vw, 72px);
+  margin-top: calc(var(--zfc-footer-card-pop) * -1);
+  padding-top: 0;
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
@@ -1533,4 +1535,148 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   .zfc-about-hero                        { border-radius: 0; }
   .zfc-about-nav__inner                  { padding: 10px 16px; }
   .zfc-about-nav__logo img               { height: clamp(64px, 18vw, 90px) !important; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   DESKTOP SCALE PASS — align about page with enlarged home
+   ══════════════════════════════════════════════════════════ */
+@media (min-width: 901px) {
+  .zfc-about-hero-wrap {
+    padding: 0 clamp(24px, 2.3vw, 44px);
+  }
+
+  .zfc-about-hero {
+    min-height: clamp(360px, 32vw, 560px);
+    border-radius: 0 0 48px 48px;
+  }
+
+  .zfc-about-hero__content {
+    padding: clamp(56px, 5vw, 96px) clamp(54px, 5vw, 110px);
+    gap: 18px;
+  }
+
+  .zfc-about-hero__title {
+    font-size: clamp(4.2rem, 6.4vw, 7.2rem);
+  }
+
+  .zfc-about-hero__breadcrumb-link,
+  .zfc-about-hero__breadcrumb-current {
+    font-size: clamp(1.25rem, 1.15vw, 1.55rem);
+  }
+
+  .zfc-about-intro {
+    padding: clamp(90px, 8vw, 150px) clamp(24px, 6.25vw, 8rem);
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+    gap: clamp(64px, 6vw, 120px);
+  }
+
+  .zfc-about-intro__heading,
+  .zfc-about-services__heading,
+  .zfc-countries__heading,
+  .zfc-testimonials__heading {
+    font-size: clamp(3rem, 4vw, 5rem);
+  }
+
+  .zfc-about-intro__badge,
+  .zfc-about-services__badge,
+  .zfc-countries__badge {
+    gap: 12px;
+    font-size: clamp(1rem, 1.05vw, 1.4rem);
+    padding: clamp(0.85rem, 1.1vw, 1.1rem) clamp(1.35rem, 1.9vw, 2.2rem);
+    border-radius: 12px;
+  }
+
+  .zfc-about-intro__body,
+  .zfc-about-services__body,
+  .zfc-countries__body,
+  .zfc-testimonials__sub {
+    font-size: clamp(1.1rem, 1.2vw, 1.55rem);
+  }
+
+  .zfc-about-intro__cta,
+  .zfc-about-services__cta,
+  .zfc-countries__cta {
+    font-size: clamp(1.05rem, 1.1vw, 1.35rem);
+    padding: clamp(0.9rem, 1.1vw, 1.15rem) clamp(1.4rem, 1.9vw, 2.25rem);
+    border-radius: 10px;
+  }
+
+  .zfc-about-services {
+    padding: clamp(90px, 7vw, 140px) clamp(24px, 6.25vw, 8rem);
+  }
+
+  .zfc-about-services__inner,
+  .zfc-countries__inner,
+  .zfc-blogs__body,
+  .zfc-footer__body,
+  .zfc-footer__bottom {
+    max-width: 1710px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .zfc-stats {
+    min-height: clamp(240px, 16vw, 320px);
+  }
+
+  .zfc-stats__inner {
+    max-width: 1710px;
+    margin: 0 auto;
+    padding: clamp(48px, 4.2vw, 72px) clamp(250px, 17vw, 330px);
+  }
+
+  .zfc-stats__icon {
+    width: clamp(70px, 5vw, 96px);
+    height: clamp(70px, 5vw, 96px);
+  }
+
+  .zfc-stats__number {
+    font-size: clamp(32px, 2.8vw, 54px);
+  }
+
+  .zfc-countries,
+  .zfc-testimonials,
+  .zfc-blogs {
+    padding-left: clamp(24px, 6.25vw, 8rem);
+    padding-right: clamp(24px, 6.25vw, 8rem);
+  }
+
+  .zfc-countries,
+  .zfc-testimonials {
+    padding-top: clamp(80px, 7vw, 130px);
+    padding-bottom: clamp(80px, 7vw, 120px);
+  }
+
+  .zfc-blogs {
+    padding-top: clamp(80px, 7vw, 125px);
+    padding-bottom: clamp(80px, 7vw, 125px);
+  }
+
+  .zfc-blogs__header,
+  .zfc-blogs__divider {
+    max-width: 1710px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .zfc-blogs__heading {
+    font-size: clamp(2.25rem, 3vw, 4rem);
+  }
+
+  .zfc-blogs__featured,
+  .zfc-blogs__featured-img {
+    min-height: clamp(520px, 34vw, 680px);
+  }
+
+  .zfc-footer__newsletter-wrap {
+    max-width: 1320px;
+    padding-left: clamp(24px, 6.25vw, 8rem);
+    padding-right: clamp(24px, 6.25vw, 8rem);
+  }
+
+  .zfc-footer__body,
+  .zfc-footer__bottom {
+    padding-left: clamp(24px, 6.25vw, 8rem);
+    padding-right: clamp(24px, 6.25vw, 8rem);
+  }
 }

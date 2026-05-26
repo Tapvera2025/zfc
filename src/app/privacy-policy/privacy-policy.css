@@ -1,0 +1,98 @@
+/* ZF Canada - Privacy Policy Page */
+
+.zfc-privacy-page {
+  background: #ffffff;
+  min-height: 100vh;
+  font-family: var(--zfc-font-body);
+}
+
+.zfc-privacy-hero {
+  min-height: clamp(210px, 19vw, 330px);
+}
+
+.zfc-privacy-hero .zfc-about-hero__bg img {
+  filter: grayscale(1);
+  object-position: center 52%;
+}
+
+.zfc-privacy-hero .zfc-about-hero__overlay {
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.5) 48%, rgba(0, 0, 0, 0.34) 100%),
+    rgba(0, 0, 0, 0.2);
+}
+
+.zfc-privacy-hero .zfc-about-hero__content {
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: clamp(42px, 10vw, 165px);
+  text-align: left;
+}
+
+.zfc-privacy-hero .zfc-about-hero__title {
+  font-size: clamp(2.4rem, 4.2vw, 5rem);
+}
+
+.zfc-privacy-content {
+  width: min(100% - 48px, 1380px);
+  margin: 0 auto;
+  padding: clamp(58px, 6vw, 110px) 0 clamp(74px, 7vw, 132px);
+  color: #111111;
+  font-weight: 700;
+}
+
+.zfc-privacy-lead,
+.zfc-privacy-section__text,
+.zfc-privacy-section__list,
+.zfc-privacy-section__note {
+  font-size: clamp(1.05rem, 1.18vw, 1.42rem);
+  line-height: 1.28;
+  max-width: 1180px;
+}
+
+.zfc-privacy-lead {
+  margin: 0 0 clamp(34px, 3.4vw, 58px);
+}
+
+.zfc-privacy-section {
+  margin: 0 0 clamp(30px, 3vw, 54px);
+}
+
+.zfc-privacy-section__title {
+  font-family: var(--zfc-font-heading);
+  font-size: clamp(1.9rem, 2.4vw, 3.1rem);
+  line-height: 1.08;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 0 clamp(20px, 1.8vw, 32px);
+}
+
+.zfc-privacy-section__title--accent {
+  color: var(--zfc-red, #cc1f1f);
+  font-family: var(--zfc-font-body);
+  font-size: clamp(1.18rem, 1.28vw, 1.55rem);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.zfc-privacy-section__text {
+  margin: 0 0 16px;
+}
+
+.zfc-privacy-section__list {
+  margin: 0 0 0 1.45em;
+  padding: 0;
+}
+
+.zfc-privacy-section__note {
+  margin: clamp(18px, 1.6vw, 28px) 0 0;
+}
+
+@media (max-width: 700px) {
+  .zfc-privacy-content {
+    width: min(100% - 32px, 1380px);
+  }
+
+  .zfc-privacy-hero .zfc-about-hero__content {
+    padding-left: 28px;
+  }
+}

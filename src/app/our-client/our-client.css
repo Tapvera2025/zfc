@@ -16,6 +16,22 @@
   font-family: var(--oc-font-b);
 }
 
+.zfc-oc-hero .zfc-about-hero__overlay {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.72) 0%,
+      rgba(0, 0, 0, 0.58) 45%,
+      rgba(0, 0, 0, 0.36) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.28) 0%,
+      rgba(0, 0, 0, 0.12) 45%,
+      rgba(0, 0, 0, 0.42) 100%
+    );
+}
+
 /* ════════════════════════════════════════════════════════════
    INTRO SECTION  (text left, image right)
    ════════════════════════════════════════════════════════════ */
@@ -23,6 +39,7 @@
   position: relative;
   padding: clamp(56px, 7vw, 100px) clamp(20px, 5vw, 80px);
   overflow: hidden;
+  background: #ffffff;
 }
 
 /* dot pattern – left */
@@ -34,32 +51,22 @@
   transform: translateY(-50%);
   width: 180px;
   height: 480px;
-  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
-  background-size: 20px 20px;
-  opacity: 0.15;
+  background-image: radial-gradient(circle, #d8d8d8 6px, transparent 7px);
+  background-size: 34px 34px;
+  opacity: 0.32;
   pointer-events: none;
 }
 
 /* dot pattern – right */
 .zfc-oc-intro::after {
-  content: "";
-  position: absolute;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 180px;
-  height: 480px;
-  background-image: radial-gradient(circle, #cc1f1f 1.5px, transparent 1.5px);
-  background-size: 20px 20px;
-  opacity: 0.15;
-  pointer-events: none;
+  display: none;
 }
 
 .zfc-oc-intro__inner {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.72fr);
   gap: clamp(40px, 5vw, 80px);
   align-items: center;
   position: relative;
@@ -72,28 +79,29 @@
   font-family: var(--oc-font-h);
   font-size: clamp(30px, 3.5vw, 46px);
   font-weight: 700;
-  color: var(--oc-navy);
-  margin-bottom: 24px;
+  color: #050505;
+  margin-bottom: clamp(24px, 2vw, 36px);
   line-height: 1.1;
 }
 
 .zfc-oc-intro__body {
   font-size: clamp(18px, 1.1vw, 19.5px);
-  color: #444;
-  line-height: 1.85;
+  color: #050505;
+  line-height: 1.42;
   text-align: justify;
+  max-width: 1080px;
 }
 
 .zfc-oc-intro__body p + p {
-  margin-top: 20px;
+  margin-top: clamp(28px, 2.6vw, 44px);
 }
 
 .zfc-oc-intro__img-col {
   position: relative;
-  border-radius: 14px;
+  border-radius: 24px;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.13);
+  aspect-ratio: 383 / 532;
+  box-shadow: none;
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -222,6 +230,52 @@
 .zfc-oc-accordion__link:hover { color: var(--oc-red); }
 
 /* ════════════════════════════════════════════════════════════
+   CLIENT FOOTER SKYLINE
+   ════════════════════════════════════════════════════════════ */
+.zfc-ourclient-page .zfc-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.zfc-ourclient-page .zfc-footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc((var(--zfc-footer-card-pop) * -1) - clamp(82px, 6.5vw, 128px));
+  height: clamp(220px, 18.5vw, 330px);
+  background-image: url("/assets/our-client-footer-skyline.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 100% auto;
+  filter: brightness(0) opacity(1);
+  opacity: 1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.zfc-ourclient-page .zfc-footer__newsletter-wrap,
+.zfc-ourclient-page .zfc-footer__body,
+.zfc-ourclient-page .zfc-footer__bottom {
+  position: relative;
+}
+
+.zfc-ourclient-page .zfc-footer__newsletter-wrap {
+  z-index: 4;
+  margin-top: calc((var(--zfc-footer-card-pop) * -1) + clamp(48px, 4vw, 78px));
+}
+
+.zfc-ourclient-page .zfc-footer__newsletter-card {
+  min-height: clamp(210px, 14vw, 270px);
+  padding-top: clamp(30px, 2.6vw, 46px);
+}
+
+.zfc-ourclient-page .zfc-footer__body,
+.zfc-ourclient-page .zfc-footer__bottom {
+  z-index: 3;
+}
+
+/* ════════════════════════════════════════════════════════════
    RESPONSIVE
    ════════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
@@ -247,5 +301,59 @@
   }
   .zfc-oc-accordion__item {
     padding: 16px 20px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   DESKTOP SCALE PASS — align client page with enlarged pages
+   ════════════════════════════════════════════════════════════ */
+@media (min-width: 901px) {
+  .zfc-oc-intro,
+  .zfc-oc-links {
+    padding-left: clamp(24px, 6.25vw, 8rem);
+    padding-right: clamp(24px, 6.25vw, 8rem);
+  }
+
+  .zfc-oc-intro {
+    padding-top: clamp(90px, 8vw, 150px);
+    padding-bottom: clamp(80px, 7vw, 130px);
+  }
+
+  .zfc-oc-links {
+    padding-bottom: clamp(90px, 8vw, 150px);
+  }
+
+  .zfc-oc-intro__inner,
+  .zfc-oc-links__inner {
+    max-width: 1710px;
+  }
+
+  .zfc-oc-intro__inner {
+    grid-template-columns: minmax(0, 1.48fr) minmax(340px, 0.72fr);
+    gap: clamp(72px, 7vw, 140px);
+  }
+
+  .zfc-oc-intro__heading,
+  .zfc-oc-links__heading {
+    font-size: clamp(3rem, 4vw, 5rem);
+  }
+
+  .zfc-oc-intro__body,
+  .zfc-oc-accordion__title,
+  .zfc-oc-accordion__link {
+    font-size: clamp(1.25rem, 1.28vw, 1.65rem);
+  }
+
+  .zfc-oc-intro__img-col {
+    border-radius: 28px;
+  }
+
+  .zfc-oc-accordion__item {
+    border-radius: 18px;
+    padding: clamp(24px, 1.8vw, 34px) clamp(28px, 2.4vw, 46px);
+  }
+
+  .zfc-oc-accordion__body--open {
+    padding: 20px clamp(28px, 2.4vw, 46px) 28px;
   }
 }

@@ -1164,9 +1164,11 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
    FOOTER — reused from home page
    ══════════════════════════════════════════════════════════ */
 .zfc-footer {
+  --zfc-footer-card-pop: clamp(96px, 10vw, 150px);
   position: relative;
   background: #0b1535;
   color: #ffffff;
+  margin-top: var(--zfc-footer-card-pop);
   overflow: visible;
 }
 .zfc-footer__map-bg {
@@ -1179,8 +1181,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .zfc-footer__newsletter-wrap {
   position: relative;
   z-index: 10;
-  padding: clamp(48px, 5vw, 72px) clamp(24px, 5vw, 72px) 0;
-  margin-top: 0;
+  padding: 0 clamp(24px, 5vw, 72px);
+  margin-top: calc(var(--zfc-footer-card-pop) * -1);
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
@@ -1372,4 +1374,145 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   .zfc-about-hero                      { border-radius: 0; }
   .zfc-about-nav__inner                { padding: 10px 16px; }
   .zfc-about-nav__logo img             { height: clamp(64px, 18vw, 90px) !important; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   DESKTOP SCALE PASS — align inner pages with enlarged home
+   ══════════════════════════════════════════════════════════ */
+@media (min-width: 901px) {
+  .zfc-about-hero-wrap {
+    padding: 0 clamp(24px, 2.3vw, 44px);
+  }
+
+  .zfc-about-hero {
+    min-height: clamp(360px, 32vw, 560px);
+    border-radius: 0 0 48px 48px;
+  }
+
+  .zfc-about-hero__content {
+    padding: clamp(56px, 5vw, 96px) clamp(54px, 5vw, 110px);
+    gap: 18px;
+  }
+
+  .zfc-about-hero__title {
+    font-size: clamp(4.2rem, 6.4vw, 7.2rem);
+  }
+
+  .zfc-about-hero__breadcrumb-link,
+  .zfc-about-hero__breadcrumb-current {
+    font-size: clamp(1.25rem, 1.15vw, 1.55rem);
+  }
+
+  .zfc-svc-list,
+  .zfc-svc-detail,
+  .zfc-faq {
+    padding-left: clamp(24px, 6.25vw, 8rem);
+    padding-right: clamp(24px, 6.25vw, 8rem);
+  }
+
+  .zfc-svc-list {
+    padding-top: clamp(80px, 7vw, 130px);
+    padding-bottom: clamp(90px, 7.5vw, 150px);
+  }
+
+  .zfc-svc-list__heading,
+  .zfc-svc-detail__heading,
+  .zfc-faq__heading {
+    font-size: clamp(3rem, 4vw, 5rem);
+  }
+
+  .zfc-svc-list__badge {
+    gap: 12px;
+    font-size: clamp(1rem, 1.05vw, 1.4rem);
+    padding: clamp(0.85rem, 1.1vw, 1.1rem) clamp(1.35rem, 1.9vw, 2.2rem);
+    border-radius: 12px;
+  }
+
+  .zfc-svc-list__grid {
+    max-width: 1710px;
+    margin: 0 auto;
+    gap: clamp(24px, 2.1vw, 40px);
+  }
+
+  .zfc-svc-card {
+    border-radius: 34px;
+    padding: clamp(20px, 1.5vw, 28px);
+  }
+
+  .zfc-svc-card__title {
+    font-size: clamp(1.35rem, 1.35vw, 1.8rem);
+  }
+
+  .zfc-svc-card__desc {
+    font-size: clamp(1.05rem, 1vw, 1.25rem);
+  }
+
+  .zfc-svc-card__cta,
+  .zfc-svc-extra__cta {
+    font-size: clamp(1.05rem, 1.1vw, 1.35rem);
+    padding: clamp(0.9rem, 1.1vw, 1.15rem) clamp(1.4rem, 1.9vw, 2.25rem);
+  }
+
+  .zfc-svc-detail__inner,
+  .zfc-svc-extra__inner,
+  .zfc-faq__inner {
+    max-width: 1710px;
+  }
+
+  .zfc-svc-detail__inner {
+    grid-template-columns: clamp(340px, 22vw, 420px) 1fr;
+    gap: clamp(48px, 5vw, 90px);
+  }
+
+  .zfc-svc-detail__list-item {
+    padding: clamp(16px, 1.2vw, 22px) clamp(18px, 1.4vw, 26px);
+  }
+
+  .zfc-svc-detail__list-label,
+  .zfc-svc-detail__body,
+  .zfc-svc-extra__faq-q,
+  .zfc-svc-extra__faq-answer,
+  .zfc-faq__question,
+  .zfc-faq__answer {
+    font-size: clamp(1.08rem, 1.1vw, 1.35rem);
+  }
+
+  .zfc-svc-extra {
+    padding-left: clamp(24px, 6.25vw, 8rem);
+    padding-right: clamp(24px, 6.25vw, 8rem);
+    padding-bottom: clamp(90px, 7vw, 140px);
+  }
+
+  .zfc-svc-extra__inner {
+    gap: clamp(48px, 5vw, 90px);
+  }
+
+  .zfc-faq {
+    padding-top: clamp(90px, 8vw, 150px);
+    padding-bottom: clamp(90px, 8vw, 150px);
+  }
+
+  .zfc-faq__item {
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  .zfc-faq__trigger {
+    padding: clamp(24px, 1.8vw, 34px) clamp(28px, 2.2vw, 42px);
+  }
+
+  .zfc-footer__newsletter-wrap {
+    max-width: 1320px;
+    padding-left: clamp(24px, 6.25vw, 8rem);
+    padding-right: clamp(24px, 6.25vw, 8rem);
+  }
+
+  .zfc-footer__body,
+  .zfc-footer__bottom {
+    max-width: 1710px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(24px, 6.25vw, 8rem);
+    padding-right: clamp(24px, 6.25vw, 8rem);
+  }
 }

@@ -32,9 +32,9 @@ export default function OurClientPage() {
       <ServicesPageHeader activePage="Our Client" />
 
       <div className="zfc-about-hero-wrap">
-        <section className="zfc-about-hero" aria-label="Our Client hero">
+        <section className="zfc-about-hero zfc-oc-hero" aria-label="Our Client hero">
           <div className="zfc-about-hero__bg" aria-hidden="true">
-            <Image src="/assets/services-hero-bg.png" alt="" fill sizes="100vw" className="object-cover object-center" priority />
+            <Image src="/assets/our-client-hero.png" alt="" fill sizes="100vw" className="object-cover object-center" priority />
           </div>
           <div className="zfc-about-hero__overlay" aria-hidden="true" />
           <div className="zfc-about-hero__content">
@@ -62,10 +62,10 @@ export default function OurClientPage() {
           </div>
           <div className="zfc-oc-intro__img-col">
             <Image
-              src="/assets/services-photo.png"
+              src="/assets/our-client-intro.png"
               alt="Happy client consulting with ZF Canada"
               fill
-              sizes="(max-width: 900px) 100vw, 50vw"
+              sizes="(max-width: 900px) 100vw, 34vw"
               className="object-cover object-center"
             />
           </div>

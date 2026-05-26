@@ -5,13 +5,13 @@ export default function AboutIntroSection() {
   return (
     <section className="zfc-about-intro" aria-labelledby="about-intro-heading">
 
-      {/* ── LEFT: two overlapping photos + ____6 decorative SVG ── */}
+      {/* ── LEFT: two overlapping photos + decorative SVG ── */}
       <div className="zfc-about-intro__img-col">
 
-        {/* Back photo — Rectangle_19 (office scene), upper-left, tilted left */}
+        {/* Back photo — office scene, upper-left */}
         <div className="zfc-about-intro__img-back">
           <Image
-            src="/assets/about-rect-19.png"
+            src="/assets/about-rect-13-2.png"
             alt="ZF Canada team at work"
             fill
             sizes="(max-width: 900px) 70vw, 32vw"
@@ -19,10 +19,10 @@ export default function AboutIntroSection() {
           />
         </div>
 
-        {/* Front photo — Rectangle_13_2 (woman with passport), lower-right, tilted right */}
+        {/* Front photo — woman with passport, lower-right */}
         <div className="zfc-about-intro__img-front">
           <Image
-            src="/assets/about-rect-13-2.png"
+            src="/assets/about-rect-19.png"
             alt="Client holding passport"
             fill
             sizes="(max-width: 900px) 60vw, 28vw"
@@ -30,7 +30,7 @@ export default function AboutIntroSection() {
           />
         </div>
 
-        {/* Decorative ____6 SVG — right edge, overlapping toward content */}
+        {/* Decorative SVG — right edge, overlapping toward content */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/assets/about-6.svg"

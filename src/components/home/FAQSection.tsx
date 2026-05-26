@@ -97,25 +97,14 @@ export default function FAQSection() {
 
         {/* Right: Any Question widget */}
         <div className="zfc-faq__right">
-          {/* SVG blob shape — Vector_1 (fill) + Vector_2 (stroke) stacked */}
           <div className="zfc-faq__blob-wrap" aria-hidden="true">
-            {/* Filled blob */}
             <Image
-              src="/assets/blob-fill.svg"
-              alt=""
-              width={282}
-              height={257}
-              className="zfc-faq__blob-fill"
-            />
-            {/* Stroke outline */}
-            <Image
-              src="/assets/blob-stroke.svg"
+              src="/assets/zfcfaqsec.png"
               alt=""
               width={301}
               height={275}
-              className="zfc-faq__blob-stroke"
+              className="zfc-faq__blob-img"
             />
-            <span className="zfc-faq__blob-q">?</span>
           </div>
 
           <h3 className="zfc-faq__widget-heading">Any Question?</h3>

@@ -39,7 +39,7 @@ const PAGES = [
   {
     slug: "toronto",
     label: "Toronto Immigration Page",
-    description: "Page title, body paragraphs, and contact information.",
+    description: "Toronto service text, location map, and contact information.",
     href: "/toronto",
     color: "bg-red-50 text-red-600 border-red-100",
     iconBg: "bg-red-100",
