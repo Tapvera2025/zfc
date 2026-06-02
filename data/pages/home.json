@@ -1,40 +1,98 @@
 {
   "hero": {
-    "title": "We Speak for You.\nWe Make the Law Work for You.",
-    "subtitle": "Regulated Canadian Immigration Consultants helping families, students, workers and businesses navigate Canada's immigration system.",
+    "title": "Welcome to \nZF Canada",
+    "subtitle": "Trusted & Licensed Immigration \nConsultant Firm in Canada",
     "ctaText": "Get Free Consultation",
     "ctaHref": "/free-assessment"
   },
   "about": {
-    "heading": "About ZF Canada",
+    "heading": "Know More About ZF Canada",
     "body": "ZF Canada Immigration Consultants is a full-service immigration firm based in Mississauga, Ontario. Our team of Regulated Canadian Immigration Consultants (RCICs) has helped thousands of clients achieve their Canadian immigration goals.",
     "highlight": "Trusted by thousands of immigrants across Canada."
   },
   "stats": [
     {
       "label": "Years of Experience",
-      "value": "15+"
+      "value": "25+"
     },
     {
       "label": "Successful Cases",
-      "value": "5,000+"
+      "value": "18,000+"
     },
     {
       "label": "Countries Served",
-      "value": "80+"
+      "value": "50+"
     },
     {
       "label": "Success Rate",
-      "value": "97%"
+      "value": "100%"
     }
   ],
   "whyUs": {
-    "heading": "Why Choose ZF Canada?",
+    "heading": "Why to Choose ZF Canada?",
     "points": [
       "Regulated Canadian Immigration Consultants (RCIC) — licensed and accountable.",
       "Personalized service with transparent, honest advice on every case.",
       "Comprehensive expertise covering all immigration pathways.",
       "Proven track record with thousands of successful applications."
     ]
-  }
+  },
+  "countries": {
+    "heading": "Licensed Canada Immigration\nConsultant serving Applicants\nFrom Anywhere",
+    "body": "We help you migrate smoothly with expert guidance and tailored solutions for your needs.",
+    "otherCount": "50+"
+  },
+  "servicesSection": {
+    "heading": "",
+    "intro": "",
+    "cards": [
+      {
+        "title": "Is this Refused Applications",
+        "description": "We assist in reapplying and appealing refused immigration applications.",
+        "href": "/services/refused-applications"
+      },
+      {
+        "title": "Humanitarian & Compassionate",
+        "description": "We assist in reapplying and appealing refused immigration applications.",
+        "href": "/services/humanitarian-compassionate"
+      },
+      {
+        "title": "Inadmissibility",
+        "description": "We assist in reapplying and appealing refused immigration applications.",
+        "href": "/services/inadmissibility"
+      },
+      {
+        "title": "Misrepresentation",
+        "description": "We assist in reapplying and appealing refused immigration applications.",
+        "href": "/services/misrepresentation"
+      }
+    ]
+  },
+  "testimonialsSection": {
+    "heading": "WHAT OUR CLIENTS SAY",
+    "subheading": "Community development is often linked with community work or community planning, and may involve stakeholders, foundations,"
+  },
+  "testimonials": [
+    {
+      "photo": "/assets/testimonial-1.png",
+      "text": "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in",
+      "name": "Amelia",
+      "role": "Student",
+      "rating": 4
+    },
+    {
+      "photo": "/assets/testimonial-2.png",
+      "text": "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in",
+      "name": "Waliya",
+      "role": "Student",
+      "rating": 4
+    },
+    {
+      "photo": "/assets/testimonial-3.png",
+      "text": "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in",
+      "name": "Ezaz",
+      "role": "Student",
+      "rating": 5
+    }
+  ]
 }

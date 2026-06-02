@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, Fragment } from "react";
 import { TrashIcon } from "@/components/admin/icons";
 
 type SubmissionStatus = "new" | "read" | "archived";
@@ -155,9 +155,8 @@ export default function SubmissionsPage() {
             </thead>
             <tbody className="divide-y divide-zinc-100">
               {filtered.map((sub) => (
-                <>
+                <Fragment key={sub.id}>
                   <tr
-                    key={sub.id}
                     className="group hover:bg-zinc-50 transition-colors cursor-pointer"
                     onClick={() => setExpanded(expanded === sub.id ? null : sub.id)}
                   >
@@ -167,7 +166,15 @@ export default function SubmissionsPage() {
                       </span>
                     </td>
                     <td className="px-5 py-4 text-zinc-800 font-medium">
-                      {String(sub.data.name ?? sub.data.contactName ?? sub.data.email ?? "—")}
+                      {String(
+                        sub.data.name ??
+                        sub.data.contactName ??
+                        (sub.data.firstName
+                          ? `${sub.data.firstName}${sub.data.lastName ? " " + sub.data.lastName : ""}`
+                          : undefined) ??
+                        sub.data.email ??
+                        "—"
+                      )}
                     </td>
                     <td className="px-5 py-4 text-zinc-400 whitespace-nowrap text-xs">
                       {new Date(sub.submittedAt).toLocaleString()}
@@ -196,7 +203,7 @@ export default function SubmissionsPage() {
                   </tr>
                   {/* Expanded row — shows all field data */}
                   {expanded === sub.id && (
-                    <tr key={sub.id + "-expanded"} className="bg-zinc-50">
+                    <tr className="bg-zinc-50">
                       <td colSpan={5} className="px-5 py-4">
                         <div className="grid grid-cols-2 gap-x-8 gap-y-2 md:grid-cols-3">
                           {Object.entries(sub.data).map(([key, val]) => (
@@ -205,7 +212,7 @@ export default function SubmissionsPage() {
                                 {key.replace(/([A-Z])/g, " $1").trim()}
                               </p>
                               <p className="mt-0.5 text-sm text-zinc-700 break-words">
-                                {String(val ?? "—")}
+                                {Array.isArray(val) ? val.join(", ") : String(val ?? "—")}
                               </p>
                             </div>
                           ))}
@@ -213,7 +220,7 @@ export default function SubmissionsPage() {
                       </td>
                     </tr>
                   )}
-                </>
+                </Fragment>
               ))}
             </tbody>
           </table>

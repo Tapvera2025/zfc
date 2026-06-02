@@ -1,42 +1,35 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const services = [
-  {
-    id: 1,
-    icon: "/assets/service-icon-1.svg",
-    title: "Refused Applications",
-    description:
-      "We assist in reapplying and appealing refused immigration applications.",
-    href: "/services/refused-applications",
-  },
-  {
-    id: 2,
-    icon: "/assets/service-icon-2.svg",
-    title: "Humanitarian & Compassionate",
-    description:
-      "We assist in reapplying and appealing refused immigration applications.",
-    href: "/services/humanitarian-compassionate",
-  },
-  {
-    id: 3,
-    icon: "/assets/service-icon-3.svg",
-    title: "Inadmissibility",
-    description:
-      "We assist in reapplying and appealing refused immigration applications.",
-    href: "/services/inadmissibility",
-  },
-  {
-    id: 4,
-    icon: "/assets/service-icon-4.svg",
-    title: "Misrepresentation",
-    description:
-      "We assist in reapplying and appealing refused immigration applications.",
-    href: "/services/misrepresentation",
-  },
+const CARD_ICONS = [
+  "/assets/service-icon-1.svg",
+  "/assets/service-icon-2.svg",
+  "/assets/service-icon-3.svg",
+  "/assets/service-icon-4.svg",
 ];
 
-export default function ServicesSection() {
+type ServiceCard = { title: string; description: string; href: string };
+
+interface ServicesSectionProps {
+  heading?: string;
+  intro?: string;
+  cards?: ServiceCard[];
+}
+
+const DEFAULT_CARDS: ServiceCard[] = [
+  { title: "Refused Applications",        description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/refused-applications" },
+  { title: "Humanitarian & Compassionate",description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/humanitarian-compassionate" },
+  { title: "Inadmissibility",             description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/inadmissibility" },
+  { title: "Misrepresentation",           description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/misrepresentation" },
+];
+
+export default function ServicesSection({
+  heading = "Comprehensive Immigration Services",
+  intro,
+  cards,
+}: ServicesSectionProps) {
+  const items = cards !== undefined ? cards : DEFAULT_CARDS;
+
   return (
     <section className="zfc-services" aria-label="Our immigration services">
       {/* Badge */}
@@ -55,20 +48,19 @@ export default function ServicesSection() {
       </div>
 
       {/* Heading */}
-      <h2 className="zfc-services__heading">
-        Comprehensive Immigration Services
-      </h2>
+      <h2 className="zfc-services__heading">{heading}</h2>
+      {intro && <p className="zfc-services__intro">{intro}</p>}
 
       {/* Body: cards + image */}
       <div className="zfc-services__body">
 
-        {/* Left — 2×2 card grid */}
+        {/* Left — card grid */}
         <div className="zfc-services__grid">
-          {services.map((svc) => (
-            <article key={svc.id} className="zfc-service-card">
+          {items.map((svc, i) => (
+            <article key={i} className="zfc-service-card">
               <div className="zfc-service-card__icon" aria-hidden="true">
                 <Image
-                  src={svc.icon}
+                  src={CARD_ICONS[i % CARD_ICONS.length]}
                   alt=""
                   width={38}
                   height={38}
@@ -78,7 +70,7 @@ export default function ServicesSection() {
               <h3 className="zfc-service-card__title">{svc.title}</h3>
               <p className="zfc-service-card__desc">{svc.description}</p>
               <Link href={svc.href} className="zfc-service-card__link">
-                Explore More &nearr;
+                Explore More
               </Link>
             </article>
           ))}

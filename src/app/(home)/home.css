@@ -1043,6 +1043,15 @@ button {
   max-width: 900px;
 }
 
+.zfc-about__why-heading {
+  font-size: clamp(1rem, 1.2vw, 1.45rem);
+  font-weight: 700;
+  color: var(--zfc-red);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.6rem;
+}
+
 /* Features box */
 .zfc-about__features {
   display: grid;

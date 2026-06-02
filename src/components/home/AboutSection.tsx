@@ -1,14 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const features = [
-  { label: "Expert Knowledge" },
-  { label: "Transparent Advice" },
-  { label: "Higher Success Rate" },
-  { label: "End-to-End Support" },
-  { label: "Personalized Guidance" },
-  { label: "Global Expertise" },
+const DEFAULT_FEATURES = [
+  "Expert Knowledge",
+  "Transparent Advice",
+  "Higher Success Rate",
+  "End-to-End Support",
+  "Personalized Guidance",
+  "Global Expertise",
 ];
+
+interface AboutSectionProps {
+  heading?: string;
+  body?: string;
+  whyUsHeading?: string;
+  points?: string[];
+}
 
 /** Red double-chevron >> icon extracted from Group_16.svg */
 const DoubleChevron = () => (
@@ -32,7 +39,14 @@ const DoubleChevron = () => (
   </svg>
 );
 
-export default function AboutSection() {
+export default function AboutSection({
+  heading = "We help Making Your Dream Into Reality",
+  body = "ZF Canada is a leading immigration consultancy firm in Canada, dedicated to providing professional and reliable pathways to Canada. Established in 1992, we bring over 25 years of experience as a Licensed Immigration Consultant Canada, helping clients achieve their immigration goals successfully.",
+  whyUsHeading,
+  points,
+}: AboutSectionProps) {
+  const features = (points && points.length > 0 ? points : DEFAULT_FEATURES).map((label) => ({ label }));
+
   return (
     <section className="zfc-about" aria-label="About ZF Canada">
       <div className="zfc-about__inner">
@@ -67,17 +81,18 @@ export default function AboutSection() {
 
           {/* Heading */}
           <h2 className="zfc-about__heading">
-            We help Making Your<br />Dream Into Reality
+            {heading}
           </h2>
 
           {/* Body */}
           <p className="zfc-about__body">
-            ZF Canada is a leading immigration consultancy firm in Canada,
-            dedicated to providing professional and reliable pathways to Canada.
-            Established in 1992, we bring over 25 years of experience as a
-            Licensed Immigration Consultant Canada, helping clients achieve their
-            immigration goals successfully.
+            {body}
           </p>
+
+          {/* Why Choose Us heading */}
+          {whyUsHeading && (
+            <p className="zfc-about__why-heading">{whyUsHeading}</p>
+          )}
 
           {/* Features box */}
           <div className="zfc-about__features">

@@ -3,38 +3,13 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 
-const testimonials = [
-  {
-    id: 1,
-    photo: "/assets/testimonial-1.png",
-    text: "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in",
-    name: "Amelia",
-    role: "Student",
-    rating: 4,
-  },
-  {
-    id: 2,
-    photo: "/assets/testimonial-2.png",
-    text: "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in",
-    name: "Waliya",
-    role: "Student",
-    rating: 4,
-  },
-  {
-    id: 3,
-    photo: "/assets/testimonial-3.png",
-    text: "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in",
-    name: "Ezaz",
-    role: "Student",
-    rating: 5,
-  },
-];
+type TestimonialItem = { photo: string; text: string; name: string; role: string; rating: number };
 
-// Duplicate for seamless infinite loop: [t1,t2,t3, t1,t2,t3]
-const ITEMS = [...testimonials, ...testimonials];
-const TOTAL = ITEMS.length;   // 6
-const VISIBLE = 3;
-const STEP_PCT = 100 / TOTAL; // each card = 16.666% of track
+const DEFAULT_TESTIMONIALS: TestimonialItem[] = [
+  { photo: "/assets/testimonial-1.png", text: "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in", name: "Amelia", role: "Student", rating: 4 },
+  { photo: "/assets/testimonial-2.png", text: "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in", name: "Waliya", role: "Student", rating: 4 },
+  { photo: "/assets/testimonial-3.png", text: "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in", name: "Ezaz",   role: "Student", rating: 5 },
+];
 
 const StarIcon = ({ filled }: { filled: boolean }) => (
   <svg width="20" height="19" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -42,8 +17,24 @@ const StarIcon = ({ filled }: { filled: boolean }) => (
   </svg>
 );
 
-export default function TestimonialsSection() {
-  // step = how many cards we have shifted (0-5, snaps back after 3)
+interface TestimonialsSectionProps {
+  heading?: string;
+  subheading?: string;
+  testimonials?: TestimonialItem[];
+}
+
+export default function TestimonialsSection({
+  heading = "WHAT OUR CLIENTS SAY",
+  subheading = "Community development is often linked with community work or community planning, and may involve stakeholders, foundations,",
+  testimonials,
+}: TestimonialsSectionProps) {
+  const items = testimonials !== undefined ? testimonials : DEFAULT_TESTIMONIALS;
+  const VISIBLE = Math.min(3, items.length) || 1;
+  const ITEMS = items.length > 0 ? [...items, ...items] : DEFAULT_TESTIMONIALS;
+  const TOTAL = ITEMS.length;
+  const STEP_PCT = 100 / TOTAL;
+
+  // step = how many cards we have shifted (0-TOTAL-1, snaps back after VISIBLE)
   const [step, setStep] = useState(0);
   const [animated, setAnimated] = useState(true);
   const busy = useRef(false);
@@ -60,7 +51,6 @@ export default function TestimonialsSection() {
     const timer = setTimeout(() => {
       busy.current = false;
       if (step >= VISIBLE) {
-        // Snap back to start without animation
         setAnimated(false);
         setStep(0);
       } else if (step < 0) {
@@ -69,7 +59,7 @@ export default function TestimonialsSection() {
       }
     }, 500);
     return () => clearTimeout(timer);
-  }, [step]);
+  }, [step, VISIBLE]);
 
   // Auto-advance every 4s
   useEffect(() => {
@@ -82,18 +72,14 @@ export default function TestimonialsSection() {
     transition: animated ? "transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)" : "none",
   };
 
-  // Dot active index maps: step 0→card 0, step 1→card 1, step 2→card 2
   const dotActive = ((step % VISIBLE) + VISIBLE) % VISIBLE;
 
   return (
     <section className="zfc-testimonials" aria-label="Client testimonials">
       {/* Heading block */}
       <div className="zfc-testimonials__header">
-        <h2 className="zfc-testimonials__heading">WHAT OUR CLIENTS SAY</h2>
-        <p className="zfc-testimonials__sub">
-          Community development is often linked with community work or community
-          planning, and may involve stakeholders, foundations,
-        </p>
+        <h2 className="zfc-testimonials__heading">{heading}</h2>
+        <p className="zfc-testimonials__sub">{subheading}</p>
       </div>
 
       {/* Slider */}
@@ -105,7 +91,7 @@ export default function TestimonialsSection() {
 
         {/* Overflow window */}
         <div className="zfc-testimonials__window">
-          {/* Sliding track — 200% wide for 6 cards */}
+          {/* Sliding track — 200% wide for duplicated cards */}
           <div className="zfc-testimonials__track" style={trackStyle}>
             {ITEMS.map((t, i) => (
               <article key={i} className="zfc-testimonial-card">
@@ -145,7 +131,7 @@ export default function TestimonialsSection() {
 
       {/* Dot indicators */}
       <div className="zfc-testimonials__dots">
-        {testimonials.map((_, i) => (
+        {items.map((_, i) => (
           <button
             key={i}
             className={"zfc-testimonials__dot" + (i === dotActive ? " zfc-testimonials__dot--active" : "")}

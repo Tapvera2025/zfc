@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function AboutHero() {
+interface AboutHeroProps {
+  title?: string;
+}
+
+export default function AboutHero({ title = "About" }: AboutHeroProps) {
   return (
     <section className="zfc-about-hero" aria-label="About page hero">
       {/* Background image */}
@@ -21,7 +25,7 @@ export default function AboutHero() {
 
       {/* Content */}
       <div className="zfc-about-hero__content">
-        <h1 className="zfc-about-hero__title">About</h1>
+        <h1 className="zfc-about-hero__title">{title}</h1>
         <nav className="zfc-about-hero__breadcrumb" aria-label="Breadcrumb">
           <Link href="/" className="zfc-about-hero__breadcrumb-link">
             Home
@@ -39,7 +43,7 @@ export default function AboutHero() {
           >
             <polyline points="9 18 15 12 9 6" />
           </svg>
-          <span className="zfc-about-hero__breadcrumb-current">About</span>
+          <span className="zfc-about-hero__breadcrumb-current">{title}</span>
         </nav>
       </div>
     </section>

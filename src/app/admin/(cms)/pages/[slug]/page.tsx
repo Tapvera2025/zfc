@@ -30,8 +30,10 @@ type FieldDef =
   | { type: "text";      path: string; label: string; hint?: string }
   | { type: "textarea";  path: string; label: string; hint?: string; rows?: number }
   | { type: "array";     path: string; label: string; hint?: string; fieldLabel?: string }
-  | { type: "section";   label: string }
-  | { type: "stats";     path: string; label: string };
+  | { type: "cards";         path: string; label: string }
+  | { type: "testimonials";  path: string; label: string }
+  | { type: "section";       label: string }
+  | { type: "stats";         path: string; label: string };
 
 const PAGE_FIELDS: Record<string, FieldDef[]> = {
   home: [
@@ -49,6 +51,18 @@ const PAGE_FIELDS: Record<string, FieldDef[]> = {
     { type: "section",  label: "Why Choose Us" },
     { type: "text",     path: "whyUs.heading", label: "Section Heading" },
     { type: "array",    path: "whyUs.points",  label: "Bullet Points", fieldLabel: "Point" },
+    { type: "section",  label: "Countries Section" },
+    { type: "textarea", path: "countries.heading",    label: "Heading", rows: 3, hint: "Use \\n for line breaks." },
+    { type: "textarea", path: "countries.body",       label: "Body Text", rows: 2 },
+    { type: "text",     path: "countries.otherCount", label: "Other Countries Count (e.g. 50+)" },
+    { type: "section",      label: "Services Section" },
+    { type: "text",         path: "servicesSection.heading", label: "Section Heading" },
+    { type: "textarea",     path: "servicesSection.intro",   label: "Intro Text", rows: 3 },
+    { type: "cards",        path: "servicesSection.cards",   label: "Service Cards" },
+    { type: "section",      label: "Testimonials Section" },
+    { type: "text",         path: "testimonialsSection.heading",    label: "Section Heading" },
+    { type: "textarea",     path: "testimonialsSection.subheading", label: "Sub-heading", rows: 2 },
+    { type: "testimonials", path: "testimonials",                   label: "Review Cards" },
   ],
   about: [
     { type: "section",  label: "Hero" },
@@ -248,6 +262,177 @@ function ArrayEditor({
   );
 }
 
+/* ── Cards editor ────────────────────────────────────────────── */
+type ServiceCard = { title: string; description: string; href: string };
+
+function CardsEditor({
+  value,
+  onChange,
+}: {
+  value: ServiceCard[];
+  onChange: (v: ServiceCard[]) => void;
+}) {
+  const cards = Array.isArray(value) ? value : [];
+
+  function update(i: number, field: keyof ServiceCard, v: string) {
+    onChange(cards.map((c, idx) => idx === i ? { ...c, [field]: v } : c));
+  }
+  function add() {
+    onChange([...cards, { title: "", description: "", href: "" }]);
+  }
+  function remove(i: number) {
+    onChange(cards.filter((_, idx) => idx !== i));
+  }
+  function move(i: number, dir: -1 | 1) {
+    const next = [...cards];
+    const j = i + dir;
+    if (j < 0 || j >= next.length) return;
+    [next[i], next[j]] = [next[j], next[i]];
+    onChange(next);
+  }
+
+  return (
+    <div className="space-y-3">
+      {cards.map((card, i) => (
+        <div key={i} className="rounded-lg border border-zinc-200 bg-zinc-50 p-4">
+          <div className="mb-2 flex items-center justify-between gap-2">
+            <span className="text-xs font-semibold text-zinc-500">Card {i + 1}</span>
+            <div className="flex items-center gap-1">
+              <button onClick={() => move(i, -1)} disabled={i === 0}
+                className="rounded px-1.5 py-0.5 text-xs text-zinc-400 hover:text-zinc-700 disabled:opacity-20">▲</button>
+              <button onClick={() => move(i, 1)} disabled={i === cards.length - 1}
+                className="rounded px-1.5 py-0.5 text-xs text-zinc-400 hover:text-zinc-700 disabled:opacity-20">▼</button>
+              <button onClick={() => remove(i)}
+                className="rounded px-1.5 py-0.5 text-xs text-zinc-400 hover:text-red-600">✕</button>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <input
+              className="block w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-red-400 focus:outline-none focus:ring-2 focus:ring-red-100"
+              placeholder="Title"
+              value={card.title}
+              onChange={(e) => update(i, "title", e.target.value)}
+            />
+            <textarea
+              className="block w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-red-400 focus:outline-none focus:ring-2 focus:ring-red-100 resize-y"
+              rows={2}
+              placeholder="Description"
+              value={card.description}
+              onChange={(e) => update(i, "description", e.target.value)}
+            />
+            <input
+              className="block w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-500 focus:border-red-400 focus:outline-none focus:ring-2 focus:ring-red-100"
+              placeholder="Link (e.g. /services/refused-applications)"
+              value={card.href}
+              onChange={(e) => update(i, "href", e.target.value)}
+            />
+          </div>
+        </div>
+      ))}
+      <button
+        onClick={add}
+        className="mt-1 rounded-md border border-dashed border-zinc-300 px-3 py-1.5 text-xs text-zinc-500 hover:border-red-300 hover:text-red-600 transition-colors w-full"
+      >
+        + Add card
+      </button>
+    </div>
+  );
+}
+
+/* ── Testimonials editor ─────────────────────────────────────── */
+type TestimonialCard = { photo: string; text: string; name: string; role: string; rating: number };
+
+function TestimonialsEditor({
+  value,
+  onChange,
+}: {
+  value: TestimonialCard[];
+  onChange: (v: TestimonialCard[]) => void;
+}) {
+  const cards = Array.isArray(value) ? value : [];
+
+  function update(i: number, field: keyof TestimonialCard, v: string | number) {
+    onChange(cards.map((c, idx) => idx === i ? { ...c, [field]: v } : c));
+  }
+  function add() {
+    onChange([...cards, { photo: "", text: "", name: "", role: "", rating: 5 }]);
+  }
+  function remove(i: number) {
+    onChange(cards.filter((_, idx) => idx !== i));
+  }
+  function move(i: number, dir: -1 | 1) {
+    const next = [...cards];
+    const j = i + dir;
+    if (j < 0 || j >= next.length) return;
+    [next[i], next[j]] = [next[j], next[i]];
+    onChange(next);
+  }
+
+  return (
+    <div className="space-y-3">
+      {cards.map((card, i) => (
+        <div key={i} className="rounded-lg border border-zinc-200 bg-zinc-50 p-4">
+          <div className="mb-2 flex items-center justify-between gap-2">
+            <span className="text-xs font-semibold text-zinc-500">Review {i + 1}</span>
+            <div className="flex items-center gap-1">
+              <button onClick={() => move(i, -1)} disabled={i === 0}
+                className="rounded px-1.5 py-0.5 text-xs text-zinc-400 hover:text-zinc-700 disabled:opacity-20">▲</button>
+              <button onClick={() => move(i, 1)} disabled={i === cards.length - 1}
+                className="rounded px-1.5 py-0.5 text-xs text-zinc-400 hover:text-zinc-700 disabled:opacity-20">▼</button>
+              <button onClick={() => remove(i)}
+                className="rounded px-1.5 py-0.5 text-xs text-zinc-400 hover:text-red-600">✕</button>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <textarea
+              className="block w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-red-400 focus:outline-none focus:ring-2 focus:ring-red-100 resize-y"
+              rows={3}
+              placeholder="Review text"
+              value={card.text}
+              onChange={(e) => update(i, "text", e.target.value)}
+            />
+            <div className="flex gap-2">
+              <input
+                className="flex-1 rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-red-400 focus:outline-none focus:ring-2 focus:ring-red-100"
+                placeholder="Name"
+                value={card.name}
+                onChange={(e) => update(i, "name", e.target.value)}
+              />
+              <input
+                className="flex-1 rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-red-400 focus:outline-none focus:ring-2 focus:ring-red-100"
+                placeholder="Role (e.g. Student)"
+                value={card.role}
+                onChange={(e) => update(i, "role", e.target.value)}
+              />
+              <select
+                className="w-24 rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-red-400 focus:outline-none focus:ring-2 focus:ring-red-100"
+                value={card.rating}
+                onChange={(e) => update(i, "rating", Number(e.target.value))}
+              >
+                {[1, 2, 3, 4, 5].map((n) => (
+                  <option key={n} value={n}>{n} ★</option>
+                ))}
+              </select>
+            </div>
+            <input
+              className="block w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-500 focus:border-red-400 focus:outline-none focus:ring-2 focus:ring-red-100"
+              placeholder="Photo path (e.g. /assets/testimonial-1.png)"
+              value={card.photo}
+              onChange={(e) => update(i, "photo", e.target.value)}
+            />
+          </div>
+        </div>
+      ))}
+      <button
+        onClick={add}
+        className="mt-1 rounded-md border border-dashed border-zinc-300 px-3 py-1.5 text-xs text-zinc-500 hover:border-red-300 hover:text-red-600 transition-colors w-full"
+      >
+        + Add review
+      </button>
+    </div>
+  );
+}
+
 /* ── Main editor page ────────────────────────────────────────── */
 export default function PageEditorPage() {
   const params = useParams<{ slug: string }>();
@@ -419,6 +604,32 @@ export default function PageEditorPage() {
                     value={(val as string[]) ?? []}
                     onChange={(v) => handleChange(field.path, v)}
                     fieldLabel={field.fieldLabel}
+                  />
+                </div>
+              );
+            }
+
+            if (field.type === "cards") {
+              const val = deepGet(content, field.path);
+              return (
+                <div key={idx} className="mb-5">
+                  <label className="mb-1.5 block text-sm font-medium text-zinc-700">{field.label}</label>
+                  <CardsEditor
+                    value={(val as ServiceCard[]) ?? []}
+                    onChange={(v) => handleChange(field.path, v)}
+                  />
+                </div>
+              );
+            }
+
+            if (field.type === "testimonials") {
+              const val = deepGet(content, field.path);
+              return (
+                <div key={idx} className="mb-5">
+                  <label className="mb-1.5 block text-sm font-medium text-zinc-700">{field.label}</label>
+                  <TestimonialsEditor
+                    value={(val as TestimonialCard[]) ?? []}
+                    onChange={(v) => handleChange(field.path, v)}
                   />
                 </div>
               );

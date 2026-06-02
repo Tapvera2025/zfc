@@ -1,7 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function AboutIntroSection() {
+interface AboutIntroSectionProps {
+  heading?: string;
+  body?: string;
+}
+
+export default function AboutIntroSection({
+  heading = "Comprehensive Immigration Services",
+  body = "ZF Canada is a leading immigration consultancy firm in Canada, dedicated to providing professional and reliable pathways to Canada. Established in 1992, we bring over 25 years of experience as a Licensed Immigration Consultant Canada, helping clients achieve their immigration goals successfully.",
+}: AboutIntroSectionProps) {
   return (
     <section className="zfc-about-intro" aria-labelledby="about-intro-heading">
 
@@ -60,24 +68,11 @@ export default function AboutIntroSection() {
 
         {/* Heading */}
         <h2 className="zfc-about-intro__heading" id="about-intro-heading">
-          Comprehensive<br />Immigration Services
+          {heading}
         </h2>
 
         {/* Body */}
-        <p className="zfc-about-intro__body">
-          ZF Canada is a leading immigration consultancy firm in Canada,
-          dedicated to providing professional and reliable pathways to Canada.
-          Established in 1992, we bring over 25 years of experience as a
-          Licensed Immigration Consultant Canada, helping clients achieve
-          their immigration goals successfully.
-        </p>
-        <p className="zfc-about-intro__body">
-          ZF Canada is a leading immigration consultancy firm in Canada,
-          dedicated to providing professional and reliable pathways to Canada.
-          Established in 1992, we bring over 25 years of experience as a
-          Licensed Immigration Consultant Canada, helping clients achieve
-          their immigration goals successfully.
-        </p>
+        <p className="zfc-about-intro__body">{body}</p>
 
         {/* CTA */}
         <Link href="/about" className="zfc-about-intro__cta">

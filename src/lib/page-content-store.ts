@@ -50,6 +50,30 @@ export const PAGE_DEFAULTS: Record<string, unknown> = {
         "Proven track record with thousands of successful applications.",
       ],
     },
+    countries: {
+      heading: "Licensed Canada Immigration\nConsultant serving Applicants\nFrom Anywhere",
+      body: "We help you migrate smoothly with expert guidance and tailored solutions for your needs.",
+      otherCount: "50+",
+    },
+    servicesSection: {
+      heading: "Comprehensive Immigration Services",
+      intro: "",
+      cards: [
+        { title: "Refused Applications",        description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/refused-applications" },
+        { title: "Humanitarian & Compassionate", description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/humanitarian-compassionate" },
+        { title: "Inadmissibility",             description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/inadmissibility" },
+        { title: "Misrepresentation",           description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/misrepresentation" },
+      ],
+    },
+    testimonialsSection: {
+      heading: "WHAT OUR CLIENTS SAY",
+      subheading: "Community development is often linked with community work or community planning, and may involve stakeholders, foundations,",
+    },
+    testimonials: [
+      { photo: "/assets/testimonial-1.png", text: "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in", name: "Amelia", role: "Student", rating: 4 },
+      { photo: "/assets/testimonial-2.png", text: "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in", name: "Waliya", role: "Student", rating: 4 },
+      { photo: "/assets/testimonial-3.png", text: "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in", name: "Ezaz",   role: "Student", rating: 5 },
+    ],
   },
 
   about: {
@@ -322,40 +346,48 @@ export const PAGE_DEFAULTS: Record<string, unknown> = {
   },
 };
 
-// ── In-memory cache ─────────────────────────────────────────────────────────
+// ── Deep-merge: fill missing keys from defaults without overwriting saved values ──
 
-const cache: Record<string, unknown> = {};
+function deepMerge(defaults: unknown, saved: unknown): unknown {
+  if (
+    typeof defaults === "object" && defaults !== null && !Array.isArray(defaults) &&
+    typeof saved   === "object" && saved   !== null && !Array.isArray(saved)
+  ) {
+    const out: Record<string, unknown> = { ...(defaults as Record<string, unknown>) };
+    for (const key of Object.keys(saved as Record<string, unknown>)) {
+      out[key] = deepMerge(
+        (defaults as Record<string, unknown>)[key],
+        (saved   as Record<string, unknown>)[key],
+      );
+    }
+    return out;
+  }
+  return saved !== undefined ? saved : defaults;
+}
 
 // ── Public API ──────────────────────────────────────────────────────────────
 
 export function getPageContent(slug: string): unknown {
-  if (cache[slug] !== undefined) return cache[slug];
-
   ensureDir();
   const fp = filePath(slug);
+  const defaults = PAGE_DEFAULTS[slug] ?? {};
 
   if (!fs.existsSync(fp)) {
-    // Seed default content
-    const defaults = PAGE_DEFAULTS[slug] ?? {};
     fs.writeFileSync(fp, JSON.stringify(defaults, null, 2), "utf8");
-    cache[slug] = defaults;
     return defaults;
   }
 
   try {
-    const raw = fs.readFileSync(fp, "utf8");
-    cache[slug] = JSON.parse(raw);
+    const saved = JSON.parse(fs.readFileSync(fp, "utf8"));
+    return deepMerge(defaults, saved);
   } catch {
-    cache[slug] = PAGE_DEFAULTS[slug] ?? {};
+    return defaults;
   }
-  return cache[slug];
 }
 
 export function setPageContent(slug: string, content: unknown): void {
   ensureDir();
-  const fp = filePath(slug);
-  fs.writeFileSync(fp, JSON.stringify(content, null, 2), "utf8");
-  cache[slug] = content; // update cache
+  fs.writeFileSync(filePath(slug), JSON.stringify(content, null, 2), "utf8");
 }
 
 export function listPages(): { slug: string; label: string }[] {

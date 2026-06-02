@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ServicesHero() {
+interface ServicesHeroProps {
+  title?: string;
+}
+
+export default function ServicesHero({ title = "Our Services" }: ServicesHeroProps) {
   return (
     <section className="zfc-about-hero" aria-label="Our Services hero">
       {/* Background image */}
@@ -21,7 +25,7 @@ export default function ServicesHero() {
 
       {/* Content */}
       <div className="zfc-about-hero__content">
-        <h1 className="zfc-about-hero__title">Our Services</h1>
+        <h1 className="zfc-about-hero__title">{title}</h1>
         <nav className="zfc-about-hero__breadcrumb" aria-label="Breadcrumb">
           <Link href="/" className="zfc-about-hero__breadcrumb-link">Home</Link>
           <svg
@@ -32,7 +36,7 @@ export default function ServicesHero() {
           >
             <polyline points="9 18 15 12 9 6"/>
           </svg>
-          <span className="zfc-about-hero__breadcrumb-current">Our Services</span>
+          <span className="zfc-about-hero__breadcrumb-current">{title}</span>
         </nav>
       </div>
     </section>

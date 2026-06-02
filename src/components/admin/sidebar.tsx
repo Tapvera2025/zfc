@@ -15,8 +15,7 @@ import {
 
 const navItems = [
   { label: "Dashboard",        href: "/admin",             icon: DashboardIcon,   exact: true  },
-  { label: "Pages",            href: "/admin/pages",       icon: PagesIcon,       exact: false },
-  { label: "Blog",             href: "/admin/blog",        icon: BlogIcon,        exact: false },
+{ label: "Blog",             href: "/admin/blog",        icon: BlogIcon,        exact: false },
   { label: "Form Submissions", href: "/admin/submissions", icon: SubmissionsIcon, exact: false },
   { label: "FAQ Inquiries",    href: "/admin/faq-inquiry", icon: MailIcon,        exact: false },
   { label: "SEO",              href: "/admin/seo",         icon: SEOIcon,         exact: false },

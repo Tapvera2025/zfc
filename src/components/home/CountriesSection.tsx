@@ -14,7 +14,17 @@ const bottomCountries = [
   { name: "Oman",         flag: "/assets/flag-oman.png" },
 ];
 
-export default function CountriesSection() {
+interface CountriesSectionProps {
+  heading?: string;
+  body?: string;
+  otherCount?: string;
+}
+
+export default function CountriesSection({
+  heading = "Licensed Canada Immigration\nConsultant serving Applicants\nFrom Anywhere",
+  body = "We help you migrate smoothly with expert guidance and tailored solutions for your needs.",
+  otherCount = "50+",
+}: CountriesSectionProps) {
   return (
     <section className="zfc-countries" aria-label="Countries we offer immigration services">
       <div className="zfc-countries__inner">
@@ -36,15 +46,12 @@ export default function CountriesSection() {
           </div>
 
           <h2 className="zfc-countries__heading">
-            Licensed Canada Immigration<br />
-            Consultant serving Applicants<br />
-            From Anywhere
+            {heading.split("\\n").map((line, i, arr) => (
+              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+            ))}
           </h2>
 
-          <p className="zfc-countries__body">
-            We help you migrate smoothly with expert guidance and tailored
-            solutions for your needs.
-          </p>
+          <p className="zfc-countries__body">{body}</p>
         </div>
 
         {/* Right: country grid + CTA */}
@@ -86,7 +93,7 @@ export default function CountriesSection() {
               </div>
             ))}
             <div className="zfc-countries__cell zfc-countries__cell--more">
-              <span className="zfc-countries__more-number">50+</span>
+              <span className="zfc-countries__more-number">{otherCount}</span>
               <span className="zfc-countries__name">Other Countries</span>
             </div>
           </div>

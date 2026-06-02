@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "title": "About Us",
+    "breadcrumb": "About"
+  },
+  "intro": {
+    "heading": "ZF Canada Immigration Consultants",
+    "body": "ZF Canada is a full-service immigration consulting firm based in Mississauga, Ontario. We are Regulated Canadian Immigration Consultants (RCICs) licensed by the College of Immigration and Citizenship Consultants (CICC). Our mission is simple: to make your immigration journey as smooth, transparent, and successful as possible."
+  },
+  "mission": {
+    "heading": "Our Mission",
+    "body": "We believe every client deserves personalized attention, honest advice, and dedicated advocacy. We stand beside our clients every step of the way — from the initial consultation through to the final decision on their application."
+  },
+  "vision": {
+    "heading": "Our Vision",
+    "body": "To be Canada's most trusted immigration consultancy by providing expert, ethical, and compassionate service to every client, regardless of their background or circumstances."
+  }
+}

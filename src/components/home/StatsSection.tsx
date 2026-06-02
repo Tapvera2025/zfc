@@ -1,33 +1,25 @@
 import Image from "next/image";
 
-const stats = [
-  {
-    id: 1,
-    icon: "/assets/stat-icon-1.svg",
-    number: "567+",
-    label: "Country Operation",
-  },
-  {
-    id: 2,
-    icon: "/assets/stat-icon-visa.svg",
-    number: "16+",
-    label: "Visa Completion",
-  },
-  {
-    id: 3,
-    icon: "/assets/stat-icon-3.svg",
-    number: "26",
-    label: "Immigration Experts",
-  },
-  {
-    id: 4,
-    icon: "/assets/stat-icon-2.svg",
-    number: "759+",
-    label: "Client Satisfaction",
-  },
+const STAT_ICONS = [
+  "/assets/stat-icon-1.svg",
+  "/assets/stat-icon-visa.svg",
+  "/assets/stat-icon-3.svg",
+  "/assets/stat-icon-2.svg",
 ];
 
-export default function StatsSection() {
+const DEFAULT_STATS = [
+  { value: "567+", label: "Country Operation" },
+  { value: "16+",  label: "Visa Completion" },
+  { value: "26",   label: "Immigration Experts" },
+  { value: "759+", label: "Client Satisfaction" },
+];
+
+interface StatsSectionProps {
+  stats?: { label: string; value: string }[];
+}
+
+export default function StatsSection({ stats }: StatsSectionProps) {
+  const items = (stats && stats.length > 0) ? stats : DEFAULT_STATS;
   return (
     <section className="zfc-stats" aria-label="Our achievements">
       {/* Background image */}
@@ -67,15 +59,13 @@ export default function StatsSection() {
 
       {/* Stat items */}
       <div className="zfc-stats__inner">
-        {stats.map((stat, idx) => (
-          <div key={stat.id} className="zfc-stats__item">
-            {/* Vertical divider before each item except the first */}
+        {items.map((stat, idx) => (
+          <div key={idx} className="zfc-stats__item">
             {idx > 0 && <div className="zfc-stats__divider" aria-hidden="true" />}
-
             <div className="zfc-stats__content">
               <div className="zfc-stats__icon" aria-hidden="true">
                 <Image
-                  src={stat.icon}
+                  src={STAT_ICONS[idx % STAT_ICONS.length]}
                   alt=""
                   width={52}
                   height={52}
@@ -83,7 +73,7 @@ export default function StatsSection() {
                 />
               </div>
               <div className="zfc-stats__text">
-                <span className="zfc-stats__number">{stat.number}</span>
+                <span className="zfc-stats__number">{stat.value}</span>
                 <span className="zfc-stats__label">{stat.label}</span>
               </div>
             </div>
