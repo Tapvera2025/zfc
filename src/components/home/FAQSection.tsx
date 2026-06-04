@@ -5,15 +5,22 @@ import Image from "next/image";
 
 type SubmitState = "idle" | "loading" | "success" | "error";
 
-const faqs = [
-  { id: 1, question: "What immigration services does ZF Canada offer?" },
-  { id: 2, question: "Can ZF Canada help with visa refusals?" },
-  { id: 3, question: "Do I need a job offer for immigration?" },
-  { id: 4, question: "How do I know if I qualify for the Start-Up Visa?" },
-  { id: 5, question: "What is LMIA and why do I need it?" },
+const DEFAULT_QUESTIONS = [
+  "What immigration services does ZF Canada offer?",
+  "Can ZF Canada help with visa refusals?",
+  "Do I need a job offer for immigration?",
+  "How do I know if I qualify for the Start-Up Visa?",
+  "What is LMIA and why do I need it?",
 ];
 
-export default function FAQSection() {
+interface FAQSectionProps {
+  heading?: string;
+  questions?: string[];
+}
+
+export default function FAQSection({ heading, questions }: FAQSectionProps) {
+  const resolvedHeading = heading ?? "Frequently Ask Questions";
+  const faqs = (questions ?? DEFAULT_QUESTIONS).map((q, i) => ({ id: i + 1, question: q }));
   const [open, setOpen] = useState<number | null>(null);
   const [question, setQuestion] = useState("");
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
@@ -56,7 +63,7 @@ export default function FAQSection() {
       </div>
 
       <div className="zfc-faq__inner">
-        <h2 className="zfc-faq__heading">Frequently Ask Questions</h2>
+        <h2 className="zfc-faq__heading">{resolvedHeading}</h2>
 
         {/* Left: accordion */}
         <div className="zfc-faq__left">

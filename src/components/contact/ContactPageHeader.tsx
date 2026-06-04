@@ -148,7 +148,7 @@ export default function ContactPageHeader() {
               />
             </div>
 
-            <Link href="/contact" className="zfc-about-nav__cta">
+            <Link href="/book-consultation" className="zfc-about-nav__cta">
               Get Consultation
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                 <polyline points="9 18 15 12 9 6"/>
@@ -188,7 +188,7 @@ export default function ContactPageHeader() {
               </Link>
             ))}
             <Link
-              href="/contact"
+              href="/book-consultation"
               className="zfc-about-nav__cta"
               style={{ marginTop: "8px", justifyContent: "center" }}
               onClick={() => setMobileOpen(false)}

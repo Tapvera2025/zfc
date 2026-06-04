@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 
+const TITLES = ["Mr.", "Mrs.", "Ms.", "Dr.", "Prof."];
+const MARITAL_STATUS = ["Single", "Married", "Common-Law", "Divorced", "Widowed", "Separated"];
+const GENDER = ["Male", "Female", "Prefer not to say"];
+const HOW_HEARD = ["Google / Search Engine", "Social Media", "Referral from a Friend", "Advertisement", "Other"];
 const AREAS = [
   "Immigrate To Canada",
   "Work in Canada",
@@ -11,18 +15,37 @@ const AREAS = [
   "Refusal Cases and Appeal Service",
 ];
 
-const HOW_HEARD = [
-  "Google / Search Engine",
-  "Social Media",
-  "Referral from a Friend",
-  "Advertisement",
-  "Other",
-];
-
-const MARITAL_STATUS = ["Single", "Married", "Common-Law", "Divorced", "Widowed", "Separated"];
-const GENDER = ["Male", "Female", "Prefer not to say"];
-
-type Step = "identify" | "new-form" | "returning-form";
+const EMPTY_FORM = {
+  // Personal
+  title: "", firstName: "", lastName: "", dob: "", age: "", gender: "", maritalStatus: "",
+  // Contact
+  phone: "", email: "", emailConfirm: "", fax: "",
+  // Location
+  citizenship: "", residence: "",
+  // Education
+  highestDegree: "", degreeYears: "", totalEducationYears: "",
+  // Work
+  profession: "", totalWorkYears: "", workInCanada: "",
+  // English
+  hasEnglishTest: "", englishTestType: "", engListening: "", engWriting: "", engSpeaking: "", engReading: "",
+  // French
+  hasFrenchTest: "", frListening: "", frWriting: "", frSpeaking: "", frReading: "",
+  // Spouse
+  spouseName: "", spouseDob: "", spouseEducation: "", spouseWorkExp: "", spouseLanguageInfo: "",
+  // Children
+  numChildren: "", childrenAges: "",
+  // Canada connections
+  relativeInCanada: "", relativeDetails: "",
+  studiedInCanada: "",
+  // Previous applications
+  prevPRorTRV: "", prevApplicationDetails: "", visaRefusals: "",
+  // Finances
+  fundsAvailable: "", realEstate: "",
+  // Travel
+  travelHistory: "",
+  // Other
+  howHeard: "", furtherInfo: "",
+};
 
 interface FreeAssessmentFormProps {
   introHeading?: string;
@@ -31,83 +54,24 @@ interface FreeAssessmentFormProps {
 }
 
 export default function FreeAssessmentForm({
-  introHeading,
-  introBody,
+  introHeading = "Get Your Free Assessment",
+  introBody = "Fill in the form below and one of our Regulated Canadian Immigration Consultants will review your case and get back to you.",
   submitButtonText = "Submit Assessment",
 }: FreeAssessmentFormProps) {
-  const [step, setStep] = useState<Step>("identify");
-  const [identifier, setIdentifier] = useState({ email: "", phone: "" });
-  const [checkLoading, setCheckLoading] = useState(false);
-  const [checkError, setCheckError] = useState("");
-
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    dob: "",
-    gender: "",
-    maritalStatus: "",
-    citizenship: "",
-    residence: "",
-    email: "",
-    emailConfirm: "",
-    phone: "",
-    fax: "",
-    visaRefusals: "",
-    howHeard: "",
-    furtherInfo: "",
-  });
-
+  const [form, setForm] = useState({ ...EMPTY_FORM });
   const [areas, setAreas] = useState<string[]>([]);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
-  async function handleIdentify(e: React.FormEvent) {
-    e.preventDefault();
-    const email = identifier.email.trim();
-    const phone = identifier.phone.trim();
-    if (!email && !phone) {
-      setCheckError("Please enter your email address or phone number to continue.");
-      return;
-    }
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setCheckError("Please enter a valid email address (e.g. name@example.com).");
-      return;
-    }
-    if (phone && phone.replace(/\D/g, "").length < 10) {
-      setCheckError("Please enter a valid phone number (at least 10 digits).");
-      return;
-    }
-    setCheckError("");
-    setCheckLoading(true);
-    try {
-      const res = await fetch("/api/check-assessment", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, phone }),
-      });
-      const json = await res.json();
-      if (!res.ok || !json.success) throw new Error(json.message ?? "Server error");
-      if (json.isNew) {
-        setForm((prev) => ({ ...prev, email, emailConfirm: email, phone }));
-        setStep("new-form");
-      } else {
-        setStep("returning-form");
-      }
-    } catch {
-      setCheckError("Something went wrong. Please try again.");
-    } finally {
-      setCheckLoading(false);
-    }
-  }
+  const isMarried = form.maritalStatus === "Married" || form.maritalStatus === "Common-Law";
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
   }
 
   function toggleArea(area: string) {
-    setAreas((prev) =>
-      prev.includes(area) ? prev.filter((a) => a !== area) : [...prev, area]
-    );
+    setAreas((prev) => prev.includes(area) ? prev.filter((a) => a !== area) : [...prev, area]);
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -127,247 +91,380 @@ export default function FreeAssessmentForm({
       if (res.ok) {
         setStatus("success");
         setMessage("Thank you! We've received your assessment request and will be in touch shortly.");
-        setForm({
-          firstName: "", lastName: "", dob: "", gender: "", maritalStatus: "",
-          citizenship: "", residence: "", email: "", emailConfirm: "",
-          phone: "", fax: "", visaRefusals: "", howHeard: "", furtherInfo: "",
-        });
+        setForm({ ...EMPTY_FORM });
         setAreas([]);
       } else {
-        throw new Error("Server error");
+        throw new Error();
       }
     } catch {
       setStatus("error");
-      setMessage("Something went wrong. Please try again or call us directly at +1 (905) 858-5589.");
+      setMessage("Something went wrong. Please try again or call us at +1 (905) 858-5589.");
     }
   }
 
-  function goBack() {
-    setStep("identify");
-    setCheckError("");
-    setStatus("idle");
-    setMessage("");
+  if (status === "success") {
+    return (
+      <section className="zfc-assessment-section">
+        <div className="zfc-assessment-section__inner">
+          <div className="zfc-assessment-card zfc-af-success-card">
+            <div className="zfc-af-success-icon" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h2 className="zfc-af-success-title">Form Submitted Successfully</h2>
+            <p className="zfc-af-success-sub">{message}</p>
+            <button className="zfc-af-submit" style={{ maxWidth: 320, margin: "0 auto" }}
+              onClick={() => setStatus("idle")}>
+              Submit Another Assessment
+            </button>
+          </div>
+        </div>
+      </section>
+    );
   }
-
-  const defaultTitles: Record<Step, { title: string; sub: string }> = {
-    "identify": {
-      title: introHeading ?? "Get Your Free Assessment",
-      sub: introBody ?? "Enter your email or phone number so we can personalise your experience.",
-    },
-    "new-form": {
-      title: "Tell Us About Yourself",
-      sub: "Fill out the form below and one of our Regulated Canadian Immigration Consultants will review your case.",
-    },
-    "returning-form": {
-      title: "Welcome Back",
-      sub: "We already have a submission on file for you.",
-    },
-  };
-
-  const { title, sub } = defaultTitles[step];
 
   return (
     <section className="zfc-assessment-section">
       <div className="zfc-assessment-section__inner">
-        <h2 className="zfc-assessment-title">{title}</h2>
-        <p className="zfc-assessment-subtitle">{sub}</p>
+        <h2 className="zfc-assessment-title">{introHeading}</h2>
+        <p className="zfc-assessment-subtitle">{introBody}</p>
 
         <div className="zfc-assessment-card">
+          <form className="zfc-assessment-form" onSubmit={handleSubmit} noValidate>
 
-          {/* ════════ STEP 1 — IDENTIFY ════════ */}
-          {step === "identify" && (
-            <form onSubmit={handleIdentify} noValidate>
-              <div className="zfc-af-identify-grid">
+            {/* ── 1. Personal Information ── */}
+            <h3 className="zfc-af-section-heading">Personal Information</h3>
 
-                {/* Email card */}
-                <div className="zfc-af-identify-card">
-                  <div className="zfc-af-identify-card__icon" aria-hidden="true">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="2" y="4" width="20" height="16" rx="2"/>
-                      <path d="M2 7l10 7 10-7"/>
-                    </svg>
-                  </div>
-                  <p className="zfc-af-identify-card__title">Email Address</p>
-                  <p className="zfc-af-identify-card__desc">We&apos;ll use this to look up your previous submission.</p>
-                  <input
-                    className="zfc-af-input"
-                    type="email"
-                    placeholder="your@email.com"
-                    value={identifier.email}
-                    onChange={(e) => setIdentifier((prev) => ({ ...prev, email: e.target.value }))}
-                    autoComplete="email"
-                  />
+            <div className="zfc-af-row">
+              <input className="zfc-af-input" type="text" name="firstName"
+                placeholder="First Name *" value={form.firstName} onChange={handleChange} required />
+              <input className="zfc-af-input" type="text" name="lastName"
+                placeholder="Last Name *" value={form.lastName} onChange={handleChange} required />
+            </div>
+
+            <div className="zfc-af-row zfc-af-row--personal">
+              <div className="zfc-af-field">
+                <label className="zfc-af-field-label" htmlFor="title">Title</label>
+                <div className="zfc-af-select-wrap">
+                  <select id="title" className={`zfc-af-select${form.title ? " has-value" : ""}`}
+                    name="title" value={form.title} onChange={handleChange}>
+                    <option value="">Select</option>
+                    {TITLES.map((t) => <option key={t} value={t}>{t}</option>)}
+                  </select>
                 </div>
-
-                {/* Phone card */}
-                <div className="zfc-af-identify-card">
-                  <div className="zfc-af-identify-card__icon" aria-hidden="true">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.55 10.8 19.79 19.79 0 01.47 2.18 2 2 0 012.47 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-.76a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/>
-                    </svg>
-                  </div>
-                  <p className="zfc-af-identify-card__title">Phone Number</p>
-                  <p className="zfc-af-identify-card__desc">Alternatively, enter your phone number to check your record.</p>
-                  <input
-                    className="zfc-af-input"
-                    type="tel"
-                    placeholder="+1 (000) 000-0000"
-                    value={identifier.phone}
-                    onChange={(e) => setIdentifier((prev) => ({ ...prev, phone: e.target.value }))}
-                    autoComplete="tel"
-                  />
-                </div>
-
               </div>
+              <div className="zfc-af-field">
+                <label className="zfc-af-field-label" htmlFor="dob">Date of Birth</label>
+                <input id="dob" className="zfc-af-input" type="date" name="dob" value={form.dob} onChange={handleChange} />
+              </div>
+              <div className="zfc-af-field">
+                <label className="zfc-af-field-label" htmlFor="age">Age</label>
+                <input id="age" className="zfc-af-input" type="number" name="age"
+                  placeholder="Enter age" min={0} max={120} value={form.age} onChange={handleChange} />
+              </div>
+            </div>
 
-              {checkError && (
-                <div className="zfc-af-message zfc-af-message--error" style={{ marginBottom: "18px" }}>
-                  {checkError}
+            <div className="zfc-af-row">
+              <div className="zfc-af-select-wrap">
+                <select className={`zfc-af-select${form.gender ? " has-value" : ""}`}
+                  name="gender" value={form.gender} onChange={handleChange}>
+                  <option value="">Gender</option>
+                  {GENDER.map((g) => <option key={g} value={g}>{g}</option>)}
+                </select>
+              </div>
+              <div className="zfc-af-select-wrap">
+                <select className={`zfc-af-select${form.maritalStatus ? " has-value" : ""}`}
+                  name="maritalStatus" value={form.maritalStatus} onChange={handleChange}>
+                  <option value="">Marital Status</option>
+                  {MARITAL_STATUS.map((s) => <option key={s} value={s}>{s}</option>)}
+                </select>
+              </div>
+            </div>
+
+            <div className="zfc-af-divider" />
+
+            {/* ── 2. Contact Information ── */}
+            <h3 className="zfc-af-section-heading">Contact Information</h3>
+
+            <div className="zfc-af-row">
+              <input className="zfc-af-input" type="tel" name="phone"
+                placeholder="Contact Phone Number *" value={form.phone} onChange={handleChange} required />
+              <input className="zfc-af-input" type="tel" name="fax"
+                placeholder="Fax (Optional)" value={form.fax} onChange={handleChange} />
+            </div>
+
+            <div className="zfc-af-row">
+              <input className="zfc-af-input" type="email" name="email"
+                placeholder="Email Address *" value={form.email} onChange={handleChange} required />
+              <input className="zfc-af-input" type="email" name="emailConfirm"
+                placeholder="Confirm Email Address *" value={form.emailConfirm} onChange={handleChange} required />
+            </div>
+
+            <div className="zfc-af-row">
+              <input className="zfc-af-input" type="text" name="citizenship"
+                placeholder="Country of Citizenship" value={form.citizenship} onChange={handleChange} />
+              <input className="zfc-af-input" type="text" name="residence"
+                placeholder="Current Country of Residence" value={form.residence} onChange={handleChange} />
+            </div>
+
+            <div className="zfc-af-divider" />
+
+            {/* ── 3. Education ── */}
+            <h3 className="zfc-af-section-heading">Education</h3>
+
+            <div className="zfc-af-row">
+              <input className="zfc-af-input" type="text" name="highestDegree"
+                placeholder="Highest Degree / Diploma Name" value={form.highestDegree} onChange={handleChange} />
+              <input className="zfc-af-input" type="number" name="degreeYears"
+                placeholder="Duration of that Degree (years)" min={0} value={form.degreeYears} onChange={handleChange} />
+            </div>
+
+            <input className="zfc-af-input" type="number" name="totalEducationYears"
+              placeholder="Total Years of Education (School + College + University)" min={0}
+              value={form.totalEducationYears} onChange={handleChange} />
+
+            <div className="zfc-af-divider" />
+
+            {/* ── 4. Work Experience ── */}
+            <h3 className="zfc-af-section-heading">Work Experience</h3>
+
+            <input className="zfc-af-input" type="text" name="profession"
+              placeholder="Profession / Occupation in Last 5 Years" value={form.profession} onChange={handleChange} />
+
+            <div className="zfc-af-row">
+              <input className="zfc-af-input" type="number" name="totalWorkYears"
+                placeholder="Total Years of Work Experience" min={0} value={form.totalWorkYears} onChange={handleChange} />
+              <input className="zfc-af-input" type="text" name="workInCanada"
+                placeholder="Any Work Experience in Canada? (Yes / No / Details)" value={form.workInCanada} onChange={handleChange} />
+            </div>
+
+            <div className="zfc-af-divider" />
+
+            {/* ── 5. English Language Test ── */}
+            <h3 className="zfc-af-section-heading">English Language Proficiency</h3>
+
+            <div className="zfc-af-row">
+              <div className="zfc-af-select-wrap">
+                <select className={`zfc-af-select${form.hasEnglishTest ? " has-value" : ""}`}
+                  name="hasEnglishTest" value={form.hasEnglishTest} onChange={handleChange}>
+                  <option value="">Have you taken IELTS / CELPIP?</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              {form.hasEnglishTest === "yes" && (
+                <div className="zfc-af-select-wrap">
+                  <select className={`zfc-af-select${form.englishTestType ? " has-value" : ""}`}
+                    name="englishTestType" value={form.englishTestType} onChange={handleChange}>
+                    <option value="">Test Type</option>
+                    <option value="IELTS">IELTS</option>
+                    <option value="CELPIP">CELPIP</option>
+                  </select>
                 </div>
               )}
+            </div>
 
-              <button type="submit" className="zfc-af-submit" disabled={checkLoading}>
-                {checkLoading ? "Checking…" : "Continue"}
-              </button>
-            </form>
-          )}
-
-          {/* ════════ STEP 2 — NEW USER FORM ════════ */}
-          {step === "new-form" && (
-            <>
-              <button type="button" className="zfc-af-back" onClick={goBack} aria-label="Go back">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <polyline points="15 18 9 12 15 6"/>
-                </svg>
-                Back
-              </button>
-
-              <form className="zfc-assessment-form" onSubmit={handleSubmit} noValidate>
-
-                <div className="zfc-af-row">
-                  <input className="zfc-af-input" type="text" name="firstName" placeholder="First Name"
-                    value={form.firstName} onChange={handleChange} required />
-                  <input className="zfc-af-input" type="text" name="lastName" placeholder="Last Name"
-                    value={form.lastName} onChange={handleChange} required />
+            {form.hasEnglishTest === "yes" && (
+              <div className="zfc-af-scores-group">
+                <p className="zfc-af-scores-label">Band Scores</p>
+                <div className="zfc-af-row zfc-af-row--4">
+                  <input className="zfc-af-input" type="text" name="engListening"
+                    placeholder="Listening" value={form.engListening} onChange={handleChange} />
+                  <input className="zfc-af-input" type="text" name="engWriting"
+                    placeholder="Writing" value={form.engWriting} onChange={handleChange} />
+                  <input className="zfc-af-input" type="text" name="engSpeaking"
+                    placeholder="Speaking" value={form.engSpeaking} onChange={handleChange} />
+                  <input className="zfc-af-input" type="text" name="engReading"
+                    placeholder="Reading" value={form.engReading} onChange={handleChange} />
                 </div>
-
-                <div className="zfc-af-row">
-                  <input className="zfc-af-input" type="date" name="dob" placeholder="Date of Birth"
-                    value={form.dob} onChange={handleChange} />
-                  <div className="zfc-af-select-wrap">
-                    <select className={`zfc-af-select${form.gender ? " has-value" : ""}`}
-                      name="gender" value={form.gender} onChange={handleChange}>
-                      <option value="">Gender</option>
-                      {GENDER.map((g) => <option key={g} value={g}>{g}</option>)}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="zfc-af-select-wrap">
-                  <select className={`zfc-af-select${form.maritalStatus ? " has-value" : ""}`}
-                    name="maritalStatus" value={form.maritalStatus} onChange={handleChange}>
-                    <option value="">Marital Status</option>
-                    {MARITAL_STATUS.map((s) => <option key={s} value={s}>{s}</option>)}
-                  </select>
-                </div>
-
-                <div className="zfc-af-row">
-                  <input className="zfc-af-input" type="text" name="citizenship"
-                    placeholder="Country of citizenship" value={form.citizenship} onChange={handleChange} />
-                  <input className="zfc-af-input" type="text" name="residence"
-                    placeholder="Current country of residence" value={form.residence} onChange={handleChange} />
-                </div>
-
-                <div className="zfc-af-row">
-                  <input className="zfc-af-input" type="email" name="email" placeholder="Email"
-                    value={form.email} onChange={handleChange} required />
-                  <input className="zfc-af-input" type="email" name="emailConfirm"
-                    placeholder="Email (please confirm again)" value={form.emailConfirm} onChange={handleChange} required />
-                </div>
-
-                <div className="zfc-af-row">
-                  <input className="zfc-af-input" type="tel" name="phone" placeholder="Phone"
-                    value={form.phone} onChange={handleChange} />
-                  <input className="zfc-af-input" type="tel" name="fax" placeholder="Fax (Optional)"
-                    value={form.fax} onChange={handleChange} />
-                </div>
-
-                <textarea className="zfc-af-textarea" name="visaRefusals"
-                  placeholder="Any Previous Visa Refusals and Reasons"
-                  value={form.visaRefusals} onChange={handleChange} />
-
-                <div className="zfc-af-select-wrap">
-                  <select className={`zfc-af-select${form.howHeard ? " has-value" : ""}`}
-                    name="howHeard" value={form.howHeard} onChange={handleChange}>
-                    <option value="">How did you hear about us?</option>
-                    {HOW_HEARD.map((h) => <option key={h} value={h}>{h}</option>)}
-                  </select>
-                </div>
-
-                <div className="zfc-af-divider" />
-
-                <div>
-                  <p className="zfc-af-label">Area of Interest</p>
-                  <div className="zfc-af-checkboxes">
-                    {AREAS.map((area) => (
-                      <label key={area} className="zfc-af-checkbox-item">
-                        <input type="checkbox" checked={areas.includes(area)} onChange={() => toggleArea(area)} />
-                        {area}
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="zfc-af-divider" />
-
-                <textarea className="zfc-af-textarea" name="furtherInfo" placeholder="Further Information"
-                  value={form.furtherInfo} onChange={handleChange} />
-
-                {status === "success" && (
-                  <div className="zfc-af-message zfc-af-message--success">{message}</div>
-                )}
-                {status === "error" && (
-                  <div className="zfc-af-message zfc-af-message--error">{message}</div>
-                )}
-
-                <button type="submit" className="zfc-af-submit" disabled={status === "loading"}>
-                  {status === "loading" ? "Submitting…" : submitButtonText}
-                </button>
-
-              </form>
-            </>
-          )}
-
-          {/* ════════ STEP 3 — RETURNING USER ════════ */}
-          {step === "returning-form" && (
-            <>
-              <button type="button" className="zfc-af-back" onClick={goBack} aria-label="Go back">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <polyline points="15 18 9 12 15 6"/>
-                </svg>
-                Back
-              </button>
-
-              <div className="zfc-af-returning-card">
-                <div className="zfc-af-returning-card__badge">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                  </svg>
-                  Returning Client
-                </div>
-                <h3 className="zfc-af-returning-card__title">We Already Have Your Application</h3>
-                <p className="zfc-af-returning-card__sub">
-                  It looks like you&apos;ve already submitted a free assessment with us. Our team will be in touch with you shortly — no need to submit again.
-                </p>
-                <p className="zfc-af-returning-card__sub" style={{ marginBottom: 0 }}>
-                  If you have an urgent enquiry or would like to update your information, please call us directly at{" "}
-                  <strong>+1 (905) 858-5589</strong>.
-                </p>
               </div>
-            </>
-          )}
+            )}
 
+            <div className="zfc-af-divider" />
+
+            {/* ── 6. French Language Test ── */}
+            <h3 className="zfc-af-section-heading">French Language Proficiency (TEF)</h3>
+
+            <div className="zfc-af-select-wrap" style={{ maxWidth: 400 }}>
+              <select className={`zfc-af-select${form.hasFrenchTest ? " has-value" : ""}`}
+                name="hasFrenchTest" value={form.hasFrenchTest} onChange={handleChange}>
+                <option value="">Have you taken TEF / TCF?</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+
+            {form.hasFrenchTest === "yes" && (
+              <div className="zfc-af-scores-group">
+                <p className="zfc-af-scores-label">Band Scores</p>
+                <div className="zfc-af-row zfc-af-row--4">
+                  <input className="zfc-af-input" type="text" name="frListening"
+                    placeholder="Listening" value={form.frListening} onChange={handleChange} />
+                  <input className="zfc-af-input" type="text" name="frWriting"
+                    placeholder="Writing" value={form.frWriting} onChange={handleChange} />
+                  <input className="zfc-af-input" type="text" name="frSpeaking"
+                    placeholder="Speaking" value={form.frSpeaking} onChange={handleChange} />
+                  <input className="zfc-af-input" type="text" name="frReading"
+                    placeholder="Reading" value={form.frReading} onChange={handleChange} />
+                </div>
+              </div>
+            )}
+
+            <div className="zfc-af-divider" />
+
+            {/* ── 7. Family Information ── */}
+            <h3 className="zfc-af-section-heading">Family Information</h3>
+
+            {isMarried && (
+              <>
+                <p className="zfc-af-hint">Spouse / Partner Information</p>
+                <div className="zfc-af-row">
+                  <div className="zfc-af-field">
+                    <label className="zfc-af-field-label" htmlFor="spouseName">Spouse / Partner Full Name</label>
+                    <input id="spouseName" className="zfc-af-input" type="text" name="spouseName"
+                      placeholder="Full Name" value={form.spouseName} onChange={handleChange} />
+                  </div>
+                  <div className="zfc-af-field">
+                    <label className="zfc-af-field-label" htmlFor="spouseDob">Spouse / Partner Date of Birth</label>
+                    <input id="spouseDob" className="zfc-af-input" type="date" name="spouseDob" value={form.spouseDob} onChange={handleChange} />
+                  </div>
+                </div>
+                <div className="zfc-af-row">
+                  <input className="zfc-af-input" type="text" name="spouseEducation"
+                    placeholder="Spouse Education (Degree & Years)" value={form.spouseEducation} onChange={handleChange} />
+                  <input className="zfc-af-input" type="text" name="spouseWorkExp"
+                    placeholder="Spouse Work Experience (Years)" value={form.spouseWorkExp} onChange={handleChange} />
+                </div>
+                <input className="zfc-af-input" type="text" name="spouseLanguageInfo"
+                  placeholder="Spouse Language Test Scores (IELTS / TEF if applicable)"
+                  value={form.spouseLanguageInfo} onChange={handleChange} />
+              </>
+            )}
+
+            <div className="zfc-af-row">
+              <input className="zfc-af-input" type="number" name="numChildren"
+                placeholder="Number of Children" min={0} value={form.numChildren} onChange={handleChange} />
+              <input className="zfc-af-input" type="text" name="childrenAges"
+                placeholder="Children's Ages (e.g. 3, 7, 12)" value={form.childrenAges} onChange={handleChange} />
+            </div>
+
+            <div className="zfc-af-divider" />
+
+            {/* ── 8. Canada Connections ── */}
+            <h3 className="zfc-af-section-heading">Canada Connections</h3>
+
+            <div className="zfc-af-row">
+              <div className="zfc-af-select-wrap">
+                <select className={`zfc-af-select${form.relativeInCanada ? " has-value" : ""}`}
+                  name="relativeInCanada" value={form.relativeInCanada} onChange={handleChange}>
+                  <option value="">Blood Relative in Canada?</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div className="zfc-af-select-wrap">
+                <select className={`zfc-af-select${form.studiedInCanada ? " has-value" : ""}`}
+                  name="studiedInCanada" value={form.studiedInCanada} onChange={handleChange}>
+                  <option value="">Studied in Canada?</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            </div>
+
+            {form.relativeInCanada === "yes" && (
+              <input className="zfc-af-input" type="text" name="relativeDetails"
+                placeholder="Relative Details (relationship, city, status)"
+                value={form.relativeDetails} onChange={handleChange} />
+            )}
+
+            <div className="zfc-af-divider" />
+
+            {/* ── 9. Previous Applications ── */}
+            <h3 className="zfc-af-section-heading">Previous Immigration Applications</h3>
+
+            <div className="zfc-af-select-wrap" style={{ maxWidth: 400 }}>
+              <select className={`zfc-af-select${form.prevPRorTRV ? " has-value" : ""}`}
+                name="prevPRorTRV" value={form.prevPRorTRV} onChange={handleChange}>
+                <option value="">Applied for PR or TRV before?</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+
+            {form.prevPRorTRV === "yes" && (
+              <textarea className="zfc-af-textarea" name="prevApplicationDetails"
+                placeholder="What happened with that application? (outcome, date, details)"
+                value={form.prevApplicationDetails} onChange={handleChange} />
+            )}
+
+            <textarea className="zfc-af-textarea" name="visaRefusals"
+              placeholder="Any Previous Visa Refusals and Reasons (leave blank if none)"
+              value={form.visaRefusals} onChange={handleChange} />
+
+            <div className="zfc-af-divider" />
+
+            {/* ── 10. Finances ── */}
+            <h3 className="zfc-af-section-heading">Financial Information</h3>
+
+            <div className="zfc-af-row">
+              <input className="zfc-af-input" type="text" name="fundsAvailable"
+                placeholder="Funds Available (Approximate / Investments)" value={form.fundsAvailable} onChange={handleChange} />
+              <input className="zfc-af-input" type="text" name="realEstate"
+                placeholder="Real Estate Property (if any)" value={form.realEstate} onChange={handleChange} />
+            </div>
+
+            <div className="zfc-af-divider" />
+
+            {/* ── 11. Travel History ── */}
+            <h3 className="zfc-af-section-heading">Travel History</h3>
+
+            <textarea className="zfc-af-textarea" name="travelHistory"
+              placeholder="Any Travel History Abroad — mention countries and year of travel (e.g. USA 2019, UK 2022)"
+              value={form.travelHistory} onChange={handleChange} />
+
+            <div className="zfc-af-divider" />
+
+            {/* ── 12. Area of Interest ── */}
+            <h3 className="zfc-af-section-heading">Area of Interest</h3>
+
+            <div className="zfc-af-checkboxes zfc-af-checkboxes--grid">
+              {AREAS.map((area) => (
+                <label key={area} className="zfc-af-checkbox-item">
+                  <input type="checkbox" checked={areas.includes(area)} onChange={() => toggleArea(area)} />
+                  {area}
+                </label>
+              ))}
+            </div>
+
+            <div className="zfc-af-divider" />
+
+            {/* ── 13. Additional Information ── */}
+            <h3 className="zfc-af-section-heading">Additional Information</h3>
+
+            <div className="zfc-af-select-wrap" style={{ maxWidth: 400 }}>
+              <select className={`zfc-af-select${form.howHeard ? " has-value" : ""}`}
+                name="howHeard" value={form.howHeard} onChange={handleChange}>
+                <option value="">How did you hear about us?</option>
+                {HOW_HEARD.map((h) => <option key={h} value={h}>{h}</option>)}
+              </select>
+            </div>
+
+            <textarea className="zfc-af-textarea" name="furtherInfo"
+              placeholder="Any other information you would like to provide"
+              value={form.furtherInfo} onChange={handleChange} />
+
+            {status === "error" && (
+              <div className="zfc-af-message zfc-af-message--error">{message}</div>
+            )}
+
+            <button type="submit" className="zfc-af-submit" disabled={status === "loading"}>
+              {status === "loading" ? "Submitting…" : submitButtonText}
+            </button>
+
+          </form>
         </div>
       </div>
     </section>

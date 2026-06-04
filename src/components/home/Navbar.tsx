@@ -163,7 +163,7 @@ export default function Navbar() {
 
             {/* CTA BUTTON */}
             <Link
-              href="/contact"
+              href="/book-consultation"
               className="bg-[#cc1f1f] hover:bg-[#a81515] text-white font-extrabold rounded-full flex items-center gap-2 transition-all whitespace-nowrap shrink-0"
               style={{ padding: 'clamp(12px, 1vw, 16px) clamp(20px, 1.75vw, 32px)', fontSize: 'clamp(17px, 1.18vw, 23px)' }}
             >
@@ -228,7 +228,7 @@ export default function Navbar() {
                 <div className="relative w-[150px] h-[45px] mx-auto">
                   <Image src="/assets/rcic-badge.png" alt="RCIC-IRB" fill className="object-contain" />
                 </div>
-                <Link href="/contact" className="bg-[#cc1f1f] text-white text-[20px] font-extrabold px-8 py-4 rounded-xl flex items-center justify-center gap-2 text-center w-full">
+                <Link href="/book-consultation" className="bg-[#cc1f1f] text-white text-[20px] font-extrabold px-8 py-4 rounded-xl flex items-center justify-center gap-2 text-center w-full">
                   Get Consultation <span>›</span>
                 </Link>
               </div>

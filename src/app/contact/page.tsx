@@ -19,7 +19,7 @@ export default function ContactPage() {
       <div className="zfc-about-hero-wrap">
         <ServiceDetailHero
           title="Contact Us"
-          image="/assets/services-hero-main.png"
+          image="/assets/our-client-hero.png"
           breadcrumb="Contact us"
         />
       </div>

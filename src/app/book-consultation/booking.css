@@ -1,0 +1,818 @@
+/* ════════════════════════════════════════════════════════════
+   ZF Canada – Book a Consultation Wizard
+   ════════════════════════════════════════════════════════════ */
+
+:root {
+  --bk-red:        #cc1f1f;
+  --bk-red-dark:   #a81515;
+  --bk-red-light:  #fde8e8;
+  --bk-navy:       #0b1535;
+  --bk-gray:       #f4f4f5;
+  --bk-border:     #e5e5e5;
+  --bk-text:       #1a1a1a;
+  --bk-muted:      #6b7280;
+  --bk-font-h:     var(--font-advent-pro), system-ui, sans-serif;
+  --bk-font-b:     var(--font-itim), system-ui, sans-serif;
+  --bk-trans:      200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Page wrapper ── */
+.zfc-booking-page {
+  background: #f9f9f9;
+  min-height: 100vh;
+  font-family: var(--bk-font-b);
+}
+
+/* ── Section ── */
+.zfc-booking-section {
+  padding: clamp(40px, 5vw, 80px) clamp(16px, 4vw, 56px);
+  background: #f4f4f5;
+  min-height: 70vh;
+}
+
+/* ── Inner: sidebar + content ── */
+.zfc-booking__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* ════════════════════════════════════════════════════════════
+   SIDEBAR
+   ════════════════════════════════════════════════════════════ */
+.zfc-booking__sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  background: var(--bk-red);
+  padding: 40px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.zfc-booking__sidebar-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  padding-bottom: 24px;
+}
+
+.zfc-booking__sidebar-title {
+  font-family: var(--bk-font-h);
+  font-size: clamp(1.3rem, 1.8vw, 1.65rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
+
+.zfc-booking__sidebar-sub {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Steps list ── */
+.zfc-booking__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.zfc-booking__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  transition: background var(--bk-trans);
+}
+
+.zfc-booking__step--active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.zfc-booking__step-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--bk-trans), border-color var(--bk-trans);
+}
+
+.zfc-booking__step--active .zfc-booking__step-num {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: var(--bk-red);
+}
+
+.zfc-booking__step--done .zfc-booking__step-num {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.9);
+  color: var(--bk-red);
+}
+
+.zfc-booking__step-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  padding-top: 3px;
+}
+
+.zfc-booking__step-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.3;
+}
+
+.zfc-booking__step--active .zfc-booking__step-label {
+  color: #ffffff;
+}
+
+.zfc-booking__step-value {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.62);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+/* ── Sidebar contact ── */
+.zfc-booking__sidebar-contact {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.zfc-booking__sidebar-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.zfc-booking__sidebar-contact-link {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: color var(--bk-trans);
+}
+.zfc-booking__sidebar-contact-link:hover {
+  color: #ffffff;
+}
+
+/* ════════════════════════════════════════════════════════════
+   CONTENT AREA
+   ════════════════════════════════════════════════════════════ */
+.zfc-booking__content {
+  flex: 1;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+}
+
+/* ── Pane ── */
+.zfc-booking__pane {
+  padding: 44px 44px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+.zfc-booking__pane-title {
+  font-family: var(--bk-font-h);
+  font-size: clamp(1.4rem, 2vw, 1.9rem);
+  font-weight: 700;
+  color: var(--bk-navy);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.zfc-booking__pane-sub {
+  font-size: 14px;
+  color: var(--bk-muted);
+  margin: -16px 0 0;
+  line-height: 1.5;
+}
+
+/* ════════════════════════════════════════════════════════════
+   STEP 1 — SERVICE SELECTION (DROPDOWN)
+   ════════════════════════════════════════════════════════════ */
+.zfc-booking__service-select-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 520px;
+}
+
+.zfc-booking__service-select-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.zfc-booking__select-outer {
+  position: relative;
+}
+
+.zfc-booking__select {
+  width: 100%;
+  height: 52px;
+  padding: 0 44px 0 16px;
+  border: 1.5px solid var(--bk-border);
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--bk-text);
+  background: #fff;
+  font-family: var(--bk-font-b);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--bk-trans), box-shadow var(--bk-trans);
+}
+
+.zfc-booking__select:focus {
+  border-color: var(--bk-red);
+  box-shadow: 0 0 0 3px rgba(204, 31, 31, 0.1);
+}
+
+.zfc-booking__select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--bk-muted);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Service preview card (shown after selection) ── */
+.zfc-booking__service-preview {
+  background: var(--bk-red-light);
+  border: 1.5px solid #f5c2c2;
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.zfc-booking__service-preview-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.zfc-booking__service-preview-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--bk-text);
+}
+
+.zfc-booking__service-preview-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--bk-red);
+}
+
+.zfc-booking__service-preview-note {
+  font-size: 12.5px;
+  color: var(--bk-muted);
+  margin: 0;
+}
+
+/* ════════════════════════════════════════════════════════════
+   STEP 2 — CALENDAR
+   ════════════════════════════════════════════════════════════ */
+.zfc-booking__calendar {
+  background: #fff;
+  border: 1.5px solid var(--bk-border);
+  border-radius: 14px;
+  padding: 20px;
+  max-width: 420px;
+}
+
+.zfc-booking__cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.zfc-booking__cal-month {
+  font-family: var(--bk-font-h);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--bk-navy);
+  letter-spacing: 0.02em;
+}
+
+.zfc-booking__cal-nav {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1.5px solid var(--bk-border);
+  background: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--bk-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--bk-trans), color var(--bk-trans), background var(--bk-trans);
+  line-height: 1;
+}
+.zfc-booking__cal-nav:hover {
+  border-color: var(--bk-red);
+  color: var(--bk-red);
+  background: var(--bk-red-light);
+}
+
+.zfc-booking__cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.zfc-booking__cal-dow {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--bk-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.zfc-booking__cal-empty {
+  height: 36px;
+}
+
+.zfc-booking__cal-day {
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 13.5px;
+  color: var(--bk-text);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--bk-trans), color var(--bk-trans);
+}
+
+.zfc-booking__cal-day:hover:not(:disabled) {
+  background: var(--bk-red-light);
+  color: var(--bk-red);
+}
+
+.zfc-booking__cal-day--today {
+  background: #f3f4f6;
+  font-weight: 700;
+}
+
+.zfc-booking__cal-day--selected {
+  background: var(--bk-red) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+.zfc-booking__cal-day--disabled {
+  color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.zfc-booking__cal-day--weekend {
+  color: #d1d5db;
+}
+
+/* ── Time slots ── */
+.zfc-booking__timeslots {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.zfc-booking__timeslots-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--bk-navy);
+  margin: 0;
+}
+
+.zfc-booking__timeslots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 8px;
+  max-width: 500px;
+}
+
+.zfc-booking__slot {
+  padding: 10px 8px;
+  border: 1.5px solid var(--bk-border);
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--bk-text);
+  text-align: center;
+  transition: border-color var(--bk-trans), background var(--bk-trans), color var(--bk-trans);
+}
+
+.zfc-booking__slot:hover {
+  border-color: var(--bk-red);
+  background: var(--bk-red-light);
+  color: var(--bk-red);
+}
+
+.zfc-booking__slot--selected {
+  border-color: var(--bk-red);
+  background: var(--bk-red);
+  color: #ffffff;
+}
+
+/* ════════════════════════════════════════════════════════════
+   STEP 3 — YOUR INFORMATION
+   ════════════════════════════════════════════════════════════ */
+.zfc-booking__form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  flex: 1;
+}
+
+.zfc-booking__form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.zfc-booking__form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.zfc-booking__form-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--bk-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.zfc-booking__form-input {
+  height: 44px;
+  padding: 0 14px;
+  border: 1.5px solid var(--bk-border);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--bk-text);
+  background: #fff;
+  font-family: var(--bk-font-b);
+  transition: border-color var(--bk-trans), box-shadow var(--bk-trans);
+  outline: none;
+}
+
+.zfc-booking__form-input:focus {
+  border-color: var(--bk-red);
+  box-shadow: 0 0 0 3px rgba(204, 31, 31, 0.1);
+}
+
+.zfc-booking__form-input::placeholder {
+  color: #b8bcc4;
+}
+
+/* ── Booking summary ── */
+.zfc-booking__summary {
+  background: #f9f9f9;
+  border: 1.5px solid var(--bk-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.zfc-booking__summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+}
+
+.zfc-booking__summary-row--total {
+  border-top: 1px solid var(--bk-border);
+  padding-top: 10px;
+  margin-top: 2px;
+}
+
+.zfc-booking__summary-label {
+  color: var(--bk-muted);
+  font-weight: 500;
+}
+
+.zfc-booking__summary-value {
+  font-weight: 600;
+  color: var(--bk-text);
+  text-align: right;
+  max-width: 260px;
+}
+
+.zfc-booking__summary-price {
+  font-weight: 700;
+  color: var(--bk-red);
+  font-size: 16px;
+}
+
+/* ── Error ── */
+.zfc-booking__error {
+  font-size: 13px;
+  color: #cc1f1f;
+  margin: 0;
+  background: #fde8e8;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   NAVIGATION BUTTONS
+   ════════════════════════════════════════════════════════════ */
+.zfc-booking__nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.zfc-booking__btn-next {
+  padding: 0 28px;
+  height: 44px;
+  background: var(--bk-red);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  font-family: var(--bk-font-b);
+  transition: background var(--bk-trans), opacity var(--bk-trans);
+}
+
+.zfc-booking__btn-next:hover:not(:disabled) {
+  background: var(--bk-red-dark);
+}
+
+.zfc-booking__btn-next:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.zfc-booking__btn-back {
+  padding: 0 20px;
+  height: 44px;
+  background: transparent;
+  color: var(--bk-muted);
+  border: 1.5px solid var(--bk-border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--bk-font-b);
+  transition: border-color var(--bk-trans), color var(--bk-trans);
+}
+
+.zfc-booking__btn-back:hover {
+  border-color: var(--bk-red);
+  color: var(--bk-red);
+}
+
+/* ════════════════════════════════════════════════════════════
+   STEP 4 — CONFIRMATION
+   ════════════════════════════════════════════════════════════ */
+.zfc-booking__pane--confirm {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.zfc-booking__confirm-icon {
+  width: 80px;
+  height: 80px;
+  background: #dcfce7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zfc-booking__confirm-title {
+  font-family: var(--bk-font-h);
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 700;
+  color: var(--bk-navy);
+  margin: 0;
+}
+
+.zfc-booking__confirm-sub {
+  font-size: 14.5px;
+  color: var(--bk-muted);
+  max-width: 480px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.zfc-booking__confirm-details {
+  background: #f9f9f9;
+  border: 1.5px solid var(--bk-border);
+  border-radius: 12px;
+  padding: 20px 28px;
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.zfc-booking__confirm-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.zfc-booking__confirm-label {
+  color: var(--bk-muted);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.zfc-booking__confirm-value {
+  font-weight: 600;
+  color: var(--bk-text);
+  text-align: right;
+}
+
+/* ── Add to calendar ── */
+.zfc-booking__calendar-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.zfc-booking__calendar-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--bk-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.zfc-booking__calendar-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.zfc-booking__cal-btn {
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: opacity var(--bk-trans), transform var(--bk-trans);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.zfc-booking__cal-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.zfc-booking__cal-btn--google  { background: #4285F4; color: #fff; }
+.zfc-booking__cal-btn--outlook { background: #0078D4; color: #fff; }
+.zfc-booking__cal-btn--yahoo   { background: #7B0099; color: #fff; }
+.zfc-booking__cal-btn--apple   { background: #1a1a1a; color: #fff; }
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .zfc-booking__inner {
+    flex-direction: column;
+    border-radius: 16px;
+  }
+
+  .zfc-booking__sidebar {
+    width: 100%;
+    padding: 28px 20px;
+    gap: 20px;
+  }
+
+  .zfc-booking__steps {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .zfc-booking__step {
+    flex: 1;
+    min-width: 140px;
+    padding: 10px 12px;
+  }
+
+  .zfc-booking__step-value {
+    display: none;
+  }
+
+  .zfc-booking__pane {
+    padding: 24px 20px;
+  }
+
+  .zfc-booking__form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .zfc-booking__cal-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .zfc-booking__calendar {
+    max-width: 100%;
+  }
+
+  .zfc-booking__timeslots-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .zfc-booking__confirm-details {
+    padding: 16px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .zfc-booking-section {
+    padding: 24px 12px;
+  }
+
+  .zfc-booking__steps {
+    flex-direction: column;
+  }
+
+  .zfc-booking__step-value {
+    display: block;
+  }
+
+  .zfc-booking__timeslots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .zfc-booking__calendar-row {
+    gap: 8px;
+  }
+
+  .zfc-booking__cal-btn {
+    font-size: 11.5px;
+    padding: 7px 12px;
+  }
+}

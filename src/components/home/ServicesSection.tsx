@@ -1,14 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const CARD_ICONS = [
-  "/assets/service-icon-1.svg",
-  "/assets/service-icon-2.svg",
-  "/assets/service-icon-3.svg",
-  "/assets/service-icon-4.svg",
-];
-
-type ServiceCard = { title: string; description: string; href: string };
+type ServiceCard = { title: string; description: string; href: string; image?: string };
 
 interface ServicesSectionProps {
   heading?: string;
@@ -17,77 +10,68 @@ interface ServicesSectionProps {
 }
 
 const DEFAULT_CARDS: ServiceCard[] = [
-  { title: "Refused Applications",        description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/refused-applications" },
-  { title: "Humanitarian & Compassionate",description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/humanitarian-compassionate" },
-  { title: "Inadmissibility",             description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/inadmissibility" },
-  { title: "Misrepresentation",           description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/misrepresentation" },
+  { title: "Refused Applications",         description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/refused-applications",        image: "/assets/svc-refused-applications.svg" },
+  { title: "Humanitarian & Compassionate",  description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/humanitarian-compassionate", image: "/assets/svc-humanitarian-compassionate.svg" },
+  { title: "Inadmissibility",               description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/inadmissibility",             image: "/assets/svc-inadmissibility.svg" },
+  { title: "Misrepresentation",             description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/misrepresentation",           image: "/assets/svc-misrepresentation.svg" },
+  { title: "Sponsorship",                   description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/sponsorship",                 image: "/assets/svc-sponsorship.svg" },
+  { title: "Refugee Claim Application",     description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/refugee-claim",               image: "/assets/svc-6.png" },
+  { title: "IRB – Hearing & Appeals",       description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/irb-hearings",               image: "/assets/svc-irb-hearings.svg" },
+  { title: "Temporary Residence",           description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/temporary-residence",         image: "/assets/svc-temporary-residence.svg" },
+  { title: "PR Card / Citizenship",         description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/pr-card-citizenship",         image: "/assets/svc-pr-card-citizenship.svg" },
+  { title: "Permanent Residency",           description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/permanent-residency",         image: "/assets/svc-permanent-residency.svg" },
 ];
 
 export default function ServicesSection({
-  heading = "Comprehensive Immigration Services",
+  heading = "ZF Immigration Solutions & Immigration Consultants offer services tailored to your needs",
   intro,
   cards,
 }: ServicesSectionProps) {
-  const items = cards !== undefined ? cards : DEFAULT_CARDS;
+  const items = cards !== undefined && cards.length > 0 ? cards : DEFAULT_CARDS;
 
   return (
-    <section className="zfc-services" aria-label="Our immigration services">
-      {/* Badge */}
-      <div className="zfc-services__badge-row">
-        <span className="zfc-services__badge">
+    <section className="zfc-svc-list" aria-label="Our immigration services">
+      <div className="zfc-svc-list__header">
+        <div className="zfc-svc-list__badge">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
+            width="13" height="13" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" strokeWidth="2.5"
+            strokeLinecap="round" strokeLinejoin="round"
             aria-hidden="true"
           >
-            <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
           </svg>
           OUR SERVICES
-        </span>
+        </div>
+        <h2 className="zfc-svc-list__heading">{heading}</h2>
+        {intro && <p className="zfc-svc-list__intro">{intro}</p>}
       </div>
 
-      {/* Heading */}
-      <h2 className="zfc-services__heading">{heading}</h2>
-      {intro && <p className="zfc-services__intro">{intro}</p>}
-
-      {/* Body: cards + image */}
-      <div className="zfc-services__body">
-
-        {/* Left — card grid */}
-        <div className="zfc-services__grid">
-          {items.map((svc, i) => (
-            <article key={i} className="zfc-service-card">
-              <div className="zfc-service-card__icon" aria-hidden="true">
-                <Image
-                  src={CARD_ICONS[i % CARD_ICONS.length]}
-                  alt=""
-                  width={38}
-                  height={38}
-                  className="object-contain"
-                />
-              </div>
-              <h3 className="zfc-service-card__title">{svc.title}</h3>
-              <p className="zfc-service-card__desc">{svc.description}</p>
-              <Link href={svc.href} className="zfc-service-card__link">
+      <div className="zfc-svc-list__grid">
+        {items.map((svc, i) => (
+          <article key={i} className="zfc-svc-card">
+            <div className="zfc-svc-card__img-wrap">
+              <Image
+                src={svc.image || "/assets/svc-refused-applications.svg"}
+                alt={svc.title}
+                fill
+                sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 25vw"
+                className="zfc-svc-card__img"
+              />
+            </div>
+            <div className="zfc-svc-card__body">
+              <h3 className="zfc-svc-card__title">{svc.title}</h3>
+              <p className="zfc-svc-card__desc">{svc.description}</p>
+              <Link href={svc.href} className="zfc-svc-card__cta">
                 Explore More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                </svg>
               </Link>
-            </article>
-          ))}
-        </div>
-
-        {/* Right — provided composite image */}
-        <div className="zfc-services__photo-outer">
-          <Image
-            src="/assets/home-services-composite.png"
-            alt="No. 1 Immigration Service"
-            width={518}
-            height={729}
-            sizes="(max-width: 1024px) 100vw, 38vw"
-            className="zfc-services__photo-composite"
-          />
-        </div>
-
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

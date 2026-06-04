@@ -1680,3 +1680,49 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
     padding-right: clamp(24px, 6.25vw, 8rem);
   }
 }
+
+/* Shared header responsive hardening. */
+@media (max-width: 1360px) {
+  .zfc-about-nav__pill {
+    display: none;
+  }
+
+  .zfc-about-nav__hamburger {
+    display: flex;
+  }
+
+  .zfc-about-header {
+    padding: 8px 12px 0;
+  }
+
+  .zfc-about-hero-wrap {
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .zfc-about-nav__mobile {
+    width: 100%;
+    max-height: calc(100svh - 72px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .zfc-about-nav__mobile-link {
+    overflow-wrap: anywhere;
+  }
+
+  .zfc-about-hero__content {
+    min-width: 0;
+    padding: 32px 20px;
+  }
+
+  .zfc-about-hero__title {
+    font-size: clamp(2.4rem, 13vw, 4rem);
+    overflow-wrap: anywhere;
+  }
+
+  .zfc-about-hero__breadcrumb {
+    flex-wrap: wrap;
+  }
+}

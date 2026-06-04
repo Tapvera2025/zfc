@@ -263,7 +263,7 @@ function ArrayEditor({
 }
 
 /* ── Cards editor ────────────────────────────────────────────── */
-type ServiceCard = { title: string; description: string; href: string };
+type ServiceCard = { title: string; description: string; href: string; image?: string };
 
 function CardsEditor({
   value,
@@ -278,7 +278,7 @@ function CardsEditor({
     onChange(cards.map((c, idx) => idx === i ? { ...c, [field]: v } : c));
   }
   function add() {
-    onChange([...cards, { title: "", description: "", href: "" }]);
+    onChange([...cards, { title: "", description: "", href: "", image: "" }]);
   }
   function remove(i: number) {
     onChange(cards.filter((_, idx) => idx !== i));
@@ -319,6 +319,12 @@ function CardsEditor({
               placeholder="Description"
               value={card.description}
               onChange={(e) => update(i, "description", e.target.value)}
+            />
+            <input
+              className="block w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-500 focus:border-red-400 focus:outline-none focus:ring-2 focus:ring-red-100"
+              placeholder="Image path (e.g. /assets/svc-1.png)"
+              value={card.image ?? ""}
+              onChange={(e) => update(i, "image", e.target.value)}
             />
             <input
               className="block w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-500 focus:border-red-400 focus:outline-none focus:ring-2 focus:ring-red-100"

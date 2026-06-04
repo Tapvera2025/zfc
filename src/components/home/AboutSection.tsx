@@ -1,125 +1,86 @@
-import Image from "next/image";
 import Link from "next/link";
 
-const DEFAULT_FEATURES = [
-  "Expert Knowledge",
-  "Transparent Advice",
-  "Higher Success Rate",
-  "End-to-End Support",
-  "Personalized Guidance",
-  "Global Expertise",
-];
+const DEFAULT_HEADING = "Top Rated Immigration Consultants Canada for Trusted Visa & PR Services";
+
+const DEFAULT_BODY = `ZF Canada is a leading immigration consultancy firm in Canada, dedicated to providing professional and reliable pathways to Canada. Established in 1992, we bring over 25 years of experience as a Licensed Immigration Consultant Canada, helping clients achieve their immigration goals successfully.
+Under the leadership of Sufian Ahmed (RCIC-IRB) - a trusted Immigration Consultant in Canada in good standing with the College of Immigration and Citizenship Consultants (CICC) - our team has grown into one of the Best Immigration Agency Canada.
+We are widely recognized as a reliable Canada Visa Consultant Canada, offering expert advice, personalized representation, and a high success rate. Our clients trust us for honest and ethical services across multiple immigration pathways, including:
+• Express Entry Consultant Canada services
+• Family Sponsorship (including Spousal Sponsorship in Canada)
+• Study Permit Consultant Canada guidance
+• Super Visa & Temporary Visa
+• Work Permit Consultant Canada solutions
+• LMIA & PNP Applications
+• Canadian Citizenship
+At ZF Canada, we strictly follow professional codes of conduct. Every step of the way, we remain honest, pragmatic, efficient, consistent, unbiased, and genuine. This commitment sets us apart as a Licensed Immigration Consultant Canada.`;
 
 interface AboutSectionProps {
   heading?: string;
   body?: string;
-  whyUsHeading?: string;
-  points?: string[];
 }
 
-/** Red double-chevron >> icon extracted from Group_16.svg */
-const DoubleChevron = () => (
-  <svg
-    width="16"
-    height="14"
-    viewBox="0 0 16 14"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-    className="zfc-about__chevron"
-  >
-    <path
-      d="M1.988 0.391C1.44 -0.131 0.55 -0.131 0 0.391C-0.548 0.913 -0.548 1.759 0 2.282L4.968 7.008L0 11.733C-0.548 12.255 -0.548 13.101 0 13.624C0.55 14.146 1.44 14.146 1.988 13.624L6.956 8.898C8.054 7.854 8.054 6.162 6.956 5.117L1.988 0.391Z"
-      fill="#cc1f1f"
-    />
-    <path
-      d="M9.268 0.391C8.72 -0.131 7.83 -0.131 7.281 0.391C6.732 0.913 6.732 1.759 7.281 2.282L12.249 7.008L7.281 11.733C6.732 12.255 6.732 13.101 7.281 13.624C7.83 14.146 8.72 14.146 9.268 13.624L14.236 8.898C15.334 7.854 15.334 6.162 14.236 5.117L9.268 0.391Z"
-      fill="#cc1f1f"
-    />
-  </svg>
-);
-
 export default function AboutSection({
-  heading = "We help Making Your Dream Into Reality",
-  body = "ZF Canada is a leading immigration consultancy firm in Canada, dedicated to providing professional and reliable pathways to Canada. Established in 1992, we bring over 25 years of experience as a Licensed Immigration Consultant Canada, helping clients achieve their immigration goals successfully.",
-  whyUsHeading,
-  points,
+  heading = DEFAULT_HEADING,
+  body = DEFAULT_BODY,
 }: AboutSectionProps) {
-  const features = (points && points.length > 0 ? points : DEFAULT_FEATURES).map((label) => ({ label }));
+  const lines = body.split("\n").filter((l) => l.trim() !== "");
+
+  type Block = { type: "p"; text: string } | { type: "ul"; items: string[] };
+  const blocks: Block[] = [];
+
+  for (const line of lines) {
+    if (line.startsWith("• ")) {
+      const last = blocks[blocks.length - 1];
+      if (last?.type === "ul") {
+        last.items.push(line.slice(2));
+      } else {
+        blocks.push({ type: "ul", items: [line.slice(2)] });
+      }
+    } else {
+      blocks.push({ type: "p", text: line });
+    }
+  }
 
   return (
     <section className="zfc-about" aria-label="About ZF Canada">
       <div className="zfc-about__inner">
-        {/* ── Left: portrait photo ── */}
+        {/* ── Left: video ── */}
         <div className="zfc-about__photo-wrap">
-          <Image
-            src="/assets/services-photo.png"
-            alt="Happy ZF Canada immigration clients at the airport"
-            fill
-            sizes="(max-width: 1024px) 100vw, 42vw"
-            className="object-cover object-center"
-            priority
-          />
+          <video
+            className="zfc-about__video"
+            poster="/assets/about-zfc-video-poster.png"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Know more about ZF Canada"
+          >
+            <source src="/assets/about-zfc-video.mp4" type="video/mp4" />
+          </video>
         </div>
 
         {/* ── Right: content ── */}
         <div className="zfc-about__content">
-          {/* Badge */}
-          <div className="zfc-about__badge-row">
-            <span className="zfc-about__badge">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
-              </svg>
-              ABOUT US
-            </span>
+          <h2 className="zfc-about__heading">{heading}</h2>
+
+          <div className="zfc-about__body">
+            {blocks.map((block, i) =>
+              block.type === "ul" ? (
+                <ul key={i}>
+                  {block.items.map((item, j) => <li key={j}>{item}</li>)}
+                </ul>
+              ) : (
+                <p key={i}>{block.text}</p>
+              )
+            )}
           </div>
 
-          {/* Heading */}
-          <h2 className="zfc-about__heading">
-            {heading}
-          </h2>
-
-          {/* Body */}
-          <p className="zfc-about__body">
-            {body}
-          </p>
-
-          {/* Why Choose Us heading */}
-          {whyUsHeading && (
-            <p className="zfc-about__why-heading">{whyUsHeading}</p>
-          )}
-
-          {/* Features box */}
-          <div className="zfc-about__features">
-            {features.map((f) => (
-              <div key={f.label} className="zfc-about__feature-item">
-                <DoubleChevron />
-                <span>{f.label}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <Link href="/about" className="zfc-about__cta">
-            {/* Info circle icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                fillRule="evenodd"
-                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
-                clipRule="evenodd"
-              />
+          <Link href="/free-assessment" className="zfc-about__cta">
+            <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor" aria-hidden="true">
+              <path d="M0 0L14 8L0 16V0Z" />
             </svg>
-            LEARN MORE
+            START YOUR IMMIGRATION JOURNEY
           </Link>
         </div>
       </div>

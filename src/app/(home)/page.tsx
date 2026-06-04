@@ -3,10 +3,15 @@ export const dynamic = "force-dynamic";
 import HeroSection from "@/components/home/HeroSection";
 import ServicesPageHeader from "@/components/services/ServicesPageHeader";
 import AboutSection from "@/components/home/AboutSection";
+import HomeWhoWeAreSection from "@/components/home/HomeWhoWeAreSection";
 import ServicesSection from "@/components/home/ServicesSection";
+import AssessmentBannerSection from "@/components/home/AssessmentBannerSection";
 import StatsSection from "@/components/home/StatsSection";
 import CountriesSection from "@/components/home/CountriesSection";
+import VisaStepsSection from "@/components/home/VisaStepsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
+import MapSection from "@/components/home/MapSection";
+import VideoTestimonialsSection from "@/components/home/VideoTestimonialsSection";
 import BlogsSection from "@/components/home/BlogsSection";
 import ContactSection from "@/components/home/ContactSection";
 import FAQSection from "@/components/home/FAQSection";
@@ -14,14 +19,19 @@ import Footer from "@/components/home/Footer";
 import { getPageContent } from "@/lib/page-content-store";
 
 type HomeContent = {
-  hero?: { title?: string; subtitle?: string; ctaText?: string; ctaHref?: string };
+  hero?: { title?: string; subtitle?: string; description?: string; ctaText?: string; ctaHref?: string };
   about?: { heading?: string; body?: string };
   whyUs?: { heading?: string; points?: string[] };
   stats?: { label: string; value: string }[];
-  servicesSection?: { heading?: string; intro?: string; cards?: { title: string; description: string; href: string }[] };
+  servicesSection?: { heading?: string; intro?: string; cards?: { title: string; description: string; href: string; image?: string }[] };
   countries?: { heading?: string; body?: string; otherCount?: string };
   testimonialsSection?: { heading?: string; subheading?: string };
   testimonials?: { photo: string; text: string; name: string; role: string; rating: number }[];
+  whyChooseSection?: { heading?: string; cards?: { title: string; body: string }[] };
+  visaStepsSection?: { heading?: string; ctaText?: string; steps?: { title: string; body: string }[] };
+  videoTestimonialsSection?: { reviews?: { text: string; name: string; role: string; rating: number }[] };
+  faqSection?: { heading?: string; questions?: string[] };
+  mapSection?: { embedUrl?: string };
 };
 
 export default function HomePage() {
@@ -42,6 +52,7 @@ export default function HomePage() {
           <HeroSection
             title={cms?.hero?.title}
             subtitle={cms?.hero?.subtitle}
+            description={cms?.hero?.description}
             ctaText={cms?.hero?.ctaText}
             ctaHref={cms?.hero?.ctaHref}
           />
@@ -52,25 +63,28 @@ export default function HomePage() {
       <AboutSection
         heading={cms?.about?.heading}
         body={cms?.about?.body}
-        whyUsHeading={cms?.whyUs?.heading}
-        points={cms?.whyUs?.points}
       />
+      <HomeWhoWeAreSection />
       <ServicesSection
         heading={cms?.servicesSection?.heading}
         intro={cms?.servicesSection?.intro}
         cards={cms?.servicesSection?.cards}
       />
+      <AssessmentBannerSection />
       <StatsSection stats={cms?.stats} />
       <CountriesSection
         heading={cms?.countries?.heading}
         body={cms?.countries?.body}
         otherCount={cms?.countries?.otherCount}
       />
+      <VisaStepsSection />
       <TestimonialsSection
         heading={cms?.testimonialsSection?.heading}
         subheading={cms?.testimonialsSection?.subheading}
         testimonials={cms?.testimonials}
       />
+      <MapSection />
+      <VideoTestimonialsSection />
       <BlogsSection />
       <ContactSection />
       <FAQSection />

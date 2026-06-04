@@ -1,14 +1,14 @@
 {
   "hero": {
     "title": "Welcome to \nZF Canada",
-    "subtitle": "Trusted & Licensed Immigration \nConsultant Firm in Canada",
-    "ctaText": "Get Free Consultation",
-    "ctaHref": "/free-assessment"
+    "subtitle": "Immigration Consultants Canada",
+    "description": "Book a consultation with trusted immigration consultants in Canada to explore your visa, PR, and permit options.",
+    "ctaText": "Explore More",
+    "ctaHref": "/about"
   },
   "about": {
-    "heading": "Know More About ZF Canada",
-    "body": "ZF Canada Immigration Consultants is a full-service immigration firm based in Mississauga, Ontario. Our team of Regulated Canadian Immigration Consultants (RCICs) has helped thousands of clients achieve their Canadian immigration goals.",
-    "highlight": "Trusted by thousands of immigrants across Canada."
+    "heading": "Top Rated Immigration Consultants Canada for Trusted Visa & PR Services",
+    "body": "ZF Canada is a leading immigration consultancy firm in Canada, dedicated to providing professional and reliable pathways to Canada. Established in 1992, we bring over 25 years of experience as a Licensed Immigration Consultant Canada, helping clients achieve their immigration goals successfully.\nUnder the leadership of Sufian Ahmed (RCIC-IRB) - a trusted Immigration Consultant in Canada in good standing with the College of Immigration and Citizenship Consultants (CICC) - our team has grown into one of the Best Immigration Agency Canada.\nWe are widely recognized as a reliable Canada Visa Consultant Canada, offering expert advice, personalized representation, and a high success rate. Our clients trust us for honest and ethical services across multiple immigration pathways, including:\n• Express Entry Consultant Canada services\n• Family Sponsorship (including Spousal Sponsorship in Canada)\n• Study Permit Consultant Canada guidance\n• Super Visa & Temporary Visa\n• Work Permit Consultant Canada solutions\n• LMIA & PNP Applications\n• Canadian Citizenship\nAt ZF Canada, we strictly follow professional codes of conduct. Every step of the way, we remain honest, pragmatic, efficient, consistent, unbiased, and genuine. This commitment sets us apart as a Licensed Immigration Consultant Canada."
   },
   "stats": [
     {
@@ -43,28 +43,68 @@
     "otherCount": "50+"
   },
   "servicesSection": {
-    "heading": "",
+    "heading": "ZF Immigration Solutions & Immigration Consultants offer services tailored to your needs",
     "intro": "",
     "cards": [
       {
-        "title": "Is this Refused Applications",
+        "title": "Refused Applications",
         "description": "We assist in reapplying and appealing refused immigration applications.",
-        "href": "/services/refused-applications"
+        "href": "/services/refused-applications",
+        "image": "/assets/svc-refused-applications.svg"
       },
       {
         "title": "Humanitarian & Compassionate",
         "description": "We assist in reapplying and appealing refused immigration applications.",
-        "href": "/services/humanitarian-compassionate"
+        "href": "/services/humanitarian-compassionate",
+        "image": "/assets/svc-humanitarian-compassionate.svg"
       },
       {
         "title": "Inadmissibility",
         "description": "We assist in reapplying and appealing refused immigration applications.",
-        "href": "/services/inadmissibility"
+        "href": "/services/inadmissibility",
+        "image": "/assets/svc-inadmissibility.svg"
       },
       {
         "title": "Misrepresentation",
         "description": "We assist in reapplying and appealing refused immigration applications.",
-        "href": "/services/misrepresentation"
+        "href": "/services/misrepresentation",
+        "image": "/assets/svc-misrepresentation.svg"
+      },
+      {
+        "title": "Sponsorship",
+        "description": "We assist in reapplying and appealing refused immigration applications.",
+        "href": "/services/sponsorship",
+        "image": "/assets/svc-sponsorship.svg"
+      },
+      {
+        "title": "Refugee Claim Application",
+        "description": "We assist in reapplying and appealing refused immigration applications.",
+        "href": "/services/refugee-claim",
+        "image": "/assets/svc-6.png"
+      },
+      {
+        "title": "IRB – Hearing & Appeals",
+        "description": "We assist in reapplying and appealing refused immigration applications.",
+        "href": "/services/irb-hearings",
+        "image": "/assets/svc-irb-hearings.svg"
+      },
+      {
+        "title": "Temporary Residence",
+        "description": "We assist in reapplying and appealing refused immigration applications.",
+        "href": "/services/temporary-residence",
+        "image": "/assets/svc-temporary-residence.svg"
+      },
+      {
+        "title": "PR Card / Citizenship",
+        "description": "We assist in reapplying and appealing refused immigration applications.",
+        "href": "/services/pr-card-citizenship",
+        "image": "/assets/svc-pr-card-citizenship.svg"
+      },
+      {
+        "title": "Permanent Residency",
+        "description": "We assist in reapplying and appealing refused immigration applications.",
+        "href": "/services/permanent-residency",
+        "image": "/assets/svc-permanent-residency.svg"
       }
     ]
   },
@@ -74,25 +114,72 @@
   },
   "testimonials": [
     {
-      "photo": "/assets/testimonial-1.png",
-      "text": "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in",
-      "name": "Amelia",
-      "role": "Student",
-      "rating": 4
+      "photo": "",
+      "text": "I would like to thank ZF Canada for their help and support in finding possible ways for our process. They are providing excellent services and their professional gesture is commendable. I am also grateful to Ms. Hina for her extraordinary support throughout the entire process.",
+      "name": "Anila Rafiq",
+      "role": "Google Review",
+      "rating": 5
     },
     {
-      "photo": "/assets/testimonial-2.png",
-      "text": "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in",
-      "name": "Waliya",
-      "role": "Student",
-      "rating": 4
+      "photo": "",
+      "text": "I would like to thank ZF Canada to workout the very difficult & complex case to a happy ending. Highly qualified & professional attorney with a great experience in immigration process. I appreciate your support & generosity for this difficult case.",
+      "name": "DR AJ",
+      "role": "Google Review · Local Guide",
+      "rating": 5
     },
     {
-      "photo": "/assets/testimonial-3.png",
-      "text": "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in",
-      "name": "Ezaz",
-      "role": "Student",
+      "photo": "",
+      "text": "I am impressed with the services provided. They informed me about various possible options and the requirements. Also guided us at every stage of the process. I found them professional in their responses and always replied to queries/questions in a timely manner.",
+      "name": "Mehdi Kazani",
+      "role": "Google Review",
+      "rating": 5
+    },
+    {
+      "photo": "",
+      "text": "",
+      "name": "Sohel Ghori",
+      "role": "Google Review · Local Guide",
       "rating": 5
     }
-  ]
+  ],
+  "whyChooseSection": {
+    "heading": "Why choose ZF Canada Immigration for a Visa Application",
+    "cards": [
+      { "title": "CICC Licensed", "body": "We are a Licensed Immigration Consultant Canada, authorized by the College of Immigration and Citizenship Consultants (CICC - formerly ICCRC), allowing us to represent clients before Immigration, Refugees and Citizenship Canada (IRCC)." },
+      { "title": "Advice You Can Trust", "body": "Experienced and knowledgeable Immigration Consultant in Canada with more than a decade of combined expertise." },
+      { "title": "Proven Success", "body": "We've helped hundreds of clients from 35+ countries with our trusted Canada Visa Consultant Canada services." },
+      { "title": "No Hassle Service", "body": "We leverage technology for a simple and hassle-free experience." },
+      { "title": "Speak Different Languages", "body": "We speak different languages like English, Urdu, Hindi, Punjabi, BENGALI." }
+    ]
+  },
+  "visaStepsSection": {
+    "heading": "Steps to Apply for Your Visa With ZF Canada",
+    "ctaText": "A REGULATED CANADIAN IMMIGRATION CONSULTANT (RCIC)",
+    "steps": [
+      { "title": "Choose Your Immigration Program", "body": "Select the right visa, PR, study permit, work permit, or immigration pathway based on your goals and eligibility." },
+      { "title": "Contact Our Immigration Team", "body": "Get in touch with ZF Canada to discuss your immigration options and receive professional guidance from our experienced team." },
+      { "title": "Submit Required Documents", "body": "Provide all necessary documents and information so we can prepare and process your application accurately." },
+      { "title": "Application Processing & Updates", "body": "Our team will manage your application process and keep you informed with regular updates at every stage." },
+      { "title": "Receive Your Visa Decision", "body": "Once your application is approved, we will guide you through the next steps for your move to Canada." }
+    ]
+  },
+  "videoTestimonialsSection": {
+    "reviews": [
+      { "text": "The team at ZF Canada helped us navigate a very complex immigration case. Their professionalism and dedication made all the difference for our family.", "name": "Waliya", "role": "Client", "rating": 5 },
+      { "text": "Exceptional service from start to finish. They guided us through every step of the process with patience and expertise.", "name": "Ahmed", "role": "Client", "rating": 5 }
+    ]
+  },
+  "faqSection": {
+    "heading": "Frequently Ask Questions",
+    "questions": [
+      "What immigration services does ZF Canada offer?",
+      "Can ZF Canada help with visa refusals?",
+      "Do I need a job offer for immigration?",
+      "How do I know if I qualify for the Start-Up Visa?",
+      "What is LMIA and why do I need it?"
+    ]
+  },
+  "mapSection": {
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2892.4!2d-79.6924!3d43.5999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b47e2a1a3d5a7%3A0x9f5c3e1d4e6f8a2b!2s808%20Britannia%20Rd%20W%20%23214%2C%20Mississauga%2C%20ON%20L5V%200A6%2C%20Canada!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca"
+  }
 }

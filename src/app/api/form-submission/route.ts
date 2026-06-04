@@ -8,6 +8,7 @@ import {
   countByStatus,
   type SubmissionStatus,
 } from "@/lib/form-submission-store";
+import { sendFormEmail } from "@/lib/mailer";
 
 /**
  * POST /api/form-submission
@@ -35,6 +36,12 @@ export async function POST(req: NextRequest) {
     }
 
     const submission = createSubmission(formType.trim(), data);
+
+    // Fire email notification — non-blocking, don't fail the request if it errors
+    sendFormEmail(formType.trim(), data as Record<string, unknown>).catch((err) =>
+      console.error("[mailer] failed to send notification:", err)
+    );
+
     return NextResponse.json({ success: true, data: submission }, { status: 201 });
   } catch {
     return NextResponse.json({ success: false, message: "Invalid request" }, { status: 400 });

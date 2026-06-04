@@ -23,13 +23,34 @@ body {
   overflow-x: hidden;
 }
 
+html,
+body {
+  max-width: 100%;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-img, svg, video {
+img, svg, video, canvas, iframe {
   max-width: 100%;
+}
+
+img, svg, video {
   height: auto;
+}
+
+input,
+select,
+textarea,
+button {
+  max-width: 100%;
+}
+
+input,
+select,
+textarea {
+  min-width: 0;
 }
 
 ::selection {

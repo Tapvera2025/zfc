@@ -13,7 +13,6 @@ export default function ContactSection() {
     phone: "",
     email: "",
     message: "",
-    nda: false,
   });
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
 
@@ -38,7 +37,7 @@ export default function ContactSection() {
       const json = await res.json();
       if (json.success) {
         setSubmitState("success");
-        setForm({ contactName: "", street: "", city: "", postcode: "", phone: "", email: "", message: "", nda: false });
+        setForm({ contactName: "", street: "", city: "", postcode: "", phone: "", email: "", message: "" });
         setTimeout(() => setSubmitState("idle"), 4000);
       } else {
         setSubmitState("error");
@@ -60,8 +59,7 @@ export default function ContactSection() {
             Get in <span className="zfc-contact__heading-red">touch</span>
           </h2>
           <p className="zfc-contact__subtitle">
-            Enim tempor eget pharetra facilisis sed maecenas adipiscing. Eu leo
-            molestie vel, ornare non id blandit netus.
+            Fill out the form below and our immigration team will contact you with the right guidance for your visa or PR application.
           </p>
 
           <form className="zfc-contact__form" onSubmit={handleSubmit}>
@@ -129,16 +127,6 @@ export default function ContactSection() {
             <p className="zfc-contact__attach-note">
               Attach file. File size of your documents should not exceed 10MB
             </p>
-
-            <label className="zfc-contact__nda">
-              <input
-                type="checkbox" name="nda"
-                checked={form.nda}
-                onChange={handleChange}
-                className="zfc-contact__checkbox"
-              />
-              <span>I want to protect my data by signing an NDA</span>
-            </label>
 
             <button
               type="submit"
