@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 type SvcContent = { hero: { title: string }; detail: { heading: string; paragraphs: string[] }; extra: { paragraphs: string[] } };
 
-export default function PermanentResidencyPage() {
-  const raw = getPageContent("svc-permanent-residency") as SvcContent;
+export default async function PermanentResidencyPage() {
+  const raw = await getPageContent("svc-permanent-residency") as SvcContent;
   const title = raw?.hero?.title ?? "Permanent Residency";
   const heading = raw?.detail?.heading ?? "Permanent Residency in Canada";
   const detail = raw?.detail?.paragraphs ?? [];

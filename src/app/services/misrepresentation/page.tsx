@@ -70,8 +70,8 @@ const misrepresentationFaqQuestions = [
   "Is My Information Kept Confidential?",
 ];
 
-export default function MisrepresentationPage() {
-  const raw = getPageContent("svc-misrepresentation") as SvcContent;
+export default async function MisrepresentationPage() {
+  const raw = await getPageContent("svc-misrepresentation") as SvcContent;
   const title = raw?.hero?.title ?? "Misrepresentation";
 
   return (

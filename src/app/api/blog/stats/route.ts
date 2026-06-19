@@ -2,6 +2,6 @@ import { NextResponse } from "next/server";
 import { getStats } from "@/lib/blog-store";
 
 export async function GET() {
-  const stats = getStats();
+  const stats = await getStats();
   return NextResponse.json({ success: true, data: stats });
 }

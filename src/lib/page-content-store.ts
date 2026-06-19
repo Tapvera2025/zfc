@@ -1,22 +1,8 @@
-/**
- * Page Content Store — file-backed CMS for editable page content.
- * Content is saved to  data/pages/<slug>.json  and survives server restarts.
- * Each page has a typed schema; the store handles reads/writes generically.
- */
+import { getDb } from "./mongodb";
 
-import fs   from "fs";
-import path from "path";
-
-// ── Storage path ────────────────────────────────────────────────────────────
-
-const DATA_DIR = path.join(process.cwd(), "data", "pages");
-
-function ensureDir() {
-  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
-}
-
-function filePath(slug: string) {
-  return path.join(DATA_DIR, `${slug}.json`);
+async function col() {
+  const db = await getDb();
+  return db.collection("page_content");
 }
 
 // ── Default content for every page ─────────────────────────────────────────
@@ -419,27 +405,22 @@ function deepMerge(defaults: unknown, saved: unknown): unknown {
 
 // ── Public API ──────────────────────────────────────────────────────────────
 
-export function getPageContent(slug: string): unknown {
-  ensureDir();
-  const fp = filePath(slug);
+export async function getPageContent(slug: string): Promise<unknown> {
+  const c        = await col();
   const defaults = PAGE_DEFAULTS[slug] ?? {};
 
-  if (!fs.existsSync(fp)) {
-    fs.writeFileSync(fp, JSON.stringify(defaults, null, 2), "utf8");
+  const doc = await c.findOne({ slug }, { projection: { _id: 0, content: 1 } });
+  if (!doc) {
+    await c.insertOne({ slug, content: defaults });
     return defaults;
   }
 
-  try {
-    const saved = JSON.parse(fs.readFileSync(fp, "utf8"));
-    return deepMerge(defaults, saved);
-  } catch {
-    return defaults;
-  }
+  return deepMerge(defaults, doc.content as unknown);
 }
 
-export function setPageContent(slug: string, content: unknown): void {
-  ensureDir();
-  fs.writeFileSync(filePath(slug), JSON.stringify(content, null, 2), "utf8");
+export async function setPageContent(slug: string, content: unknown): Promise<void> {
+  const c = await col();
+  await c.updateOne({ slug }, { $set: { slug, content } }, { upsert: true });
 }
 
 export function listPages(): { slug: string; label: string }[] {

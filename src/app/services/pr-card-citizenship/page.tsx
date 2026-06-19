@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 type SvcContent = { hero: { title: string }; detail: { heading: string; paragraphs: string[] }; extra: { paragraphs: string[] } };
 
-export default function PrCardCitizenshipPage() {
-  const raw = getPageContent("svc-pr-card-citizenship") as SvcContent;
+export default async function PrCardCitizenshipPage() {
+  const raw = await getPageContent("svc-pr-card-citizenship") as SvcContent;
   const title = raw?.hero?.title ?? "PR Card / Citizenship";
   const heading = raw?.detail?.heading ?? "PR Card Renewal & Canadian Citizenship";
   const detail = raw?.detail?.paragraphs ?? [];

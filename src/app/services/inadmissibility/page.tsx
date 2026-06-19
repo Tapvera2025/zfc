@@ -89,8 +89,8 @@ const inadmissibilityFaqQuestions = [
   "Is My Information Kept Confidential?",
 ];
 
-export default function InadmissibilityPage() {
-  const raw = getPageContent("svc-inadmissibility") as SvcContent;
+export default async function InadmissibilityPage() {
+  const raw = await getPageContent("svc-inadmissibility") as SvcContent;
   const title = raw?.hero?.title ?? "Inadmissibility";
 
   return (

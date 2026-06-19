@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 type SvcContent = { hero: { title: string }; detail: { heading: string; paragraphs: string[] }; extra: { paragraphs: string[] } };
 
-export default function IrbHearingsPage() {
-  const raw = getPageContent("svc-irb-hearings") as SvcContent;
+export default async function IrbHearingsPage() {
+  const raw = await getPageContent("svc-irb-hearings") as SvcContent;
   const title = raw?.hero?.title ?? "IRB – Hearing & Appeals";
   const heading = raw?.detail?.heading ?? "IRB Hearings & Appeals";
   const detail = raw?.detail?.paragraphs ?? [];

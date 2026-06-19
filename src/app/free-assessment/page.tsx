@@ -14,8 +14,8 @@ type FreeAssessmentContent = {
   submitButtonText?: string;
 };
 
-export default function FreeAssessmentPage() {
-  const cms = getPageContent("free-assessment") as FreeAssessmentContent;
+export default async function FreeAssessmentPage() {
+  const cms = await getPageContent("free-assessment") as FreeAssessmentContent;
   const heroTitle = cms?.hero?.title ?? "Free Assessment";
 
   return (

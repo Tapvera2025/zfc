@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 
 type ServicesContent = { hero?: { title?: string } };
 
-export default function ServicesPage() {
-  const cms = getPageContent("services") as ServicesContent;
+export default async function ServicesPage() {
+  const cms = await getPageContent("services") as ServicesContent;
 
   return (
     <div className="zfc-services-page">

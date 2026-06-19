@@ -1,76 +1,29 @@
-/**
- * Generic form submission store — file-backed persistence.
- * Submissions are saved to  data/form-submissions.json  so they survive
- * server restarts.  Any form on the site can save data here by passing
- * a unique `formType` string.
- */
-
-import fs   from "fs";
-import path from "path";
+import { getDb } from "./mongodb";
 
 export type SubmissionStatus = "new" | "read" | "archived";
 
 export type FormSubmission = {
   id:          string;
-  formType:    string;                  // e.g. "contact", "consultation"
-  data:        Record<string, unknown>; // all field values
-  submittedAt: string;                  // ISO timestamp
+  formType:    string;
+  data:        Record<string, unknown>;
+  submittedAt: string;
   status:      SubmissionStatus;
 };
-
-// ── Persistence helpers ────────────────────────────────────────────────────
-
-const DATA_DIR  = path.join(process.cwd(), "data");
-const DATA_FILE = path.join(DATA_DIR, "form-submissions.json");
-
-function ensureDir() {
-  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
-}
-
-function load(): FormSubmission[] {
-  try {
-    ensureDir();
-    if (!fs.existsSync(DATA_FILE)) return [];
-    const raw = fs.readFileSync(DATA_FILE, "utf8");
-    return JSON.parse(raw) as FormSubmission[];
-  } catch {
-    return [];
-  }
-}
-
-function save(submissions: FormSubmission[]) {
-  try {
-    ensureDir();
-    fs.writeFileSync(DATA_FILE, JSON.stringify(submissions, null, 2), "utf8");
-  } catch (err) {
-    console.error("[form-submission-store] Failed to write:", err);
-  }
-}
-
-// In-memory cache — stays warm between requests in the same process
-let cache: FormSubmission[] | null = null;
-
-function getAll(): FormSubmission[] {
-  if (cache === null) cache = load();
-  return cache;
-}
-
-function persist() {
-  save(getAll());
-}
-
-// ── ID helper ──────────────────────────────────────────────────────────────
 
 function generateId(): string {
   return "sub-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 6);
 }
 
-// ── Public API ─────────────────────────────────────────────────────────────
+async function col() {
+  const db = await getDb();
+  return db.collection("form_submissions");
+}
 
-export function createSubmission(
+export async function createSubmission(
   formType: string,
   data: Record<string, unknown>
-): FormSubmission {
+): Promise<FormSubmission> {
+  const c = await col();
   const entry: FormSubmission = {
     id:          generateId(),
     formType,
@@ -78,59 +31,74 @@ export function createSubmission(
     submittedAt: new Date().toISOString(),
     status:      "new",
   };
-  getAll().unshift(entry); // newest first
-  persist();
+  await c.insertOne({ ...entry });
   return entry;
 }
 
-export function listSubmissions(formType?: string): FormSubmission[] {
-  const all = getAll();
-  if (formType) return all.filter((s) => s.formType === formType);
-  return [...all];
+export async function listSubmissions(formType?: string): Promise<FormSubmission[]> {
+  const c = await col();
+  const filter = formType ? { formType } : {};
+  return c
+    .find(filter, { projection: { _id: 0 } })
+    .sort({ submittedAt: -1 })
+    .toArray() as unknown as Promise<FormSubmission[]>;
 }
 
-export function updateSubmissionStatus(
+export async function updateSubmissionStatus(
   id: string,
   status: SubmissionStatus
-): FormSubmission | null {
-  const submissions = getAll();
-  const idx = submissions.findIndex((s) => s.id === id);
-  if (idx === -1) return null;
-  submissions[idx] = { ...submissions[idx], status };
-  persist();
-  return submissions[idx];
+): Promise<FormSubmission | null> {
+  const c = await col();
+  const result = await c.findOneAndUpdate(
+    { id },
+    { $set: { status } },
+    { returnDocument: "after", projection: { _id: 0 } }
+  );
+  return (result ?? null) as FormSubmission | null;
 }
 
-export function deleteSubmission(id: string): boolean {
-  const before = getAll().length;
-  cache = getAll().filter((s) => s.id !== id);
-  persist();
-  return cache.length < before;
+export async function deleteSubmission(id: string): Promise<boolean> {
+  const c = await col();
+  const result = await c.deleteOne({ id });
+  return result.deletedCount > 0;
 }
 
-export function getFormTypes(): string[] {
-  return [...new Set(getAll().map((s) => s.formType))];
+export async function getFormTypes(): Promise<string[]> {
+  const c = await col();
+  return c.distinct("formType") as Promise<string[]>;
 }
 
-export function checkExistingAssessment(email: string, phone: string): boolean {
+export async function checkExistingAssessment(email: string, phone: string): Promise<boolean> {
+  const c = await col();
   const normalEmail = email.toLowerCase().trim();
   const normalPhone = phone.replace(/\D/g, "");
-  return getAll()
-    .filter((s) => s.formType === "free-assessment")
-    .some((s) => {
-      const d = s.data as Record<string, unknown>;
-      const e = String(d.email ?? "").toLowerCase().trim();
-      const p = String(d.phone ?? "").replace(/\D/g, "");
-      return (normalEmail && e === normalEmail) || (normalPhone && p === normalPhone);
-    });
+
+  const submissions = await c
+    .find({ formType: "free-assessment" }, { projection: { _id: 0 } })
+    .toArray() as unknown as FormSubmission[];
+
+  return submissions.some((s) => {
+    const d = s.data as Record<string, unknown>;
+    const e = String(d.email ?? "").toLowerCase().trim();
+    const p = String(d.phone ?? "").replace(/\D/g, "");
+    return (normalEmail && e === normalEmail) || (normalPhone && p === normalPhone);
+  });
 }
 
-export function countByStatus(formType?: string) {
-  const list = formType ? getAll().filter((s) => s.formType === formType) : getAll();
-  return {
-    total:    list.length,
-    new:      list.filter((s) => s.status === "new").length,
-    read:     list.filter((s) => s.status === "read").length,
-    archived: list.filter((s) => s.status === "archived").length,
-  };
+export async function countByStatus(formType?: string) {
+  const c = await col();
+  const matchStage = formType ? { $match: { formType } } : { $match: {} };
+  const results = await c
+    .aggregate([matchStage, { $group: { _id: "$status", count: { $sum: 1 } } }])
+    .toArray();
+
+  const counts = { total: 0, new: 0, read: 0, archived: 0 };
+  for (const r of results) {
+    const n = r.count as number;
+    counts.total += n;
+    if (r._id === "new")      counts.new      = n;
+    if (r._id === "read")     counts.read     = n;
+    if (r._id === "archived") counts.archived = n;
+  }
+  return counts;
 }

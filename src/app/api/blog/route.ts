@@ -6,14 +6,13 @@ export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
 
   const status   = (searchParams.get("status")   ?? "all") as BlogStatus | "all";
-  const search   = searchParams.get("search")   ?? "";
-  const category = searchParams.get("category") ?? "";
+  const search   = searchParams.get("search")    ?? "";
+  const category = searchParams.get("category")  ?? "";
   const sort     = (searchParams.get("sort") ?? "newest") as "newest" | "oldest" | "updated" | "views";
   const page     = Math.max(1, parseInt(searchParams.get("page")  ?? "1",  10));
   const limit    = Math.min(100, Math.max(1, parseInt(searchParams.get("limit") ?? "20", 10)));
 
-  const result = listPosts({ status, search, category, page, limit, sort });
-
+  const result = await listPosts({ status, search, category, page, limit, sort });
   return NextResponse.json({ success: true, data: result });
 }
 
@@ -24,17 +23,17 @@ export async function POST(req: NextRequest) {
     const { title, author, excerpt, content, featuredImage, featuredImageAlt,
             category, tags, status, seo } = body;
 
-    if (!title?.trim())   return NextResponse.json({ success: false, message: "Title is required" }, { status: 400 });
-    if (!author?.trim())  return NextResponse.json({ success: false, message: "Author is required" }, { status: 400 });
+    if (!title?.trim())   return NextResponse.json({ success: false, message: "Title is required" },   { status: 400 });
+    if (!author?.trim())  return NextResponse.json({ success: false, message: "Author is required" },  { status: 400 });
     if (!excerpt?.trim()) return NextResponse.json({ success: false, message: "Excerpt is required" }, { status: 400 });
     if (!content?.trim()) return NextResponse.json({ success: false, message: "Content is required" }, { status: 400 });
 
-    const post = createPost({
+    const post = await createPost({
       title:            title.trim(),
       author:           author.trim(),
       excerpt:          excerpt.trim(),
       content,
-      featuredImage:    featuredImage ?? null,
+      featuredImage:    featuredImage    ?? null,
       featuredImageAlt: featuredImageAlt ?? "",
       category:         category?.trim() || "General",
       tags:             Array.isArray(tags) ? tags : [],

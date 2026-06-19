@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 type SvcContent = { hero: { title: string }; detail: { heading: string; paragraphs: string[] }; extra: { paragraphs: string[] } };
 
-export default function RefugeeClaimPage() {
-  const raw = getPageContent("svc-refugee-claim") as SvcContent;
+export default async function RefugeeClaimPage() {
+  const raw = await getPageContent("svc-refugee-claim") as SvcContent;
   const title = raw?.hero?.title ?? "Refugee Claim Application";
   const heading = raw?.detail?.heading ?? "Refugee Claim Applications in Canada";
   const detail = raw?.detail?.paragraphs ?? [];

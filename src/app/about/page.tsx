@@ -18,8 +18,8 @@ type AboutContent = {
   intro?: { heading?: string; body?: string };
 };
 
-export default function AboutPage() {
-  const cms = getPageContent("about") as AboutContent;
+export default async function AboutPage() {
+  const cms = await getPageContent("about") as AboutContent;
 
   return (
     <div className="zfc-about-page">

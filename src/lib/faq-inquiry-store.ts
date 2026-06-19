@@ -1,95 +1,73 @@
-import fs   from "fs";
-import path from "path";
+import { getDb } from "./mongodb";
 
 export type FaqInquiry = {
-  id: string;
-  question: string;
+  id:          string;
+  question:    string;
   submittedAt: string;
-  status: "new" | "read" | "archived";
+  status:      "new" | "read" | "archived";
 };
-
-const DATA_DIR  = path.join(process.cwd(), "data");
-const DATA_FILE = path.join(DATA_DIR, "faq-inquiries.json");
-
-function ensureDir() {
-  if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
-}
-
-function load(): FaqInquiry[] {
-  try {
-    ensureDir();
-    if (!fs.existsSync(DATA_FILE)) return [];
-    return JSON.parse(fs.readFileSync(DATA_FILE, "utf8")) as FaqInquiry[];
-  } catch {
-    return [];
-  }
-}
-
-function save(inquiries: FaqInquiry[]) {
-  try {
-    ensureDir();
-    fs.writeFileSync(DATA_FILE, JSON.stringify(inquiries, null, 2), "utf8");
-  } catch (err) {
-    console.error("[faq-inquiry-store] Failed to write:", err);
-  }
-}
-
-let cache: FaqInquiry[] | null = null;
-
-function getAll(): FaqInquiry[] {
-  if (cache === null) cache = load();
-  return cache;
-}
-
-function persist() {
-  save(getAll());
-}
 
 function generateId(): string {
   return "faq-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 6);
 }
 
-export function createInquiry(question: string): FaqInquiry {
+async function col() {
+  const db = await getDb();
+  return db.collection("faq_inquiries");
+}
+
+export async function createInquiry(question: string): Promise<FaqInquiry> {
+  const c = await col();
   const entry: FaqInquiry = {
-    id: generateId(),
-    question: question.trim(),
+    id:          generateId(),
+    question:    question.trim(),
     submittedAt: new Date().toISOString(),
-    status: "new",
+    status:      "new",
   };
-  getAll().unshift(entry);
-  persist();
+  await c.insertOne({ ...entry });
   return entry;
 }
 
-export function listInquiries(): FaqInquiry[] {
-  return [...getAll()];
+export async function listInquiries(): Promise<FaqInquiry[]> {
+  const c = await col();
+  return c
+    .find({}, { projection: { _id: 0 } })
+    .sort({ submittedAt: -1 })
+    .toArray() as unknown as Promise<FaqInquiry[]>;
 }
 
-export function updateInquiryStatus(
+export async function updateInquiryStatus(
   id: string,
   status: FaqInquiry["status"]
-): FaqInquiry | null {
-  const inquiries = getAll();
-  const idx = inquiries.findIndex((i) => i.id === id);
-  if (idx === -1) return null;
-  inquiries[idx] = { ...inquiries[idx], status };
-  persist();
-  return inquiries[idx];
+): Promise<FaqInquiry | null> {
+  const c = await col();
+  const result = await c.findOneAndUpdate(
+    { id },
+    { $set: { status } },
+    { returnDocument: "after", projection: { _id: 0 } }
+  );
+  return (result ?? null) as FaqInquiry | null;
 }
 
-export function deleteInquiry(id: string): boolean {
-  const before = getAll().length;
-  cache = getAll().filter((i) => i.id !== id);
-  persist();
-  return cache.length < before;
+export async function deleteInquiry(id: string): Promise<boolean> {
+  const c = await col();
+  const result = await c.deleteOne({ id });
+  return result.deletedCount > 0;
 }
 
-export function countByStatus() {
-  const list = getAll();
-  return {
-    total:    list.length,
-    new:      list.filter((i) => i.status === "new").length,
-    read:     list.filter((i) => i.status === "read").length,
-    archived: list.filter((i) => i.status === "archived").length,
-  };
+export async function countByStatus() {
+  const c = await col();
+  const results = await c
+    .aggregate([{ $group: { _id: "$status", count: { $sum: 1 } } }])
+    .toArray();
+
+  const counts = { total: 0, new: 0, read: 0, archived: 0 };
+  for (const r of results) {
+    const n = r.count as number;
+    counts.total += n;
+    if (r._id === "new")      counts.new      = n;
+    if (r._id === "read")     counts.read     = n;
+    if (r._id === "archived") counts.archived = n;
+  }
+  return counts;
 }

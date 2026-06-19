@@ -74,8 +74,8 @@ const sponsorshipFaqQuestions = [
   "Is My Information Kept Confidential?",
 ];
 
-export default function SponsorshipPage() {
-  const raw = getPageContent("svc-sponsorship") as SvcContent;
+export default async function SponsorshipPage() {
+  const raw = await getPageContent("svc-sponsorship") as SvcContent;
   const title = raw?.hero?.title ?? "Sponsorship";
 
   return (

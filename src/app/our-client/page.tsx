@@ -19,8 +19,8 @@ const DEFAULTS = {
   },
 };
 
-export default function OurClientPage() {
-  const raw = getPageContent("our-client") as typeof DEFAULTS;
+export default async function OurClientPage() {
+  const raw = await getPageContent("our-client") as typeof DEFAULTS;
   const c = {
     hero:  { ...DEFAULTS.hero,  ...(raw?.hero  ?? {}) },
     intro: {

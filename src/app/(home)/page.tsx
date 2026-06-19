@@ -34,8 +34,8 @@ type HomeContent = {
   mapSection?: { embedUrl?: string };
 };
 
-export default function HomePage() {
-  const cms = getPageContent("home") as HomeContent;
+export default async function HomePage() {
+  const cms = await getPageContent("home") as HomeContent;
 
   return (
     <main className="zfc-home-page bg-white min-h-screen overflow-x-hidden">
