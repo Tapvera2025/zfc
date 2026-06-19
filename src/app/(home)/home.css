@@ -2897,7 +2897,7 @@ button {
 
 .zfc-contact {
   background: #ffffff;
-  padding: clamp(90px, 8vw, 150px) clamp(24px, 6.25vw, 8rem);
+  padding: clamp(90px, 8vw, 150px) clamp(24px, 6.25vw, 8rem) clamp(44px, 4vw, 72px);
 }
 
 .zfc-contact__inner {
@@ -3179,7 +3179,7 @@ button {
 .zfc-faq {
   position: relative;
   background: #ffffff;
-  padding-top: clamp(90px, 8vw, 150px);
+  padding-top: clamp(44px, 4vw, 72px);
   padding-left: clamp(24px, 6.25vw, 8rem);
   padding-right: clamp(24px, 6.25vw, 8rem);
   padding-bottom: clamp(90px, 8vw, 150px);

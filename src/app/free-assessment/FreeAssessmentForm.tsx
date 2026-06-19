@@ -27,9 +27,9 @@ const EMPTY_FORM = {
   // Work
   profession: "", totalWorkYears: "", workInCanada: "",
   // English
-  hasEnglishTest: "", englishTestType: "", engListening: "", engWriting: "", engSpeaking: "", engReading: "",
+  hasEnglishTest: "", englishTestType: "", engExamDate: "", engListening: "", engWriting: "", engSpeaking: "", engReading: "",
   // French
-  hasFrenchTest: "", frListening: "", frWriting: "", frSpeaking: "", frReading: "",
+  hasFrenchTest: "", frenchTestType: "", frExamDate: "", frListening: "", frWriting: "", frSpeaking: "", frReading: "",
   // Spouse
   spouseName: "", spouseDob: "", spouseEducation: "", spouseWorkExp: "", spouseLanguageInfo: "",
   // Children
@@ -268,6 +268,11 @@ export default function FreeAssessmentForm({
 
             {form.hasEnglishTest === "yes" && (
               <div className="zfc-af-scores-group">
+                <div className="zfc-af-field" style={{ maxWidth: 300, marginBottom: "0.75rem" }}>
+                  <label className="zfc-af-field-label" htmlFor="engExamDate">Date of Exam Taken</label>
+                  <input id="engExamDate" className="zfc-af-input" type="date" name="engExamDate"
+                    value={form.engExamDate} onChange={handleChange} />
+                </div>
                 <p className="zfc-af-scores-label">Band Scores</p>
                 <div className="zfc-af-row zfc-af-row--4">
                   <input className="zfc-af-input" type="text" name="engListening"
@@ -287,17 +292,34 @@ export default function FreeAssessmentForm({
             {/* ── 6. French Language Test ── */}
             <h3 className="zfc-af-section-heading">French Language Proficiency (TEF)</h3>
 
-            <div className="zfc-af-select-wrap" style={{ maxWidth: 400 }}>
-              <select className={`zfc-af-select${form.hasFrenchTest ? " has-value" : ""}`}
-                name="hasFrenchTest" value={form.hasFrenchTest} onChange={handleChange}>
-                <option value="">Have you taken TEF / TCF?</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
+            <div className="zfc-af-row">
+              <div className="zfc-af-select-wrap">
+                <select className={`zfc-af-select${form.hasFrenchTest ? " has-value" : ""}`}
+                  name="hasFrenchTest" value={form.hasFrenchTest} onChange={handleChange}>
+                  <option value="">Have you taken TEF / TCF?</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              {form.hasFrenchTest === "yes" && (
+                <div className="zfc-af-select-wrap">
+                  <select className={`zfc-af-select${form.frenchTestType ? " has-value" : ""}`}
+                    name="frenchTestType" value={form.frenchTestType} onChange={handleChange}>
+                    <option value="">Test Type</option>
+                    <option value="TEF">TEF</option>
+                    <option value="TCF">TCF</option>
+                  </select>
+                </div>
+              )}
             </div>
 
             {form.hasFrenchTest === "yes" && (
               <div className="zfc-af-scores-group">
+                <div className="zfc-af-field" style={{ maxWidth: 300, marginBottom: "0.75rem" }}>
+                  <label className="zfc-af-field-label" htmlFor="frExamDate">Date of Exam Taken</label>
+                  <input id="frExamDate" className="zfc-af-input" type="date" name="frExamDate"
+                    value={form.frExamDate} onChange={handleChange} />
+                </div>
                 <p className="zfc-af-scores-label">Band Scores</p>
                 <div className="zfc-af-row zfc-af-row--4">
                   <input className="zfc-af-input" type="text" name="frListening"

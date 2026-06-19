@@ -9,7 +9,7 @@ export default function MapSection({ embedUrl }: MapSectionProps) {
   const src = embedUrl ?? DEFAULT_EMBED_URL;
 
   return (
-    <section className="zfc-map" aria-label="Our office location">
+    <section id="office-map" className="zfc-map" aria-label="Our office location">
       <iframe
         className="zfc-map__iframe"
         src={src}

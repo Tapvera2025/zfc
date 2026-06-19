@@ -28,7 +28,7 @@ export default function TemporaryResidencePage() {
     <div className="zfc-services-page">
       <ServicesPageHeader />
       <div className="zfc-about-hero-wrap">
-        <ServiceDetailHero title={title} image="/assets/svc-temporary-residence.svg" breadcrumb={title} />
+        <ServiceDetailHero title={title} image="/assets/services-banner.png" breadcrumb={title} />
       </div>
 
       <ServiceDetailLayout activeHref="/services/temporary-residence">

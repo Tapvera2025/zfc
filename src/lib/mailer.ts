@@ -47,12 +47,15 @@ const FORM_LABELS: Record<string, string> = {
   // English
   hasEnglishTest: "Has English Test",
   englishTestType: "English Test Type",
+  engExamDate: "English Exam Date",
   engListening: "English Listening",
   engWriting: "English Writing",
   engSpeaking: "English Speaking",
   engReading: "English Reading",
   // French
   hasFrenchTest: "Has French Test",
+  frenchTestType: "French Test Type",
+  frExamDate: "French Exam Date",
   frListening: "French Listening",
   frWriting: "French Writing",
   frSpeaking: "French Speaking",

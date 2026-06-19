@@ -11,7 +11,7 @@ export default function ServicesHero({ title = "Our Services" }: ServicesHeroPro
       {/* Background image */}
       <div className="zfc-about-hero__bg" aria-hidden="true">
         <Image
-          src="/assets/services-hero-main.svg"
+          src="/assets/services-banner.png"
           alt=""
           fill
           sizes="100vw"

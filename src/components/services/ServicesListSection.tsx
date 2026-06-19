@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 const services = [
   {
@@ -22,20 +23,6 @@ const services = [
     title: "Inadmissibility",
     description: "Overcoming criminal, medical, or misrepresentation inadmissibility issues to restore your eligibility.",
     image: "/assets/svc-inadmissibility.svg",
-  },
-  {
-    id: 4,
-    slug: "misrepresentation",
-    title: "Misrepresentation",
-    description: "Providing false or misleading information can lead to refusals or a five-year ban. We help you respond.",
-    image: "/assets/svc-misrepresentation.svg",
-  },
-  {
-    id: 5,
-    slug: "sponsorship",
-    title: "Sponsorship",
-    description: "Assisting in family reunification through spousal, common-law, and parent & grandparent sponsorship programs.",
-    image: "/assets/svc-sponsorship.svg",
   },
   {
     id: 6,
@@ -72,11 +59,39 @@ const services = [
     description: "Guiding applicants through Express Entry, PNP, family sponsorship, and all PR pathways.",
     image: "/assets/svc-permanent-residency.svg",
   },
+  {
+    id: 4,
+    slug: "misrepresentation",
+    title: "Misrepresentation",
+    description: "Providing false or misleading information can lead to refusals or a five-year ban. We help you respond.",
+    image: "/assets/svc-misrepresentation.svg",
+  },
+  {
+    id: 5,
+    slug: "sponsorship",
+    title: "Sponsorship",
+    description: "Assisting in family reunification through spousal, common-law, and parent & grandparent sponsorship programs.",
+    image: "/assets/svc-sponsorship.svg",
+  },
 ];
 
-export default function ServicesListSection() {
+interface ServicesListSectionProps {
+  className?: string;
+  excludeSlug?: string;
+  heading?: ReactNode;
+}
+
+export default function ServicesListSection({
+  className,
+  excludeSlug,
+  heading = <>Choose Required Services<br />From Our List</>,
+}: ServicesListSectionProps) {
+  const visibleServices = excludeSlug
+    ? services.filter((service) => service.slug !== excludeSlug)
+    : services;
+
   return (
-    <section className="zfc-svc-list" aria-labelledby="svc-list-heading">
+    <section className={`zfc-svc-list${className ? ` ${className}` : ""}`} aria-labelledby="svc-list-heading">
       {/* Header */}
       <div className="zfc-svc-list__header">
         <div className="zfc-svc-list__badge">
@@ -92,13 +107,13 @@ export default function ServicesListSection() {
           OUR SERVICES
         </div>
         <h2 className="zfc-svc-list__heading" id="svc-list-heading">
-          Choose Required Services<br />From Our List
+          {heading}
         </h2>
       </div>
 
       {/* Grid */}
       <div className="zfc-svc-list__grid">
-        {services.map((svc) => (
+        {visibleServices.map((svc) => (
           <article key={svc.id} className="zfc-svc-card">
             {/* Image */}
             <div className="zfc-svc-card__img-wrap">

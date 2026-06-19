@@ -175,6 +175,8 @@ export default function Navbar() {
           <button
             className="xl:hidden bg-white p-3 rounded-xl shadow-md z-20 relative shrink-0"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? (
               <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

@@ -28,7 +28,7 @@ export default function PrCardCitizenshipPage() {
     <div className="zfc-services-page">
       <ServicesPageHeader />
       <div className="zfc-about-hero-wrap">
-        <ServiceDetailHero title={title} image="/assets/svc-pr-card-citizenship.svg" breadcrumb={title} />
+        <ServiceDetailHero title={title} image="/assets/services-banner.png" breadcrumb={title} />
       </div>
 
       <ServiceDetailLayout activeHref="/services/pr-card-citizenship">

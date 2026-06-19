@@ -355,7 +355,7 @@ export default async function ServiceDetailPage(
       <div className="zfc-about-hero-wrap">
         <ServiceDetailHero
           title={svc.title}
-          image="/assets/services-hero-bg.png"
+          image="/assets/services-banner.png"
           breadcrumb={svc.title}
         />
       </div>

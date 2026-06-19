@@ -1,94 +1,73 @@
 import Image from "next/image";
-import Link from "next/link";
 
 interface AboutIntroSectionProps {
   heading?: string;
   body?: string;
 }
 
+const DEFAULT_HEADING = "ZF Canada - Trusted Canada Visa Consultants Since 1992";
+
+const DEFAULT_BODY = [
+  "ZF Canada is a go-to Canada Visa Consultant that guides individuals, families, and businesses through the Canadian immigration process. Since 1992, they've provided expert advice and personal assistance to folks all over the world.",
+  "The company is led by Sufian Ahmed (RCIC-IRB) along with a team of pros who give reliable advice and custom immigration plans. Sufian is an active member of the College of Immigration and Citizenship Consultants (CICC), which is the main regulator for immigration consultants in Canada.",
+  "With a lot of experience under their belts, the ZF Canada team is known for giving honest advice and stellar service. They stay up-to-date on Canadian immigration laws to help their clients accurately and efficiently.",
+  "Integrity, transparency, and putting clients first are key at ZF Canada. Because of these values, they're seen as a top choice for those looking for help with immigration. When it comes to refused or complicated applications, ZF Canada steps in to help. If your application was rejected, the team can evaluate your situation, discuss your choices, and guide you toward reaching your immigration goals in Canada.",
+].join("\n\n");
+
 export default function AboutIntroSection({
-  heading = "Comprehensive Immigration Services",
-  body = "ZF Canada is a leading immigration consultancy firm in Canada, dedicated to providing professional and reliable pathways to Canada. Established in 1992, we bring over 25 years of experience as a Licensed Immigration Consultant Canada, helping clients achieve their immigration goals successfully.",
+  heading = DEFAULT_HEADING,
+  body = DEFAULT_BODY,
 }: AboutIntroSectionProps) {
+  const paragraphs = body
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+
   return (
     <section className="zfc-about-intro" aria-labelledby="about-intro-heading">
+      <div className="zfc-about-intro__inner">
+        <div className="zfc-about-intro__lead-col">
+          <div className="zfc-about-intro__badge">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+            WHO WE ARE
+          </div>
 
-      {/* ── LEFT: two overlapping photos + decorative SVG ── */}
-      <div className="zfc-about-intro__img-col">
+          <h2 className="zfc-about-intro__heading" id="about-intro-heading">
+            {heading}
+          </h2>
 
-        {/* Back photo — office scene, upper-left */}
-        <div className="zfc-about-intro__img-back">
-          <Image
-            src="/assets/about-rect-13-2.png"
-            alt="ZF Canada team at work"
-            fill
-            sizes="(max-width: 900px) 70vw, 32vw"
-            className="object-cover object-center"
-          />
+          <div className="zfc-about-intro__media">
+            <Image
+              src="/assets/about-company-consultation.webp"
+              alt="Canadian visa consultation with a ZF Canada advisor"
+              fill
+              sizes="(max-width: 900px) calc(100vw - 48px), 38vw"
+              className="zfc-about-intro__photo"
+              priority
+            />
+          </div>
         </div>
 
-        {/* Front photo — woman with passport, lower-right */}
-        <div className="zfc-about-intro__img-front">
-          <Image
-            src="/assets/about-rect-19.png"
-            alt="Client holding passport"
-            fill
-            sizes="(max-width: 900px) 60vw, 28vw"
-            className="object-cover object-center"
-          />
+        <div className="zfc-about-intro__content-col">
+          {paragraphs.map((paragraph) => (
+            <p className="zfc-about-intro__body" key={paragraph}>
+              {paragraph}
+            </p>
+          ))}
         </div>
-
-        {/* Decorative SVG — right edge, overlapping toward content */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/assets/about-6.svg"
-          alt=""
-          aria-hidden="true"
-          className="zfc-about-intro__deco-svg"
-        />
-
-      </div>
-
-      {/* ── RIGHT: badge + heading + body + CTA ── */}
-      <div className="zfc-about-intro__content-col">
-
-        {/* Badge */}
-        <div className="zfc-about-intro__badge">
-          <svg
-            width="14" height="14" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" strokeWidth="2.5"
-            strokeLinecap="round" strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <line x1="22" y1="2" x2="11" y2="13"/>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-          </svg>
-          ABOUT COMPANY
-        </div>
-
-        {/* Heading */}
-        <h2 className="zfc-about-intro__heading" id="about-intro-heading">
-          {heading}
-        </h2>
-
-        {/* Body */}
-        <p className="zfc-about-intro__body">{body}</p>
-
-        {/* CTA */}
-        <Link href="/about" className="zfc-about-intro__cta">
-          <svg
-            width="16" height="16" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" strokeWidth="2.5"
-            strokeLinecap="round" strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="12" y1="8" x2="12" y2="12"/>
-            <line x1="12" y1="16" x2="12.01" y2="16"/>
-          </svg>
-          LEARN MORE
-        </Link>
-
       </div>
     </section>
   );

@@ -28,7 +28,7 @@ export default function PermanentResidencyPage() {
     <div className="zfc-services-page">
       <ServicesPageHeader />
       <div className="zfc-about-hero-wrap">
-        <ServiceDetailHero title={title} image="/assets/svc-permanent-residency.svg" breadcrumb={title} />
+        <ServiceDetailHero title={title} image="/assets/services-banner.png" breadcrumb={title} />
       </div>
 
       <ServiceDetailLayout activeHref="/services/permanent-residency">

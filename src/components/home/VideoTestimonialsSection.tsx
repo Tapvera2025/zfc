@@ -21,15 +21,15 @@ type VideoReview = { text: string; name: string; role: string; rating: number };
 
 const DEFAULT_REVIEWS: VideoReview[] = [
   {
-    text: "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in",
-    name: "Waliya",
+    text: "ZF Canada made my study permit process feel clear from the first consultation. The team explained every document, followed up quickly, and gave me confidence before submission.",
+    name: "Ayesha Rahman",
     role: "Student",
     rating: 5,
   },
   {
-    text: "Lorem ipsum dolor sit amet consectetur. Habitasse lacus a sit ultrices sem nulla donec pulvinar. Vitae nam laoreet senectus porttitor aliquet. Vel diam ut eu arcu scelerisque erat. A lorem curabitur consectetur in",
-    name: "Waliya",
-    role: "Student",
+    text: "I came to ZF Canada after a complicated refusal and they helped me understand my options. Their advice was honest, organized, and focused on building a stronger application.",
+    name: "Daniel Morgan",
+    role: "Work Permit Applicant",
     rating: 5,
   },
 ];

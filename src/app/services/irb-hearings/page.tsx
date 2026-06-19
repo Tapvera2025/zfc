@@ -28,7 +28,7 @@ export default function IrbHearingsPage() {
     <div className="zfc-services-page">
       <ServicesPageHeader />
       <div className="zfc-about-hero-wrap">
-        <ServiceDetailHero title={title} image="/assets/svc-irb-hearings.svg" breadcrumb={title} />
+        <ServiceDetailHero title={title} image="/assets/services-banner.png" breadcrumb={title} />
       </div>
 
       <ServiceDetailLayout activeHref="/services/irb-hearings">

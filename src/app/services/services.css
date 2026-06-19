@@ -126,6 +126,10 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   flex-shrink: 0;
 }
 
+.zfc-services-page .zfc-about-nav__pill {
+  padding: 12px 10px 12px 24px;
+}
+
 .zfc-about-nav__links {
   display: flex;
   align-items: center;
@@ -1560,5 +1564,4996 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 
   .zfc-about-hero__breadcrumb {
     flex-wrap: wrap;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   HUMANITARIAN & COMPASSIONATE — first content section
+   ══════════════════════════════════════════════════════════ */
+.zfc-humanitarian-page .zfc-about-hero-wrap {
+  padding: 0;
+}
+
+.zfc-humanitarian-page .zfc-about-hero {
+  min-height: 320px;
+  border-radius: 0 0 28px 28px;
+}
+
+.zfc-humanitarian-page .zfc-about-hero__content {
+  padding: 58px clamp(32px, 6.25vw, 128px);
+  gap: 10px;
+}
+
+.zfc-humanitarian-page .zfc-about-hero__title {
+  font-size: 50px;
+  letter-spacing: 0;
+}
+
+.zfc-humanitarian-page .zfc-about-hero__breadcrumb-link,
+.zfc-humanitarian-page .zfc-about-hero__breadcrumb-current {
+  font-size: 17px;
+  letter-spacing: 0;
+}
+
+.zfc-hc-intro {
+  width: 100%;
+  background: #ffffff;
+  padding: 76px clamp(24px, 6.25vw, 128px) 82px;
+}
+
+.zfc-hc-intro__inner {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.zfc-hc-intro__heading {
+  max-width: 1180px;
+  margin: 0 0 62px;
+  font-family: var(--zfc-font-heading);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0;
+  color: #0b0b0b;
+}
+
+.zfc-hc-intro__heading span {
+  display: block;
+}
+
+.zfc-hc-intro__subheading {
+  margin: 0 0 52px;
+  font-family: var(--zfc-font-heading);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-hc-intro__body {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.42;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-hc-intro__body + .zfc-hc-intro__body {
+  margin-top: 34px;
+}
+
+.zfc-hc-intro__list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin: 34px 0 30px;
+  padding-left: 34px;
+}
+
+.zfc-hc-intro__item {
+  padding-left: 6px;
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-hc-intro__item::marker {
+  font-size: 0.75em;
+}
+
+.zfc-hc-intro__item strong {
+  font-weight: 800;
+}
+
+.zfc-hc-intro__body--closing {
+  margin-top: 28px;
+}
+
+.zfc-hc-feature-image {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 clamp(24px, 6.25vw, 128px) 88px;
+}
+
+.zfc-hc-feature-image__inner {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.zfc-hc-feature-image__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.zfc-hc-eligibility {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 clamp(24px, 6.25vw, 128px) 94px;
+}
+
+.zfc-hc-eligibility__inner {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.zfc-hc-eligibility__heading {
+  margin: 0 0 44px;
+  font-family: var(--zfc-font-heading);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-hc-eligibility__text {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.42;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-hc-eligibility__text + .zfc-hc-eligibility__text {
+  margin-top: 28px;
+}
+
+.zfc-hc-eligibility__list {
+  margin: 28px 0 30px;
+  padding-left: 30px;
+}
+
+.zfc-hc-eligibility__list li {
+  padding-left: 4px;
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-hc-eligibility__list li + li {
+  margin-top: 5px;
+}
+
+.zfc-hc-eligibility__list li::marker {
+  font-size: 0.72em;
+}
+
+.zfc-hc-eligibility__text--closing {
+  margin-top: 34px;
+}
+
+.zfc-hc-common {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 clamp(24px, 6.25vw, 128px);
+}
+
+.zfc-hc-common__inner {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.zfc-hc-common__heading {
+  margin: 0 0 46px;
+  font-family: var(--zfc-font-heading);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-hc-common__grid {
+  display: grid;
+  grid-template-columns: minmax(380px, 510px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.zfc-hc-common__media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f4f4f4;
+}
+
+.zfc-hc-common__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.zfc-hc-common__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 2px;
+}
+
+.zfc-hc-common__text {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.34;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-hc-common__list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin: 28px 0 28px;
+  padding-left: 31px;
+}
+
+.zfc-hc-common__list li {
+  padding-left: 3px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.34;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-hc-common__list li::marker {
+  font-size: 0.72em;
+}
+
+.zfc-hc-common__list strong {
+  font-weight: 800;
+}
+
+.zfc-hc-strengthen {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 clamp(24px, 6.25vw, 128px) 108px;
+}
+
+.zfc-hc-strengthen__inner {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.zfc-hc-strengthen__heading {
+  margin: 0 0 58px;
+  font-family: var(--zfc-font-heading);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-hc-strengthen__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 342px);
+  gap: 54px;
+  align-items: start;
+  margin-bottom: 52px;
+}
+
+.zfc-hc-strengthen__intro {
+  min-width: 0;
+}
+
+.zfc-hc-strengthen__media {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f5f5f5;
+}
+
+.zfc-hc-strengthen__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.zfc-hc-strengthen__text {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.34;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-hc-strengthen__text + .zfc-hc-strengthen__text {
+  margin-top: 24px;
+}
+
+.zfc-hc-strengthen__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 28px 0 0;
+  padding-left: 31px;
+}
+
+.zfc-hc-strengthen__list li {
+  padding-left: 3px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.34;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-hc-strengthen__list li::marker {
+  font-size: 0.72em;
+}
+
+.zfc-hc-strengthen__block + .zfc-hc-strengthen__block {
+  margin-top: 56px;
+}
+
+.zfc-hc-strengthen__subheading {
+  margin: 0 0 22px;
+  font-family: var(--zfc-font-heading);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-hc-strengthen__block .zfc-hc-strengthen__list {
+  margin-bottom: 28px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   INADMISSIBILITY — no-sidebar top section
+   ══════════════════════════════════════════════════════════ */
+.zfc-inadmissibility-page .zfc-about-hero-wrap {
+  padding: 0;
+}
+
+.zfc-inadmissibility-page .zfc-about-hero {
+  min-height: 300px;
+  border-radius: 0 0 28px 28px;
+}
+
+.zfc-inadmissibility-page .zfc-about-hero__content {
+  padding: 54px clamp(32px, 6.25vw, 128px);
+  gap: 10px;
+}
+
+.zfc-inadmissibility-page .zfc-about-hero__title {
+  font-size: 50px;
+  letter-spacing: 0;
+}
+
+.zfc-inadmissibility-page .zfc-about-hero__breadcrumb-link,
+.zfc-inadmissibility-page .zfc-about-hero__breadcrumb-current {
+  font-size: 17px;
+  letter-spacing: 0;
+}
+
+.zfc-inadmissibility-intro {
+  width: 100%;
+  background: #ffffff;
+  padding: 76px clamp(24px, 6.25vw, 128px) 96px;
+}
+
+.zfc-inadmissibility-intro__inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.zfc-inadmissibility-intro__heading {
+  max-width: 760px;
+  margin: 0 0 38px;
+  font-family: var(--zfc-font-heading);
+  font-size: clamp(44px, 4.55vw, 58px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0;
+  color: #0b0b0b;
+}
+
+.zfc-inadmissibility-intro__heading span {
+  display: block;
+}
+
+.zfc-inadmissibility-intro__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.zfc-inadmissibility-intro__body {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.42;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-inadmissibility-intro__image-wrap {
+  width: 100%;
+  height: clamp(360px, 39vw, 500px);
+  margin-top: 48px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f3f3f3;
+}
+
+.zfc-inadmissibility-intro__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.zfc-inadmissibility-admissibility {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 clamp(24px, 6.25vw, 128px) 102px;
+}
+
+.zfc-inadmissibility-admissibility__inner {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.zfc-inadmissibility-admissibility__heading {
+  max-width: 790px;
+  margin: 0 0 60px;
+  font-family: var(--zfc-font-heading);
+  font-size: clamp(44px, 4.45vw, 58px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0;
+  color: #0b0b0b;
+}
+
+.zfc-inadmissibility-admissibility__heading span {
+  display: block;
+}
+
+.zfc-inadmissibility-admissibility__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(330px, 424px);
+  gap: 44px;
+  align-items: start;
+}
+
+.zfc-inadmissibility-admissibility__content {
+  min-width: 0;
+}
+
+.zfc-inadmissibility-admissibility__text,
+.zfc-inadmissibility-admissibility__closing {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.34;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-inadmissibility-admissibility__text--label {
+  margin-top: 28px;
+}
+
+.zfc-inadmissibility-admissibility__list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 2px 0 0;
+  padding-left: 31px;
+}
+
+.zfc-inadmissibility-admissibility__list li {
+  padding-left: 3px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.34;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-inadmissibility-admissibility__list li::marker {
+  font-size: 0.72em;
+}
+
+.zfc-inadmissibility-admissibility__list strong {
+  font-weight: 800;
+}
+
+.zfc-inadmissibility-admissibility__media {
+  width: 100%;
+  min-height: clamp(620px, 49vw, 760px);
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f4f4f4;
+  align-self: stretch;
+}
+
+.zfc-inadmissibility-admissibility__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.zfc-inadmissibility-admissibility__closing {
+  max-width: 1040px;
+  margin-top: 38px;
+}
+
+.zfc-inadmissibility-admissibility__cta {
+  width: fit-content;
+  min-height: 38px;
+  margin-top: 50px;
+  padding: 0 15px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: var(--zfc-red);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.zfc-inadmissibility-admissibility__cta:hover {
+  background: var(--zfc-red-dark);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .zfc-humanitarian-page .zfc-about-hero {
+    min-height: 240px;
+    border-radius: 0 0 22px 22px;
+  }
+
+  .zfc-humanitarian-page .zfc-about-hero__content {
+    padding: 42px 28px;
+  }
+
+  .zfc-humanitarian-page .zfc-about-hero__title {
+    font-size: 42px;
+  }
+
+  .zfc-hc-intro {
+    padding: 54px 24px 64px;
+  }
+
+  .zfc-hc-intro__heading {
+    margin-bottom: 44px;
+    font-size: 48px;
+  }
+
+  .zfc-hc-intro__subheading {
+    margin-bottom: 34px;
+    font-size: 28px;
+  }
+
+  .zfc-hc-intro__body,
+  .zfc-hc-intro__item {
+    font-size: 20px;
+  }
+
+  .zfc-hc-intro__list {
+    gap: 22px;
+    padding-left: 28px;
+  }
+
+  .zfc-hc-feature-image {
+    padding: 0 24px 66px;
+  }
+
+  .zfc-hc-feature-image__photo {
+    border-radius: 18px;
+  }
+
+  .zfc-hc-eligibility {
+    padding: 0 24px 72px;
+  }
+
+  .zfc-hc-eligibility__heading {
+    margin-bottom: 34px;
+    font-size: 30px;
+  }
+
+  .zfc-hc-eligibility__text,
+  .zfc-hc-eligibility__list li {
+    font-size: 20px;
+  }
+
+  .zfc-hc-eligibility__list {
+    padding-left: 26px;
+  }
+
+  .zfc-hc-common {
+    padding: 0 24px;
+  }
+
+  .zfc-hc-common__heading {
+    margin-bottom: 34px;
+    font-size: 30px;
+  }
+
+  .zfc-hc-common__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .zfc-hc-common__media {
+    aspect-ratio: auto;
+  }
+
+  .zfc-hc-common__content {
+    padding-top: 0;
+  }
+
+  .zfc-hc-common__text,
+  .zfc-hc-common__list li {
+    font-size: 20px;
+  }
+
+  .zfc-hc-common__list {
+    gap: 22px;
+    padding-left: 28px;
+  }
+
+  .zfc-hc-strengthen {
+    padding: 0 24px 82px;
+  }
+
+  .zfc-hc-strengthen__heading,
+  .zfc-hc-strengthen__subheading {
+    font-size: 30px;
+  }
+
+  .zfc-hc-strengthen__heading {
+    margin-bottom: 36px;
+  }
+
+  .zfc-hc-strengthen__top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 44px;
+  }
+
+  .zfc-hc-strengthen__media {
+    max-width: 420px;
+  }
+
+  .zfc-hc-strengthen__text,
+  .zfc-hc-strengthen__list li {
+    font-size: 20px;
+  }
+
+  .zfc-hc-strengthen__list {
+    gap: 22px;
+    padding-left: 28px;
+  }
+
+  .zfc-inadmissibility-page .zfc-about-hero {
+    min-height: 240px;
+    border-radius: 0 0 22px 22px;
+  }
+
+  .zfc-inadmissibility-page .zfc-about-hero__content {
+    padding: 42px 28px;
+  }
+
+  .zfc-inadmissibility-page .zfc-about-hero__title {
+    font-size: 42px;
+  }
+
+  .zfc-inadmissibility-intro {
+    padding: 54px 24px 76px;
+  }
+
+  .zfc-inadmissibility-intro__heading {
+    margin-bottom: 32px;
+    font-size: 46px;
+  }
+
+  .zfc-inadmissibility-intro__body {
+    font-size: 19px;
+  }
+
+  .zfc-inadmissibility-intro__image-wrap {
+    width: 100%;
+    height: auto;
+    margin-top: 40px;
+    margin-left: 0;
+    border-radius: 14px;
+    transform: none;
+  }
+
+  .zfc-inadmissibility-intro__image {
+    height: auto;
+  }
+
+  .zfc-inadmissibility-admissibility {
+    padding: 0 24px 78px;
+  }
+
+  .zfc-inadmissibility-admissibility__heading {
+    margin-bottom: 38px;
+    font-size: 44px;
+  }
+
+  .zfc-inadmissibility-admissibility__grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .zfc-inadmissibility-admissibility__media {
+    min-height: 0;
+    max-width: 440px;
+  }
+
+  .zfc-inadmissibility-admissibility__image {
+    height: auto;
+  }
+
+  .zfc-inadmissibility-admissibility__text,
+  .zfc-inadmissibility-admissibility__closing,
+  .zfc-inadmissibility-admissibility__list li {
+    font-size: 19px;
+  }
+
+  .zfc-inadmissibility-admissibility__list {
+    gap: 22px;
+    padding-left: 28px;
+  }
+
+  .zfc-inadmissibility-page .zfc-svc-list--related {
+    padding: 36px 24px 78px;
+  }
+
+  .zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-list__heading {
+    font-size: 36px;
+  }
+
+  .zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-list__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 42px 16px;
+  }
+
+  .zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-card:nth-child(9) {
+    width: 100%;
+    grid-column: auto;
+    justify-self: stretch;
+  }
+
+  .zfc-inadmissibility-reasons {
+    padding: 0 24px 78px;
+  }
+
+  .zfc-inadmissibility-reasons__heading,
+  .zfc-inadmissibility-reasons__cta-heading {
+    font-size: 44px;
+  }
+
+  .zfc-inadmissibility-reasons__heading {
+    margin-bottom: 38px;
+  }
+
+  .zfc-inadmissibility-reasons__grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .zfc-inadmissibility-reasons__media {
+    max-width: 420px;
+    justify-self: start;
+  }
+
+  .zfc-inadmissibility-reasons__text,
+  .zfc-inadmissibility-reasons__list li,
+  .zfc-inadmissibility-reasons__cta-text {
+    font-size: 19px;
+  }
+
+  .zfc-inadmissibility-reasons__list {
+    gap: 22px;
+    padding-left: 28px;
+  }
+
+  .zfc-inadmissibility-reasons__cta-block {
+    margin-top: 68px;
+  }
+}
+
+@media (max-width: 600px) {
+  .zfc-humanitarian-page .zfc-about-hero {
+    min-height: 200px;
+    border-radius: 0 0 18px 18px;
+  }
+
+  .zfc-humanitarian-page .zfc-about-hero__content {
+    padding: 34px 20px;
+  }
+
+  .zfc-humanitarian-page .zfc-about-hero__title {
+    font-size: 34px;
+  }
+
+  .zfc-humanitarian-page .zfc-about-hero__breadcrumb-link,
+  .zfc-humanitarian-page .zfc-about-hero__breadcrumb-current {
+    font-size: 15px;
+  }
+
+  .zfc-hc-intro {
+    padding: 40px 20px 54px;
+  }
+
+  .zfc-hc-intro__heading {
+    margin-bottom: 30px;
+    font-size: 34px;
+  }
+
+  .zfc-hc-intro__subheading {
+    margin-bottom: 26px;
+    font-size: 24px;
+  }
+
+  .zfc-hc-intro__body,
+  .zfc-hc-intro__item {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-hc-intro__body + .zfc-hc-intro__body,
+  .zfc-hc-intro__list {
+    margin-top: 24px;
+  }
+
+  .zfc-hc-intro__list {
+    gap: 20px;
+    padding-left: 24px;
+  }
+
+  .zfc-hc-intro__item {
+    padding-left: 2px;
+  }
+
+  .zfc-hc-feature-image {
+    padding: 0 20px 52px;
+  }
+
+  .zfc-hc-feature-image__photo {
+    border-radius: 14px;
+  }
+
+  .zfc-hc-eligibility {
+    padding: 0 20px 58px;
+  }
+
+  .zfc-hc-eligibility__heading {
+    margin-bottom: 26px;
+    font-size: 26px;
+  }
+
+  .zfc-hc-eligibility__text,
+  .zfc-hc-eligibility__list li {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-hc-eligibility__text + .zfc-hc-eligibility__text,
+  .zfc-hc-eligibility__list {
+    margin-top: 22px;
+  }
+
+  .zfc-hc-eligibility__list {
+    padding-left: 22px;
+  }
+
+  .zfc-hc-common {
+    padding: 0 20px;
+  }
+
+  .zfc-hc-common__heading {
+    margin-bottom: 26px;
+    font-size: 26px;
+  }
+
+  .zfc-hc-common__media {
+    border-radius: 14px;
+  }
+
+  .zfc-hc-common__text,
+  .zfc-hc-common__list li {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-hc-common__list {
+    gap: 20px;
+    margin: 24px 0;
+    padding-left: 22px;
+  }
+
+  .zfc-hc-strengthen {
+    padding: 0 20px 64px;
+  }
+
+  .zfc-hc-strengthen__heading,
+  .zfc-hc-strengthen__subheading {
+    font-size: 26px;
+  }
+
+  .zfc-hc-strengthen__heading {
+    margin-bottom: 28px;
+  }
+
+  .zfc-hc-strengthen__top {
+    gap: 26px;
+    margin-bottom: 40px;
+  }
+
+  .zfc-hc-strengthen__media {
+    max-width: 100%;
+    border-radius: 14px;
+  }
+
+  .zfc-hc-strengthen__text,
+  .zfc-hc-strengthen__list li {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-hc-strengthen__list {
+    gap: 20px;
+    margin-top: 24px;
+    padding-left: 22px;
+  }
+
+  .zfc-hc-strengthen__block + .zfc-hc-strengthen__block {
+    margin-top: 42px;
+  }
+
+  .zfc-hc-strengthen__subheading {
+    margin-bottom: 18px;
+  }
+
+  .zfc-hc-strengthen__block .zfc-hc-strengthen__list {
+    margin-bottom: 24px;
+  }
+
+  .zfc-inadmissibility-page .zfc-about-hero {
+    min-height: 200px;
+    border-radius: 0 0 18px 18px;
+  }
+
+  .zfc-inadmissibility-page .zfc-about-hero__content {
+    padding: 34px 20px;
+  }
+
+  .zfc-inadmissibility-page .zfc-about-hero__title {
+    font-size: 34px;
+  }
+
+  .zfc-inadmissibility-page .zfc-about-hero__breadcrumb-link,
+  .zfc-inadmissibility-page .zfc-about-hero__breadcrumb-current {
+    font-size: 15px;
+  }
+
+  .zfc-inadmissibility-intro {
+    padding: 42px 20px 58px;
+  }
+
+  .zfc-inadmissibility-intro__heading {
+    margin-bottom: 26px;
+    font-size: 34px;
+  }
+
+  .zfc-inadmissibility-intro__copy {
+    gap: 20px;
+  }
+
+  .zfc-inadmissibility-intro__body {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-inadmissibility-intro__image-wrap {
+    margin-top: 32px;
+    border-radius: 12px;
+  }
+
+  .zfc-inadmissibility-admissibility {
+    padding: 0 20px 62px;
+  }
+
+  .zfc-inadmissibility-admissibility__heading {
+    margin-bottom: 28px;
+    font-size: 34px;
+  }
+
+  .zfc-inadmissibility-admissibility__grid {
+    gap: 28px;
+  }
+
+  .zfc-inadmissibility-admissibility__media {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .zfc-inadmissibility-admissibility__text,
+  .zfc-inadmissibility-admissibility__closing,
+  .zfc-inadmissibility-admissibility__list li {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-inadmissibility-admissibility__text--label {
+    margin-top: 24px;
+  }
+
+  .zfc-inadmissibility-admissibility__list {
+    gap: 20px;
+    padding-left: 22px;
+  }
+
+  .zfc-inadmissibility-admissibility__closing {
+    margin-top: 30px;
+  }
+
+  .zfc-inadmissibility-admissibility__cta {
+    margin-top: 34px;
+  }
+
+  .zfc-inadmissibility-page .zfc-svc-list--related {
+    padding: 30px 20px 64px;
+  }
+
+  .zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-list__header {
+    margin-bottom: 38px;
+  }
+
+  .zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-list__heading {
+    font-size: 30px;
+  }
+
+  .zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-list__grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-card:nth-child(9) {
+    width: 100%;
+    grid-column: auto;
+    justify-self: stretch;
+  }
+
+  .zfc-inadmissibility-reasons {
+    padding: 0 20px 64px;
+  }
+
+  .zfc-inadmissibility-reasons__heading,
+  .zfc-inadmissibility-reasons__cta-heading {
+    font-size: 34px;
+  }
+
+  .zfc-inadmissibility-reasons__heading {
+    margin-bottom: 30px;
+  }
+
+  .zfc-inadmissibility-reasons__grid {
+    gap: 30px;
+  }
+
+  .zfc-inadmissibility-reasons__media {
+    max-width: 100%;
+    border-radius: 18px;
+  }
+
+  .zfc-inadmissibility-reasons__text,
+  .zfc-inadmissibility-reasons__list li,
+  .zfc-inadmissibility-reasons__cta-text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-inadmissibility-reasons__list {
+    gap: 20px;
+    margin-top: 26px;
+    padding-left: 22px;
+  }
+
+  .zfc-inadmissibility-reasons__text--closing {
+    margin-top: 30px;
+  }
+
+  .zfc-inadmissibility-reasons__cta-block {
+    margin-top: 56px;
+  }
+
+  .zfc-inadmissibility-reasons__cta-text {
+    margin-top: 22px;
+  }
+
+  .zfc-inadmissibility-reasons__cta {
+    margin-top: 26px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   REFUSED APPLICATIONS — no-sidebar custom page
+   ══════════════════════════════════════════════════════════ */
+.zfc-refused-page .zfc-about-hero-wrap {
+  padding: 0;
+}
+
+.zfc-refused-page .zfc-about-hero {
+  min-height: 270px;
+  border-radius: 0 0 28px 28px;
+}
+
+.zfc-refused-page .zfc-about-hero__content {
+  padding: 52px clamp(32px, 6.25vw, 128px);
+  gap: 10px;
+}
+
+.zfc-refused-page .zfc-about-hero__title {
+  font-size: 50px;
+  letter-spacing: 0;
+}
+
+.zfc-refused-page .zfc-about-hero__breadcrumb-link,
+.zfc-refused-page .zfc-about-hero__breadcrumb-current {
+  font-size: 17px;
+  letter-spacing: 0;
+}
+
+.zfc-refused-main {
+  width: 100%;
+  background: #ffffff;
+  padding: 58px clamp(24px, 6.25vw, 128px) 0;
+}
+
+.zfc-refused-main__inner {
+  max-width: 1420px;
+  margin: 0 auto;
+}
+
+.zfc-refused-main__heading {
+  max-width: 760px;
+  margin: 0 auto 58px;
+  font-family: var(--zfc-font-heading);
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0;
+  text-align: center;
+  color: #0b0b0b;
+}
+
+.zfc-refused-main__heading span {
+  display: block;
+}
+
+.zfc-refused-main__subheading {
+  margin: 0 0 54px;
+  font-family: var(--zfc-font-heading);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-refused-main__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.zfc-refused-main__body {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.42;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-refused-main__cta {
+  width: fit-content;
+  min-height: 42px;
+  margin: 46px auto 74px;
+  padding: 0 19px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--zfc-red);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.zfc-refused-main__cta:hover {
+  background: var(--zfc-red-dark);
+  transform: translateY(-1px);
+}
+
+.zfc-refused-main__cta svg {
+  flex-shrink: 0;
+}
+
+.zfc-refused-main__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1245 / 525;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.zfc-refused-main__image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.zfc-refused-reasons {
+  margin-top: 76px;
+  color: #0b0b0b;
+}
+
+.zfc-refused-reasons__heading {
+  margin: 0 0 64px;
+  font-family: var(--zfc-font-heading);
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0;
+  color: #0b0b0b;
+}
+
+.zfc-refused-reasons__body {
+  margin: 0;
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1.34;
+  letter-spacing: 0;
+  color: #0b0b0b;
+}
+
+.zfc-refused-reasons__body + .zfc-refused-reasons__body {
+  margin-top: 42px;
+}
+
+.zfc-refused-reasons__list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 42px 0 38px;
+  padding-left: 42px;
+}
+
+.zfc-refused-reasons__item {
+  padding-left: 8px;
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: #0b0b0b;
+}
+
+.zfc-refused-reasons__item::marker {
+  font-size: 0.75em;
+}
+
+.zfc-refused-reasons__item strong {
+  font-weight: 800;
+}
+
+.zfc-refused-reasons__body--closing {
+  margin-top: 36px;
+}
+
+.zfc-refused-page .zfc-svc-list--related,
+.zfc-humanitarian-page .zfc-svc-list--related {
+  padding-top: 82px;
+  padding-bottom: 104px;
+}
+
+.zfc-humanitarian-page .zfc-svc-list--related {
+  padding-top: 96px;
+}
+
+.zfc-refused-page .zfc-svc-list--related .zfc-svc-list__header,
+.zfc-humanitarian-page .zfc-svc-list--related .zfc-svc-list__header {
+  margin-bottom: 58px;
+}
+
+.zfc-refused-page .zfc-svc-list--related .zfc-svc-list__heading,
+.zfc-humanitarian-page .zfc-svc-list--related .zfc-svc-list__heading {
+  max-width: 1020px;
+  font-size: 42px;
+  letter-spacing: 0;
+}
+
+.zfc-refused-page .zfc-svc-list--related .zfc-svc-list__grid,
+.zfc-humanitarian-page .zfc-svc-list--related .zfc-svc-list__grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 64px 22px;
+}
+
+.zfc-refused-page .zfc-svc-list--related .zfc-svc-card:nth-child(9),
+.zfc-refused-page .zfc-svc-list--related .zfc-svc-card:nth-child(10),
+.zfc-humanitarian-page .zfc-svc-list--related .zfc-svc-card:nth-child(9),
+.zfc-humanitarian-page .zfc-svc-list--related .zfc-svc-card:nth-child(10) {
+  grid-column: auto;
+}
+
+.zfc-inadmissibility-page .zfc-svc-list--related {
+  padding-top: 18px;
+  padding-bottom: 104px;
+}
+
+.zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-list__header {
+  margin-bottom: 58px;
+}
+
+.zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-list__heading {
+  max-width: 1020px;
+  font-size: 42px;
+  letter-spacing: 0;
+}
+
+.zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-list__grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 64px 22px;
+}
+
+.zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-card:nth-child(9),
+.zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-card:nth-child(10) {
+  grid-column: auto;
+}
+
+.zfc-inadmissibility-reasons {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 clamp(24px, 6.25vw, 128px) 108px;
+}
+
+.zfc-inadmissibility-reasons__inner {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.zfc-inadmissibility-reasons__heading,
+.zfc-inadmissibility-reasons__cta-heading {
+  margin: 0;
+  font-family: var(--zfc-font-heading);
+  font-size: clamp(44px, 4.45vw, 58px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0;
+  color: #0b0b0b;
+}
+
+.zfc-inadmissibility-reasons__heading {
+  max-width: 760px;
+  margin-bottom: 48px;
+}
+
+.zfc-inadmissibility-reasons__heading span,
+.zfc-inadmissibility-reasons__cta-heading span {
+  display: block;
+}
+
+.zfc-inadmissibility-reasons__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 408px);
+  gap: 74px;
+  align-items: center;
+}
+
+.zfc-inadmissibility-reasons__content {
+  min-width: 0;
+}
+
+.zfc-inadmissibility-reasons__text,
+.zfc-inadmissibility-reasons__list li,
+.zfc-inadmissibility-reasons__cta-text {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.38;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-inadmissibility-reasons__list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin: 34px 0 0;
+  padding-left: 31px;
+}
+
+.zfc-inadmissibility-reasons__list li {
+  padding-left: 3px;
+}
+
+.zfc-inadmissibility-reasons__list li::marker {
+  font-size: 0.72em;
+}
+
+.zfc-inadmissibility-reasons__list strong {
+  font-weight: 800;
+}
+
+.zfc-inadmissibility-reasons__text--closing {
+  margin-top: 36px;
+}
+
+.zfc-inadmissibility-reasons__media {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #f4f4f4;
+}
+
+.zfc-inadmissibility-reasons__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.zfc-inadmissibility-reasons__cta-block {
+  margin-top: 110px;
+}
+
+.zfc-inadmissibility-reasons__cta-heading {
+  max-width: 790px;
+}
+
+.zfc-inadmissibility-reasons__cta-text {
+  margin-top: 28px;
+}
+
+.zfc-inadmissibility-reasons__cta {
+  width: fit-content;
+  min-height: 38px;
+  margin-top: 30px;
+  padding: 0 15px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: var(--zfc-red);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.zfc-inadmissibility-reasons__cta:hover {
+  background: var(--zfc-red-dark);
+  transform: translateY(-1px);
+}
+
+.zfc-refused-approach {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 clamp(24px, 6.25vw, 128px) 112px;
+}
+
+.zfc-refused-approach__inner {
+  max-width: 1420px;
+  margin: 0 auto;
+}
+
+.zfc-refused-approach__heading {
+  max-width: 880px;
+  margin: 0 auto 60px;
+  font-family: var(--zfc-font-heading);
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-align: center;
+  color: #0b0b0b;
+}
+
+.zfc-refused-approach__heading span {
+  display: block;
+}
+
+.zfc-refused-approach__layout {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.2fr);
+  gap: 58px;
+  align-items: start;
+}
+
+.zfc-refused-approach__image-frame {
+  width: 100%;
+  max-width: 540px;
+}
+
+.zfc-refused-approach__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 28px;
+}
+
+.zfc-refused-approach__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  padding-top: 8px;
+}
+
+.zfc-refused-approach__body {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: 0;
+  color: #0b0b0b;
+}
+
+.zfc-refused-page .zfc-map {
+  width: 100%;
+  line-height: 0;
+}
+
+.zfc-refused-page .zfc-map__iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  display: block;
+}
+
+.zfc-refused-page .zfc-contact {
+  background: #ffffff;
+  padding: 82px clamp(24px, 6.25vw, 128px) 112px;
+}
+
+.zfc-refused-page .zfc-contact__inner {
+  display: grid;
+  grid-template-columns: minmax(420px, 0.88fr) minmax(440px, 1.12fr);
+  gap: clamp(48px, 5.25vw, 100px);
+  max-width: 1360px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.zfc-refused-page .zfc-contact__heading {
+  font-family: var(--zfc-font-heading);
+  font-size: 46px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 0 14px;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.zfc-refused-page .zfc-contact__heading-red {
+  color: var(--zfc-red);
+}
+
+.zfc-refused-page .zfc-contact__subtitle {
+  max-width: 560px;
+  margin: 0 0 34px;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-refused-page .zfc-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.zfc-refused-page .zfc-contact__field {
+  border-bottom: 1px solid #9fa3a7;
+  margin-bottom: 4px;
+}
+
+.zfc-refused-page .zfc-contact__input,
+.zfc-refused-page .zfc-contact__textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 16px 4px;
+  font-family: var(--zfc-font-body);
+  font-size: 18px;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-refused-page .zfc-contact__input::placeholder,
+.zfc-refused-page .zfc-contact__textarea::placeholder {
+  color: #9a9a9a;
+}
+
+.zfc-refused-page .zfc-contact__textarea {
+  min-height: 72px;
+  resize: none;
+}
+
+.zfc-refused-page .zfc-contact__field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 0.47fr);
+  gap: 24px;
+}
+
+.zfc-refused-page .zfc-contact__upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 16px;
+  padding: 36px 20px;
+  border: 1.5px dashed #aaaaaa;
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.zfc-refused-page .zfc-contact__upload:hover {
+  border-color: var(--zfc-red);
+}
+
+.zfc-refused-page .zfc-contact__upload span {
+  font-size: 16px;
+  letter-spacing: 0;
+  color: #999999;
+}
+
+.zfc-refused-page .zfc-contact__file-input {
+  display: none;
+}
+
+.zfc-refused-page .zfc-contact__attach-note {
+  margin: 14px 0 18px;
+  font-size: 13px;
+  letter-spacing: 0;
+  color: #999999;
+}
+
+.zfc-refused-page .zfc-contact__nda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.zfc-refused-page .zfc-contact__checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--zfc-red);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.zfc-refused-page .zfc-contact__nda span {
+  font-size: 16px;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-refused-page .zfc-contact__submit {
+  width: 100%;
+  margin-bottom: 22px;
+  padding: 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--zfc-red);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.zfc-refused-page .zfc-contact__submit:hover {
+  background: var(--zfc-red-dark);
+}
+
+.zfc-refused-page .zfc-contact__info-row {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.zfc-refused-page .zfc-contact__info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.zfc-refused-page .zfc-contact__info-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #111111;
+}
+
+.zfc-refused-page .zfc-contact__info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.zfc-refused-page .zfc-contact__info-label {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-refused-page .zfc-contact__info-value {
+  font-size: 13px;
+  letter-spacing: 0;
+  color: var(--zfc-red);
+}
+
+.zfc-refused-page .zfc-contact__right {
+  position: relative;
+  min-height: 700px;
+}
+
+.zfc-refused-page .zfc-contact__map-decor {
+  position: absolute;
+  inset: 32px 0 0 36px;
+  z-index: 0;
+  border-radius: 12px;
+  background: var(--zfc-red);
+}
+
+.zfc-refused-page .zfc-contact__map-wrap {
+  position: absolute;
+  inset: 0 36px 44px 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.zfc-refused-page .zfc-contact__map {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.zfc-refused-page .zfc-contact__right--image .zfc-contact__map-decor {
+  display: none;
+}
+
+.zfc-refused-page .zfc-contact__right--image .zfc-contact__map-wrap {
+  inset: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.zfc-refused-page .zfc-contact__image {
+  object-fit: contain;
+  object-position: center;
+}
+
+.zfc-refused-page .zfc-faq {
+  padding-top: 90px;
+  padding-bottom: 110px;
+}
+
+.zfc-refused-page .zfc-faq__inner {
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  gap: 0 72px;
+  max-width: 1360px;
+}
+
+.zfc-refused-page .zfc-faq__heading {
+  font-size: 48px;
+  letter-spacing: 0;
+}
+
+.zfc-refused-page .zfc-faq__left {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.zfc-refused-page .zfc-faq__right {
+  grid-column: 1;
+  grid-row: 2;
+  padding-top: 54px;
+}
+
+.zfc-humanitarian-page .zfc-map {
+  width: 100%;
+  line-height: 0;
+}
+
+.zfc-humanitarian-page .zfc-map__iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  display: block;
+}
+
+.zfc-humanitarian-page .zfc-contact {
+  background: #ffffff;
+  padding: 82px clamp(24px, 6.25vw, 128px) 112px;
+}
+
+.zfc-humanitarian-page .zfc-contact__inner {
+  display: grid;
+  grid-template-columns: minmax(420px, 0.88fr) minmax(440px, 1.12fr);
+  gap: clamp(48px, 5.25vw, 100px);
+  max-width: 1360px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.zfc-humanitarian-page .zfc-contact__heading {
+  font-family: var(--zfc-font-heading);
+  font-size: 46px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 0 14px;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.zfc-humanitarian-page .zfc-contact__heading-red {
+  color: var(--zfc-red);
+}
+
+.zfc-humanitarian-page .zfc-contact__subtitle {
+  max-width: 560px;
+  margin: 0 0 34px;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-humanitarian-page .zfc-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.zfc-humanitarian-page .zfc-contact__field {
+  border-bottom: 1px solid #9fa3a7;
+  margin-bottom: 4px;
+}
+
+.zfc-humanitarian-page .zfc-contact__input,
+.zfc-humanitarian-page .zfc-contact__textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 16px 4px;
+  font-family: var(--zfc-font-body);
+  font-size: 18px;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-humanitarian-page .zfc-contact__input::placeholder,
+.zfc-humanitarian-page .zfc-contact__textarea::placeholder {
+  color: #9a9a9a;
+}
+
+.zfc-humanitarian-page .zfc-contact__textarea {
+  min-height: 72px;
+  resize: none;
+}
+
+.zfc-humanitarian-page .zfc-contact__field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 0.47fr);
+  gap: 24px;
+}
+
+.zfc-humanitarian-page .zfc-contact__upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 16px;
+  padding: 36px 20px;
+  border: 1.5px dashed #aaaaaa;
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.zfc-humanitarian-page .zfc-contact__upload:hover {
+  border-color: var(--zfc-red);
+}
+
+.zfc-humanitarian-page .zfc-contact__upload span {
+  font-size: 16px;
+  letter-spacing: 0;
+  color: #999999;
+}
+
+.zfc-humanitarian-page .zfc-contact__file-input {
+  display: none;
+}
+
+.zfc-humanitarian-page .zfc-contact__attach-note {
+  margin: 14px 0 18px;
+  font-size: 13px;
+  letter-spacing: 0;
+  color: #999999;
+}
+
+.zfc-humanitarian-page .zfc-contact__nda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.zfc-humanitarian-page .zfc-contact__checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--zfc-red);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.zfc-humanitarian-page .zfc-contact__nda span {
+  font-size: 16px;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-humanitarian-page .zfc-contact__submit {
+  width: 100%;
+  margin-bottom: 22px;
+  padding: 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--zfc-red);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.zfc-humanitarian-page .zfc-contact__submit:hover {
+  background: var(--zfc-red-dark);
+}
+
+.zfc-humanitarian-page .zfc-contact__info-row {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.zfc-humanitarian-page .zfc-contact__info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.zfc-humanitarian-page .zfc-contact__info-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #111111;
+}
+
+.zfc-humanitarian-page .zfc-contact__info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.zfc-humanitarian-page .zfc-contact__info-label {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-humanitarian-page .zfc-contact__info-value {
+  font-size: 13px;
+  letter-spacing: 0;
+  color: var(--zfc-red);
+}
+
+.zfc-humanitarian-page .zfc-contact__right {
+  position: relative;
+  min-height: 700px;
+}
+
+.zfc-humanitarian-page .zfc-contact__map-decor {
+  position: absolute;
+  inset: 32px 0 0 36px;
+  z-index: 0;
+  border-radius: 12px;
+  background: var(--zfc-red);
+}
+
+.zfc-humanitarian-page .zfc-contact__map-wrap {
+  position: absolute;
+  inset: 0 36px 44px 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.zfc-humanitarian-page .zfc-contact__map {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.zfc-humanitarian-page .zfc-contact__right--image .zfc-contact__map-decor {
+  display: none;
+}
+
+.zfc-humanitarian-page .zfc-contact__right--image .zfc-contact__map-wrap {
+  inset: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.zfc-humanitarian-page .zfc-contact__image {
+  object-fit: contain;
+  object-position: center;
+}
+
+.zfc-humanitarian-page .zfc-faq {
+  padding-top: 90px;
+  padding-bottom: 110px;
+}
+
+.zfc-humanitarian-page .zfc-faq__inner {
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  gap: 0 72px;
+  max-width: 1360px;
+}
+
+.zfc-humanitarian-page .zfc-faq__heading {
+  font-size: 48px;
+  letter-spacing: 0;
+}
+
+.zfc-humanitarian-page .zfc-faq__left {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.zfc-humanitarian-page .zfc-faq__right {
+  grid-column: 1;
+  grid-row: 2;
+  padding-top: 54px;
+}
+
+@media (max-width: 900px) {
+  .zfc-refused-page .zfc-about-hero {
+    min-height: 220px;
+    border-radius: 0 0 22px 22px;
+  }
+
+  .zfc-refused-page .zfc-about-hero__content {
+    padding: 42px 28px;
+  }
+
+  .zfc-refused-page .zfc-about-hero__title {
+    font-size: 42px;
+  }
+
+  .zfc-refused-main {
+    padding: 46px 24px 0;
+  }
+
+  .zfc-refused-main__heading {
+    margin-bottom: 42px;
+    font-size: 44px;
+  }
+
+  .zfc-refused-main__subheading {
+    margin-bottom: 34px;
+    font-size: 28px;
+  }
+
+  .zfc-refused-main__body {
+    font-size: 19px;
+  }
+
+  .zfc-refused-main__cta {
+    margin: 38px auto 54px;
+  }
+
+  .zfc-refused-reasons {
+    margin-top: 58px;
+  }
+
+  .zfc-refused-reasons__heading {
+    margin-bottom: 42px;
+    font-size: 42px;
+  }
+
+  .zfc-refused-reasons__body,
+  .zfc-refused-reasons__item {
+    font-size: 22px;
+  }
+
+  .zfc-refused-reasons__list {
+    gap: 24px;
+    padding-left: 34px;
+  }
+
+  .zfc-refused-page .zfc-svc-list--related,
+  .zfc-humanitarian-page .zfc-svc-list--related {
+    padding-top: 64px;
+    padding-bottom: 78px;
+  }
+
+  .zfc-refused-page .zfc-svc-list--related .zfc-svc-list__heading,
+  .zfc-humanitarian-page .zfc-svc-list--related .zfc-svc-list__heading {
+    font-size: 36px;
+  }
+
+  .zfc-refused-page .zfc-svc-list--related .zfc-svc-list__grid,
+  .zfc-humanitarian-page .zfc-svc-list--related .zfc-svc-list__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 42px 16px;
+  }
+
+  .zfc-refused-page .zfc-svc-list--related .zfc-svc-card:nth-child(9),
+  .zfc-humanitarian-page .zfc-svc-list--related .zfc-svc-card:nth-child(9) {
+    width: 100%;
+    grid-column: auto;
+    justify-self: stretch;
+  }
+
+  .zfc-refused-approach {
+    padding: 0 24px 82px;
+  }
+
+  .zfc-refused-approach__heading {
+    margin-bottom: 46px;
+    font-size: 46px;
+  }
+
+  .zfc-refused-approach__layout {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .zfc-refused-approach__image-frame {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .zfc-refused-approach__copy {
+    gap: 26px;
+    padding-top: 0;
+  }
+
+  .zfc-refused-approach__body {
+    font-size: 22px;
+  }
+
+  .zfc-refused-page .zfc-map__iframe {
+    height: 360px;
+  }
+
+  .zfc-refused-page .zfc-contact {
+    padding: 64px 24px 82px;
+  }
+
+  .zfc-refused-page .zfc-contact__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .zfc-refused-page .zfc-contact__heading {
+    font-size: 40px;
+  }
+
+  .zfc-refused-page .zfc-contact__right {
+    min-height: 620px;
+  }
+
+  .zfc-refused-page .zfc-faq {
+    padding-top: 72px;
+    padding-bottom: 86px;
+  }
+
+  .zfc-refused-page .zfc-faq__inner {
+    grid-template-columns: 1fr;
+    gap: 48px 0;
+  }
+
+  .zfc-refused-page .zfc-faq__heading {
+    font-size: 40px;
+  }
+
+  .zfc-refused-page .zfc-faq__left {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .zfc-refused-page .zfc-faq__right {
+    grid-column: 1;
+    grid-row: 3;
+    padding-top: 0;
+  }
+
+  .zfc-humanitarian-page .zfc-map__iframe {
+    height: 360px;
+  }
+
+  .zfc-humanitarian-page .zfc-contact {
+    padding: 64px 24px 82px;
+  }
+
+  .zfc-humanitarian-page .zfc-contact__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .zfc-humanitarian-page .zfc-contact__heading {
+    font-size: 40px;
+  }
+
+  .zfc-humanitarian-page .zfc-contact__right {
+    min-height: 620px;
+  }
+
+  .zfc-humanitarian-page .zfc-faq {
+    padding-top: 72px;
+    padding-bottom: 86px;
+  }
+
+  .zfc-humanitarian-page .zfc-faq__inner {
+    grid-template-columns: 1fr;
+    gap: 48px 0;
+  }
+
+  .zfc-humanitarian-page .zfc-faq__heading {
+    font-size: 40px;
+  }
+
+  .zfc-humanitarian-page .zfc-faq__left {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .zfc-humanitarian-page .zfc-faq__right {
+    grid-column: 1;
+    grid-row: 3;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .zfc-refused-page .zfc-about-hero {
+    min-height: 190px;
+    border-radius: 0 0 18px 18px;
+  }
+
+  .zfc-refused-page .zfc-about-hero__content {
+    padding: 34px 20px;
+  }
+
+  .zfc-refused-page .zfc-about-hero__title {
+    font-size: 36px;
+  }
+
+  .zfc-refused-page .zfc-about-hero__breadcrumb-link,
+  .zfc-refused-page .zfc-about-hero__breadcrumb-current {
+    font-size: 15px;
+  }
+
+  .zfc-refused-main {
+    padding: 38px 20px 0;
+  }
+
+  .zfc-refused-main__heading {
+    margin-bottom: 34px;
+    font-size: 34px;
+  }
+
+  .zfc-refused-main__subheading {
+    margin-bottom: 28px;
+    font-size: 24px;
+  }
+
+  .zfc-refused-main__copy {
+    gap: 20px;
+  }
+
+  .zfc-refused-main__body {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-refused-main__image-wrap {
+    border-radius: 12px;
+  }
+
+  .zfc-refused-reasons {
+    margin-top: 44px;
+  }
+
+  .zfc-refused-reasons__heading {
+    margin-bottom: 30px;
+    font-size: 32px;
+  }
+
+  .zfc-refused-reasons__body,
+  .zfc-refused-reasons__item {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-refused-reasons__body + .zfc-refused-reasons__body,
+  .zfc-refused-reasons__list {
+    margin-top: 26px;
+  }
+
+  .zfc-refused-reasons__list {
+    gap: 20px;
+    margin-bottom: 28px;
+    padding-left: 24px;
+  }
+
+  .zfc-refused-reasons__item {
+    padding-left: 2px;
+  }
+
+  .zfc-refused-reasons__body--closing {
+    margin-top: 26px;
+  }
+
+  .zfc-refused-page .zfc-svc-list--related,
+  .zfc-humanitarian-page .zfc-svc-list--related {
+    padding: 54px 20px 64px;
+  }
+
+  .zfc-refused-page .zfc-svc-list--related .zfc-svc-list__header,
+  .zfc-humanitarian-page .zfc-svc-list--related .zfc-svc-list__header {
+    margin-bottom: 38px;
+  }
+
+  .zfc-refused-page .zfc-svc-list--related .zfc-svc-list__heading,
+  .zfc-humanitarian-page .zfc-svc-list--related .zfc-svc-list__heading {
+    font-size: 30px;
+  }
+
+  .zfc-refused-page .zfc-svc-list--related .zfc-svc-list__grid,
+  .zfc-humanitarian-page .zfc-svc-list--related .zfc-svc-list__grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .zfc-refused-page .zfc-svc-list--related .zfc-svc-card:nth-child(9),
+  .zfc-humanitarian-page .zfc-svc-list--related .zfc-svc-card:nth-child(9) {
+    width: 100%;
+    grid-column: auto;
+    justify-self: stretch;
+  }
+
+  .zfc-refused-approach {
+    padding: 0 20px 64px;
+  }
+
+  .zfc-refused-approach__heading {
+    margin-bottom: 34px;
+    font-size: 34px;
+  }
+
+  .zfc-refused-approach__layout {
+    gap: 28px;
+  }
+
+  .zfc-refused-approach__image {
+    border-radius: 18px;
+  }
+
+  .zfc-refused-approach__copy {
+    gap: 22px;
+  }
+
+  .zfc-refused-approach__body {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-refused-page .zfc-map__iframe {
+    height: 300px;
+  }
+
+  .zfc-refused-page .zfc-contact {
+    padding: 54px 20px 64px;
+  }
+
+  .zfc-refused-page .zfc-contact__heading {
+    font-size: 32px;
+  }
+
+  .zfc-refused-page .zfc-contact__subtitle {
+    margin-bottom: 28px;
+    font-size: 16px;
+  }
+
+  .zfc-refused-page .zfc-contact__field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .zfc-refused-page .zfc-contact__upload {
+    flex-direction: column;
+    gap: 10px;
+    padding: 28px 16px;
+  }
+
+  .zfc-refused-page .zfc-contact__right {
+    min-height: 520px;
+  }
+
+  .zfc-refused-page .zfc-faq {
+    padding: 58px 20px 68px;
+  }
+
+  .zfc-refused-page .zfc-faq__heading {
+    font-size: 32px;
+  }
+
+  .zfc-humanitarian-page .zfc-map__iframe {
+    height: 300px;
+  }
+
+  .zfc-humanitarian-page .zfc-contact {
+    padding: 54px 20px 64px;
+  }
+
+  .zfc-humanitarian-page .zfc-contact__heading {
+    font-size: 32px;
+  }
+
+  .zfc-humanitarian-page .zfc-contact__subtitle {
+    margin-bottom: 28px;
+    font-size: 16px;
+  }
+
+  .zfc-humanitarian-page .zfc-contact__field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .zfc-humanitarian-page .zfc-contact__upload {
+    flex-direction: column;
+    gap: 10px;
+    padding: 28px 16px;
+  }
+
+  .zfc-humanitarian-page .zfc-contact__right {
+    min-height: 520px;
+  }
+
+  .zfc-humanitarian-page .zfc-faq {
+    padding: 58px 20px 68px;
+  }
+
+  .zfc-humanitarian-page .zfc-faq__heading {
+    font-size: 32px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   INADMISSIBILITY — bottom map / form / FAQ stack
+   ══════════════════════════════════════════════════════════ */
+.zfc-inadmissibility-page .zfc-map {
+  width: 100%;
+  line-height: 0;
+}
+
+.zfc-inadmissibility-page .zfc-map__iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  display: block;
+}
+
+.zfc-inadmissibility-page .zfc-contact {
+  background: #ffffff;
+  padding: 82px clamp(24px, 6.25vw, 128px) 112px;
+}
+
+.zfc-inadmissibility-page .zfc-contact__inner {
+  display: grid;
+  grid-template-columns: minmax(420px, 0.88fr) minmax(440px, 1.12fr);
+  gap: clamp(48px, 5.25vw, 100px);
+  max-width: 1360px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.zfc-inadmissibility-page .zfc-contact__heading {
+  font-family: var(--zfc-font-heading);
+  font-size: 46px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 0 14px;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.zfc-inadmissibility-page .zfc-contact__heading-red {
+  color: var(--zfc-red);
+}
+
+.zfc-inadmissibility-page .zfc-contact__subtitle {
+  max-width: 560px;
+  margin: 0 0 34px;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-inadmissibility-page .zfc-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.zfc-inadmissibility-page .zfc-contact__field {
+  border-bottom: 1px solid #9fa3a7;
+  margin-bottom: 4px;
+}
+
+.zfc-inadmissibility-page .zfc-contact__input,
+.zfc-inadmissibility-page .zfc-contact__textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 16px 4px;
+  font-family: var(--zfc-font-body);
+  font-size: 18px;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-inadmissibility-page .zfc-contact__input::placeholder,
+.zfc-inadmissibility-page .zfc-contact__textarea::placeholder {
+  color: #9a9a9a;
+}
+
+.zfc-inadmissibility-page .zfc-contact__textarea {
+  min-height: 72px;
+  resize: none;
+}
+
+.zfc-inadmissibility-page .zfc-contact__field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 0.47fr);
+  gap: 24px;
+}
+
+.zfc-inadmissibility-page .zfc-contact__upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 16px;
+  padding: 36px 20px;
+  border: 1.5px dashed #aaaaaa;
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.zfc-inadmissibility-page .zfc-contact__upload:hover {
+  border-color: var(--zfc-red);
+}
+
+.zfc-inadmissibility-page .zfc-contact__upload span {
+  font-size: 16px;
+  letter-spacing: 0;
+  color: #999999;
+}
+
+.zfc-inadmissibility-page .zfc-contact__file-input {
+  display: none;
+}
+
+.zfc-inadmissibility-page .zfc-contact__attach-note {
+  margin: 14px 0 18px;
+  font-size: 13px;
+  letter-spacing: 0;
+  color: #999999;
+}
+
+.zfc-inadmissibility-page .zfc-contact__nda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.zfc-inadmissibility-page .zfc-contact__checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--zfc-red);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.zfc-inadmissibility-page .zfc-contact__nda span {
+  font-size: 16px;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-inadmissibility-page .zfc-contact__submit {
+  width: 100%;
+  margin-bottom: 22px;
+  padding: 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--zfc-red);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.zfc-inadmissibility-page .zfc-contact__submit:hover {
+  background: var(--zfc-red-dark);
+}
+
+.zfc-inadmissibility-page .zfc-contact__info-row {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.zfc-inadmissibility-page .zfc-contact__info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.zfc-inadmissibility-page .zfc-contact__info-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #111111;
+}
+
+.zfc-inadmissibility-page .zfc-contact__info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.zfc-inadmissibility-page .zfc-contact__info-label {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-inadmissibility-page .zfc-contact__info-value {
+  font-size: 13px;
+  letter-spacing: 0;
+  color: var(--zfc-red);
+}
+
+.zfc-inadmissibility-page .zfc-contact__right {
+  position: relative;
+  min-height: 700px;
+}
+
+.zfc-inadmissibility-page .zfc-contact__map-decor {
+  position: absolute;
+  inset: 32px 0 0 36px;
+  z-index: 0;
+  border-radius: 12px;
+  background: var(--zfc-red);
+}
+
+.zfc-inadmissibility-page .zfc-contact__map-wrap {
+  position: absolute;
+  inset: 0 36px 44px 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.zfc-inadmissibility-page .zfc-contact__map {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.zfc-inadmissibility-page .zfc-contact__right--image .zfc-contact__map-decor {
+  display: none;
+}
+
+.zfc-inadmissibility-page .zfc-contact__right--image .zfc-contact__map-wrap {
+  inset: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.zfc-inadmissibility-page .zfc-contact__image {
+  object-fit: contain;
+  object-position: center;
+}
+
+.zfc-inadmissibility-page .zfc-faq {
+  padding-top: 90px;
+  padding-bottom: 110px;
+}
+
+@media (max-width: 900px) {
+  .zfc-inadmissibility-page .zfc-map__iframe {
+    height: 360px;
+  }
+
+  .zfc-inadmissibility-page .zfc-contact {
+    padding: 64px 24px 82px;
+  }
+
+  .zfc-inadmissibility-page .zfc-contact__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .zfc-inadmissibility-page .zfc-contact__heading {
+    font-size: 40px;
+  }
+
+  .zfc-inadmissibility-page .zfc-contact__right {
+    min-height: 620px;
+  }
+
+  .zfc-inadmissibility-page .zfc-faq {
+    padding-top: 72px;
+    padding-bottom: 86px;
+  }
+
+  .zfc-inadmissibility-page .zfc-faq__inner {
+    grid-template-columns: 1fr;
+    gap: 48px 0;
+  }
+
+  .zfc-inadmissibility-page .zfc-faq__heading {
+    font-size: 40px;
+  }
+
+  .zfc-inadmissibility-page .zfc-faq__left {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .zfc-inadmissibility-page .zfc-faq__right {
+    grid-column: 1;
+    grid-row: 3;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .zfc-inadmissibility-page .zfc-svc-list--related {
+    padding: 54px 20px 64px;
+  }
+
+  .zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-list__grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .zfc-inadmissibility-page .zfc-svc-list--related .zfc-svc-card:nth-child(9) {
+    width: 100%;
+    grid-column: auto;
+    justify-self: stretch;
+  }
+
+  .zfc-inadmissibility-reasons__media {
+    width: 100%;
+    max-width: 100%;
+    justify-self: stretch;
+  }
+
+  .zfc-inadmissibility-page .zfc-map__iframe {
+    height: 300px;
+  }
+
+  .zfc-inadmissibility-page .zfc-contact {
+    padding: 54px 20px 64px;
+  }
+
+  .zfc-inadmissibility-page .zfc-contact__heading {
+    font-size: 32px;
+  }
+
+  .zfc-inadmissibility-page .zfc-contact__subtitle {
+    margin-bottom: 28px;
+    font-size: 16px;
+  }
+
+  .zfc-inadmissibility-page .zfc-contact__field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .zfc-inadmissibility-page .zfc-contact__upload {
+    flex-direction: column;
+    gap: 10px;
+    padding: 28px 16px;
+  }
+
+  .zfc-inadmissibility-page .zfc-contact__right {
+    min-height: 520px;
+  }
+
+  .zfc-inadmissibility-page .zfc-faq {
+    padding: 58px 20px 68px;
+  }
+
+  .zfc-inadmissibility-page .zfc-faq__heading {
+    font-size: 32px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   MISREPRESENTATION — custom opening section
+   ══════════════════════════════════════════════════════════ */
+.zfc-misrepresentation-page .zfc-about-hero-wrap {
+  padding: 0;
+}
+
+.zfc-misrepresentation-page .zfc-about-hero {
+  min-height: 270px;
+  border-radius: 0 0 28px 28px;
+}
+
+.zfc-misrepresentation-page .zfc-about-hero__content {
+  padding: 52px clamp(32px, 6.25vw, 128px);
+  gap: 10px;
+}
+
+.zfc-misrepresentation-page .zfc-about-hero__title {
+  font-size: 50px;
+  letter-spacing: 0;
+}
+
+.zfc-misrepresentation-page .zfc-about-hero__breadcrumb-link,
+.zfc-misrepresentation-page .zfc-about-hero__breadcrumb-current {
+  font-size: 17px;
+  letter-spacing: 0;
+}
+
+.zfc-misrepresentation-intro {
+  width: 100%;
+  background: #ffffff;
+  padding: 86px clamp(24px, 6.25vw, 128px) 102px;
+}
+
+.zfc-misrepresentation-intro__inner {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.zfc-misrepresentation-intro__heading {
+  max-width: 850px;
+  margin: 0 0 42px;
+  font-family: var(--zfc-font-heading);
+  font-size: clamp(44px, 4.55vw, 58px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0;
+  color: #0b0b0b;
+}
+
+.zfc-misrepresentation-intro__heading span {
+  display: block;
+}
+
+.zfc-misrepresentation-intro__subheading {
+  margin: 0 0 30px;
+  font-family: var(--zfc-font-heading);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-misrepresentation-intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(330px, 416px);
+  gap: 54px;
+  align-items: start;
+}
+
+.zfc-misrepresentation-intro__content {
+  min-width: 0;
+}
+
+.zfc-misrepresentation-intro__text,
+.zfc-misrepresentation-intro__list li,
+.zfc-misrepresentation-intro__closing {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.38;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-misrepresentation-intro__text--label {
+  margin-top: 34px;
+}
+
+.zfc-misrepresentation-intro__list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 28px 0 0;
+  padding-left: 31px;
+}
+
+.zfc-misrepresentation-intro__list li {
+  padding-left: 3px;
+}
+
+.zfc-misrepresentation-intro__list li::marker {
+  font-size: 0.72em;
+}
+
+.zfc-misrepresentation-intro__media {
+  position: relative;
+  width: 100%;
+  min-height: 582px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f3f3f3;
+}
+
+.zfc-misrepresentation-intro__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.zfc-misrepresentation-intro__closing {
+  margin-top: 36px;
+}
+
+.zfc-misrepresentation-intro__cta {
+  width: fit-content;
+  min-height: 38px;
+  margin-top: 32px;
+  padding: 0 15px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: var(--zfc-red);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.zfc-misrepresentation-intro__cta:hover {
+  background: var(--zfc-red-dark);
+  transform: translateY(-1px);
+}
+
+.zfc-misrepresentation-accused {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 clamp(24px, 6.25vw, 128px) 104px;
+}
+
+.zfc-misrepresentation-accused__inner {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.zfc-misrepresentation-accused__heading {
+  max-width: 1180px;
+  margin: 0 0 56px;
+  font-family: var(--zfc-font-heading);
+  font-size: clamp(48px, 5.05vw, 72px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0;
+  color: #0b0b0b;
+}
+
+.zfc-misrepresentation-accused__heading span {
+  display: block;
+}
+
+.zfc-misrepresentation-accused__grid {
+  display: grid;
+  grid-template-columns: minmax(390px, 0.88fr) minmax(0, 1.12fr);
+  gap: 54px;
+  align-items: start;
+}
+
+.zfc-misrepresentation-accused__media {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f4f4f4;
+}
+
+.zfc-misrepresentation-accused__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.zfc-misrepresentation-accused__content {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  min-width: 0;
+  padding-top: 4px;
+}
+
+.zfc-misrepresentation-accused__text {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.38;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-misrepresentation-challenge {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 clamp(24px, 6.25vw, 128px) 106px;
+}
+
+.zfc-misrepresentation-challenge__inner {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.zfc-misrepresentation-challenge__heading {
+  max-width: 1030px;
+  margin: 0 0 54px;
+  font-family: var(--zfc-font-heading);
+  font-size: clamp(50px, 5.05vw, 72px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0;
+  color: #0b0b0b;
+}
+
+.zfc-misrepresentation-challenge__heading span {
+  display: block;
+}
+
+.zfc-misrepresentation-challenge__intro,
+.zfc-misrepresentation-challenge__text {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.38;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-misrepresentation-challenge__items {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  margin-top: 28px;
+}
+
+.zfc-misrepresentation-challenge__subheading {
+  margin: 0 0 22px;
+  font-family: var(--zfc-font-body);
+  font-size: 27px;
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: 0;
+  color: #0f0f0f;
+}
+
+.zfc-misrepresentation-challenge__cta {
+  width: fit-content;
+  min-height: 48px;
+  margin-top: 48px;
+  padding: 0 17px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: var(--zfc-red);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.zfc-misrepresentation-challenge__cta:hover {
+  background: var(--zfc-red-dark);
+  transform: translateY(-1px);
+}
+
+.zfc-misrepresentation-page .zfc-svc-list--related {
+  padding-top: 26px;
+  padding-bottom: 104px;
+}
+
+.zfc-misrepresentation-page .zfc-svc-list--related .zfc-svc-list__header {
+  margin-bottom: 58px;
+}
+
+.zfc-misrepresentation-page .zfc-svc-list--related .zfc-svc-list__heading {
+  max-width: 1020px;
+  font-size: 42px;
+  letter-spacing: 0;
+}
+
+.zfc-misrepresentation-page .zfc-svc-list--related .zfc-svc-list__grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 64px 22px;
+}
+
+.zfc-misrepresentation-page .zfc-svc-list--related .zfc-svc-card:nth-child(9),
+.zfc-misrepresentation-page .zfc-svc-list--related .zfc-svc-card:nth-child(10) {
+  grid-column: auto;
+}
+
+.zfc-misrepresentation-trust {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 clamp(24px, 6.25vw, 128px) 110px;
+}
+
+.zfc-misrepresentation-trust__inner {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.zfc-misrepresentation-trust__block + .zfc-misrepresentation-trust__block {
+  margin-top: 88px;
+}
+
+.zfc-misrepresentation-trust__heading {
+  max-width: 1080px;
+  margin: 0 0 34px;
+  font-family: var(--zfc-font-heading);
+  font-size: clamp(50px, 5.05vw, 72px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0;
+  color: #0b0b0b;
+}
+
+.zfc-misrepresentation-trust__heading span {
+  display: block;
+}
+
+.zfc-misrepresentation-trust__text {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.38;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-misrepresentation-page .zfc-map {
+  width: 100%;
+  line-height: 0;
+}
+
+.zfc-misrepresentation-page .zfc-map__iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  display: block;
+}
+
+.zfc-misrepresentation-page .zfc-contact {
+  background: #ffffff;
+  padding: 82px clamp(24px, 6.25vw, 128px) 112px;
+}
+
+.zfc-misrepresentation-page .zfc-contact__inner {
+  display: grid;
+  grid-template-columns: minmax(420px, 0.88fr) minmax(440px, 1.12fr);
+  gap: clamp(48px, 5.25vw, 100px);
+  max-width: 1360px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.zfc-misrepresentation-page .zfc-contact__heading {
+  font-family: var(--zfc-font-heading);
+  font-size: 46px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 0 14px;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.zfc-misrepresentation-page .zfc-contact__heading-red {
+  color: var(--zfc-red);
+}
+
+.zfc-misrepresentation-page .zfc-contact__subtitle {
+  max-width: 560px;
+  margin: 0 0 34px;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-misrepresentation-page .zfc-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.zfc-misrepresentation-page .zfc-contact__field {
+  border-bottom: 1px solid #9fa3a7;
+  margin-bottom: 4px;
+}
+
+.zfc-misrepresentation-page .zfc-contact__input,
+.zfc-misrepresentation-page .zfc-contact__textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 16px 4px;
+  font-family: var(--zfc-font-body);
+  font-size: 18px;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-misrepresentation-page .zfc-contact__input::placeholder,
+.zfc-misrepresentation-page .zfc-contact__textarea::placeholder {
+  color: #9a9a9a;
+}
+
+.zfc-misrepresentation-page .zfc-contact__textarea {
+  min-height: 72px;
+  resize: none;
+}
+
+.zfc-misrepresentation-page .zfc-contact__field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 0.47fr);
+  gap: 24px;
+}
+
+.zfc-misrepresentation-page .zfc-contact__upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 16px;
+  padding: 36px 20px;
+  border: 1.5px dashed #aaaaaa;
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.zfc-misrepresentation-page .zfc-contact__upload:hover {
+  border-color: var(--zfc-red);
+}
+
+.zfc-misrepresentation-page .zfc-contact__upload span {
+  font-size: 16px;
+  letter-spacing: 0;
+  color: #999999;
+}
+
+.zfc-misrepresentation-page .zfc-contact__file-input {
+  display: none;
+}
+
+.zfc-misrepresentation-page .zfc-contact__attach-note {
+  margin: 14px 0 18px;
+  font-size: 13px;
+  letter-spacing: 0;
+  color: #999999;
+}
+
+.zfc-misrepresentation-page .zfc-contact__nda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.zfc-misrepresentation-page .zfc-contact__checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--zfc-red);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.zfc-misrepresentation-page .zfc-contact__nda span {
+  font-size: 16px;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-misrepresentation-page .zfc-contact__submit {
+  width: 100%;
+  margin-bottom: 22px;
+  padding: 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--zfc-red);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.zfc-misrepresentation-page .zfc-contact__submit:hover {
+  background: var(--zfc-red-dark);
+}
+
+.zfc-misrepresentation-page .zfc-contact__info-row {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.zfc-misrepresentation-page .zfc-contact__info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.zfc-misrepresentation-page .zfc-contact__info-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #111111;
+}
+
+.zfc-misrepresentation-page .zfc-contact__info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.zfc-misrepresentation-page .zfc-contact__info-label {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-misrepresentation-page .zfc-contact__info-value {
+  font-size: 13px;
+  letter-spacing: 0;
+  color: var(--zfc-red);
+}
+
+.zfc-misrepresentation-page .zfc-contact__right {
+  position: relative;
+  min-height: 700px;
+}
+
+.zfc-misrepresentation-page .zfc-contact__map-decor {
+  position: absolute;
+  inset: 32px 0 0 36px;
+  z-index: 0;
+  border-radius: 12px;
+  background: var(--zfc-red);
+}
+
+.zfc-misrepresentation-page .zfc-contact__map-wrap {
+  position: absolute;
+  inset: 0 36px 44px 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.zfc-misrepresentation-page .zfc-contact__map {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.zfc-misrepresentation-page .zfc-contact__right--image .zfc-contact__map-decor {
+  display: none;
+}
+
+.zfc-misrepresentation-page .zfc-contact__right--image .zfc-contact__map-wrap {
+  inset: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.zfc-misrepresentation-page .zfc-contact__image {
+  object-fit: contain;
+  object-position: center;
+}
+
+.zfc-misrepresentation-page .zfc-faq {
+  padding-top: 90px;
+  padding-bottom: 110px;
+}
+
+.zfc-misrepresentation-page .zfc-faq__inner {
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  gap: 0 72px;
+  max-width: 1360px;
+}
+
+.zfc-misrepresentation-page .zfc-faq__heading {
+  font-size: 48px;
+  letter-spacing: 0;
+}
+
+.zfc-misrepresentation-page .zfc-faq__left {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.zfc-misrepresentation-page .zfc-faq__right {
+  grid-column: 1;
+  grid-row: 2;
+  padding-top: 54px;
+}
+
+@media (max-width: 900px) {
+  .zfc-misrepresentation-page .zfc-about-hero {
+    min-height: 220px;
+    border-radius: 0 0 22px 22px;
+  }
+
+  .zfc-misrepresentation-page .zfc-about-hero__content {
+    padding: 42px 28px;
+  }
+
+  .zfc-misrepresentation-page .zfc-about-hero__title {
+    font-size: 42px;
+  }
+
+  .zfc-misrepresentation-intro {
+    padding: 56px 24px 78px;
+  }
+
+  .zfc-misrepresentation-intro__heading {
+    margin-bottom: 36px;
+    font-size: 44px;
+  }
+
+  .zfc-misrepresentation-intro__subheading {
+    margin-bottom: 26px;
+    font-size: 28px;
+  }
+
+  .zfc-misrepresentation-intro__grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .zfc-misrepresentation-intro__media {
+    min-height: 0;
+    max-width: 440px;
+    aspect-ratio: 2040 / 1472;
+  }
+
+  .zfc-misrepresentation-intro__image {
+    height: 100%;
+  }
+
+  .zfc-misrepresentation-intro__text,
+  .zfc-misrepresentation-intro__list li,
+  .zfc-misrepresentation-intro__closing {
+    font-size: 19px;
+  }
+
+  .zfc-misrepresentation-accused {
+    padding: 0 24px 78px;
+  }
+
+  .zfc-misrepresentation-accused__heading {
+    margin-bottom: 42px;
+    font-size: 44px;
+  }
+
+  .zfc-misrepresentation-accused__grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .zfc-misrepresentation-accused__media {
+    min-height: 0;
+    max-width: 560px;
+    aspect-ratio: 501 / 540;
+  }
+
+  .zfc-misrepresentation-accused__content {
+    gap: 28px;
+    padding-top: 0;
+  }
+
+  .zfc-misrepresentation-accused__text {
+    font-size: 20px;
+  }
+
+  .zfc-misrepresentation-challenge {
+    padding: 0 24px 78px;
+  }
+
+  .zfc-misrepresentation-challenge__heading {
+    margin-bottom: 38px;
+    font-size: 44px;
+  }
+
+  .zfc-misrepresentation-challenge__intro,
+  .zfc-misrepresentation-challenge__text {
+    font-size: 20px;
+  }
+
+  .zfc-misrepresentation-challenge__subheading {
+    margin-bottom: 18px;
+    font-size: 24px;
+  }
+
+  .zfc-misrepresentation-challenge__items {
+    gap: 24px;
+  }
+
+  .zfc-misrepresentation-page .zfc-svc-list--related {
+    padding: 64px 24px 78px;
+  }
+
+  .zfc-misrepresentation-page .zfc-svc-list--related .zfc-svc-list__heading {
+    font-size: 36px;
+  }
+
+  .zfc-misrepresentation-page .zfc-svc-list--related .zfc-svc-list__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 42px 16px;
+  }
+
+  .zfc-misrepresentation-page .zfc-svc-list--related .zfc-svc-card:nth-child(9) {
+    width: 100%;
+    grid-column: auto;
+    justify-self: stretch;
+  }
+
+  .zfc-misrepresentation-trust {
+    padding: 0 24px 82px;
+  }
+
+  .zfc-misrepresentation-trust__block + .zfc-misrepresentation-trust__block {
+    margin-top: 64px;
+  }
+
+  .zfc-misrepresentation-trust__heading {
+    margin-bottom: 28px;
+    font-size: 44px;
+  }
+
+  .zfc-misrepresentation-trust__text {
+    font-size: 20px;
+  }
+
+  .zfc-misrepresentation-page .zfc-map__iframe {
+    height: 360px;
+  }
+
+  .zfc-misrepresentation-page .zfc-contact {
+    padding: 64px 24px 82px;
+  }
+
+  .zfc-misrepresentation-page .zfc-contact__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .zfc-misrepresentation-page .zfc-contact__heading {
+    font-size: 40px;
+  }
+
+  .zfc-misrepresentation-page .zfc-contact__right {
+    min-height: 620px;
+  }
+
+  .zfc-misrepresentation-page .zfc-faq {
+    padding-top: 72px;
+    padding-bottom: 86px;
+  }
+
+  .zfc-misrepresentation-page .zfc-faq__inner {
+    grid-template-columns: 1fr;
+    gap: 48px 0;
+  }
+
+  .zfc-misrepresentation-page .zfc-faq__heading {
+    font-size: 40px;
+  }
+
+  .zfc-misrepresentation-page .zfc-faq__left {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .zfc-misrepresentation-page .zfc-faq__right {
+    grid-column: 1;
+    grid-row: 3;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .zfc-misrepresentation-page .zfc-about-hero {
+    min-height: 190px;
+    border-radius: 0 0 18px 18px;
+  }
+
+  .zfc-misrepresentation-page .zfc-about-hero__content {
+    padding: 34px 20px;
+  }
+
+  .zfc-misrepresentation-page .zfc-about-hero__title {
+    font-size: 34px;
+  }
+
+  .zfc-misrepresentation-page .zfc-about-hero__breadcrumb-link,
+  .zfc-misrepresentation-page .zfc-about-hero__breadcrumb-current {
+    font-size: 15px;
+  }
+
+  .zfc-misrepresentation-intro {
+    padding: 42px 20px 64px;
+  }
+
+  .zfc-misrepresentation-intro__heading {
+    margin-bottom: 28px;
+    font-size: 34px;
+  }
+
+  .zfc-misrepresentation-intro__subheading {
+    margin-bottom: 22px;
+    font-size: 25px;
+  }
+
+  .zfc-misrepresentation-intro__grid {
+    gap: 28px;
+  }
+
+  .zfc-misrepresentation-intro__media {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .zfc-misrepresentation-intro__text,
+  .zfc-misrepresentation-intro__list li,
+  .zfc-misrepresentation-intro__closing {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-misrepresentation-intro__text--label {
+    margin-top: 26px;
+  }
+
+  .zfc-misrepresentation-intro__list {
+    gap: 18px;
+    margin-top: 22px;
+    padding-left: 22px;
+  }
+
+  .zfc-misrepresentation-intro__closing {
+    margin-top: 30px;
+  }
+
+  .zfc-misrepresentation-intro__cta {
+    margin-top: 26px;
+  }
+
+  .zfc-misrepresentation-accused {
+    padding: 0 20px 64px;
+  }
+
+  .zfc-misrepresentation-accused__heading {
+    margin-bottom: 30px;
+    font-size: 34px;
+  }
+
+  .zfc-misrepresentation-accused__grid {
+    gap: 28px;
+  }
+
+  .zfc-misrepresentation-accused__media {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .zfc-misrepresentation-accused__content {
+    gap: 24px;
+  }
+
+  .zfc-misrepresentation-accused__text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-misrepresentation-challenge {
+    padding: 0 20px 64px;
+  }
+
+  .zfc-misrepresentation-challenge__heading {
+    margin-bottom: 30px;
+    font-size: 34px;
+  }
+
+  .zfc-misrepresentation-challenge__intro,
+  .zfc-misrepresentation-challenge__text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-misrepresentation-challenge__items {
+    gap: 22px;
+    margin-top: 26px;
+  }
+
+  .zfc-misrepresentation-challenge__subheading {
+    margin-bottom: 14px;
+    font-size: 21px;
+  }
+
+  .zfc-misrepresentation-challenge__cta {
+    min-height: 44px;
+    margin-top: 34px;
+    font-size: 16px;
+  }
+
+  .zfc-misrepresentation-page .zfc-svc-list--related {
+    padding: 54px 20px 64px;
+  }
+
+  .zfc-misrepresentation-page .zfc-svc-list--related .zfc-svc-list__header {
+    margin-bottom: 38px;
+  }
+
+  .zfc-misrepresentation-page .zfc-svc-list--related .zfc-svc-list__heading {
+    font-size: 30px;
+  }
+
+  .zfc-misrepresentation-page .zfc-svc-list--related .zfc-svc-list__grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .zfc-misrepresentation-page .zfc-svc-list--related .zfc-svc-card:nth-child(9) {
+    width: 100%;
+    grid-column: auto;
+    justify-self: stretch;
+  }
+
+  .zfc-misrepresentation-trust {
+    padding: 0 20px 64px;
+  }
+
+  .zfc-misrepresentation-trust__block + .zfc-misrepresentation-trust__block {
+    margin-top: 48px;
+  }
+
+  .zfc-misrepresentation-trust__heading {
+    margin-bottom: 22px;
+    font-size: 34px;
+  }
+
+  .zfc-misrepresentation-trust__text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-misrepresentation-page .zfc-map__iframe {
+    height: 300px;
+  }
+
+  .zfc-misrepresentation-page .zfc-contact {
+    padding: 54px 20px 64px;
+  }
+
+  .zfc-misrepresentation-page .zfc-contact__heading {
+    font-size: 32px;
+  }
+
+  .zfc-misrepresentation-page .zfc-contact__subtitle {
+    margin-bottom: 28px;
+    font-size: 16px;
+  }
+
+  .zfc-misrepresentation-page .zfc-contact__field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .zfc-misrepresentation-page .zfc-contact__upload {
+    flex-direction: column;
+    gap: 10px;
+    padding: 28px 16px;
+  }
+
+  .zfc-misrepresentation-page .zfc-contact__right {
+    min-height: 520px;
+  }
+
+  .zfc-misrepresentation-page .zfc-faq {
+    padding: 58px 20px 68px;
+  }
+
+  .zfc-misrepresentation-page .zfc-faq__heading {
+    font-size: 32px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SPONSORSHIP — opening section
+   ══════════════════════════════════════════════════════════ */
+.zfc-sponsorship-page .zfc-about-hero-wrap {
+  padding: 0;
+}
+
+.zfc-sponsorship-page .zfc-about-hero {
+  min-height: 270px;
+  border-radius: 0 0 28px 28px;
+}
+
+.zfc-sponsorship-page .zfc-about-hero__content {
+  padding: 52px clamp(32px, 6.25vw, 128px);
+  gap: 10px;
+}
+
+.zfc-sponsorship-page .zfc-about-hero__title {
+  font-size: 50px;
+  letter-spacing: 0;
+}
+
+.zfc-sponsorship-page .zfc-about-hero__breadcrumb-link,
+.zfc-sponsorship-page .zfc-about-hero__breadcrumb-current {
+  font-size: 17px;
+  letter-spacing: 0;
+}
+
+.zfc-sponsorship-intro {
+  width: 100%;
+  background: #ffffff;
+  padding: 82px clamp(24px, 7.45vw, 90px) 70px;
+}
+
+.zfc-sponsorship-intro__inner {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.zfc-sponsorship-intro__heading {
+  max-width: 780px;
+  margin: 0 0 42px;
+  font-family: var(--zfc-font-heading);
+  font-size: clamp(46px, 4.65vw, 58px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0;
+  color: #050505;
+}
+
+.zfc-sponsorship-intro__heading span {
+  display: block;
+}
+
+.zfc-sponsorship-intro__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 586px) minmax(330px, 416px);
+  gap: 30px;
+  align-items: start;
+}
+
+.zfc-sponsorship-intro__content {
+  min-width: 0;
+}
+
+.zfc-sponsorship-intro__subheading {
+  margin: 0 0 28px;
+  font-family: var(--zfc-font-heading);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0;
+  color: #050505;
+}
+
+.zfc-sponsorship-intro__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.zfc-sponsorship-intro__text {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: 0;
+  text-align: justify;
+  text-justify: inter-word;
+  color: #050505;
+}
+
+.zfc-sponsorship-intro__cta {
+  width: fit-content;
+  min-height: 36px;
+  margin-top: 28px;
+  padding: 0 12px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: var(--zfc-red);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.zfc-sponsorship-intro__cta:hover {
+  background: var(--zfc-red-dark);
+  transform: translateY(-1px);
+}
+
+.zfc-sponsorship-intro__media {
+  width: 100%;
+  margin-top: 58px;
+}
+
+.zfc-sponsorship-intro__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.zfc-sponsorship-qualifies {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 clamp(24px, 7.45vw, 90px) 78px;
+}
+
+.zfc-sponsorship-qualifies__inner {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.zfc-sponsorship-qualifies__heading {
+  max-width: 920px;
+  margin: 0 0 42px;
+  font-family: var(--zfc-font-heading);
+  font-size: clamp(46px, 4.65vw, 58px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0;
+  color: #050505;
+}
+
+.zfc-sponsorship-qualifies__heading span {
+  display: block;
+}
+
+.zfc-sponsorship-qualifies__layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 406px) minmax(0, 1fr);
+  gap: 38px;
+  align-items: start;
+}
+
+.zfc-sponsorship-qualifies__media {
+  width: 100%;
+}
+
+.zfc-sponsorship-qualifies__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.zfc-sponsorship-qualifies__content {
+  min-width: 0;
+}
+
+.zfc-sponsorship-qualifies__text,
+.zfc-sponsorship-qualifies__list li {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.24;
+  letter-spacing: 0;
+  text-align: justify;
+  text-justify: inter-word;
+  color: #050505;
+}
+
+.zfc-sponsorship-qualifies__text + .zfc-sponsorship-qualifies__text {
+  margin-top: 30px;
+}
+
+.zfc-sponsorship-qualifies__list {
+  margin: 18px 0 26px;
+  padding-left: 27px;
+}
+
+.zfc-sponsorship-qualifies__list li {
+  padding-left: 1px;
+}
+
+.zfc-sponsorship-qualifies__list strong {
+  font-weight: 800;
+}
+
+.zfc-sponsorship-qualifies__cta {
+  width: fit-content;
+  min-height: 36px;
+  margin-top: 30px;
+  padding: 0 12px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: var(--zfc-red);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.zfc-sponsorship-qualifies__cta:hover {
+  background: var(--zfc-red-dark);
+  transform: translateY(-1px);
+}
+
+.zfc-sponsorship-programs {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 clamp(24px, 7.45vw, 90px) 82px;
+}
+
+.zfc-sponsorship-programs__inner {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.zfc-sponsorship-programs__block + .zfc-sponsorship-programs__block {
+  margin-top: 42px;
+}
+
+.zfc-sponsorship-programs__heading {
+  margin: 0 0 30px;
+  font-family: var(--zfc-font-heading);
+  font-size: clamp(46px, 4.65vw, 58px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0;
+  color: #050505;
+}
+
+.zfc-sponsorship-programs__text {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: 0;
+  text-align: justify;
+  text-justify: inter-word;
+  color: #050505;
+}
+
+.zfc-sponsorship-programs__media {
+  width: 100%;
+  margin-top: 52px;
+}
+
+.zfc-sponsorship-programs__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.zfc-sponsorship-page .zfc-svc-list--related {
+  padding-top: 0;
+  padding-bottom: 104px;
+}
+
+.zfc-sponsorship-page .zfc-svc-list--related .zfc-svc-list__header {
+  margin-bottom: 58px;
+}
+
+.zfc-sponsorship-page .zfc-svc-list--related .zfc-svc-list__heading {
+  max-width: 1020px;
+  font-size: 42px;
+  letter-spacing: 0;
+}
+
+.zfc-sponsorship-page .zfc-svc-list--related .zfc-svc-list__grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 64px 22px;
+}
+
+.zfc-sponsorship-page .zfc-svc-list--related .zfc-svc-card:nth-child(9),
+.zfc-sponsorship-page .zfc-svc-list--related .zfc-svc-card:nth-child(10) {
+  grid-column: auto;
+}
+
+.zfc-sponsorship-trust {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 clamp(24px, 7.45vw, 90px) 92px;
+}
+
+.zfc-sponsorship-trust__inner {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.zfc-sponsorship-trust__block + .zfc-sponsorship-trust__block {
+  margin-top: 70px;
+}
+
+.zfc-sponsorship-trust__heading {
+  max-width: 870px;
+  margin: 0 0 38px;
+  font-family: var(--zfc-font-heading);
+  font-size: clamp(46px, 4.65vw, 58px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0;
+  color: #050505;
+}
+
+.zfc-sponsorship-trust__heading span {
+  display: block;
+}
+
+.zfc-sponsorship-trust__heading--narrow {
+  max-width: 750px;
+}
+
+.zfc-sponsorship-trust__text,
+.zfc-sponsorship-trust__list li {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: 0;
+  color: #050505;
+}
+
+.zfc-sponsorship-trust__list {
+  margin: 20px 0 24px;
+  padding-left: 28px;
+}
+
+.zfc-sponsorship-trust__list li + li {
+  margin-top: 4px;
+}
+
+.zfc-sponsorship-trust__call {
+  margin: 10px 0 2px;
+  font-family: var(--zfc-font-heading);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: 0;
+  color: var(--zfc-red);
+}
+
+.zfc-sponsorship-trust__text--closing {
+  font-size: 19px;
+}
+
+.zfc-sponsorship-page .zfc-map {
+  width: 100%;
+  line-height: 0;
+}
+
+.zfc-sponsorship-page .zfc-map__iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  display: block;
+}
+
+.zfc-sponsorship-page .zfc-contact {
+  background: #ffffff;
+  padding: 82px clamp(24px, 6.25vw, 128px) 112px;
+}
+
+.zfc-sponsorship-page .zfc-contact__inner {
+  display: grid;
+  grid-template-columns: minmax(420px, 0.88fr) minmax(440px, 1.12fr);
+  gap: clamp(48px, 5.25vw, 100px);
+  max-width: 1360px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.zfc-sponsorship-page .zfc-contact__heading {
+  font-family: var(--zfc-font-heading);
+  font-size: 46px;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 0 14px;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.zfc-sponsorship-page .zfc-contact__heading-red {
+  color: var(--zfc-red);
+}
+
+.zfc-sponsorship-page .zfc-contact__subtitle {
+  max-width: 560px;
+  margin: 0 0 34px;
+  font-size: 18px;
+  line-height: 1.55;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-sponsorship-page .zfc-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.zfc-sponsorship-page .zfc-contact__field {
+  border-bottom: 1px solid #9fa3a7;
+  margin-bottom: 4px;
+}
+
+.zfc-sponsorship-page .zfc-contact__input,
+.zfc-sponsorship-page .zfc-contact__textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 16px 4px;
+  font-family: var(--zfc-font-body);
+  font-size: 18px;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-sponsorship-page .zfc-contact__input::placeholder,
+.zfc-sponsorship-page .zfc-contact__textarea::placeholder {
+  color: #9a9a9a;
+}
+
+.zfc-sponsorship-page .zfc-contact__textarea {
+  min-height: 72px;
+  resize: none;
+}
+
+.zfc-sponsorship-page .zfc-contact__field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 0.47fr);
+  gap: 24px;
+}
+
+.zfc-sponsorship-page .zfc-contact__upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 16px;
+  padding: 36px 20px;
+  border: 1.5px dashed #aaaaaa;
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.zfc-sponsorship-page .zfc-contact__upload:hover {
+  border-color: var(--zfc-red);
+}
+
+.zfc-sponsorship-page .zfc-contact__upload span {
+  font-size: 16px;
+  letter-spacing: 0;
+  color: #999999;
+}
+
+.zfc-sponsorship-page .zfc-contact__file-input {
+  display: none;
+}
+
+.zfc-sponsorship-page .zfc-contact__attach-note {
+  margin: 14px 0 18px;
+  font-size: 13px;
+  letter-spacing: 0;
+  color: #999999;
+}
+
+.zfc-sponsorship-page .zfc-contact__nda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.zfc-sponsorship-page .zfc-contact__checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--zfc-red);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.zfc-sponsorship-page .zfc-contact__nda span {
+  font-size: 16px;
+  letter-spacing: 0;
+  color: #333333;
+}
+
+.zfc-sponsorship-page .zfc-contact__submit {
+  width: 100%;
+  margin-bottom: 22px;
+  padding: 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--zfc-red);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.zfc-sponsorship-page .zfc-contact__submit:hover {
+  background: var(--zfc-red-dark);
+}
+
+.zfc-sponsorship-page .zfc-contact__info-row {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.zfc-sponsorship-page .zfc-contact__info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.zfc-sponsorship-page .zfc-contact__info-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #111111;
+}
+
+.zfc-sponsorship-page .zfc-contact__info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.zfc-sponsorship-page .zfc-contact__info-label {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: #111111;
+}
+
+.zfc-sponsorship-page .zfc-contact__info-value {
+  font-size: 13px;
+  letter-spacing: 0;
+  color: var(--zfc-red);
+}
+
+.zfc-sponsorship-page .zfc-contact__right {
+  position: relative;
+  min-height: 700px;
+}
+
+.zfc-sponsorship-page .zfc-contact__map-decor {
+  position: absolute;
+  inset: 32px 0 0 36px;
+  z-index: 0;
+  border-radius: 12px;
+  background: var(--zfc-red);
+}
+
+.zfc-sponsorship-page .zfc-contact__map-wrap {
+  position: absolute;
+  inset: 0 36px 44px 0;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.zfc-sponsorship-page .zfc-contact__map {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.zfc-sponsorship-page .zfc-contact__right--image .zfc-contact__map-decor {
+  display: none;
+}
+
+.zfc-sponsorship-page .zfc-contact__right--image .zfc-contact__map-wrap {
+  inset: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.zfc-sponsorship-page .zfc-contact__image {
+  object-fit: contain;
+  object-position: center;
+}
+
+.zfc-sponsorship-page .zfc-faq {
+  padding-top: 90px;
+  padding-bottom: 110px;
+}
+
+.zfc-sponsorship-page .zfc-faq__inner {
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  gap: 0 72px;
+  max-width: 1360px;
+}
+
+.zfc-sponsorship-page .zfc-faq__heading {
+  font-size: 48px;
+  letter-spacing: 0;
+}
+
+.zfc-sponsorship-page .zfc-faq__left {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.zfc-sponsorship-page .zfc-faq__right {
+  grid-column: 1;
+  grid-row: 2;
+  padding-top: 54px;
+}
+
+@media (max-width: 900px) {
+  .zfc-sponsorship-page .zfc-about-hero {
+    min-height: 220px;
+    border-radius: 0 0 22px 22px;
+  }
+
+  .zfc-sponsorship-page .zfc-about-hero__content {
+    padding: 42px 28px;
+  }
+
+  .zfc-sponsorship-page .zfc-about-hero__title {
+    font-size: 42px;
+  }
+
+  .zfc-sponsorship-intro {
+    padding: 56px 24px 72px;
+  }
+
+  .zfc-sponsorship-intro__heading {
+    margin-bottom: 34px;
+    font-size: 44px;
+  }
+
+  .zfc-sponsorship-intro__layout {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .zfc-sponsorship-intro__media {
+    max-width: 496px;
+    margin-top: 0;
+  }
+
+  .zfc-sponsorship-intro__text {
+    font-size: 19px;
+    text-align: left;
+  }
+
+  .zfc-sponsorship-qualifies {
+    padding: 0 24px 72px;
+  }
+
+  .zfc-sponsorship-qualifies__heading {
+    margin-bottom: 34px;
+    font-size: 44px;
+  }
+
+  .zfc-sponsorship-qualifies__layout {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .zfc-sponsorship-qualifies__media {
+    max-width: 484px;
+  }
+
+  .zfc-sponsorship-qualifies__text,
+  .zfc-sponsorship-qualifies__list li {
+    font-size: 19px;
+    line-height: 1.42;
+    text-align: left;
+  }
+
+  .zfc-sponsorship-programs {
+    padding: 0 24px 72px;
+  }
+
+  .zfc-sponsorship-programs__block + .zfc-sponsorship-programs__block {
+    margin-top: 36px;
+  }
+
+  .zfc-sponsorship-programs__heading {
+    margin-bottom: 24px;
+    font-size: 44px;
+  }
+
+  .zfc-sponsorship-programs__text {
+    font-size: 19px;
+    line-height: 1.42;
+    text-align: left;
+  }
+
+  .zfc-sponsorship-programs__media {
+    margin-top: 40px;
+  }
+
+  .zfc-sponsorship-page .zfc-svc-list--related {
+    padding: 64px 24px 78px;
+  }
+
+  .zfc-sponsorship-page .zfc-svc-list--related .zfc-svc-list__heading {
+    font-size: 36px;
+  }
+
+  .zfc-sponsorship-page .zfc-svc-list--related .zfc-svc-list__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 42px 16px;
+  }
+
+  .zfc-sponsorship-page .zfc-svc-list--related .zfc-svc-card:nth-child(9) {
+    width: 100%;
+    grid-column: auto;
+    justify-self: stretch;
+  }
+
+  .zfc-sponsorship-trust {
+    padding: 0 24px 72px;
+  }
+
+  .zfc-sponsorship-trust__block + .zfc-sponsorship-trust__block {
+    margin-top: 58px;
+  }
+
+  .zfc-sponsorship-trust__heading {
+    margin-bottom: 28px;
+    font-size: 44px;
+  }
+
+  .zfc-sponsorship-trust__text,
+  .zfc-sponsorship-trust__list li {
+    font-size: 19px;
+    line-height: 1.42;
+  }
+
+  .zfc-sponsorship-trust__call {
+    font-size: 32px;
+  }
+
+  .zfc-sponsorship-page .zfc-map__iframe {
+    height: 360px;
+  }
+
+  .zfc-sponsorship-page .zfc-contact {
+    padding: 64px 24px 82px;
+  }
+
+  .zfc-sponsorship-page .zfc-contact__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .zfc-sponsorship-page .zfc-contact__heading {
+    font-size: 40px;
+  }
+
+  .zfc-sponsorship-page .zfc-contact__right {
+    min-height: 620px;
+  }
+
+  .zfc-sponsorship-page .zfc-faq {
+    padding-top: 72px;
+    padding-bottom: 86px;
+  }
+
+  .zfc-sponsorship-page .zfc-faq__inner {
+    grid-template-columns: 1fr;
+    gap: 48px 0;
+  }
+
+  .zfc-sponsorship-page .zfc-faq__heading {
+    font-size: 40px;
+  }
+
+  .zfc-sponsorship-page .zfc-faq__left {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .zfc-sponsorship-page .zfc-faq__right {
+    grid-column: 1;
+    grid-row: 3;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .zfc-sponsorship-page .zfc-about-hero {
+    min-height: 190px;
+    border-radius: 0 0 18px 18px;
+  }
+
+  .zfc-sponsorship-page .zfc-about-hero__content {
+    padding: 34px 20px;
+  }
+
+  .zfc-sponsorship-page .zfc-about-hero__title {
+    font-size: 36px;
+  }
+
+  .zfc-sponsorship-page .zfc-about-hero__breadcrumb-link,
+  .zfc-sponsorship-page .zfc-about-hero__breadcrumb-current {
+    font-size: 15px;
+  }
+
+  .zfc-sponsorship-intro {
+    padding: 42px 20px 58px;
+  }
+
+  .zfc-sponsorship-intro__heading {
+    margin-bottom: 28px;
+    font-size: 34px;
+  }
+
+  .zfc-sponsorship-intro__subheading {
+    margin-bottom: 22px;
+    font-size: 25px;
+  }
+
+  .zfc-sponsorship-intro__copy {
+    gap: 22px;
+  }
+
+  .zfc-sponsorship-intro__text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-sponsorship-intro__cta {
+    min-height: 38px;
+    margin-top: 26px;
+    font-size: 15px;
+  }
+
+  .zfc-sponsorship-intro__image {
+    border-radius: 14px;
+  }
+
+  .zfc-sponsorship-qualifies {
+    padding: 0 20px 58px;
+  }
+
+  .zfc-sponsorship-qualifies__heading {
+    margin-bottom: 28px;
+    font-size: 34px;
+  }
+
+  .zfc-sponsorship-qualifies__layout {
+    gap: 28px;
+  }
+
+  .zfc-sponsorship-qualifies__image {
+    border-radius: 14px;
+  }
+
+  .zfc-sponsorship-qualifies__text,
+  .zfc-sponsorship-qualifies__list li {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-sponsorship-qualifies__text + .zfc-sponsorship-qualifies__text {
+    margin-top: 22px;
+  }
+
+  .zfc-sponsorship-qualifies__list {
+    margin: 16px 0 22px;
+    padding-left: 22px;
+  }
+
+  .zfc-sponsorship-qualifies__cta {
+    min-height: 38px;
+    margin-top: 26px;
+    font-size: 15px;
+  }
+
+  .zfc-sponsorship-programs {
+    padding: 0 20px 58px;
+  }
+
+  .zfc-sponsorship-programs__block + .zfc-sponsorship-programs__block {
+    margin-top: 32px;
+  }
+
+  .zfc-sponsorship-programs__heading {
+    margin-bottom: 20px;
+    font-size: 34px;
+  }
+
+  .zfc-sponsorship-programs__text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-sponsorship-programs__media {
+    margin-top: 32px;
+  }
+
+  .zfc-sponsorship-programs__image {
+    border-radius: 14px;
+  }
+
+  .zfc-sponsorship-page .zfc-svc-list--related {
+    padding: 54px 20px 64px;
+  }
+
+  .zfc-sponsorship-page .zfc-svc-list--related .zfc-svc-list__header {
+    margin-bottom: 38px;
+  }
+
+  .zfc-sponsorship-page .zfc-svc-list--related .zfc-svc-list__heading {
+    font-size: 30px;
+  }
+
+  .zfc-sponsorship-page .zfc-svc-list--related .zfc-svc-list__grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .zfc-sponsorship-page .zfc-svc-list--related .zfc-svc-card:nth-child(9) {
+    width: 100%;
+    grid-column: auto;
+    justify-self: stretch;
+  }
+
+  .zfc-sponsorship-trust {
+    padding: 0 20px 58px;
+  }
+
+  .zfc-sponsorship-trust__block + .zfc-sponsorship-trust__block {
+    margin-top: 48px;
+  }
+
+  .zfc-sponsorship-trust__heading {
+    margin-bottom: 22px;
+    font-size: 34px;
+  }
+
+  .zfc-sponsorship-trust__text,
+  .zfc-sponsorship-trust__list li {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .zfc-sponsorship-trust__list {
+    margin: 18px 0 22px;
+    padding-left: 22px;
+  }
+
+  .zfc-sponsorship-trust__call {
+    font-size: 28px;
+  }
+
+  .zfc-sponsorship-trust__text--closing {
+    font-size: 18px;
+  }
+
+  .zfc-sponsorship-page .zfc-map__iframe {
+    height: 300px;
+  }
+
+  .zfc-sponsorship-page .zfc-contact {
+    padding: 54px 20px 64px;
+  }
+
+  .zfc-sponsorship-page .zfc-contact__heading {
+    font-size: 32px;
+  }
+
+  .zfc-sponsorship-page .zfc-contact__subtitle {
+    margin-bottom: 28px;
+    font-size: 16px;
+  }
+
+  .zfc-sponsorship-page .zfc-contact__field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .zfc-sponsorship-page .zfc-contact__upload {
+    flex-direction: column;
+    gap: 10px;
+    padding: 28px 16px;
+  }
+
+  .zfc-sponsorship-page .zfc-contact__right {
+    min-height: 520px;
+  }
+
+  .zfc-sponsorship-page .zfc-faq {
+    padding: 58px 20px 68px;
+  }
+
+  .zfc-sponsorship-page .zfc-faq__heading {
+    font-size: 32px;
   }
 }

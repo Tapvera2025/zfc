@@ -54,7 +54,7 @@ export default function FAQSection({ heading, questions }: FAQSectionProps) {
       {/* World map background */}
       <div className="zfc-faq__map-bg" aria-hidden="true">
         <Image
-          src="/assets/faq-map.png"
+          src="/assets/faq-map.webp"
           alt=""
           fill
           sizes="100vw"
@@ -106,7 +106,7 @@ export default function FAQSection({ heading, questions }: FAQSectionProps) {
         <div className="zfc-faq__right">
           <div className="zfc-faq__blob-wrap" aria-hidden="true">
             <Image
-              src="/assets/zfcfaqsec.png"
+              src="/assets/zfcfaqsec.webp"
               alt=""
               width={301}
               height={275}

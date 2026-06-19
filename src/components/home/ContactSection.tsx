@@ -1,10 +1,34 @@
 'use client';
 
+import Image from "next/image";
 import { useState } from "react";
 
 type SubmitState = "idle" | "loading" | "success" | "error";
+type ContactVisual =
+  | { type: "map" }
+  | { type: "image"; src: string; alt: string };
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  id?: string;
+  className?: string;
+  heading?: string;
+  headingHighlight?: string;
+  subtitle?: string;
+  showNda?: boolean;
+  visual?: ContactVisual;
+  idPrefix?: string;
+}
+
+export default function ContactSection({
+  id,
+  className,
+  heading = "Get in",
+  headingHighlight = "touch",
+  subtitle = "Fill out the form below and our immigration team will contact you with the right guidance for your visa or PR application.",
+  showNda = false,
+  visual = { type: "map" },
+  idPrefix = "contact",
+}: ContactSectionProps) {
   const [form, setForm] = useState({
     contactName: "",
     street: "",
@@ -13,6 +37,7 @@ export default function ContactSection() {
     phone: "",
     email: "",
     message: "",
+    nda: false,
   });
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
 
@@ -37,7 +62,7 @@ export default function ContactSection() {
       const json = await res.json();
       if (json.success) {
         setSubmitState("success");
-        setForm({ contactName: "", street: "", city: "", postcode: "", phone: "", email: "", message: "" });
+        setForm({ contactName: "", street: "", city: "", postcode: "", phone: "", email: "", message: "", nda: false });
         setTimeout(() => setSubmitState("idle"), 4000);
       } else {
         setSubmitState("error");
@@ -49,18 +74,31 @@ export default function ContactSection() {
     }
   }
 
+  const headingLines = heading.split("\n");
+  const sectionClassName = ["zfc-contact", className].filter(Boolean).join(" ");
+  const fileInputId = `${idPrefix}-file-upload`;
+
   return (
-    <section className="zfc-contact" aria-label="Get in touch">
+    <section id={id} className={sectionClassName} aria-label="Get in touch">
       <div className="zfc-contact__inner">
 
         {/* Left: Form */}
         <div className="zfc-contact__left">
           <h2 className="zfc-contact__heading">
-            Get in <span className="zfc-contact__heading-red">touch</span>
+            {headingLines.map((line, index) => (
+              <span key={`${line}-${index}`}>
+                {line}
+                {index < headingLines.length - 1 && <br />}
+              </span>
+            ))}
+            {headingHighlight && (
+              <>
+                {" "}
+                <span className="zfc-contact__heading-red">{headingHighlight}</span>
+              </>
+            )}
           </h2>
-          <p className="zfc-contact__subtitle">
-            Fill out the form below and our immigration team will contact you with the right guidance for your visa or PR application.
-          </p>
+          <p className="zfc-contact__subtitle">{subtitle}</p>
 
           <form className="zfc-contact__form" onSubmit={handleSubmit}>
             <div className="zfc-contact__field">
@@ -115,18 +153,31 @@ export default function ContactSection() {
               />
             </div>
 
-            <label className="zfc-contact__upload" htmlFor="file-upload">
+            <label className="zfc-contact__upload" htmlFor={fileInputId}>
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#888" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <polyline points="16 16 12 12 8 16"/>
                 <line x1="12" y1="12" x2="12" y2="21"/>
                 <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
               </svg>
               <span>Upload Additional file</span>
-              <input id="file-upload" type="file" className="zfc-contact__file-input" />
+              <input id={fileInputId} type="file" className="zfc-contact__file-input" />
             </label>
             <p className="zfc-contact__attach-note">
               Attach file. File size of your documents should not exceed 10MB
             </p>
+
+            {showNda && (
+              <label className="zfc-contact__nda">
+                <input
+                  type="checkbox"
+                  name="nda"
+                  checked={form.nda}
+                  onChange={handleChange}
+                  className="zfc-contact__checkbox"
+                />
+                <span>I want to protect my data by signing an NDA</span>
+              </label>
+            )}
 
             <button
               type="submit"
@@ -178,18 +229,27 @@ export default function ContactSection() {
           </form>
         </div>
 
-        {/* Right: Map */}
-        <div className="zfc-contact__right">
+        <div className={`zfc-contact__right zfc-contact__right--${visual.type}`}>
           <div className="zfc-contact__map-decor" aria-hidden="true" />
           <div className="zfc-contact__map-wrap">
-            <iframe
-              src="https://www.google.com/maps?q=214-808+Britannia+Rd+W,+Mississauga,+ON+L5V+0A7,+Canada&output=embed"
-              className="zfc-contact__map"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="ZF Canada office location"
-            />
+            {visual.type === "image" ? (
+              <Image
+                src={visual.src}
+                alt={visual.alt}
+                fill
+                sizes="(max-width: 900px) calc(100vw - 40px), 45vw"
+                className="zfc-contact__image"
+              />
+            ) : (
+              <iframe
+                src="https://www.google.com/maps?q=214-808+Britannia+Rd+W,+Mississauga,+ON+L5V+0A7,+Canada&output=embed"
+                className="zfc-contact__map"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="ZF Canada office location"
+              />
+            )}
           </div>
         </div>
 

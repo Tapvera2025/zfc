@@ -7,10 +7,7 @@ import {
   DashboardIcon,
   BlogIcon,
   SubmissionsIcon,
-  SEOIcon,
-  SettingsIcon,
   MailIcon,
-  PagesIcon,
 } from "@/components/admin/icons";
 
 const navItems = [
@@ -18,8 +15,6 @@ const navItems = [
 { label: "Blog",             href: "/admin/blog",        icon: BlogIcon,        exact: false },
   { label: "Form Submissions", href: "/admin/submissions", icon: SubmissionsIcon, exact: false },
   { label: "FAQ Inquiries",    href: "/admin/faq-inquiry", icon: MailIcon,        exact: false },
-  { label: "SEO",              href: "/admin/seo",         icon: SEOIcon,         exact: false },
-  { label: "Settings",         href: "/admin/settings",    icon: SettingsIcon,    exact: false },
 ];
 
 export function AdminSidebar() {

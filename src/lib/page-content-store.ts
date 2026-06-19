@@ -129,8 +129,13 @@ export const PAGE_DEFAULTS: Record<string, unknown> = {
       breadcrumb: "About",
     },
     intro: {
-      heading: "ZF Canada Immigration Consultants",
-      body: "ZF Canada is a full-service immigration consulting firm based in Mississauga, Ontario. We are Regulated Canadian Immigration Consultants (RCICs) licensed by the College of Immigration and Citizenship Consultants (CICC). Our mission is simple: to make your immigration journey as smooth, transparent, and successful as possible.",
+      heading: "ZF Canada - Trusted Canada Visa Consultants Since 1992",
+      body: [
+        "ZF Canada is a go-to Canada Visa Consultant that guides individuals, families, and businesses through the Canadian immigration process. Since 1992, they've provided expert advice and personal assistance to folks all over the world.",
+        "The company is led by Sufian Ahmed (RCIC-IRB) along with a team of pros who give reliable advice and custom immigration plans. Sufian is an active member of the College of Immigration and Citizenship Consultants (CICC), which is the main regulator for immigration consultants in Canada.",
+        "With a lot of experience under their belts, the ZF Canada team is known for giving honest advice and stellar service. They stay up-to-date on Canadian immigration laws to help their clients accurately and efficiently.",
+        "Integrity, transparency, and putting clients first are key at ZF Canada. Because of these values, they're seen as a top choice for those looking for help with immigration. When it comes to refused or complicated applications, ZF Canada steps in to help. If your application was rejected, the team can evaluate your situation, discuss your choices, and guide you toward reaching your immigration goals in Canada.",
+      ].join("\n\n"),
     },
     mission: {
       heading: "Our Mission",
