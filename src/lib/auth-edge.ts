@@ -7,16 +7,19 @@ function getSecret(): string {
   return process.env.ADMIN_SESSION_SECRET || "zfc-cms-secret-change-in-production";
 }
 
-function base64urlToBytes(b64: string): Uint8Array {
+function base64urlToBytes(b64: string): Uint8Array<ArrayBuffer> {
   const padded = b64.replace(/-/g, "+").replace(/_/g, "/");
   const binary = atob(padded);
-  return Uint8Array.from(binary, (c) => c.charCodeAt(0));
+  // Uint8Array.from() always allocates a fresh ArrayBuffer (never SharedArrayBuffer),
+  // but TS 5.7+ infers Uint8Array<ArrayBufferLike> from the overload — cast to narrow it.
+  return Uint8Array.from(binary, (c) => c.charCodeAt(0)) as Uint8Array<ArrayBuffer>;
 }
 
 async function importKey(): Promise<CryptoKey> {
+  const keyBytes = new TextEncoder().encode(getSecret()) as Uint8Array<ArrayBuffer>;
   return crypto.subtle.importKey(
     "raw",
-    new TextEncoder().encode(getSecret()),
+    keyBytes,
     { name: "HMAC", hash: "SHA-256" },
     false,
     ["verify"]
