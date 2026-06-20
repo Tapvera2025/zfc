@@ -36,7 +36,7 @@ export default async function OurClientPage() {
       <div className="zfc-about-hero-wrap">
         <section className="zfc-about-hero zfc-oc-hero" aria-label="Our Client hero">
           <div className="zfc-about-hero__bg" aria-hidden="true">
-            <Image src="/assets/our-client-hero.png" alt="" fill sizes="100vw" className="object-cover object-center" priority />
+            <Image src="/assets/services-banner.png" alt="" fill sizes="100vw" className="object-cover object-center" priority />
           </div>
           <div className="zfc-about-hero__overlay" aria-hidden="true" />
           <div className="zfc-about-hero__content">
