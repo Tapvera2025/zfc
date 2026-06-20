@@ -406,16 +406,20 @@ function deepMerge(defaults: unknown, saved: unknown): unknown {
 // ── Public API ──────────────────────────────────────────────────────────────
 
 export async function getPageContent(slug: string): Promise<unknown> {
-  const c        = await col();
   const defaults = PAGE_DEFAULTS[slug] ?? {};
 
-  const doc = await c.findOne({ slug }, { projection: { _id: 0, content: 1 } });
-  if (!doc) {
-    await c.insertOne({ slug, content: defaults });
+  try {
+    const c   = await col();
+    const doc = await c.findOne({ slug }, { projection: { _id: 0, content: 1 } });
+    if (!doc) {
+      c.insertOne({ slug, content: defaults }).catch(() => {});
+      return defaults;
+    }
+    return deepMerge(defaults, doc.content as unknown);
+  } catch (err) {
+    console.error(`[page-content] MongoDB unavailable, using defaults for "${slug}":`, err);
     return defaults;
   }
-
-  return deepMerge(defaults, doc.content as unknown);
 }
 
 export async function setPageContent(slug: string, content: unknown): Promise<void> {
