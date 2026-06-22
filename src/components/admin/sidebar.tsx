@@ -8,13 +8,15 @@ import {
   BlogIcon,
   SubmissionsIcon,
   MailIcon,
+  BellIcon,
 } from "@/components/admin/icons";
 
 const navItems = [
-  { label: "Dashboard",        href: "/admin",             icon: DashboardIcon,   exact: true  },
-{ label: "Blog",             href: "/admin/blog",        icon: BlogIcon,        exact: false },
-  { label: "Form Submissions", href: "/admin/submissions", icon: SubmissionsIcon, exact: false },
-  { label: "FAQ Inquiries",    href: "/admin/faq-inquiry", icon: MailIcon,        exact: false },
+  { label: "Dashboard",           href: "/admin",              icon: DashboardIcon,   exact: true  },
+  { label: "Blog",                href: "/admin/blog",         icon: BlogIcon,        exact: false },
+  { label: "Form Submissions",    href: "/admin/submissions",  icon: SubmissionsIcon, exact: false },
+  { label: "FAQ Inquiries",       href: "/admin/faq-inquiry",  icon: MailIcon,        exact: false },
+  { label: "Newsletter",          href: "/admin/newsletter",   icon: BellIcon,        exact: false },
 ];
 
 export function AdminSidebar() {

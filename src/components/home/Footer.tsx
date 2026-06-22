@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import NewsletterForm from "@/components/home/NewsletterForm";
 
 export default function Footer() {
   return (
@@ -34,20 +35,7 @@ export default function Footer() {
             <h3 className="zfc-footer__newsletter-heading">
               Subscribe to our newsletter for the latest updates and insights.
             </h3>
-            <div className="zfc-footer__newsletter-form">
-              <span className="zfc-footer__newsletter-at">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="4"/>
-                  <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"/>
-                </svg>
-              </span>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="zfc-footer__newsletter-input"
-              />
-              <button className="zfc-footer__newsletter-btn">Subscribe</button>
-            </div>
+            <NewsletterForm />
             <p className="zfc-footer__newsletter-sub">
               Stay ahead with the latest updates, insights, and events from ZF Canada.
             </p>
@@ -66,7 +54,7 @@ export default function Footer() {
               width={140}
               height={60}
               className="object-contain"
-              style={{ width: "140px", height: "auto" }}
+              style={{ height: "auto" }}
             />
           </div>
           <p className="zfc-footer__tagline">

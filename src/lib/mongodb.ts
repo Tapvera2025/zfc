@@ -8,8 +8,6 @@ const options = {
   serverSelectionTimeoutMS: 10000,
   socketTimeoutMS: 45000,
   connectTimeoutMS: 10000,
-  // Force IPv4 DNS resolution — prevents TLS internal_error (SSL alert 80) on platforms
-  // like Render where IPv6 routes to Atlas cause TLS handshake rejection by the server.
   family: 4,
 };
 
