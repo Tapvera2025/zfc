@@ -1,22 +1,12 @@
-export const dynamic = "force-dynamic";
-
 import Image from "next/image";
 import Link from "next/link";
 import ServicesPageHeader from "@/components/services/ServicesPageHeader";
 import FAQSection from "@/components/home/FAQSection";
 import Footer from "@/components/home/Footer";
-import { getPageContent } from "@/lib/page-content-store";
 import FreeAssessmentForm from "./FreeAssessmentForm";
 
-type FreeAssessmentContent = {
-  hero?: { title?: string };
-  intro?: { heading?: string; body?: string };
-  submitButtonText?: string;
-};
-
-export default async function FreeAssessmentPage() {
-  const cms = await getPageContent("free-assessment") as FreeAssessmentContent;
-  const heroTitle = cms?.hero?.title ?? "Free Assessment";
+export default function FreeAssessmentPage() {
+  const heroTitle = "Free Assessment";
 
   return (
     <div className="zfc-assessment-page">
@@ -51,9 +41,9 @@ export default async function FreeAssessmentPage() {
 
       {/* ── Form section ── */}
       <FreeAssessmentForm
-        introHeading={cms?.intro?.heading}
-        introBody={cms?.intro?.body}
-        submitButtonText={cms?.submitButtonText}
+        introHeading="Start Your Free Immigration Assessment"
+        introBody="Fill out the form below and one of our Regulated Canadian Immigration Consultants will review your information and contact you within 1–2 business days."
+        submitButtonText="Submit Assessment"
       />
 
       <FAQSection />

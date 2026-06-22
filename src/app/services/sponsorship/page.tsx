@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +8,6 @@ import MapSection from "@/components/home/MapSection";
 import ContactSection from "@/components/home/ContactSection";
 import FAQSection from "@/components/home/FAQSection";
 import Footer from "@/components/home/Footer";
-import { getPageContent } from "@/lib/page-content-store";
 
 export const metadata: Metadata = {
   title: "Sponsorship – ZF Canada Immigration Consultants",
@@ -18,7 +15,6 @@ export const metadata: Metadata = {
     "ZF Canada assists Canadian citizens and permanent residents in sponsoring their family members for permanent residence. Expert sponsorship guidance from RCIC-IRB consultants.",
 };
 
-type SvcContent = { hero: { title: string } };
 
 const sponsorshipIntroParagraphs = [
   "The Canadian sponsorship program is aimed at helping families reunite and allowing the citizens and permanent residents of Canada to sponsor certain family members to become permanent residents of Canada through family sponsorship. As such, you can use your family sponsorship privileges to invite your spouse or common-law partner, your children, and even your parents and grandparents to join you in Canada.",
@@ -74,9 +70,8 @@ const sponsorshipFaqQuestions = [
   "Is My Information Kept Confidential?",
 ];
 
-export default async function SponsorshipPage() {
-  const raw = await getPageContent("svc-sponsorship") as SvcContent;
-  const title = raw?.hero?.title ?? "Sponsorship";
+export default function SponsorshipPage() {
+  const title = "Sponsorship";
 
   return (
     <div className="zfc-services-page zfc-sponsorship-page">

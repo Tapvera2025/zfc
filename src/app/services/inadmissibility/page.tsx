@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +8,6 @@ import MapSection from "@/components/home/MapSection";
 import ContactSection from "@/components/home/ContactSection";
 import FAQSection from "@/components/home/FAQSection";
 import Footer from "@/components/home/Footer";
-import { getPageContent } from "@/lib/page-content-store";
 
 export const metadata: Metadata = {
   title: "Inadmissibility – ZF Canada Immigration Consultants",
@@ -18,7 +15,6 @@ export const metadata: Metadata = {
     "ZF Canada helps clients overcome inadmissibility to Canada caused by criminality, health issues, or misrepresentation. Expert RCIC-IRB guidance for complex cases.",
 };
 
-type SvcContent = { hero: { title: string } };
 
 const introParagraphs = [
   "Being found inadmissible to Canada means you might not get a visa, enter the country, or gain temporary or permanent resident status. Under Canadian law, folks can be turned away for lots of reasons - criminal history, health problems, lying on forms, money troubles, or past rule breaking.",
@@ -89,9 +85,8 @@ const inadmissibilityFaqQuestions = [
   "Is My Information Kept Confidential?",
 ];
 
-export default async function InadmissibilityPage() {
-  const raw = await getPageContent("svc-inadmissibility") as SvcContent;
-  const title = raw?.hero?.title ?? "Inadmissibility";
+export default function InadmissibilityPage() {
+  const title = "Inadmissibility";
 
   return (
     <div className="zfc-services-page zfc-inadmissibility-page">

@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import type { Metadata } from "next";
 import Link from "next/link";
 import ServicesPageHeader from "@/components/services/ServicesPageHeader";
@@ -7,7 +5,6 @@ import ServiceDetailHero from "@/components/services/ServiceDetailHero";
 import ServicesListSection from "@/components/services/ServicesListSection";
 import Footer from "@/components/home/Footer";
 import Image from "next/image";
-import { getPageContent } from "@/lib/page-content-store";
 
 export const metadata: Metadata = {
   title: "Permanent Residency – ZF Canada Immigration Consultants",
@@ -15,7 +12,6 @@ export const metadata: Metadata = {
     "ZF Canada guides clients through Express Entry, PNP, and other permanent residency pathways. Expert RCIC-IRB consultants helping you make Canada your permanent home.",
 };
 
-type SvcContent = { hero: { title: string } };
 
 const permanentResidencyBenefitDetails = [
   {
@@ -106,9 +102,8 @@ const permanentResidencyRefusalReasons = [
   "Inability to provide sufficient evidence of settlement money (when necessary)",
 ];
 
-export default async function PermanentResidencyPage() {
-  const raw = await getPageContent("svc-permanent-residency") as SvcContent;
-  const title = raw?.hero?.title ?? "Permanent Residency";
+export default function PermanentResidencyPage() {
+  const title = "Permanent Residency";
 
   return (
     <div className="zfc-services-page zfc-permanent-residency-page">

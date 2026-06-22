@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import type { Metadata } from "next";
 import ServicesPageHeader from "@/components/services/ServicesPageHeader";
 import ServiceDetailHero from "@/components/services/ServiceDetailHero";
@@ -9,7 +7,6 @@ import ContactSection from "@/components/home/ContactSection";
 import FAQSection from "@/components/home/FAQSection";
 import Footer from "@/components/home/Footer";
 import Image from "next/image";
-import { getPageContent } from "@/lib/page-content-store";
 
 export const metadata: Metadata = {
   title: "IRB – Hearing & Appeals – ZF Canada Immigration Consultants",
@@ -17,7 +14,6 @@ export const metadata: Metadata = {
     "ZF Canada's RCIC-IRB consultants are authorized to represent clients at Immigration and Refugee Board hearings and appeals, including the IAD, RPD, RAD, and ID.",
 };
 
-type SvcContent = { hero: { title: string } };
 
 const irbDivisions = [
   {
@@ -62,9 +58,8 @@ const irbFaqQuestions = [
   "Is My Information Kept Confidential?",
 ];
 
-export default async function IrbHearingsPage() {
-  const raw = await getPageContent("svc-irb-hearings") as SvcContent;
-  const title = raw?.hero?.title ?? "IRB – Hearing & Appeals";
+export default function IrbHearingsPage() {
+  const title = "IRB – Hearing & Appeals";
 
   return (
     <div className="zfc-services-page zfc-irb-page">

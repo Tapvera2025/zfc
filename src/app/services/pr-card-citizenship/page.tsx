@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import type { Metadata } from "next";
 import Link from "next/link";
 import ServicesPageHeader from "@/components/services/ServicesPageHeader";
@@ -10,7 +8,6 @@ import ContactSection from "@/components/home/ContactSection";
 import FAQSection from "@/components/home/FAQSection";
 import Footer from "@/components/home/Footer";
 import Image from "next/image";
-import { getPageContent } from "@/lib/page-content-store";
 
 export const metadata: Metadata = {
   title: "PR Card / Citizenship – ZF Canada Immigration Consultants",
@@ -18,7 +15,6 @@ export const metadata: Metadata = {
     "ZF Canada assists permanent residents with PR card renewals, residency obligation appeals, and citizenship applications. Expert help from RCIC-IRB consultants.",
 };
 
-type SvcContent = { hero: { title: string } };
 
 const permanentResidentBenefits = [
   { label: "Live Anywhere in Canada", text: "Choose to live in any province or territory across Canada." },
@@ -67,9 +63,8 @@ const prCardFaqQuestions = [
   "Is My Information Kept Confidential?",
 ];
 
-export default async function PrCardCitizenshipPage() {
-  const raw = await getPageContent("svc-pr-card-citizenship") as SvcContent;
-  const title = raw?.hero?.title ?? "PR Card / Citizenship";
+export default function PrCardCitizenshipPage() {
+  const title = "PR Card / Citizenship";
 
   return (
     <div className="zfc-services-page zfc-pr-card-page">

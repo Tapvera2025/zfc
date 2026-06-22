@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import type { Metadata } from "next";
 import Link from "next/link";
 import ServicesPageHeader from "@/components/services/ServicesPageHeader";
@@ -10,7 +8,6 @@ import ContactSection from "@/components/home/ContactSection";
 import FAQSection from "@/components/home/FAQSection";
 import Footer from "@/components/home/Footer";
 import Image from "next/image";
-import { getPageContent } from "@/lib/page-content-store";
 
 export const metadata: Metadata = {
   title: "Temporary Residence – ZF Canada Immigration Consultants",
@@ -18,7 +15,6 @@ export const metadata: Metadata = {
     "ZF Canada assists with all temporary residence applications including visitor visas, study permits, and work permits. Expert RCIC-IRB guidance for a smooth process.",
 };
 
-type SvcContent = { hero: { title: string } };
 
 const temporaryResidenceApplications = [
   {
@@ -81,9 +77,8 @@ const temporaryResidenceFaqQuestions = [
   "Is My Information Kept Confidential?",
 ];
 
-export default async function TemporaryResidencePage() {
-  const raw = await getPageContent("svc-temporary-residence") as SvcContent;
-  const title = raw?.hero?.title ?? "Temporary Residence";
+export default function TemporaryResidencePage() {
+  const title = "Temporary Residence";
 
   return (
     <div className="zfc-services-page zfc-temporary-residence-page">

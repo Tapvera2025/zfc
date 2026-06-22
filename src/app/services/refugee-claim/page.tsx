@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import type { Metadata } from "next";
 import Link from "next/link";
 import ServicesPageHeader from "@/components/services/ServicesPageHeader";
@@ -10,7 +8,6 @@ import ContactSection from "@/components/home/ContactSection";
 import FAQSection from "@/components/home/FAQSection";
 import Footer from "@/components/home/Footer";
 import Image from "next/image";
-import { getPageContent } from "@/lib/page-content-store";
 
 export const metadata: Metadata = {
   title: "Refugee Claim Application – ZF Canada Immigration Consultants",
@@ -18,7 +15,6 @@ export const metadata: Metadata = {
     "ZF Canada provides expert assistance with refugee claim applications in Canada. Our RCIC-IRB consultants help you navigate the refugee determination process with confidence.",
 };
 
-type SvcContent = { hero: { title: string } };
 
 const refugeeClaimSteps = [
   {
@@ -70,9 +66,8 @@ const refugeeClaimFaqQuestions = [
   "Is My Information Kept Confidential?",
 ];
 
-export default async function RefugeeClaimPage() {
-  const raw = await getPageContent("svc-refugee-claim") as SvcContent;
-  const title = raw?.hero?.title ?? "Refugee Claim Application";
+export default function RefugeeClaimPage() {
+  const title = "Refugee Claim Application";
 
   return (
     <div className="zfc-services-page zfc-refugee-claim-page">

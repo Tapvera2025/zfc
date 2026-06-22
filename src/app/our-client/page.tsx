@@ -1,14 +1,10 @@
-export const dynamic = "force-dynamic";
-
 import Image from "next/image";
 import Link from "next/link";
 import ServicesPageHeader from "@/components/services/ServicesPageHeader";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import Footer from "@/components/home/Footer";
 import OurClientAccordion from "./OurClientAccordion";
-import { getPageContent } from "@/lib/page-content-store";
-
-const DEFAULTS = {
+const c = {
   hero:  { title: "Our Client", breadcrumb: "Our Client" },
   intro: {
     heading: "Our Client",
@@ -19,15 +15,7 @@ const DEFAULTS = {
   },
 };
 
-export default async function OurClientPage() {
-  const raw = await getPageContent("our-client") as typeof DEFAULTS;
-  const c = {
-    hero:  { ...DEFAULTS.hero,  ...(raw?.hero  ?? {}) },
-    intro: {
-      heading:    raw?.intro?.heading    ?? DEFAULTS.intro.heading,
-      paragraphs: raw?.intro?.paragraphs ?? DEFAULTS.intro.paragraphs,
-    },
-  };
+export default function OurClientPage() {
 
   return (
     <div className="zfc-ourclient-page">

@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +8,6 @@ import MapSection from "@/components/home/MapSection";
 import ContactSection from "@/components/home/ContactSection";
 import FAQSection from "@/components/home/FAQSection";
 import Footer from "@/components/home/Footer";
-import { getPageContent } from "@/lib/page-content-store";
 
 export const metadata: Metadata = {
   title: "Misrepresentation – ZF Canada Immigration Consultants",
@@ -18,7 +15,6 @@ export const metadata: Metadata = {
     "Facing a misrepresentation finding in Canada? ZF Canada's RCIC-IRB consultants can help you understand your options, respond to allegations, and rebuild your case.",
 };
 
-type SvcContent = { hero: { title: string } };
 
 const misrepresentationExamples = [
   "Failing to disclose a previous visa refusal from Canada or another country",
@@ -70,9 +66,8 @@ const misrepresentationFaqQuestions = [
   "Is My Information Kept Confidential?",
 ];
 
-export default async function MisrepresentationPage() {
-  const raw = await getPageContent("svc-misrepresentation") as SvcContent;
-  const title = raw?.hero?.title ?? "Misrepresentation";
+export default function MisrepresentationPage() {
+  const title = "Misrepresentation";
 
   return (
     <div className="zfc-services-page zfc-misrepresentation-page">
