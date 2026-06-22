@@ -25,56 +25,6 @@ interface ServiceData {
 
 const SERVICES: Record<string, ServiceData> = {
 
-  "refused-applications": {
-    title: "Refused Applications",
-    metaDescription: "Facing a refused immigration application in Canada? ZF Canada specializes in reapplying and appealing refused cases to improve your chances of approval.",
-    heading: "Refused Applications in Canada",
-    sections: [
-      {
-        paragraphs: [
-          "Dealing with Refused Applications in Canada can be frustrating and discouraging, but it does not mean the end of your immigration journey. Many applications are refused due to incomplete documentation, missing information, or submission errors. At ZF Canada, we specialize in reviewing Refused Applications in Canada, identifying the reasons for refusal, and preparing stronger reapplications or appeals to improve your chances of approval.",
-          "Our team has extensive experience handling Refused Applications in Canada across various categories, including sponsorships, permanent residency, visitor visas, study permits, work permits, and Humanitarian & Compassionate cases. We carefully assess each case and develop customized strategies to address the specific concerns raised by immigration authorities.",
-          "If an appeal is required, we represent clients before the Immigration Appeal Division (IAD) or through Federal Court proceedings in collaboration with experienced lawyers. We prepare detailed legal submissions, supporting documents, and strong arguments to seek a fair reconsideration.",
-        ],
-      },
-    ],
-    extraParagraphs: [
-      "Whether your case involves financial proof issues, inadmissibility concerns, or procedural errors, our experts provide step-by-step guidance to resolve Refused Applications in Canada effectively. Our goal is to help you overcome setbacks and turn a refusal into a successful outcome.",
-      "We also assist businesses and employees with immigration matters such as Intra-Company Transfers (ICT), ensuring compliance with Canadian immigration laws while addressing any refused applications related to corporate mobility.",
-    ],
-  },
-
-  "humanitarian-compassionate": {
-    title: "Humanitarian & Compassionate",
-    metaDescription: "Apply under Humanitarian & Compassionate grounds in Canada. ZF Canada handles H&C cases with expert guidance and personalized strategy.",
-    heading: "What is Humanitarian & Compassionate in Canada?",
-    sections: [
-      {
-        paragraphs: [
-          "Humanitarian & Compassionate (H&C) in Canada is a special immigration pathway that allows individuals to apply for permanent residency even if they do not qualify under standard programs. It is designed for people facing exceptional circumstances where returning to their home country would cause serious hardship.",
-          "Under Canadian immigration law, H&C applications are assessed on a case-by-case basis, considering factors such as establishment in Canada, family ties, and risks in the applicant's home country. This pathway is often considered a last resort, but when properly prepared, it can provide a life-changing opportunity to remain in Canada.",
-        ],
-      },
-      {
-        subheading: "Who Should Apply for H&C?",
-        paragraphs: [
-          "You may qualify for Humanitarian & Compassionate grounds if you are currently living in Canada and do not qualify under Express Entry, PNP, or family sponsorship. H&C is especially relevant for individuals who have lived in Canada for several years, have Canadian-born children, are dealing with medical or humanitarian issues, or cannot safely return to their home country.",
-          "Immigration officers evaluate multiple factors: establishment in Canada (employment, education, community involvement), family ties, best interests of children, and hardship in the home country — assessed collectively, not individually.",
-        ],
-      },
-      {
-        subheading: "Eligibility & Important Rules",
-        paragraphs: [
-          "You cannot apply if you have an active refugee claim. You must wait 12 months after a refugee refusal (with exceptions for life-threatening medical conditions or child welfare). Only one H&C application can be submitted at a time. A strong application must clearly explain why you deserve an exemption, what hardship you will face if removed, and why remaining in Canada is justified.",
-        ],
-      },
-    ],
-    extraParagraphs: [
-      "At ZF Canada, we specialize in handling complex Humanitarian & Compassionate cases with a strategic and personalized approach — including case eligibility assessment, strong personal statement drafting, evidence collection, legal strategy development, and full application preparation.",
-      "H&C applications are highly discretionary. Common reasons for refusal include weak evidence, lack of clear hardship, or missing documentation. Professional guidance is highly recommended to maximize your approval chances.",
-    ],
-  },
-
   "inadmissibility": {
     title: "Inadmissibility",
     metaDescription: "Professional inadmissibility consultation in Canada. Overcome criminal, medical, or misrepresentation barriers with expert legal support from ZF Canada.",
