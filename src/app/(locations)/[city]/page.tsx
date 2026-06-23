@@ -5,12 +5,17 @@ import {
   locationPageSlugs,
 } from "@/lib/location-page-data";
 
+type CityRouteParams = {
+  city: string;
+};
+
 export function generateStaticParams() {
   return locationPageSlugs.map((city) => ({ city }));
 }
 
-export function generateMetadata({ params }: { params: { city: string } }) {
-  const profile = getLocationPageProfile(params.city);
+export async function generateMetadata({ params }: { params: Promise<CityRouteParams> }) {
+  const { city } = await params;
+  const profile = getLocationPageProfile(city);
 
   if (!profile) {
     return {};
@@ -22,8 +27,9 @@ export function generateMetadata({ params }: { params: { city: string } }) {
   };
 }
 
-export default function CityLocationPage({ params }: { params: { city: string } }) {
-  const profile = getLocationPageProfile(params.city);
+export default async function CityLocationPage({ params }: { params: Promise<CityRouteParams> }) {
+  const { city } = await params;
+  const profile = getLocationPageProfile(city);
 
   if (!profile) {
     notFound();

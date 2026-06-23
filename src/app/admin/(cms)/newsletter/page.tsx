@@ -12,24 +12,42 @@ type Subscriber = {
 export default function NewsletterPage() {
   const [subscribers, setSubscribers] = useState<Subscriber[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   async function load() {
     setLoading(true);
-    const res = await fetch("/api/newsletter");
-    const json = await res.json();
-    if (json.success) setSubscribers(json.data);
-    setLoading(false);
+    setError("");
+
+    try {
+      const res = await fetch("/api/newsletter", { cache: "no-store" });
+      const json = await res.json().catch(() => null);
+
+      if (!res.ok || !json?.success || !Array.isArray(json.data)) {
+        throw new Error(json?.message || "Unable to load newsletter subscribers.");
+      }
+
+      setSubscribers(json.data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to load newsletter subscribers.");
+      setSubscribers([]);
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => { load(); }, []);
 
   async function remove(id: string) {
     if (!confirm("Remove this subscriber?")) return;
-    await fetch("/api/newsletter", {
+    const res = await fetch("/api/newsletter", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
     });
+    if (!res.ok) {
+      alert("Could not remove this subscriber. Please refresh and try again.");
+      return;
+    }
     setSubscribers((prev) => prev.filter((s) => s.id !== id));
   }
 
@@ -61,6 +79,16 @@ export default function NewsletterPage() {
         {loading ? (
           <div className="flex items-center justify-center py-20 text-sm text-zinc-400">
             Loading…
+          </div>
+        ) : error ? (
+          <div className="flex flex-col items-center justify-center py-20 px-6 text-center">
+            <p className="text-sm font-medium text-red-600">{error}</p>
+            <button
+              onClick={load}
+              className="mt-4 rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 transition-colors"
+            >
+              Try again
+            </button>
           </div>
         ) : subscribers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-center">

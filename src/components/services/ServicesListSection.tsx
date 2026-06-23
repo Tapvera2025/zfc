@@ -57,7 +57,7 @@ const services = [
     slug: "permanent-residency",
     title: "Permanent Residency",
     description: "Guiding applicants through Express Entry, PNP, family sponsorship, and all PR pathways.",
-    image: "/assets/svc-permanent-residency.svg",
+    image: "/assets/svc-permanent-residency.webp",
   },
   {
     id: 4,

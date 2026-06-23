@@ -2325,3 +2325,16 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
     flex-wrap: wrap;
   }
 }
+
+/* Responsive audit fix: keep the countries grid from overflowing at narrow laptop widths. */
+@media (max-width: 1100px) {
+  .zfc-countries__inner {
+    flex-direction: column;
+  }
+
+  .zfc-countries__left,
+  .zfc-countries__right {
+    width: 100%;
+    max-width: 100%;
+  }
+}

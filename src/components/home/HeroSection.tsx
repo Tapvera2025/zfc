@@ -41,7 +41,7 @@ export default function HeroSection({
       <div className="zfc-hero__content">
         <div className="zfc-hero__text">
           <h1 className="zfc-hero__heading">
-            {title.split("\\n").map((line, i, arr) => (
+            {title.split(/\n|\\n/).map((line, i, arr) => (
               <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
             ))}
           </h1>

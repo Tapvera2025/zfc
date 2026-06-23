@@ -5,41 +5,54 @@ import {
   deleteSubscriber,
 } from "@/lib/newsletter-store";
 
+function newsletterJson(body: unknown, init?: ResponseInit) {
+  const headers = new Headers(init?.headers);
+  headers.set("Cache-Control", "no-store");
+  return NextResponse.json(body, { ...init, headers });
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { email } = await req.json();
+    const normalizedEmail = typeof email === "string" ? email.trim() : "";
 
-    if (!email || typeof email !== "string") {
-      return NextResponse.json({ success: false, message: "Email is required." }, { status: 400 });
+    if (!normalizedEmail) {
+      return newsletterJson({ success: false, message: "Email is required." }, { status: 400 });
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
-      return NextResponse.json({ success: false, message: "Invalid email address." }, { status: 400 });
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
+      return newsletterJson({ success: false, message: "Invalid email address." }, { status: 400 });
     }
 
-    const { subscriber, alreadySubscribed } = await createSubscriber(email);
-    return NextResponse.json(
+    const { subscriber, alreadySubscribed } = await createSubscriber(normalizedEmail);
+    return newsletterJson(
       { success: true, data: subscriber, alreadySubscribed },
       { status: alreadySubscribed ? 200 : 201 }
     );
   } catch (err) {
     console.error("[newsletter] POST error:", err);
     const detail = process.env.NODE_ENV === "development" ? String(err) : "Something went wrong.";
-    return NextResponse.json({ success: false, message: detail }, { status: 500 });
+    return newsletterJson({ success: false, message: detail }, { status: 500 });
   }
 }
 
 export async function GET() {
-  const subscribers = await listSubscribers();
-  return NextResponse.json({ success: true, data: subscribers });
+  try {
+    const subscribers = await listSubscribers();
+    return newsletterJson({ success: true, data: subscribers });
+  } catch (err) {
+    console.error("[newsletter] GET error:", err);
+    const detail = process.env.NODE_ENV === "development" ? String(err) : "Unable to load newsletter subscribers.";
+    return newsletterJson({ success: false, message: detail, data: [] }, { status: 500 });
+  }
 }
 
 export async function DELETE(req: NextRequest) {
   try {
     const { id } = await req.json();
     const ok = await deleteSubscriber(id);
-    if (!ok) return NextResponse.json({ success: false, message: "Not found." }, { status: 404 });
-    return NextResponse.json({ success: true });
+    if (!ok) return newsletterJson({ success: false, message: "Not found." }, { status: 404 });
+    return newsletterJson({ success: true });
   } catch {
-    return NextResponse.json({ success: false, message: "Invalid request." }, { status: 400 });
+    return newsletterJson({ success: false, message: "Invalid request." }, { status: 400 });
   }
 }

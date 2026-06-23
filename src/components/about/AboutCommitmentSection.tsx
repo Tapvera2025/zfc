@@ -17,8 +17,8 @@ export default function AboutCommitmentSection() {
       <div className="zfc-about-commitment__inner">
         <div className="zfc-about-commitment__media zfc-about-commitment__media--landscape">
           <Image
-            src="/assets/about-company-consultation.webp"
-            alt="ZF Canada advisor consulting with a client"
+            src="/assets/refused-approach-canada-flag.webp"
+            alt="Canadian flag held by people outdoors"
             fill
             sizes="(max-width: 900px) calc(100vw - 40px), 36vw"
             className="zfc-about-commitment__image"

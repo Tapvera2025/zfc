@@ -48,7 +48,7 @@ export default function AboutSection({
         <div className="zfc-about__photo-wrap">
           <video
             className="zfc-about__video"
-            poster="/assets/about-zfc-video-poster.png"
+            poster="/assets/about-zfc-video-poster.webp"
             autoPlay
             muted
             loop

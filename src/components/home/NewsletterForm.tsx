@@ -9,7 +9,8 @@ export default function NewsletterForm() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!email.trim() || state === "loading") return;
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail || state === "loading") return;
 
     setState("loading");
     setErrorMsg("");
@@ -18,18 +19,18 @@ export default function NewsletterForm() {
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: trimmedEmail }),
       });
-      const json = await res.json();
-      if (json.success) {
+      const json = await res.json().catch(() => null);
+      if (res.ok && json?.success) {
         setState("success");
       } else {
         setState("error");
-        setErrorMsg(json.message || "Something went wrong.");
+        setErrorMsg(json?.message || "We could not subscribe this email right now. Please try again.");
       }
     } catch {
       setState("error");
-      setErrorMsg("Something went wrong. Please try again.");
+      setErrorMsg("We could not reach the newsletter service. Please try again.");
     }
   }
 

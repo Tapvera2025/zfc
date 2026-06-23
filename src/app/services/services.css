@@ -977,7 +977,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .zfc-irb-hearing__heading {
   margin: 0 0 clamp(38px, 4.2vw, 66px);
   font-family: var(--zfc-font-heading);
-  font-size: clamp(44px, 5.5vw, 72px);
+  font-size: clamp(40px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.03;
   color: #070707;
@@ -993,9 +993,10 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .zfc-irb-hearing__body {
   margin: 0;
   color: #171717;
-  font-size: clamp(20px, 2vw, 32px);
+  font-family: var(--zfc-font-body);
+  font-size: clamp(18px, 1.55vw, 25px);
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.32;
   text-align: justify;
 }
 
@@ -1056,7 +1057,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 .zfc-irb-closing__consultation-heading {
   margin: 0;
   font-family: var(--zfc-font-heading);
-  font-size: clamp(44px, 5.5vw, 72px);
+  font-size: clamp(40px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.03;
   color: #070707;
@@ -1089,9 +1090,10 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
 
 .zfc-irb-closing__mistakes-list li {
   padding-left: 0.4em;
-  font-size: clamp(24px, 2.25vw, 36px);
+  font-family: var(--zfc-font-body);
+  font-size: clamp(18px, 1.55vw, 25px);
   font-weight: 400;
-  line-height: 1.25;
+  line-height: 1.32;
 }
 
 .zfc-irb-closing__mistakes-list li + li {
@@ -11157,5 +11159,31 @@ button { background: none; border: none; cursor: pointer; font: inherit; }
   .zfc-services-page .zfc-about-hero__breadcrumb-link,
   .zfc-services-page .zfc-about-hero__breadcrumb-current {
     font-size: 15px;
+  }
+}
+
+/* Responsive audit fixes. Keep these late so older duplicated page blocks cannot override them. */
+@media (max-width: 900px) {
+  .zfc-inadmissibility-reasons__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+  }
+
+  .zfc-inadmissibility-reasons__media {
+    width: 100%;
+    max-width: min(420px, 100%);
+    justify-self: start;
+  }
+}
+
+@media (max-width: 600px) {
+  .zfc-inadmissibility-reasons {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .zfc-inadmissibility-reasons__media {
+    max-width: 100%;
+    justify-self: stretch;
   }
 }

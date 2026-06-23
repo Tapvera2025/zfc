@@ -34,8 +34,34 @@ type HomeContent = {
   mapSection?: { embedUrl?: string };
 };
 
+const REQUESTED_HOME_HERO = {
+  title: "Welcome to\nZF Canada",
+  subtitle: "Immigration Consultants Canada",
+  description: "Book a consultation with trusted immigration consultants in Canada to explore your visa, PR, and permit options.",
+  ctaText: "Explore More",
+  ctaHref: "/about",
+};
+
+const STALE_HOME_HERO = {
+  title: "We Speak for You.\nWe Make the Law Work for You.",
+  subtitle: "Regulated Canadian Immigration Consultants helping families, students, workers and businesses navigate Canada's immigration system.",
+  ctaText: "Get Free Consultation",
+  ctaHref: "/free-assessment",
+};
+
+function resolveHomeHero(hero: HomeContent["hero"]) {
+  return {
+    title: hero?.title && hero.title !== STALE_HOME_HERO.title ? hero.title : REQUESTED_HOME_HERO.title,
+    subtitle: hero?.subtitle && hero.subtitle !== STALE_HOME_HERO.subtitle ? hero.subtitle : REQUESTED_HOME_HERO.subtitle,
+    description: hero?.description || REQUESTED_HOME_HERO.description,
+    ctaText: hero?.ctaText && hero.ctaText !== STALE_HOME_HERO.ctaText ? hero.ctaText : REQUESTED_HOME_HERO.ctaText,
+    ctaHref: hero?.ctaHref && hero.ctaHref !== STALE_HOME_HERO.ctaHref ? hero.ctaHref : REQUESTED_HOME_HERO.ctaHref,
+  };
+}
+
 export default async function HomePage() {
   const cms = await getPageContent("home") as HomeContent;
+  const hero = resolveHomeHero(cms?.hero);
 
   return (
     <main className="zfc-home-page bg-white min-h-screen overflow-x-hidden">
@@ -50,11 +76,11 @@ export default async function HomePage() {
         >
           <ServicesPageHeader activePage="Home" />
           <HeroSection
-            title={cms?.hero?.title}
-            subtitle={cms?.hero?.subtitle}
-            description={cms?.hero?.description}
-            ctaText={cms?.hero?.ctaText}
-            ctaHref={cms?.hero?.ctaHref}
+            title={hero.title}
+            subtitle={hero.subtitle}
+            description={hero.description}
+            ctaText={hero.ctaText}
+            ctaHref={hero.ctaHref}
           />
         </div>
       </div>
@@ -70,7 +96,10 @@ export default async function HomePage() {
         intro={cms?.servicesSection?.intro}
         cards={cms?.servicesSection?.cards}
       />
-      <AssessmentBannerSection />
+      <AssessmentBannerSection
+        heading={cms?.whyChooseSection?.heading}
+        cards={cms?.whyChooseSection?.cards}
+      />
       <StatsSection stats={cms?.stats} />
       <CountriesSection
         heading={cms?.countries?.heading}

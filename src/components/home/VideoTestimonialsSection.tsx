@@ -6,13 +6,13 @@ const videos = [
   {
     id: "waliya-1",
     src: "/assets/client-testimonial-1.mp4",
-    poster: "/assets/client-testimonial-1-poster.png",
+    poster: "/assets/client-testimonial-1-poster.webp",
     title: "ZF Canada client testimonial video",
   },
   {
     id: "waliya-2",
     src: "/assets/client-testimonial-2.mp4",
-    poster: "/assets/client-testimonial-2-poster.png",
+    poster: "/assets/client-testimonial-2-poster.webp",
     title: "ZF Canada client testimonial video",
   },
 ];
@@ -52,6 +52,7 @@ const StarIcon = () => (
 
 function VideoCard({ video }: { video: (typeof videos)[number] }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [hasSource, setHasSource] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   async function handlePlayClick() {
@@ -59,6 +60,11 @@ function VideoCard({ video }: { video: (typeof videos)[number] }) {
     if (!videoEl) return;
 
     try {
+      if (!hasSource) {
+        videoEl.src = video.src;
+        videoEl.load();
+        setHasSource(true);
+      }
       await videoEl.play();
       setIsPlaying(true);
     } catch {
@@ -76,17 +82,16 @@ function VideoCard({ video }: { video: (typeof videos)[number] }) {
       <video
         ref={videoRef}
         className="zfc-video-testimonials__media"
+        src={hasSource ? video.src : undefined}
         poster={video.poster}
-        preload="metadata"
+        preload="none"
         playsInline
         controls={isPlaying}
         aria-label={video.title}
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
         onEnded={() => setIsPlaying(false)}
-      >
-        <source src={video.src} type="video/mp4" />
-      </video>
+      />
       <div className="zfc-video-testimonials__overlay" aria-hidden="true" />
       {!isPlaying && (
         <button

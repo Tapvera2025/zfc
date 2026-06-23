@@ -19,8 +19,17 @@ const DEFAULT_CARDS: ServiceCard[] = [
   { title: "IRB – Hearing & Appeals",       description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/irb-hearings",               image: "/assets/svc-irb-hearings.svg" },
   { title: "Temporary Residence",           description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/temporary-residence",         image: "/assets/svc-temporary-residence.svg" },
   { title: "PR Card / Citizenship",         description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/pr-card-citizenship",         image: "/assets/svc-pr-card-citizenship.svg" },
-  { title: "Permanent Residency",           description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/permanent-residency",         image: "/assets/svc-permanent-residency.svg" },
+  { title: "Permanent Residency",           description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/permanent-residency",         image: "/assets/svc-permanent-residency.webp" },
 ];
+
+const LEGACY_IMAGE_MAP: Record<string, string> = {
+  "/assets/svc-permanent-residency.svg": "/assets/svc-permanent-residency.webp",
+};
+
+function resolveServiceImage(image?: string) {
+  if (!image) return "/assets/svc-refused-applications.svg";
+  return LEGACY_IMAGE_MAP[image] ?? image;
+}
 
 export default function ServicesSection({
   heading = "ZF Immigration Solutions & Immigration Consultants offer services tailored to your needs",
@@ -53,7 +62,7 @@ export default function ServicesSection({
           <article key={i} className="zfc-svc-card">
             <div className="zfc-svc-card__img-wrap">
               <Image
-                src={svc.image || "/assets/svc-refused-applications.svg"}
+                src={resolveServiceImage(svc.image)}
                 alt={svc.title}
                 fill
                 sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 25vw"

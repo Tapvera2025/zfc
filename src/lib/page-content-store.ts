@@ -11,10 +11,11 @@ export const PAGE_DEFAULTS: Record<string, unknown> = {
 
   home: {
     hero: {
-      title: "We Speak for You.\nWe Make the Law Work for You.",
-      subtitle: "Regulated Canadian Immigration Consultants helping families, students, workers and businesses navigate Canada's immigration system.",
-      ctaText: "Get Free Consultation",
-      ctaHref: "/free-assessment",
+      title: "Welcome to\nZF Canada",
+      subtitle: "Immigration Consultants Canada",
+      description: "Book a consultation with trusted immigration consultants in Canada to explore your visa, PR, and permit options.",
+      ctaText: "Explore More",
+      ctaHref: "/about",
     },
     about: {
       heading: "About ZF Canada",
@@ -54,7 +55,7 @@ export const PAGE_DEFAULTS: Record<string, unknown> = {
         { title: "IRB – Hearing & Appeals",       description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/irb-hearings",               image: "/assets/svc-irb-hearings.svg" },
         { title: "Temporary Residence",           description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/temporary-residence",         image: "/assets/svc-temporary-residence.svg" },
         { title: "PR Card / Citizenship",         description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/pr-card-citizenship",         image: "/assets/svc-pr-card-citizenship.svg" },
-        { title: "Permanent Residency",           description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/permanent-residency",         image: "/assets/svc-permanent-residency.svg" },
+        { title: "Permanent Residency",           description: "We assist in reapplying and appealing refused immigration applications.", href: "/services/permanent-residency",         image: "/assets/svc-permanent-residency.webp" },
       ],
     },
     testimonialsSection: {
