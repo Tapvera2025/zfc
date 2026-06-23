@@ -16,6 +16,7 @@ import BlogsSection from "@/components/home/BlogsSection";
 import ContactSection from "@/components/home/ContactSection";
 import FAQSection from "@/components/home/FAQSection";
 import Footer from "@/components/home/Footer";
+import { HOME_ABOUT_BODY, HOME_ABOUT_HEADING } from "@/lib/home-about-content";
 import { getPageContent } from "@/lib/page-content-store";
 
 type HomeContent = {
@@ -49,6 +50,16 @@ const STALE_HOME_HERO = {
   ctaHref: "/free-assessment",
 };
 
+const STALE_HOME_ABOUT_HEADINGS = new Set([
+  "About ZF Canada",
+]);
+
+const STALE_HOME_ABOUT_BODY_MARKERS = [
+  "full-service immigration firm based in Mississauga",
+  "leading immigration consultancy firm in Canada",
+  "Established in 1992",
+];
+
 function resolveHomeHero(hero: HomeContent["hero"]) {
   return {
     title: hero?.title && hero.title !== STALE_HOME_HERO.title ? hero.title : REQUESTED_HOME_HERO.title,
@@ -59,9 +70,25 @@ function resolveHomeHero(hero: HomeContent["hero"]) {
   };
 }
 
+function resolveHomeAbout(about: HomeContent["about"]) {
+  const hasStaleBody = STALE_HOME_ABOUT_BODY_MARKERS.some((marker) =>
+    about?.body?.includes(marker)
+  );
+
+  return {
+    heading: about?.heading && !STALE_HOME_ABOUT_HEADINGS.has(about.heading)
+      ? about.heading
+      : HOME_ABOUT_HEADING,
+    body: about?.body && !hasStaleBody
+      ? about.body
+      : HOME_ABOUT_BODY,
+  };
+}
+
 export default async function HomePage() {
   const cms = await getPageContent("home") as HomeContent;
   const hero = resolveHomeHero(cms?.hero);
+  const about = resolveHomeAbout(cms?.about);
 
   return (
     <main className="zfc-home-page bg-white min-h-screen overflow-x-hidden">
@@ -87,8 +114,8 @@ export default async function HomePage() {
 
       {/* ── All other sections: full width ── */}
       <AboutSection
-        heading={cms?.about?.heading}
-        body={cms?.about?.body}
+        heading={about.heading}
+        body={about.body}
       />
       <HomeWhoWeAreSection />
       <ServicesSection

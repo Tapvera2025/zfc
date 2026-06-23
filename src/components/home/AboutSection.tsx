@@ -1,18 +1,5 @@
 import Link from "next/link";
-
-const DEFAULT_HEADING = "Top Rated Immigration Consultants Canada for Trusted Visa & PR Services";
-
-const DEFAULT_BODY = `ZF Canada is a leading immigration consultancy firm in Canada, dedicated to providing professional and reliable pathways to Canada. Established in 1992, we bring over 25 years of experience as a Licensed Immigration Consultant Canada, helping clients achieve their immigration goals successfully.
-Under the leadership of Sufian Ahmed (RCIC-IRB) - a trusted Immigration Consultant in Canada in good standing with the College of Immigration and Citizenship Consultants (CICC) - our team has grown into one of the Best Immigration Agency Canada.
-We are widely recognized as a reliable Canada Visa Consultant Canada, offering expert advice, personalized representation, and a high success rate. Our clients trust us for honest and ethical services across multiple immigration pathways, including:
-• Express Entry Consultant Canada services
-• Family Sponsorship (including Spousal Sponsorship in Canada)
-• Study Permit Consultant Canada guidance
-• Super Visa & Temporary Visa
-• Work Permit Consultant Canada solutions
-• LMIA & PNP Applications
-• Canadian Citizenship
-At ZF Canada, we strictly follow professional codes of conduct. Every step of the way, we remain honest, pragmatic, efficient, consistent, unbiased, and genuine. This commitment sets us apart as a Licensed Immigration Consultant Canada.`;
+import { HOME_ABOUT_BODY, HOME_ABOUT_HEADING } from "@/lib/home-about-content";
 
 interface AboutSectionProps {
   heading?: string;
@@ -20,8 +7,8 @@ interface AboutSectionProps {
 }
 
 export default function AboutSection({
-  heading = DEFAULT_HEADING,
-  body = DEFAULT_BODY,
+  heading = HOME_ABOUT_HEADING,
+  body = HOME_ABOUT_BODY,
 }: AboutSectionProps) {
   const lines = body.split("\n").filter((l) => l.trim() !== "");
 
@@ -42,7 +29,7 @@ export default function AboutSection({
   }
 
   return (
-    <section className="zfc-about" aria-label="About ZF Canada">
+    <section className="zfc-about" aria-label="Top rated immigration consultants Canada">
       <div className="zfc-about__inner">
         {/* ── Left: video ── */}
         <div className="zfc-about__photo-wrap">

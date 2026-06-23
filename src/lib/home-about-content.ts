@@ -1,0 +1,7 @@
+export const HOME_ABOUT_HEADING = "Top Rated Immigration Consultants Canada for Trusted Visa & PR Services";
+
+export const HOME_ABOUT_BODY = `Looking for trusted Immigration Consultants Canada residents and international applicants can rely on? ZF Canada provides professional immigration support for individuals, families, students, and workers planning to move to Canada. Our experienced immigration team helps clients understand the best visa and immigration pathways based on their goals and eligibility.
+We assist with a wide range of Canadian immigration services, including Express Entry, Permanent Residency (PR), study permits, work permits, visitor visas, family sponsorships, business immigration, citizenship applications, and visa refusals. Our goal is to make the immigration process simple, clear, and stress-free for every client.
+At ZF Canada, we focus on honest guidance, transparent communication, and personalized support. We understand that every immigration case is different, which is why we provide solutions tailored to your needs. Our team is committed to helping you complete your application correctly and confidently.
+As trusted Immigration Consultants Canada applicants choose for reliable support, we are dedicated to providing professional service and up-to-date immigration advice. Whether you are applying for a visa, extending your status, or planning your future in Canada, we are here to help at every step.
+Book a consultation with ZF Canada today to discuss your immigration options and start your journey to Canada with confidence.`;

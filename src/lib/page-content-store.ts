@@ -1,4 +1,5 @@
 import { getDb } from "./mongodb";
+import { HOME_ABOUT_BODY, HOME_ABOUT_HEADING } from "@/lib/home-about-content";
 
 async function col() {
   const db = await getDb();
@@ -18,9 +19,9 @@ export const PAGE_DEFAULTS: Record<string, unknown> = {
       ctaHref: "/about",
     },
     about: {
-      heading: "About ZF Canada",
-      body: "ZF Canada Immigration Consultants is a full-service immigration firm based in Mississauga, Ontario. Our team of Regulated Canadian Immigration Consultants (RCICs) has helped thousands of clients achieve their Canadian immigration goals.",
-      highlight: "Trusted by thousands of immigrants across Canada.",
+      heading: HOME_ABOUT_HEADING,
+      body: HOME_ABOUT_BODY,
+      highlight: "Trusted immigration support for visa and PR services.",
     },
     stats: [
       { label: "Years of Experience", value: "15+" },
